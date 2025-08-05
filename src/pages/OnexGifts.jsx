@@ -90,37 +90,6 @@ const OnexGifts = () => {
                     </div>
                 </div>
 
-                {/* <div className="ads-task">
-                    <div className="info-ads-task-nameText">
-                        <div className="info-ads-section">
-                        <div className="infoAdsSection-all-logo">
-                            <img src={onexTON} className="infoAdsSection-all-logo"/>
-                            <h2>ПРИСОЕДИНЯЙСЯ<br />НОЖНИЦАМ!</h2>
-                        </div>
-                        <div className="infoAdsSection-all-text">
-                            <h2>+0.445<br />TON</h2>
-                        </div>
-                        </div>
-                        <div className="task-to-be-ads-complete-button">
-                        <div className="to-be-complete-ads-button">
-                            ВЫПОЛНИТЬ
-                        </div>
-                        <div className="to-be-check-ads-button">
-                            ПРОВЕРИТЬ
-                        </div>
-                        </div>
-                    </div>
-                </div> */}
-
-          
-                <AdsgramStyledTask blockId="task-13017"/>
-
-                <AdsgramStyledTask blockId="task-13178"/>
-
-                <AdsgramStyledTask className="task last-adsgram-task" blockId="task-13179"/>
-        
-
-
             </div>
         </div>
     </div>
