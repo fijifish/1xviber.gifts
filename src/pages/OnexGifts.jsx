@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/OnexGifts.css";
 import CrossPartnerIcon from "../assets/CrossPartnerIcon.png";
+import depoIMG from "../assets/deposit-icon.png";
 
 
 const OnexGifts = () => {
