@@ -50,7 +50,7 @@ const OnexGifts = () => {
                 <div className="info-CrossPartner-block">
                     <div className="info-CrossPartner-nameText">
                     <h2>{t.title}</h2>
-                     <img src={nftsIMG} className="claim-button-icon"/>
+                     <img src={nftsIMG} className="nfts-img"/>
                     <p>{t.description2_part1}<br/>{t.description2_part2}<br/>{t.description2_part3}</p>
                     </div>
                 </div>
