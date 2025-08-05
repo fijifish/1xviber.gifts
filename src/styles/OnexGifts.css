@@ -96,7 +96,7 @@ body {
   
 .info-CrossPartner-nameText p {
     font-family: "MullerLight", sans-serif; /* ✅ Используем кастомный шрифт */
-    font-size: 1.7vh;
+    font-size: 1.3vh;
     white-space: nowrap;
 }
 
@@ -193,7 +193,7 @@ body {
 }
 
 .nfts-img {
-    height: 60%;
+    height: 55%;
     width: 80%;
     overflow: hidden;
     margin-bottom: 0.1vh;
