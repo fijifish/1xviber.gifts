@@ -130,7 +130,6 @@ body {
 .rectangle-info-CrossPartner {
     display: flex;
     flex-direction: column;
-    margin-right: 8%;
     margin-top: 2.2vh;
     align-items: flex-end;
     justify-content: space-between;
@@ -162,12 +161,12 @@ body {
 .rectangle-for-button-claim {
     display: flex;
     flex-direction: row;
-    margin-bottom: 1.7vh;
+    margin-bottom: 2vh;
     align-items: center;
     justify-content: space-between;
     height: 20.4%;
-    width: 79.8%;
-    margin-right: 4.9%;
+    width: 85%;
+
     overflow: visible;
 }
 
