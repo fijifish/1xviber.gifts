@@ -1,0 +1,143 @@
+/* ✅ Глобальные настройки */
+* {
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+body {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  overflow: hidden; 
+  isolation: isolate;
+}
+
+.App {
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    background: #000000;
+    color: white;
+    font-family: Muller;
+    font-size: 2.2vh ;
+}
+
+.App p{
+    margin: 0;
+}
+
+.SybilBlock_Window{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    flex-direction: column;
+    top: 0;
+    color: white;
+    z-index: 1001;
+    animation: fade-in 0.3s forwards;
+}
+
+.mainSybilBlockPageContainer {
+
+    height: 100%;
+    width: 100%;
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background: url('../assets/backgroundSybilBlock.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+.info-sybil-block {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    align-self: start;
+    justify-content: flex-start;
+    background: rgba(32, 32, 32, 0.5);
+    border: 1px solid rgba(0, 0, 0, 1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4.22vh;
+    position: relative;
+    width: 95%;
+    left: 2.5%;
+    height: 22%;
+    margin-top: 1vh;
+}
+  
+.info-sybil-nameText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+    overflow: visible;
+}
+  
+.info-sybil-nameText h2 {
+    font-size: 3.2vh;
+    margin: 0;
+    font-family: "REDOB trial", sans-serif; /* ✅ Используем кастомный шрифт */
+    white-space: nowrap; /* ✅ Запрещаем перенос текста */
+    color: #FFFFFF;
+}
+  
+.info-sybil-nameText p {
+    font-family: "MullerLight", sans-serif; /* ✅ Используем кастомный шрифт */
+    font-size: 1.7vh;
+    white-space: nowrap;
+}
+
+.rectangleSybilBlock-support {
+    flex-shrink: 0; 
+    display: flex;
+    flex-direction: column;
+    margin-top: 4vh;
+    margin-bottom: 5vh;
+    align-self: center;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 14.95%;
+    width: 89.9%;
+    overflow: visible;
+  
+    font-size: clamp(1.65vh, 2.6vw, 2.1vh);
+    font-family: MullerLight;
+}
+
+.rectangleSybilBlock-button-support {
+    background: rgba(255, 255, 255, 0.15);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 1);
+  
+    height: 25.75%;
+    width: 62.3%;
+    font-size: clamp(1.4vh, 2.5vw, 2vh);
+    font-family: MullerExtraBold;
+    border-radius: 1vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sybilBlockCharacter {
+    display: flex;
+    justify-content: flex-end;
+
+    height: 55%;
+    width: 100%;
+
+}

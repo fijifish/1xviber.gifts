@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <meta name="theme-color" content="#000000">
+    <meta name="description" content="ONEX Telegram App">
+    <title>ONEX GIFTS</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>  <!-- ✅ ОБЯЗАТЕЛЬНО ДОЛЖЕН БЫТЬ! -->
+
+    <script type="module" src="/src/main.jsx"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (window.Telegram?.WebApp) {
+                Telegram.WebApp.ready();
+                window.Telegram.WebApp.ready();
+                window.Telegram.WebApp.disableVerticalSwipes();
+                window.Telegram.WebApp.setHeaderColor("#000000");
+                window.Telegram.WebApp.expand();
+            }
+        });
+    </script>
+
+    <!-- <adsgram-task data-block-id='task-13017' data-debug='true' class='adsgram-task'>
+        <p slot='reward' class='task__reward'>🪙 100</p>
+        <div slot='button' class='task__button'>go</div>
+        <div slot='claim' class='task__button task__button_claim'>claim</div>
+        <div slot='done' class='task__button task__button_done'>done</div>
+    </adsgram-task> -->
+
+</body>
+</html>

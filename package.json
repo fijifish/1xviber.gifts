@@ -1,0 +1,58 @@
+{
+  "name": "on.front",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@adsgram/react": "^1.0.2",
+    "@tanstack/react-query": "^5.61.5",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@ton/core": "^0.60.1",
+    "@ton/ton": "^15.2.1",
+    "@tonconnect/ui": "^2.0.9",
+    "@tonconnect/ui-react": "^2.0.12",
+    "@vitejs/plugin-react": "^4.3.4",
+    "axios": "^1.7.4",
+    "buffer": "^6.0.3",
+    "html2canvas": "^1.4.1",
+    "phaser": "^3.86.0",
+    "prop-types": "^15.8.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-helmet": "^6.1.0",
+    "react-router-dom": "^6.26.0",
+    "react-unity-webgl": "^9.5.2",
+    "ton": "^13.9.0",
+    "tonweb": "^0.0.64",
+    "vite": "^5.4.8",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "ajv": "^7.2.4",
+    "rollup-plugin-polyfill-node": "^0.13.0"
+  }
+}
