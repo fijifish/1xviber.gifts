@@ -1,0 +1,600 @@
+/* ✅ Глобальные настройки */
+* {
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+body {
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  overflow: hidden; 
+  isolation: isolate;
+}
+
+.App {
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    background: #000000;
+    color: white;
+    font-family: Muller;
+    font-size: 2.2vh ;
+}
+
+.App p{
+    margin: 0;
+}
+
+.CrossPartner_Window{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    flex-direction: column;
+    top: 0;
+    color: white;
+    z-index: 1001;
+    animation: fade-in 0.3s forwards;
+}
+
+.mainCrossPartnerPageContainer {
+
+    height: 100%; /* ✅ не 100%, иначе выйдет за пределы */
+    width: 100%;
+    overflow-y: auto;  /* ✅ включает вертикальный скролл */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background: url('../assets/backgroundOnexGifts.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+
+.info-CrossPartner-block2 {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    align-self: start;
+    justify-content: flex-start;
+    background: rgba(32, 32, 32, 0.5);
+    border: 1px solid rgba(0, 0, 0, 1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4.22vh;
+    position: relative;
+    width: 95%;
+    left: 2.5%;
+    height: 16.5%;
+    margin-top: 1vh;
+}
+  
+.info-CrossPartner-nameText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+    overflow: visible;
+}
+  
+.info-CrossPartner-nameText h2 {
+    font-size: 3.2vh;
+    margin: 0;
+    font-family: "REDOB trial", sans-serif; /* ✅ Используем кастомный шрифт */
+    white-space: nowrap; /* ✅ Запрещаем перенос текста */
+    color: #FFFFFF;
+}
+  
+.info-CrossPartner-nameText p {
+    font-family: "MullerLight", sans-serif; /* ✅ Используем кастомный шрифт */
+    font-size: 1.7vh;
+    white-space: nowrap;
+}
+
+.info-CrossPartner-block {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    align-self: start;
+    justify-content: flex-start;
+    background: rgba(32, 32, 32, 0.5);
+    border: 1px solid rgba(0, 0, 0, 1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4.22vh;
+    position: relative;
+    width: 95%;
+    left: 2.5%;
+    height: 20.6%;
+    margin-top: 1vh;
+}
+
+.info-CrossPartner-nameText55 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 100%;
+    width: 55%;
+    overflow: visible;
+}
+
+.rectangle-info-CrossPartner {
+    display: flex;
+    flex-direction: column;
+    margin-right: 8%;
+    margin-top: 2.2vh;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 36.1%;
+    width: 76.1%;
+    overflow: visible;
+}
+
+.text-in-rectangle-CrossPartner {
+    margin-top: 0.35vh; /* Устанавливаем отступ только для текста */
+    display: inline-block; /* Чтобы `margin-top` работал */
+}
+
+.rectangle-info-CrossPartner-ton {
+    background-color: #FFFFFF;
+    color: #0D0D0D;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35); /* ✅ Добавляем тень */
+    height: 95%;
+    width: 8vh;
+    font-size: clamp(1.2vh, 2.5vw, 2vh);
+    font-family: MullerMedium;
+    border-radius: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3vh;
+}
+
+.rectangle-for-button-claim {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1.7vh;
+    align-items: center;
+    justify-content: space-between;
+    height: 20.4%;
+    width: 79.8%;
+    margin-right: 4.9%;
+    overflow: visible;
+}
+
+.rectangle-button-claim {
+    background-color: #FFFFFF;
+    color: #0D0D0D;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35); /* ✅ Добавляем тень */
+    height: 95%;
+    width: 100%;
+    font-size: clamp(1.35vh, 2.5vw, 2vh);
+    font-family: MullerMedium;
+    border-radius: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6vh;
+}
+
+.claim-button-icon {
+    height: 40%;
+    overflow: hidden;
+    margin-bottom: 0.1vh;
+}
+
+.info-claim-nameText45 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 45%;
+    overflow: visible;
+}
+
+.CrossPartner-icon {
+    height: 85%;
+    overflow: hidden;
+    /* margin-left: 1.4vh; */
+    margin-top: -0.3vh; 
+}
+
+.rectangle-info-CrossPartner p {
+    height: 25.5%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+    font-family: "MullerLight", sans-serif; /* ✅ Используем кастомный шрифт */
+    font-size: 1.5vh;
+    white-space: nowrap;
+    gap: 0.3vh;
+    align-items: center;
+}
+
+.rectangle-info-CrossPartner img {
+    height: 73%;
+    overflow: hidden;
+    margin-bottom: 0.1vh;
+}
+
+.rectangle-info-CrossPartner h2 {
+    height: 57%;
+    width: 100%;
+    overflow: visible;
+    display: flex;
+    justify-content: flex-start;
+    font-size: clamp(3.4vh, 3.4vw,4.17vh);
+    margin: 0;
+    font-family: MullerMedium; /* ✅ Используем кастомный шрифт */
+    white-space: nowrap; /* ✅ Запрещаем перенос текста */
+    color: #FFFFFF;
+    gap: 0.8vh;
+    align-items: center;
+    flex-shrink: 1; /* Позволяет тексту уменьшаться */
+}
+
+.text-completed {
+    font-size: 2.7vh;
+    font-family: MullerBold; /* ✅ Используем кастомный шрифт */
+    white-space: nowrap; /* ✅ Запрещаем перенос текста */
+    color: #FFFFFF;
+    margin-left: 4vh;
+    margin-top: 2.85vh;
+    align-self: flex-start;
+    display: flex;
+}
+
+.rectangle-counter-CrossPartner-completed-ads {
+    background: rgba(217, 217, 217, 0.5);
+    color: #FFFFFF;
+    height: 120%;
+    width: 7vh;
+    font-size: clamp(1.95vh, 3.25vw, 2.75vh);
+    font-family: MullerMedium;
+    border-radius: 1.7vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3vh;
+    margin-left: 1.1vh;
+    margin-top: -0.44vh;
+}
+
+.ads-task {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    background:
+      radial-gradient(
+        circle at top left,
+        rgba(227, 23, 23, 0) 0%,
+        rgba(255, 184, 0, 0.2) 100%
+      ),
+      linear-gradient(
+        240deg,
+        rgba(23, 156, 227, 0.6) 0%,
+        rgba(102, 0, 255, 0.6) 100%
+      );
+  
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 2.22vh;
+    width: 90%;
+    height: 13.7%;
+    margin-top: 1.8vh;
+}
+
+.info-ads-task-nameText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 100%;
+    overflow: visible;
+}
+
+.info-ads-section {
+    width: 90%;
+    height: 43.1%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.infoAdsSection-all-logo {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1vh;
+}
+
+
+.infoAdsSection-all-logo-adsgram {
+    height: 100%;
+    width: 100%;
+    margin-left: 1vh;
+}
+
+.infoAdsSection-all-logo img {
+    width: 100;
+    height: 100%;
+}
+
+.infoAdsSection-all-logo h2 {
+    font-size: 2vh;
+    font-family: "MullerExtraBold", sans-serif; /* ✅ Используем кастомный шрифт */
+    white-space: nowrap; /* ✅ Запрещаем перенос текста */
+    color: #FFFFFF;
+    text-align: left; /* Выравниваем текст влево */
+}
+
+.infoAdsSection-all-text {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-right: 0.4vh;
+}
+
+.infoAdsSection-all-text h2 {
+    font-size: 2.2vh;
+    font-family: MullerMedium; /* ✅ Используем кастомный рифт */
+    white-space: nowrap; /* ✅ Запрещаем перенос текста */
+    justify-content: flex-start;
+    color: #FFFFFF;
+    text-align: right; 
+
+}
+
+.task-to-be-ads-complete-button {
+    margin-bottom: 0.85vh;
+    display: flex;
+    flex-direction: row;
+    gap: 1vh;
+    justify-content: space-between;
+    align-items: start;
+    width: 92%;
+    height: 22.8%;
+}
+
+.to-be-complete-button-AdsCompleted {
+    background-color: rgba(0, 255, 38, 0.15);
+    color: #1FFF02;
+    border: 1px solid rgba(31, 255, 2, 1);
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.8vh;
+    font-family: "MullerExtraBold", sans-serif;
+    border-radius: 1vh;
+    text-decoration: none; /* 🔥 Убирает подчёркивание */
+}
+
+.to-be-complete-ads-button100 {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 1);
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.8vh;
+    font-family: "MullerExtraBold", sans-serif;
+    border-radius: 1vh;
+    text-decoration: none; /* 🔥 Убирает подчёркивание */
+}
+
+.to-be-complete-ads-button {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 1);
+
+    height: 100%;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.9vh;
+    font-family: "MullerExtraBold", sans-serif;
+    border-radius: 1vh;
+    text-decoration: none; /* 🔥 Убирает подчёркивание */
+}
+
+.to-be-check-ads-button {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 1);
+
+    height: 100%;
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.9vh;
+    font-family: "MullerExtraBold", sans-serif;
+    border-radius: 1vh;
+}
+
+.task {
+
+    --adsgram-task-font-size: 2vh; /* min 14px */
+    --adsgram-task-icon-size: 5.8vh; /* min 30px */
+    --adsgram-task-icon-title-gap: 1.8vh; /* min 5px max 40px */
+    --adsgram-task-button-width: 65%; /* min 40px */
+    --adsgram-task-icon-border-radius: 4vh;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    background:
+      radial-gradient(
+        circle at top left,
+        rgba(227, 23, 23, 0) 0%,
+        rgba(255, 184, 0, 0.2) 100%
+      ),
+
+      linear-gradient(
+        240deg,
+        rgba(23, 156, 227, 0.6) 0%,
+        rgba(102, 0, 255, 0.6) 100%
+      ), 
+      
+      url("../assets/tonchik.png");
+      background-position: center, center, right 1.6vh bottom 3vh; /* ✅ Центрируем градиент, а изображение сдвигаем */
+      background-size: cover, cover, auto 65%; /* ✅ Градиент на всю область, а картинка — высотой 90% */
+  
+    background-repeat: no-repeat, no-repeat, no-repeat;
+
+    border-radius: 2.22vh;
+    width: 82%;
+    height: 10.7%;
+    margin-top: 1.8vh;
+    flex-wrap: nowrap;
+    align-content: center;
+    padding: 2.5% 4.5% 2.5% 4.5%;
+    font-family: MullerMedium;
+    text-align: start;
+}
+
+.info-adsgram-section {
+    width: 90%;
+    height: 43.1%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task__button {
+    background-color: rgba(255, 255, 255, 0.15)!important;
+    color: #ffffff!important;
+    border: 1px solid rgba(255, 255, 255, 1)!important;
+
+    height: 40%!important;
+    width: 100%!important;
+    display: flex!important;
+    align-items: center!important;
+    justify-content: center!important;
+
+    font-size: 1.8vh!important;
+    font-family: "MullerExtraBold", sans-serif!important;
+    border-radius: 1.3vh!important;
+    text-decoration: none!important; /* 🔥 Убирает подчёркивание */
+
+    /* margin-left: 2vw!important; */
+    margin-top: 5vh!important;
+}
+
+.task__button_done {
+    background-color: rgba(0, 255, 38, 0.15)!important;
+    color: #1FFF02!important;
+    border: 1px solid rgba(31, 255, 2, 1)!important;
+
+    height: 40%!important;
+    width: 100%!important;
+    display: flex!important;
+    align-items: center!important;
+    justify-content: center!important;
+
+    font-size: 1.8vh!important;
+    font-family: "MullerExtraBold", sans-serif!important;
+    border-radius: 1.3vh!important;
+    text-decoration: none!important; /* 🔥 Убирает подчёркивание */
+
+    /* margin-left: 2vw!important; */
+    margin-top: 5vh!important;
+}
+
+.task__button_claim {
+    background-color: rgba(255, 187, 0, 0.15)!important;
+    color: #FFAE00!important;
+    border: 1px solid rgba(255, 196, 0, 1)!important;
+
+    height: 40%!important;
+    width: 100%!important;
+    display: flex!important;
+    align-items: center!important;
+    justify-content: center!important;
+
+    font-size: 1.8vh!important;
+    font-family: "MullerExtraBold", sans-serif!important;
+    border-radius: 1.3vh!important;
+    text-decoration: none!important; /* 🔥 Убирает подчёркивание */
+
+    /* margin-left: 2vw!important; */
+    margin-top: 5vh!important;
+}
+
+.task__reward {
+    height: 50%!important;
+    width: 100%!important;
+    display: flex!important;
+    align-items: center!important;
+    justify-content: start!important;
+    margin-right: 20.5vw!important;
+    margin-top: 1.5vh!important;
+    margin-bottom: 1vh!important;
+    font-family: MullerMedium;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.task__reward h2 {
+    font-size: 2.2vh!important;
+    font-family: MullerMedium!important; /* ✅ Используем кастомный рифт */
+    white-space: nowrap!important; /* ✅ Запрещаем перенос текста */
+    justify-content: flex-start!important;
+    color: #FFFFFF!important;
+    text-align: right!important; 
+
+}
+
+.task.last-adsgram-task {
+    margin-bottom: 1.8vh!important;
+}
+
+.to-be-complete-button-AdsGramCompleted {
+    background-color: rgba(0, 255, 38, 0.15)!important;
+    color: #1FFF02!important;
+    border: 1px solid rgba(31, 255, 2, 1)!important;
+
+    height: 20%!important;
+    width: 90%!important;
+    display: flex!important;
+    align-items: center!important;
+    justify-content: center!important;
+
+    font-size: 1.6vh!important;
+    font-family: "MullerExtraBold", sans-serif!important;
+    border-radius: 1vh!important;
+    text-decoration: none!important; /* 🔥 Убирает подчёркивание */
+
+    margin-top: 1.7vh!important;
+}
