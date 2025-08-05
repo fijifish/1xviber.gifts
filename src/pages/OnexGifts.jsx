@@ -54,16 +54,14 @@ const OnexGifts = () => {
                         <div className="rectangle-info-CrossPartner">
                             <h2>
                             <span className="text-in-rectangle-CrossPartner">
-                                {balance != null ? parseFloat(balance).toFixed(2) : "0.00"}
+                                {"0.00"}
                             </span>
                             <div className="rectangle-info-CrossPartner-ton">
                                 TON
                             </div>
                             </h2>
                             <p>
-                            ≈ {balance != null && tonToUsdRate !== null
-                            ? (balance * tonToUsdRate).toFixed(2)
-                            : "..."} $
+                            ≈ {"..."} $
                             </p>
                         </div>
                         <div className="rectangle-for-button-claim">
