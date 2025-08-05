@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../styles/CrossPartnerBlock.css";
+import "../styles/OnexGifts.css";
 import CrossPartnerIcon from "../assets/CrossPartnerIcon.png";
 
 
