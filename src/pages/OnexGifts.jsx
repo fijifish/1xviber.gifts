@@ -73,11 +73,7 @@ const OnexGifts = () => {
                         </div>
                     </div>
                     <div className="info-claim-nameText45"> 
-                        {crossImage ? (
-                        <img src={crossImage} className="CrossPartner-icon" />
-                        ) : (
-                        <img src={CrossPartnerIcon} className="CrossPartner-icon" /> // fallback
-                        )}
+                        <img src={CrossPartnerIcon} className="CrossPartner-icon" /> 
                     </div>
                 </div>
 
