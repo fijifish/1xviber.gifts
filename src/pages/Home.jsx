@@ -7,7 +7,7 @@ const handleSupportClick = () => {
     window.open("https://t.me/zustrich_lab_hr", "_blank");
 };
 
-const SybilBlock = () => {
+const Home = () => {
     return (
     <div className="App">
         <div className="SybilBlock_Window">   
@@ -35,4 +35,4 @@ const SybilBlock = () => {
     );
 };
   
-export default SybilBlock;
+export default Home;
