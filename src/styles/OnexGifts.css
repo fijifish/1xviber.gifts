@@ -96,7 +96,7 @@ body {
   
 .info-CrossPartner-nameText p {
     font-family: "MullerLight", sans-serif; /* ✅ Используем кастомный шрифт */
-    font-size: 1.3vh;
+    font-size: 1.55vh;
     white-space: nowrap;
 }
 
