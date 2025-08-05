@@ -33,9 +33,6 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "engines": {
-    "node": "18.18.2"
-  },
   "eslintConfig": {
     "extends": [
       "react-app",
