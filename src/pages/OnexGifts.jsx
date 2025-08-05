@@ -63,7 +63,7 @@ const OnexGifts = () => {
                 </div>
 
                 <div className="info-CrossPartner-block2"> 
-                    <div className="info-CrossPartner-nameText55"> 
+                    <div className="info-CrossPartner-nameText100"> 
                         <div className="rectangle-info-CrossPartner">
                             <h2>
                             <span className="text-in-rectangle-CrossPartner">
@@ -83,9 +83,6 @@ const OnexGifts = () => {
                                 {t.claim}
                             </div>
                         </div>
-                    </div>
-                    <div className="info-claim-nameText45"> 
-                        <img src={CrossPartnerIcon} className="CrossPartner-icon" /> 
                     </div>
                 </div>
 
