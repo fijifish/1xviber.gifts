@@ -54,19 +54,27 @@ const OnexGifts = () => {
                     <p>{t.description2_part1}<br/>{t.description2_part2}<br/>{t.description2_part3}</p>
                     </div>
                 </div>
+
+                <div className="text-completed">
+                    {t.completed}
+                    <div className="rectangle-counter-CrossPartner-completed-ads">
+                        50%
+                    </div>
+                </div>
+
                 <div className="info-CrossPartner-block2"> 
                     <div className="info-CrossPartner-nameText55"> 
                         <div className="rectangle-info-CrossPartner">
                             <h2>
                             <span className="text-in-rectangle-CrossPartner">
-                                {"0.00"}
+                                {"135"}
                             </span>
                             <div className="rectangle-info-CrossPartner-ton">
-                                TON
+                                ПАРТНЕРОВ
                             </div>
                             </h2>
                             <p>
-                            ≈ {"..."} $
+                                Присоединись ко всем партнерам, чтобы выполнить первое задание.
                             </p>
                         </div>
                         <div className="rectangle-for-button-claim">
@@ -78,13 +86,6 @@ const OnexGifts = () => {
                     </div>
                     <div className="info-claim-nameText45"> 
                         <img src={CrossPartnerIcon} className="CrossPartner-icon" /> 
-                    </div>
-                </div>
-
-                <div className="text-completed">
-                    {t.completed}
-                    <div className="rectangle-counter-CrossPartner-completed-ads">
-                        0/3
                     </div>
                 </div>
 
