@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "../styles/CrossPartnerBlock.css";
-import depoIMG from "../assets/deposit-icon.png";
 import CrossPartnerIcon from "../assets/CrossPartnerIcon.png";
 
 
