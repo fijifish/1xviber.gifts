@@ -4,6 +4,9 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   base: './', // <== 🔥 вот это важно!
+  build: {
+    sourcemap: true, // ✅ Добавь это
+  },
   server: {
     headers: {
       "Access-Control-Allow-Origin": "*",
