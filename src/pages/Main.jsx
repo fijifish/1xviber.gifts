@@ -87,7 +87,7 @@ const OnexGifts = () => {
                                 <h2>AIMI Traffic</h2>
                             </div>
                             <div class="textChannelNameContainerPart2">
-                                <h2>Канал</h2>
+                                Канал
                             </div>
                         </div>
                     </div>
