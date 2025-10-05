@@ -250,8 +250,8 @@ body {
 
 .channelIconContainer {
     position: static;     
-    margin-top: 0;
-    margin-left: 0;                  
+    margin-top: 1vh;
+    margin-left: 7.1vw;                  
     height: 19.7%;
     width: 39.26%;
 
