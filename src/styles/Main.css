@@ -202,7 +202,8 @@ body {
 
 .text-with-linesContainer {
   height: 2.46%;
-  width: calc(100% - 5%); 
+  width: 100%; 
+  margin-top: .5vh;
 
   display: flex;
   align-items: center;
@@ -210,16 +211,16 @@ body {
 }
 
 .line-left {
-  width: 7vw;
-  height: .2vh;
+  width: 9.5vw;
+  height: .25vh;
   background: rgba(123, 123, 123, 0.5);
   border-top-left-radius: 3vh;
   border-bottom-left-radius: 3vh;
 }
 
 .line-right {
-  width: 7vw;
-  height: .2vh;
+  width: 9.5vw;
+  height: .25vh;
   background:  rgba(123, 123, 123, 0.5);
   border-top-right-radius: 3vh;
   border-bottom-right-radius: 3vh;
@@ -229,7 +230,7 @@ body {
   color: rgba(123, 123, 123, 1);
   font-family: 'Inter', sans-serif;
   font-weight: 400;  
-  font-size: 1.4vh;
+  font-size: 1.6vh;
 }
 
 
