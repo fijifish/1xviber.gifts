@@ -267,13 +267,8 @@ body {
     flex-wrap: nowrap;
 }
 
-.channelIconContainer {
-    width: 29.2%;
-    height: 100%;
-    /* border-radius: 1.23vh; */
-}
 
-.channelIconContainer img {
+.mainChannelIconContainer img {
     width: auto;
     height: 100%;
 }
