@@ -150,6 +150,11 @@ body {
   margin-left: 4.8vw;
 }
 
+.withdrawContainer img {
+    height: 75%;
+    aspect-ratio: 1/1; 
+}
+
 .refferalsContainer {
   width: 9.33%;
   height: 42%;
@@ -161,5 +166,10 @@ body {
   box-sizing: border-box; 
   margin-top: .15vh;
   margin-left: 2.8vw;
+}
+
+.refferalsContainer img {
+    height: 75%;
+    aspect-ratio: 1/1; 
 }
 

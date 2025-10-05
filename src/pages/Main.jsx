@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Main.css";
-import depoIMG from "../assets/deposit-icon.png";
-import nftsIMG from "../assets/nfts-img.png";
-
+import withdrawIMG from "../assets/withdrawIcon.png";
+import refferalsIMG from "../assets/refferalsIcon.png";
 
 const OnexGifts = () => {
 
@@ -64,10 +63,10 @@ const OnexGifts = () => {
 
                     </div>
                     <div className="withdrawContainer">
-
+                        <img src={withdrawIMG}/>
                     </div>
                     <div className="refferalsContainer">
-
+                        <img src={refferalsIMG}/>
                     </div>
                 </div>
             </div>
