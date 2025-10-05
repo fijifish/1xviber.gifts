@@ -92,6 +92,7 @@ body {
 .nickNameContainer {
     /* position: absolute; */
     margin-left: 1.2vh;
+    margin-top: 5%;  
     height: 46.3%;
     width: 14.93%;
 }
