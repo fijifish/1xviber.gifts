@@ -3,6 +3,7 @@ import "../styles/Main.css";
 import withdrawIMG from "../assets/withdrawIcon.png";
 import refferalsIMG from "../assets/refferalsIcon.png";
 import tonusdtIMG from "../assets/tonusdtIcon.png";
+import channelIMG from "../assets/channelIcon.png";
 
 
 
@@ -80,7 +81,9 @@ const OnexGifts = () => {
                 </div>
                 <div class="mainChannelTaskContainer">
                     <div class="mainChannelIconContainer">
-
+                        <div class="mainChannelIconContainer">
+                            <img src={channelIMG}/>
+                        </div>
                     </div>
                 </div>
             </div>
