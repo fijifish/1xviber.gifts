@@ -233,4 +233,19 @@ body {
   font-size: 1.7vh;
 }
 
+.mainChannelTaskContainer {
+  width: calc(100%-7%);
+  height: 25%;
+  margin-top: 0.7vh;
+
+  border: 1vh solid #CECECE;
+  border-radius: 2.46vh;
+
+  background: url("../assets/channelBackgroundIcon.png");
+  background-repeat: no-repeat, no-repeat; /* ✅ Отключаем повторение */
+  background-position: right 2vh bottom 0; /* изображение сдвигаем */
+  background-size:  auto 100%; /* ✅ Градиент на всю область, а картинка — высотой 90% */
+
+}
+
 

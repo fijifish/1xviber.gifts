@@ -5,6 +5,7 @@ import refferalsIMG from "../assets/refferalsIcon.png";
 import tonusdtIMG from "../assets/tonusdtIcon.png";
 
 
+
 const OnexGifts = () => {
 
     const userLang = (window?.Telegram?.WebApp?.initDataUnsafe?.user?.language_code || navigator.language || "").toLowerCase();
@@ -76,6 +77,9 @@ const OnexGifts = () => {
                     <div class="line-left"></div>
                     <h2>Выполни задание, чтобы получить 5 USDT</h2>
                     <div class="line-right"></div>
+                </div>
+                <div class="mainChannelTaskContainer">
+
                 </div>
             </div>
         </div>
