@@ -140,7 +140,7 @@ body {
   height: 100%;
   fill: none;
   stroke: #fff;
-  stroke-width: 0.55;
+  stroke-width: 0.8;
   stroke-dasharray: 11 5.5; /* ← регулируй частоту и длину пунктира */
   border-radius: inherit;
   pointer-events: none;
