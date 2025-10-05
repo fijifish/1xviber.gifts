@@ -88,3 +88,10 @@ body {
   font-weight: 400;                  /* Regular */
   font-size: 1.6vh;
 }
+
+.nickNameContainer {
+    position: absolute;
+    margin-left: 1.2vh;
+    height: 46.3%;
+    width: 14.93%;
+}
