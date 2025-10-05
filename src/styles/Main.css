@@ -328,7 +328,7 @@ body {
     margin-left: 3vw;    
 
     height: 18%;
-    width: 58%;
+    width: 68%;
 
     color: #818181;
     font-family: 'Inter', sans-serif;
@@ -339,7 +339,7 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     text-align: start;
 }
 
