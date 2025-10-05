@@ -44,8 +44,8 @@ const OnexGifts = () => {
 
     return (
     <div className="App">
-        <div className="CrossPartner_Window">   
-            <div className="mainCrossPartnerPageContainer">  
+        <div className="Main_Window">   
+            <div className="mainHomePageContainer">  
                 sdfsdfsd
             </div>
         </div>
