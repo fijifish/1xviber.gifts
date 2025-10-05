@@ -248,4 +248,17 @@ body {
 
 }
 
+.channelIconContainer {
+    position: static;     
+    margin-top: 0;
+    margin-left: 0;                  
+    height: 19.7%;
+    width: 39.26%;
+
+    display: flex;
+    align-content: stretch;
+    justify-content: space-between;
+    gap: 0.2vh;
+    flex-wrap: wrap;
+}
 
