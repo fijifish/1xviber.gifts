@@ -67,6 +67,7 @@ body {
 }
 
 .circleName {
+  margin-top: 1.72%;  
   width: 4vh;          /* ширина */
   height: 4vh;         /* высота */
   background-color: #5736BB; /* цвет */
