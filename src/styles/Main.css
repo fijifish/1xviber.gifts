@@ -148,6 +148,10 @@ body {
   box-sizing: border-box; 
   margin-top: .15vh;
   margin-left: 4.8vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .withdrawContainer img {
@@ -166,6 +170,10 @@ body {
   box-sizing: border-box; 
   margin-top: .15vh;
   margin-left: 2.8vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .refferalsContainer img {
