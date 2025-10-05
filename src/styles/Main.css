@@ -280,7 +280,7 @@ body {
 
     display: flex;
     flex-direction: column;
-    align-content: stretch;
+    justify-content: center;
     gap: 0.1vh;
 }
 
