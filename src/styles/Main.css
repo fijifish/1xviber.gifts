@@ -246,19 +246,27 @@ body {
   background-position: right 2vh bottom 0; /* изображение сдвигаем */
   background-size:  auto 100%; /* ✅ Градиент на всю область, а картинка — высотой 90% */
 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
 }
 
-.channelIconContainer {
+.mainChannelIconContainer {
     position: static;     
     margin-top: 1vh;
-    margin-left: 7.1vw;                  
+    margin-left: 7.1vw;    
+
     height: 19.7%;
     width: 39.26%;
+    gap: 0.2vh;
 
     display: flex;
+    flex-direction: row;
     align-content: stretch;
     justify-content: space-between;
-    gap: 0.2vh;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
+
+
 

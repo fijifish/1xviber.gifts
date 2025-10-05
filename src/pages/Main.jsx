@@ -79,7 +79,7 @@ const OnexGifts = () => {
                     <div class="line-right"></div>
                 </div>
                 <div class="mainChannelTaskContainer">
-                    <div class="channelIconContainer">
+                    <div class="mainChannelIconContainer">
 
                     </div>
                 </div>
