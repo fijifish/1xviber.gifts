@@ -125,7 +125,7 @@ body {
 }
 
 .mainBalanceContainer {
-  width: 33.87%;
+  width: 35%;
   height: 46%;
   background-color: rgba(217, 217, 217, 0.1);
   border-radius: 0.76vh;
@@ -138,14 +138,14 @@ body {
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .mainBalanceContainer h2 {
   color: white;
   font-family: 'Inter', sans-serif;
   font-weight: 400;  
-  font-size: 1vh;
+  font-size: 1.1vh;
 
 }
 
