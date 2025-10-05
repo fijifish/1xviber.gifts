@@ -64,7 +64,6 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;        /* вертикальное выравнивание */
-  padding-left: 7.1vw;        /* отступ слева вместо margin у круга */
   
 }
 
@@ -72,7 +71,7 @@ body {
   position: static;           /* участвует в флекс-потоке */
   height: 58.82%;                /* круг зависит от высоты хедера */
   width: auto;                /* ширину определит aspect-ratio у дочернего элемента */
-  margin: 0;                  /* отступы больше не нужны */
+  margin-left: 3.1vw;                  /* отступы больше не нужны */
 }
 
 .circleName {
@@ -172,6 +171,7 @@ body {
   box-sizing: border-box; 
   margin-top: .15vh;
   margin-left: 2.8vw;
+  margin-right: 3.1vw;
 
   display: flex;
   align-items: center;
