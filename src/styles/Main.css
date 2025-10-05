@@ -141,7 +141,7 @@ body {
   fill: none;
   stroke: #fff;
   stroke-width: 0.55;
-  stroke-dasharray: 10 6; /* ← регулируй частоту и длину пунктира */
+  stroke-dasharray: 11 5.5; /* ← регулируй частоту и длину пунктира */
   border-radius: inherit;
   pointer-events: none;
 }
