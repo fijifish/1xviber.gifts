@@ -323,3 +323,22 @@ body {
     flex-wrap: nowrap;
 }
 
+.bodyTextChannelNameContainer {
+    position: static;     
+    margin-left: 3vw;    
+
+    height: 18%;
+    width: 58%;
+
+    color: #818181;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;  
+    font-size: 1.4vh;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+
