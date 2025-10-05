@@ -72,8 +72,10 @@ const OnexGifts = () => {
                         <img src={refferalsIMG}/>
                     </div>
                 </div>
-                <div class="text-with-lines">
-                    <span>Выполни задание, чтобы получить 5 USDT</span>
+                <div class="text-with-linesContainer">
+                    <div class="line-left"></div>
+                    Выполни задание, чтобы получить 5 USDT
+                    <div class="line-right"></div>
                 </div>
             </div>
         </div>
