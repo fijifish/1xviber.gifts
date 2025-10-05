@@ -54,7 +54,7 @@ const OnexGifts = () => {
                     </div>
                     <div className="nickNameContainer">
                         <div className="nickNameContainerPart1">
-                            Musa Evloev
+                            Gato Tuz
                         </div>
                         <div className="nickNameContainerPart2">
                             @burmalda

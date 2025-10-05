@@ -91,14 +91,15 @@ body {
 }
 
 .nickNameContainer {
-    position: static;          /* обычный flex-item */
-    margin: 0;                  /* отступы задаём через gap у хедера */
+    position: static;     
+    margin: 0;                  
     height: 36.76%;
     width: 14.93%;
     margin-left: 1.1vw;
     display: flex;
     align-content: stretch;
     gap: 0.1vh;
+    flex-wrap: nowrap;
 }
 
 .nickNameContainerPart1 {
@@ -109,6 +110,7 @@ body {
     font-family: 'Inter', sans-serif;
     font-weight: 400;  
     font-size: 1.53vh;
+    text-align: start;
 }
 
 .nickNameContainerPart2 {
@@ -119,4 +121,5 @@ body {
     font-family: 'Inter', sans-serif;
     font-weight: 400;  
     font-size: 1.11vh;
+    text-align: start;
 }
