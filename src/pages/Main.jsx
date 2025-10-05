@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import "../styles/Main.css";
 import withdrawIMG from "../assets/withdrawIcon.png";
 import refferalsIMG from "../assets/refferalsIcon.png";
-import tonIMG from "../assets/tonIcon.png";
-import usdtIMG from "../assets/usdtIcon.png";
+import tonusdtIMG from "../assets/tonusdtIcon.png";
+
 
 const OnexGifts = () => {
 
@@ -62,8 +62,7 @@ const OnexGifts = () => {
                         </div>
                     </div>
                     <div className="mainBalanceContainer">
-                        <img src={tonIMG}/>
-                        <img src={usdtIMG}/>
+                        <img src={tonusdtIMG}/>
                         21.8 TON | 64 USDT
                     </div>
                     <div className="withdrawContainer">
