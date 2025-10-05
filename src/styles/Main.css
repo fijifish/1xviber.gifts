@@ -125,23 +125,13 @@ body {
 }
 
 .mainBalanceContainer {
-  position: relative;
   width: 33.87%;
   height: 37%;
   background-color: rgba(217, 217, 217, 0.1);
   border-radius: 0.76vh;
   overflow: hidden;
+
+  border: 0.043vh solid #FFFFFF; /* ← 0.35px в vh */
+  box-sizing: border-box; 
 }
 
-.borderSvg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  fill: none;
-  stroke: #fff;
-  stroke-width: 0.8;
-  stroke-dasharray: 11 5.5; /* ← регулируй частоту и длину пунктира */
-  border-radius: inherit;
-  pointer-events: none;
-}

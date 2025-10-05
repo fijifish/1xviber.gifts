@@ -61,9 +61,7 @@ const OnexGifts = () => {
                         </div>
                     </div>
                     <div className="mainBalanceContainer">
-                        <svg class="borderSvg" viewBox="0 0 100 40" preserveAspectRatio="none">
-                            <rect x="0.5" y="0.5" width="99" height="39" rx="8" ry="8"/>
-                        </svg>
+
                     </div>
                 </div>
             </div>
