@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "../styles/OnexGifts.css";
-import CrossPartnerIcon from "../assets/CrossPartnerIcon.png";
 import depoIMG from "../assets/deposit-icon.png";
 import nftsIMG from "../assets/nfts-img.png";
 
@@ -27,7 +26,7 @@ const OnexGifts = () => {
           "победителей на месте этого текста Вам будет доступен",
         description2_part3:
           "минт ключа для активации фарминга в виде NFT.",
-        claim: "Заклеймить",
+        claim: "Присоединиться",
         completed: "ВЫПОЛНЕНО",
     }
     : {
@@ -39,7 +38,7 @@ const OnexGifts = () => {
         description2_part1: "At the end of the giveaway, if you are among the",
         description2_part2: "winners, this section will allow you to",
         description2_part3: "mint a farming activation key in the form of an NFT.",
-        claim: "Claim",
+        claim: "Join",
         completed: "COMPLETED",
     };
 
