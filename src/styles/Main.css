@@ -125,18 +125,23 @@ body {
 }
 
 .mainBalanceContainer {
-  width: 33.87%; /* пример */
+  position: relative;
+  width: 33.87%;
   height: 37%;
-  border: 0.35px dashed transparent;  /* ← как в Figma */
-  border-radius: 0.76vh;            /* если нужен скруглённый угол */
-  background-color: rgba(217, 217, 217, 0.1); /* фон прозрачный */
+  background-color: rgba(217, 217, 217, 0.1);
+  border-radius: 0.76vh;
+  overflow: hidden;
+}
 
-    /* создаём редкий пунктир */
-  border-image: repeating-linear-gradient(
-    to right,
-    #fff 0,
-    #fff 8px,   /* длина штриха */
-    transparent 8px,
-    transparent 16px  /* длина пробела */
-  ) 1;
+.borderSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 0.35;
+  stroke-dasharray: 10 6; /* ← регулируй частоту и длину пунктира */
+  border-radius: inherit;
+  pointer-events: none;
 }
