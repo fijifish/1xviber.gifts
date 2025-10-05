@@ -89,6 +89,9 @@ const OnexGifts = () => {
                             <div class="textChannelNameContainerPart2">
                                 Канал
                             </div>
+                            <div class="titleTextChannelNameContainer">
+                                Канал об арбитраже
+                            </div>
                         </div>
                     </div>
                 </div>
