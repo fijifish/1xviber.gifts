@@ -63,7 +63,7 @@ const OnexGifts = () => {
                     </div>
                     <div className="mainBalanceContainer">
                         <img src={tonusdtIMG}/>
-                        21.8 TON | 64 USDT
+                        <h2>21.8 TON | 64 USDT</h2> 
                     </div>
                     <div className="withdrawContainer">
                         <img src={withdrawIMG}/>

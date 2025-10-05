@@ -139,16 +139,19 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
 
+.mainBalanceContainer h2 {
   color: white;
   font-family: 'Inter', sans-serif;
   font-weight: 400;  
   font-size: 1vh;
+
 }
 
 .mainBalanceContainer img {
-    height: 65%;
-    aspect-ratio: 1/1; 
+    height: 50%;
+    aspect-ratio: auto; 
 }
 
 .withdrawContainer {
