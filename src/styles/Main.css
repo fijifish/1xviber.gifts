@@ -96,4 +96,27 @@ body {
     height: 36.76%;
     width: 14.93%;
     margin-left: 1.1vw;
+    display: flex;
+    align-content: stretch;
+    gap: 0.1vh;
+}
+
+.nickNameContainerPart1 {
+    width: 100%;
+    height: 60%;
+
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;  
+    font-size: 1.53vh;
+}
+
+.nickNameContainerPart2 {
+    width: 100%;
+    height: 40%;
+
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;  
+    font-size: 1.11vh;
 }
