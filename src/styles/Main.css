@@ -63,7 +63,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;        /* вертикальное выравнивание */
-  padding-left: 4.1vw;        /* отступ слева вместо margin у круга */
+  padding-left: 7.1vw;        /* отступ слева вместо margin у круга */
   
 }
 
@@ -95,5 +95,5 @@ body {
     margin: 0;                  /* отступы задаём через gap у хедера */
     height: 36.76%;
     width: 14.93%;
-    margin-left: 1.1vh;
+    margin-left: 1.1vw;
 }
