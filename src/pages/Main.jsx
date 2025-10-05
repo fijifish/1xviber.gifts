@@ -59,9 +59,9 @@ const OnexGifts = () => {
                         <div className="nickNameContainerPart2">
                             @burmalda
                         </div>
-                        <div className="mainBalanceContainer">
+                    </div>
+                    <div className="mainBalanceContainer">
 
-                        </div>
                     </div>
                 </div>
             </div>

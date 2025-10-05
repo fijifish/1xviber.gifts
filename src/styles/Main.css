@@ -126,7 +126,7 @@ body {
 
 .mainBalanceContainer {
   width: 33.87%; /* пример */
-  height: 15;
+  height: 37%;
   border: 0.35px solid #FFFFFF;  /* ← как в Figma */
   border-radius: 0.76vh;            /* если нужен скруглённый угол */
   background-color: rgba(217, 217, 217, 0.1); /* фон прозрачный */
