@@ -99,7 +99,7 @@ body {
     display: flex;
     align-content: stretch;
     gap: 0.1vh;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 
 .nickNameContainerPart1 {
