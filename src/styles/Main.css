@@ -123,3 +123,11 @@ body {
     font-size: 1.11vh;
     text-align: start;
 }
+
+.whiteBorderContainer {
+  width: 33.87%; /* пример */
+  height: 15;
+  border: 0.35px solid #FFFFFF;  /* ← как в Figma */
+  border-radius: 8px;            /* если нужен скруглённый угол */
+  background-color: rgba(217, 217, 217, 0.1); /* фон прозрачный */
+}
