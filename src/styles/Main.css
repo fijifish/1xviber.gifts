@@ -157,7 +157,7 @@ body {
 .withdrawContainer {
   width: 9.33%;
   height: 46%;
-  background-color: rgba(217, 217, 217, 0.1);
+  background-color: rgba(217, 217, 217, 0.05);
   border-radius: 0.76vh;
   overflow: hidden;
 
@@ -180,7 +180,7 @@ body {
 .refferalsContainer {
   width: 9.33%;
   height: 46%;
-  background-color: rgba(217, 217, 217, 0.1);
+  background-color: rgba(217, 217, 217, 0.05);
   border-radius: 0.76vh;
   overflow: hidden;
 
