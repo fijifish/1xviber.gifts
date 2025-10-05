@@ -93,8 +93,8 @@ body {
 .nickNameContainer {
     position: static;     
     margin: 0;                  
-    height: 36.76%;
-    width: 14.93%;
+    height: 37%;
+    width: 16%;
     margin-left: 1.1vw;
     display: flex;
     align-content: stretch;
@@ -109,7 +109,7 @@ body {
     color: white;
     font-family: 'Inter', sans-serif;
     font-weight: 400;  
-    font-size: 1.53vh;
+    font-size: 1.54vh;
     text-align: start;
 }
 
@@ -120,7 +120,7 @@ body {
     color: white;
     font-family: 'Inter', sans-serif;
     font-weight: 400;  
-    font-size: 1.11vh;
+    font-size: 1.17vh;
     text-align: start;
 }
 
