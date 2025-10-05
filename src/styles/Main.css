@@ -65,10 +65,17 @@ body {
 
 }
 
-.circleName {
+.circleInHeaderContainer {
+
+  height: 74.07% ;
+  width: 100%;
   margin-top: 1.74%;  
   margin-left: 4.53%;
-  width: 10.67%;          /* ширина */
+}
+
+.circleName {
+
+  width: 100%;          /* ширина */
   aspect-ratio: 1/1;         /* высота */
   background-color: #5736BB; /* цвет */
   border-radius: 50%;    /* делает форму круглой */
