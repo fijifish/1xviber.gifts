@@ -46,45 +46,7 @@ const OnexGifts = () => {
     <div className="App">
         <div className="CrossPartner_Window">   
             <div className="mainCrossPartnerPageContainer">  
-                <div className="info-CrossPartner-block">
-                    <div className="info-CrossPartner-nameText">
-                    <h2>{t.title}</h2>
-                     <img src={nftsIMG} className="nfts-img"/>
-                    <p>{t.description2_part1}<br/>{t.description2_part2}<br/>{t.description2_part3}</p>
-                    </div>
-                </div>
-
-                <div className="text-completed">
-                    {t.completed}
-                    <div className="rectangle-counter-CrossPartner-completed-ads">
-                        50%
-                    </div>
-                </div>
-
-                <div className="info-CrossPartner-block2"> 
-                    <div className="info-CrossPartner-nameText100"> 
-                        <div className="rectangle-info-CrossPartner">
-                            <h2>
-                            <span className="text-in-rectangle-CrossPartner">
-                                {"135"}
-                            </span>
-                            <div className="rectangle-info-CrossPartner-ton">
-                                ПАРТНЕРОВ
-                            </div>
-                            </h2>
-                            <p>
-                                Присоединись ко всем партнерам, чтобы выполнить первое задание.
-                            </p>
-                        </div>
-                        <div className="rectangle-for-button-claim">
-                            <div className="rectangle-button-claim" onClick={() => navigate("/")}>
-                            <img src={depoIMG} className="claim-button-icon"/>
-                                {t.claim}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                sdfsdfsd
             </div>
         </div>
     </div>

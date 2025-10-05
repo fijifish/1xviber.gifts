@@ -52,7 +52,7 @@ body {
     flex-direction: column;
     align-items: center;
 
-    background: url('../assets/backgroundOnexGifts.png');
+    background-color: black;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
