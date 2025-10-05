@@ -258,13 +258,11 @@ body {
 
     height: 19.7%;
     width: 39.26%;
-    gap: 0.2vh;
 
     display: flex;
     flex-direction: row;
-    align-content: stretch;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: nowrap;
 }
 
@@ -275,13 +273,14 @@ body {
 
 .textChannelNameContainer {
     position: static;  
-    width: 65%;
+    width: 72%;
     height: 100%;
+    margin-left: .7vh;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 0.1vh;
+    gap: 0.2vh;
 }
 
 .textChannelNameContainerPart1 {
