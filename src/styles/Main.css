@@ -200,3 +200,34 @@ body {
     aspect-ratio: 1/1; 
 }
 
+.text-with-lines {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7a7a7a;              /* цвет текста */
+  font-family: 'Inter', sans-serif;
+  font-size: 2vh;
+  gap: 1.5vw;                  /* расстояние между линиями и текстом */
+}
+
+.text-with-lines::before,
+.text-with-lines::after {
+  content: "";
+  flex: 1;                     /* линии растягиваются равномерно */
+  height: 0.35vh;              /* толщина линии */
+  background-color: #7a7a7a;   /* цвет линии */
+  border-top-right-radius: 0.35vh;
+  border-bottom-right-radius: 0.35vh;
+}
+
+.text-with-lines::before {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.text-with-lines::after {
+  border-top-left-radius: 0.35vh;
+  border-bottom-left-radius: 0.35vh;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
