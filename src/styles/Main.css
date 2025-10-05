@@ -234,11 +234,11 @@ body {
 }
 
 .mainChannelTaskContainer {
-  width: calc(100%-7%);
+  width: 93%;
   height: 25%;
-  margin-top: 0.7vh;
+  margin-top: 2vh;
 
-  border: 1vh solid #CECECE;
+  border: .17vh solid #CECECE;
   border-radius: 2.46vh;
 
   background: url("../assets/channelBackgroundIcon.png");
