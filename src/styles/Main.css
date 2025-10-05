@@ -56,21 +56,11 @@ body {
 
 }
 
-.headerContainer {
-    height: 6.65%;
-    width: 100%;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-}
-
 .circleName {
   margin-top: 25.93%;  
   margin-left: 4.53%;
   width: 10.67%;          /* ширина */
-  height: 100%;         /* высота */
+  aspect-ratio: 1/1;         /* высота */
   background-color: #5736BB; /* цвет */
   border-radius: 50%;    /* делает форму круглой */
 
