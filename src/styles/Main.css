@@ -146,9 +146,30 @@ body {
   font-size: 1vh;
 }
 
+
 .mainBalanceContainer img {
-    height: 55%;
-    aspect-ratio: 1/1; 
+  height: 55%;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+}
+
+.mainBalanceContainer .icons {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-right: 1vw;
+}
+
+.mainBalanceContainer .icons img:first-child {
+  position: relative;
+  z-index: 1;
+}
+
+.mainBalanceContainer .icons img:last-child {
+  position: absolute;
+  left: 35%; /* ← регулирует, насколько внахлёст */
+  z-index: 2;
 }
 
 .withdrawContainer {
