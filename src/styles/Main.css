@@ -65,6 +65,7 @@ body {
   border-radius: 50%;    /* делает форму круглой */
 
   color: white;
+  display: flex; 
   align-items: center;
   justify-content: center;
   font-family: 'Inter', sans-serif;  /* ← вот здесь */
