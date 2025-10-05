@@ -76,13 +76,20 @@ const OnexGifts = () => {
                 </div>
                 <div class="text-with-linesContainer">
                     <div class="line-left"></div>
-                    <h2>Выполни задание, чтобы получить 5 USDT</h2>
+                        <h2>Выполни задание, чтобы получить 5 USDT</h2>
                     <div class="line-right"></div>
                 </div>
                 <div class="mainChannelTaskContainer">
-                    <div class="mainChannelIconContainer">
+                    <div class="mainChannelNameContainer">
                         <img src={channelIMG}/>
-                        
+                        <div class="textChannelNameContainer">
+                            <div class="textChannelNameContainerPart1">
+                            
+                            </div>
+                            <div class="textChannelNameContainerPart2">
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

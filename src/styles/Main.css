@@ -252,7 +252,7 @@ body {
 
 }
 
-.mainChannelIconContainer {
+.mainChannelNameContainer {
     position: static;     
     margin-left: 3vw;    
 
@@ -263,13 +263,33 @@ body {
     display: flex;
     flex-direction: row;
     align-content: stretch;
+    align-items: center;
     justify-content: space-between;
     flex-wrap: nowrap;
 }
 
-
-.mainChannelIconContainer img {
+.mainChannelNameContainer img {
     width: auto;
     height: 100%;
 }
 
+.textChannelNameContainer {
+    position: static;  
+    width: 65%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    gap: 0.1vh;
+}
+
+.textChannelNameContainerPart1 {
+    width: 100%;
+    height: 50%;
+}
+
+.textChannelNameContainerPart2 {
+    width: 100%;
+    height: 34%;
+}
