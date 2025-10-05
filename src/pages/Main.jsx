@@ -74,7 +74,7 @@ const OnexGifts = () => {
                 </div>
                 <div class="text-with-linesContainer">
                     <div class="line-left"></div>
-                    Выполни задание, чтобы получить 5 USDT
+                    <h2>Выполни задание, чтобы получить 5 USDT</h2>
                     <div class="line-right"></div>
                 </div>
             </div>
