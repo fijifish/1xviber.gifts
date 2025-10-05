@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../styles/OnexGifts.css";
+import "../styles/Main.css";
 import depoIMG from "../assets/deposit-icon.png";
 import nftsIMG from "../assets/nfts-img.png";
 

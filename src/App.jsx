@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/OnexGifts";
+import Home from "./pages/Main";
 
 const App = () => {
   return (
