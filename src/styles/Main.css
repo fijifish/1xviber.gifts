@@ -128,7 +128,7 @@ body {
   width: 35%;
   height: 46%;
   background-color: rgba(217, 217, 217, 0.1);
-  border-radius: 0.76vh;
+  border-radius: 1vh;
   overflow: hidden;
 
   border: 0.043vh solid #FFFFFF; 
@@ -158,7 +158,7 @@ body {
   width: 9.33%;
   height: 46%;
   background-color: rgba(217, 217, 217, 0.05);
-  border-radius: 0.76vh;
+  border-radius: 1vh;
   overflow: hidden;
 
   border: 0.043vh solid #FFFFFF; 
@@ -181,7 +181,7 @@ body {
   width: 9.33%;
   height: 46%;
   background-color: rgba(217, 217, 217, 0.05);
-  border-radius: 0.76vh;
+  border-radius: 1vh;
   overflow: hidden;
 
   border: 0.043vh solid #FFFFFF; 
