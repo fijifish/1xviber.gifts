@@ -46,8 +46,10 @@ const OnexGifts = () => {
     <div className="App">
         <div className="Main_Window">   
             <div className="mainHomePageContainer">  
-                <div className="circleName">
-                    AR
+                <div className="headerContainer">
+                    <div className="circleName">
+                        AR
+                    </div>
                 </div>
             </div>
         </div>
