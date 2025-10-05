@@ -137,3 +137,29 @@ body {
   margin-left: 6.8vw;
 }
 
+.withdrawContainer {
+  width: 9.33%;
+  height: 42%;
+  background-color: rgba(217, 217, 217, 0.1);
+  border-radius: 0.76vh;
+  overflow: hidden;
+
+  border: 0.043vh solid #FFFFFF; 
+  box-sizing: border-box; 
+  margin-top: .15vh;
+  margin-left: 6.8vw;
+}
+
+.refferalsContainer {
+  width: 9.33%;
+  height: 42%;
+  background-color: rgba(217, 217, 217, 0.1);
+  border-radius: 0.76vh;
+  overflow: hidden;
+
+  border: 0.043vh solid #FFFFFF; 
+  box-sizing: border-box; 
+  margin-top: .15vh;
+  margin-left: 3.8vw;
+}
+

@@ -63,6 +63,12 @@ const OnexGifts = () => {
                     <div className="mainBalanceContainer">
 
                     </div>
+                    <div className="withdrawContainer">
+
+                    </div>
+                    <div className="refferalsContainer">
+
+                    </div>
                 </div>
             </div>
         </div>
