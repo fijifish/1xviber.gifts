@@ -69,7 +69,7 @@ export const UserProvider = ({ children }) => {
 
       const data = await response.json();
       if (response.ok) {
-        console.log("✅ Пользователь зарегистрирован или уже существует:", data);
+        console.log("✅ Пользователь зарегистрирован или уже существует:", data); //wrewrrrr
       } else {
         console.error("❌ Ошибка при регистрации:", data.error);
       }
