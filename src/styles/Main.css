@@ -95,7 +95,7 @@ body {
     margin: 0;                  
     height: 37%;
     width: 16%;
-    margin-left: 1.1vw;
+    margin-right: 4vw;
     display: flex;
     align-content: stretch;
     gap: 0.1vh;
@@ -134,7 +134,7 @@ body {
   border: 0.043vh solid #FFFFFF; 
   box-sizing: border-box; 
   margin-top: .15vh;
-  margin-left: 3.9vw;
+  margin-right: 3.5vw;
 
   display: flex;
   align-items: center;
@@ -164,7 +164,7 @@ body {
   border: 0.043vh solid #FFFFFF; 
   box-sizing: border-box; 
   margin-top: .15vh;
-  margin-left: 4.2vw;
+  margin-right: 1.3vw;
 
   display: flex;
   align-items: center;
@@ -187,7 +187,6 @@ body {
   border: 0.043vh solid #FFFFFF; 
   box-sizing: border-box; 
   margin-top: .15vh;
-  margin-left: 2.2vw;
   margin-right: 3.1vw;
 
   display: flex;
