@@ -58,7 +58,7 @@ body {
 
 .headerContainer {
   position: relative;         /* не absolute, чтобы корректно работать во флексе */
-  height: 6.65vh;             /* фиксируем высоту от экрана, стабильнее */
+  height: 8.37vh;             /* фиксируем высоту от экрана, стабильнее */
   width: 100%;
   display: flex;
   flex-direction: row;
