@@ -127,7 +127,16 @@ body {
 .mainBalanceContainer {
   width: 33.87%; /* пример */
   height: 37%;
-  border: 0.35px dashed #FFFFFF;  /* ← как в Figma */
+  border: 0.35px dashed transparent #FFFFFF;  /* ← как в Figma */
   border-radius: 0.76vh;            /* если нужен скруглённый угол */
   background-color: rgba(217, 217, 217, 0.1); /* фон прозрачный */
+
+    /* создаём редкий пунктир */
+  border-image: repeating-linear-gradient(
+    to right,
+    #fff 0,
+    #fff 8px,   /* длина штриха */
+    transparent 8px,
+    transparent 16px  /* длина пробела */
+  ) 1;
 }
