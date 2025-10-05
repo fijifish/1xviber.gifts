@@ -126,7 +126,7 @@ body {
 
 .mainBalanceContainer {
   width: 33.87%;
-  height: 42%;
+  height: 46%;
   background-color: rgba(217, 217, 217, 0.1);
   border-radius: 0.76vh;
   overflow: hidden;
@@ -134,12 +134,12 @@ body {
   border: 0.043vh solid #FFFFFF; 
   box-sizing: border-box; 
   margin-top: .15vh;
-  margin-left: 4.8vw;
+  margin-left: 3.9vw;
 }
 
 .withdrawContainer {
   width: 9.33%;
-  height: 42%;
+  height: 46%;
   background-color: rgba(217, 217, 217, 0.1);
   border-radius: 0.76vh;
   overflow: hidden;
@@ -147,7 +147,7 @@ body {
   border: 0.043vh solid #FFFFFF; 
   box-sizing: border-box; 
   margin-top: .15vh;
-  margin-left: 4.8vw;
+  margin-left: 4.2vw;
 
   display: flex;
   align-items: center;
@@ -162,7 +162,7 @@ body {
 
 .refferalsContainer {
   width: 9.33%;
-  height: 42%;
+  height: 46%;
   background-color: rgba(217, 217, 217, 0.1);
   border-radius: 0.76vh;
   overflow: hidden;
@@ -170,7 +170,7 @@ body {
   border: 0.043vh solid #FFFFFF; 
   box-sizing: border-box; 
   margin-top: .15vh;
-  margin-left: 2.8vw;
+  margin-left: 2.2vw;
   margin-right: 3.1vw;
 
   display: flex;
