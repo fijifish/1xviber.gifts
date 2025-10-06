@@ -344,8 +344,8 @@ body {
 }
 
 .taskChannelRewardContainer {
-  width: 28.5%;
-  height: 10%;
+  width: 28%;
+  height: 13%;
   background-color: rgba(217, 217, 217, 0.1);
   border-radius: .8vh;
   overflow: hidden;
