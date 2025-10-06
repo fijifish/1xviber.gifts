@@ -103,7 +103,7 @@ const OnexGifts = () => {
                         <img src={tonusdtIMG}/>
                         <h2>1.8 TON | 5 USDT</h2> 
                     </div>
-                    <div className="completeChannelContainer">
+                    <div className="completeAndCheckChannelContainer">
                         <div className="completeChannelContainer">
                             <h2>ВЫПОЛНИТЬ</h2>
                         </div>
