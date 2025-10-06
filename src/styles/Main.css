@@ -237,6 +237,7 @@ body {
   width: 93%;
   height: 25%;
   margin-top: 2vh;
+  padding: 1vh;
 
   border: .17vh solid #CECECE;
   border-radius: 2.46vh;
@@ -254,10 +255,10 @@ body {
 
 .mainChannelNameContainer {
     position: static;     
-    margin-left: 3vw;    
+    margin-left: 1.8vw;    
 
     height: 19.7%;
-    width: 40%;
+    width: 42%;
 
     display: flex;
     flex-direction: row;
@@ -306,10 +307,10 @@ body {
 
 .titleTextChannelNameContainer {
     position: static;     
-    margin-left: 3.2vw;    
+    margin-left: 2.4vw;    
 
     height: 7.39%;
-    width: 48%;
+    width: 50%;
 
     color: white;
     font-family: 'Inter', sans-serif;
@@ -325,10 +326,10 @@ body {
 
 .bodyTextChannelNameContainer {
     position: static;     
-    margin-left: 3.2vw;    
+    margin-left: 2.4vw;    
 
     height: 18%;
-    width: 68%;
+    width: 70%;
 
     color: #818181;
     font-family: 'Inter', sans-serif;
@@ -344,7 +345,7 @@ body {
 }
 
 .taskChannelRewardContainer {
-  width: 28%;
+  width: 30%;
   height: 13%;
   background-color: rgba(217, 217, 217, 0.1);
   border-radius: .8vh;
@@ -353,7 +354,7 @@ body {
   border: 0.043vh solid #FFFFFF; 
   box-sizing: border-box; 
   margin-right: 3.5vw;
-  margin-left: 3.2vw;
+  margin-left: 2.4vw;
 
   display: flex;
   align-items: center;
@@ -383,7 +384,7 @@ body {
   border: 0.043vh solid #999999; 
   box-sizing: border-box; 
   margin-right: 3.5vw;
-  margin-left: 3vw;
+  margin-left: 1.8vw;
 
   display: flex;
   align-items: center;
