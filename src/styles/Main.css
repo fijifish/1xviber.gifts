@@ -309,6 +309,13 @@ body {
     height: 25.39%;
     width: 70%;
     margin-left: 2.4vw; 
+    gap: .45vh;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .titleTextChannelNameContainer {
