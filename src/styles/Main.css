@@ -393,9 +393,7 @@ body {
     margin-left: 1.8vw;
 
     display: flex;
-    
-
-
+    gap: 1vh;
 }
 
 .completeChannelContainer {
