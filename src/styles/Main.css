@@ -43,7 +43,6 @@ body {
 }
 
 .mainHomePageContainer {
-
     height: 100%; /* ✅ не 100%, иначе выйдет за пределы */
     width: 100%;
     overflow-y: auto;  /* ✅ включает вертикальный скролл */
@@ -53,7 +52,7 @@ body {
     align-items: center;
 
     background-color: black;
-
+    min-height: 0;              /* ← важно для корректного скролла внутри flex */
 }
 
 .headerContainer {
@@ -64,7 +63,7 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;        /* вертикальное выравнивание */
-  
+  flex: 0 0 8.37vh;           /* ← фиксируем высоту как flex-basis, запрещаем shrink */
 }
 
 .circleInHeaderContainer {
@@ -666,5 +665,3 @@ body {
     width: auto;
     height: 100%;
 }
-
-
