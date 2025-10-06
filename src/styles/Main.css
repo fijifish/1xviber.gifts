@@ -360,10 +360,15 @@ body {
 .taskChannelRewardAndUsersContainer {
   width: 70%;
   height: 15%;
-  margin-left: 2.4vw;
+  margin-left: 2.1vw;
+  gap: 1vh;
+  padding: .3vh;
 
   display: flex;
-  gap: 1vh;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  
 }
 
 .taskChannelRewardContainer {
@@ -382,7 +387,7 @@ body {
 }
 
 .taskChannelUsersContainer {
-  width: 40%;
+  width: 43%;
   height: 100%;
   background-color: rgba(217, 217, 217, 0.1);
   border-radius: .8vh;
