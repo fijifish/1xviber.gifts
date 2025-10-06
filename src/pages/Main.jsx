@@ -9,6 +9,7 @@ import OneWinIMG from "../assets/OneWinIcon.png";
 import JettonIMG from "../assets/JettonIcon.png";
 import MostbetIMG from "../assets/MostbetIcon.png";
 import TelegramIMG from "../assets/telegramIcon.png";
+import SupportIMG from "../assets/supportIcon.png";
 
 
 const OnexGifts = () => {
@@ -255,6 +256,10 @@ const OnexGifts = () => {
                     <div className="footerTelegramChannel">
                         <h2>AIMI TRAFFIC</h2>
                         <img src={TelegramIMG}/>
+                    </div>
+                    <div className="footerSupportButton">
+                        <h2>Поддержка 24/7</h2>
+                        <img src={SupportIMG}/>
                     </div>
                 </div>
 

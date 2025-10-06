@@ -629,14 +629,40 @@ body {
     gap: .5vh;
 }
 
-.footerContainer h2 {
+.footerTelegramChannel h2 {
     color: #818181;
     font-family: 'Inter', sans-serif;
     font-weight: 330;  
     font-size: 1vh;
 }
 
-.footerContainer img {
+.footerTelegramChannel img {
+    width: auto;
+    height: 100%;
+}
+
+.footerSupportButton {
+    width: 21%;
+    height: 100%;
+
+    text-align: start;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: .5vh;
+}
+
+.footerSupportButton h2 {
+    color: #818181;
+    font-family: 'Inter', sans-serif;
+    font-weight: 330;  
+    font-size: 1vh;
+}
+
+.footerSupportButton img {
     width: auto;
     height: 100%;
 }
