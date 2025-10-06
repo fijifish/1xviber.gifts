@@ -533,3 +533,10 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.complete1WINContainer h2 {
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 550;  
+  font-size: 1.4vh;
+}
