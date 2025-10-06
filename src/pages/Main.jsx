@@ -150,7 +150,7 @@ const OnexGifts = () => {
                         </div>
                     </div>
                     <div className="completeAndCheckChannelContainer">
-                        <div className="completeChannelContainer">
+                        <div className="complete1WINContainer">
                             <h2>ВЫПОЛНИТЬ</h2>
                         </div>
                         <div className="checkChannelContainer">
