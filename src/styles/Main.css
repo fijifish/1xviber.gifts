@@ -343,3 +343,32 @@ body {
     text-align: start;
 }
 
+.taskChannelRewardContainer {
+  width: 28.5%;
+  height: 10%;
+  background-color: rgba(217, 217, 217, 0.1);
+  border-radius: 1vh;
+  overflow: hidden;
+
+  border: 0.043vh solid #FFFFFF; 
+  box-sizing: border-box; 
+  margin-top: .15vh;
+  margin-right: 3.5vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.taskChannelRewardContainer h2 {
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;  
+  font-size: 1.2vh;
+
+}
+
+.taskChannelRewardContainer img {
+    height: 50%;
+    aspect-ratio: auto; 
+}
