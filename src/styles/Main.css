@@ -306,7 +306,7 @@ body {
 
 .titleTextChannelNameContainer {
     position: static;     
-    margin-left: 3vw;    
+    margin-left: 3.2vw;    
 
     height: 7.39%;
     width: 48%;
@@ -325,7 +325,7 @@ body {
 
 .bodyTextChannelNameContainer {
     position: static;     
-    margin-left: 3vw;    
+    margin-left: 3.2vw;    
 
     height: 18%;
     width: 68%;
@@ -353,7 +353,7 @@ body {
   border: 0.043vh solid #FFFFFF; 
   box-sizing: border-box; 
   margin-right: 3.5vw;
-  margin-left: 3vw;
+  margin-left: 3.2vw;
 
   display: flex;
   align-items: center;
@@ -371,4 +371,29 @@ body {
 .taskChannelRewardContainer img {
     height: 50%;
     aspect-ratio: auto; 
+}
+
+.completeChannelContainer {
+  width: 52%;
+  height: 16%;
+  background-color: rgba(122, 122, 122, 0.5);
+  border-radius: .8vh;
+  overflow: hidden;
+
+  border: 0.043vh solid #999999; 
+  box-sizing: border-box; 
+  margin-right: 3.5vw;
+  margin-left: 3vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.completeChannelContainer h2 {
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 450;  
+  font-size: 1.35vh;
+
 }
