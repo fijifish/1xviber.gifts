@@ -357,17 +357,38 @@ body {
     text-align: start;
 }
 
+.taskChannelRewardAndUsersContainer {
+  width: 70%;
+  height: 15%;
+  margin-left: 2.4vw;
+
+  display: flex;
+  gap: 1vh;
+}
+
 .taskChannelRewardContainer {
-  width: 30%;
-  height: 13%;
+  width: 43%;
+  height: 100%;
   background-color: rgba(217, 217, 217, 0.1);
   border-radius: .8vh;
   overflow: hidden;
 
   border: 0.035vh solid #FFFFFF; 
   box-sizing: border-box; 
-  margin-right: 3.5vw;
-  margin-left: 2.4vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.taskChannelUsersContainer {
+  width: 40%;
+  height: 100%;
+  background-color: rgba(217, 217, 217, 0.1);
+  border-radius: .8vh;
+  overflow: hidden;
+
+  box-sizing: border-box; 
 
   display: flex;
   align-items: center;

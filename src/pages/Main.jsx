@@ -99,9 +99,14 @@ const OnexGifts = () => {
                             AIMI Traffic даёт возможность зарабатывать<br/>10 USDT за живого подписчика с СНГ региона.<br/>Мы делимся наградой с Вами 50/50.
                         </div>
                     </div>
-                    <div className="taskChannelRewardContainer">
-                        <img src={tonusdtIMG}/>
-                        <h2>1.8 TON | 5 USDT</h2> 
+                    <div className="taskChannelRewardAndUsersContainer">
+                        <div className="taskChannelRewardContainer">
+                            <img src={tonusdtIMG}/>
+                            <h2>1.8 TON | 5 USDT</h2> 
+                        </div>
+                        <div className="taskChannelUsersContainer">
+
+                        </div>
                     </div>
                     <div className="completeAndCheckChannelContainer">
                         <div className="completeChannelContainer">
