@@ -375,7 +375,7 @@ body {
 }
 
 .taskChannelRewardContainer {
-  width: 43%;
+  width: 45%;
   height: 100%;
   background-color: rgba(217, 217, 217, 0.1);
   border-radius: .8vh;
@@ -403,7 +403,7 @@ body {
 }
 
 .taskChannelUsersContainer {
-  width: 43%;
+  width: 45%;
   height: 100%;
   background-color: rgba(217, 217, 217, 0.1);
   border-radius: .8vh;

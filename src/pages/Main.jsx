@@ -119,7 +119,11 @@ const OnexGifts = () => {
                         </div>
                     </div>
                 </div>
-
+                <div class="text-with-linesContainer">
+                    <div class="line-left"></div> 
+                        <h2>Выполни задания, чтобы получить 25 USDT</h2> 
+                    <div class="line-right"></div>
+                </div> 
                 <div class="main1WINTaskContainer">
                     <div class="mainChannelNameContainer">
                         <img src={OneWinIMG}/>
