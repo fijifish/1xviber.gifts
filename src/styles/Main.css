@@ -389,6 +389,19 @@ body {
   justify-content: space-evenly;
 }
 
+.taskChannelRewardContainer h2 {
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;  
+  font-size: 1.1vh;
+
+}
+
+.taskChannelRewardContainer img {
+    height: 50%;
+    aspect-ratio: auto; 
+}
+
 .taskChannelUsersContainer {
   width: 43%;
   height: 100%;
@@ -403,7 +416,7 @@ body {
   justify-content: space-evenly;
 }
 
-.taskChannelRewardContainer h2 {
+.taskChannelUsersContainer h2 {
   color: white;
   font-family: 'Inter', sans-serif;
   font-weight: 300;  
@@ -411,7 +424,7 @@ body {
 
 }
 
-.taskChannelRewardContainer img {
+.taskChannelUsersContainer img {
     height: 50%;
     aspect-ratio: auto; 
 }

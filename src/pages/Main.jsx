@@ -4,7 +4,7 @@ import withdrawIMG from "../assets/withdrawIcon.png";
 import refferalsIMG from "../assets/refferalsIcon.png";
 import tonusdtIMG from "../assets/tonusdtIcon.png";
 import channelIMG from "../assets/channelIcon.png";
-
+import usersIMG from "../assets/usersIcon.png";
 
 
 const OnexGifts = () => {
@@ -105,7 +105,8 @@ const OnexGifts = () => {
                             <h2>1.8 TON | 5 USDT</h2> 
                         </div>
                         <div className="taskChannelUsersContainer">
-
+                            <img src={usersIMG}/>
+                            <h2>2 472 заработало</h2> 
                         </div>
                     </div>
                     <div className="completeAndCheckChannelContainer">
