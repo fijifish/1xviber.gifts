@@ -5,6 +5,7 @@ import refferalsIMG from "../assets/refferalsIcon.png";
 import tonusdtIMG from "../assets/tonusdtIcon.png";
 import channelIMG from "../assets/channelIcon.png";
 import usersIMG from "../assets/usersIcon.png";
+import OneWinIMG from "../assets/OneWinIcon.png";
 
 
 const OnexGifts = () => {
@@ -107,6 +108,45 @@ const OnexGifts = () => {
                         <div className="taskChannelUsersContainer">
                             <img src={usersIMG}/>
                             <h2>2 472 заработало</h2> 
+                        </div>
+                    </div>
+                    <div className="completeAndCheckChannelContainer">
+                        <div className="completeChannelContainer">
+                            <h2>ПОДПИСАТЬСЯ</h2>
+                        </div>
+                        <div className="checkChannelContainer">
+                            <h2>ПРОВЕРИТЬ</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="main1WINTaskContainer">
+                    <div class="mainChannelNameContainer">
+                        <img src={OneWinIMG}/>
+                        <div class="textChannelNameContainer">
+                            <div class="textChannelNameContainerPart1">
+                                1WIN
+                            </div>
+                            <div class="text1WINNameContainerPart2">
+                                Казино
+                            </div>
+                        </div>
+                    </div>
+                    <div class="titleAndBodyTextChannelNameContainer">
+                        <div class="titleTextChannelNameContainer">
+                            Канал об арбитраже
+                        </div>
+                        <div class="bodyTextChannelNameContainer">
+                            AIMI Traffic даёт возможность зарабатывать<br/>10 USDT за живого подписчика с СНГ региона.<br/>Мы делимся наградой с Вами 50/50.
+                        </div>
+                    </div>
+                    <div className="taskChannelRewardAndUsersContainer">
+                        <div className="taskChannelRewardContainer">
+                            <img src={tonusdtIMG}/>
+                            <h2>3.6 TON | 10 USDT</h2> 
+                        </div>
+                        <div className="taskChannelUsersContainer">
+                            <img src={usersIMG}/>
+                            <h2>3 009 заработало</h2> 
                         </div>
                     </div>
                     <div className="completeAndCheckChannelContainer">
