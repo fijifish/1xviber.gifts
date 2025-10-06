@@ -569,7 +569,7 @@ body {
 
   background: url("../assets/JettonBackgroundIcon.png");
   background-repeat: no-repeat, no-repeat; /* ✅ Отключаем повторение */
-  background-position: right 1vh bottom 0; /* изображение сдвигаем */
+  background-position: right 0vh bottom 0; /* изображение сдвигаем */
   background-size:  auto 100%; /* ✅ Градиент на всю область, а картинка — высотой 90% */
 
   display: flex;
