@@ -252,8 +252,10 @@ const OnexGifts = () => {
                 </div>
 
                 <div className="footerContainer">
-                    <h2>AIMI TRAFFIC</h2>
-                    <img src={TelegramIMG}/>
+                    <div className="footerTelegramChannel">
+                        <h2>AIMI TRAFFIC</h2>
+                        <img src={TelegramIMG}/>
+                    </div>
                 </div>
 
             </div>
