@@ -598,11 +598,11 @@ body {
 }
 
 .footerContainer {
-    width: 90%;
-    height: 1.5%;
+    width: 85%;
+    height: 3%;
 
     margin-top: 2vh;
-    margin-bottom: 2vh;
+    margin-bottom: 3vh;
     margin-left: 0vh;
     margin-right: 0vh;
 
@@ -615,7 +615,7 @@ body {
 }
 
 .footerTelegramChannel {
-    width: 21%;
+    width: 25%;
     height: 100%;
 
     text-align: start;
@@ -637,11 +637,11 @@ body {
 
 .footerTelegramChannel img {
     width: auto;
-    height: 100%;
+    height: 50%;
 }
 
 .footerSupportButton {
-    width: 24%;
+    width: 28%;
     height: 100%;
 
     text-align: start;
@@ -663,5 +663,5 @@ body {
 
 .footerSupportButton img {
     width: auto;
-    height: 100%;
+    height: 50%;
 }
