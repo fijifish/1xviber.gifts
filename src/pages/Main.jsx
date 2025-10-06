@@ -8,6 +8,7 @@ import usersIMG from "../assets/usersIcon.png";
 import OneWinIMG from "../assets/OneWinIcon.png";
 import JettonIMG from "../assets/JettonIcon.png";
 import MostbetIMG from "../assets/MostbetIcon.png";
+import TelegramIMG from "../assets/telegramIcon.png";
 
 
 const OnexGifts = () => {
@@ -251,7 +252,8 @@ const OnexGifts = () => {
                 </div>
 
                 <div className="footerContainer">
-
+                    <h2>AIMI TRAFFIC</h2>
+                    <img src={TelegramIMG}/>
                 </div>
 
             </div>

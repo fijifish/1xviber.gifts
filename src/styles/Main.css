@@ -613,3 +613,29 @@ body {
     justify-content: space-between;
 
 }
+
+.footerContainer {
+    width: 20%;
+    height: 100%;
+
+    text-align: start;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.footerContainer h2 {
+    color: #818181;
+    font-family: 'Inter', sans-serif;
+    font-weight: 330;  
+    font-size: 1vh;
+}
+
+.footerContainer img {
+    width: auto;
+    height: 100%;
+}
+
+
