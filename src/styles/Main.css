@@ -497,7 +497,7 @@ body {
 
   background: url("../assets/1WINBackgroundIcon.png");
   background-repeat: no-repeat, no-repeat; /* ✅ Отключаем повторение */
-  background-position: right 2vh bottom 0; /* изображение сдвигаем */
+  background-position: right 1vh bottom 0; /* изображение сдвигаем */
   background-size:  auto 100%; /* ✅ Градиент на всю область, а картинка — высотой 90% */
 
   display: flex;
