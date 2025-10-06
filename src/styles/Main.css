@@ -403,7 +403,7 @@ body {
   border-radius: .8vh;
   overflow: hidden;
 
-  border: 0.1vh solid #999999; 
+  border: 0.12vh solid #999999; 
   box-sizing: border-box; 
   /* margin-right: 3.5vw;
   margin-left: 1.8vw; */
@@ -427,7 +427,7 @@ body {
   border-radius: .8vh;
   overflow: hidden;
 
-  border: 0.1vh solid #006AFF; 
+  border: 0.12vh solid #006AFF; 
   box-sizing: border-box; 
   /* margin-right: 3.5vw;
   margin-left: 1.8vw; */
