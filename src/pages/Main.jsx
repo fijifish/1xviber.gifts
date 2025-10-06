@@ -252,7 +252,7 @@ const OnexGifts = () => {
                     </div>
                 </div>
 
-                <div className="footerContainer">
+                {/* <div className="footerContainer">
                     <div className="footerTelegramChannel">
                         <h2>AIMI TRAFFIC</h2>
                         <img src={TelegramIMG}/>
@@ -261,7 +261,7 @@ const OnexGifts = () => {
                         <h2>Поддержка 24/7</h2>
                         <img src={SupportIMG}/>
                     </div>
-                </div>
+                </div> */}
 
             </div>
         </div>
