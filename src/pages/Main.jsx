@@ -107,8 +107,8 @@ const OnexGifts = () => {
                         <div className="completeChannelContainer">
                             <h2>ВЫПОЛНИТЬ</h2>
                         </div>
-                        <div className="completeChannelContainer">
-                            <h2>ВЫПОЛНИТЬ</h2>
+                        <div className="checkChannelContainer">
+                            <h2>ПРОВЕРИТЬ</h2>
                         </div>
                     </div>
                 </div>
