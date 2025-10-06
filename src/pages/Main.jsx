@@ -212,7 +212,7 @@ const OnexGifts = () => {
                     </div>
                 </div>
 
-                <div class="mainMostbetTaskContainer">
+                {/* <div class="mainMostbetTaskContainer">
                     <div class="mainChannelNameContainer">
                         <img src={MostbetIMG}/>
                         <div class="textChannelNameContainer">
@@ -250,7 +250,7 @@ const OnexGifts = () => {
                             <h2>ПРОВЕРИТЬ</h2>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 {/* <div className="footerContainer">
                     <div className="footerTelegramChannel">
