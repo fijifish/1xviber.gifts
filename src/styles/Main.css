@@ -577,3 +577,23 @@ body {
   justify-content: space-around;
 
 }
+
+.mainMostbetTaskContainer {
+  width: 90%;
+  height: 25%;
+  margin-top: 2vh;
+  padding: 1vh;
+
+  border: .17vh solid #CECECE;
+  border-radius: 2.46vh;
+
+  background: url("../assets/MostbetBackgroundIcon.png");
+  background-repeat: no-repeat, no-repeat; /* ✅ Отключаем повторение */
+  background-position: right 0vh bottom 0; /* изображение сдвигаем */
+  background-size:  auto 100%; /* ✅ Градиент на всю область, а картинка — высотой 90% */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+}

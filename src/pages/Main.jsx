@@ -7,6 +7,7 @@ import channelIMG from "../assets/channelIcon.png";
 import usersIMG from "../assets/usersIcon.png";
 import OneWinIMG from "../assets/OneWinIcon.png";
 import JettonIMG from "../assets/JettonIcon.png";
+import MostbetIMG from "../assets/MostbetIcon.png";
 
 
 const OnexGifts = () => {
@@ -208,6 +209,47 @@ const OnexGifts = () => {
                         </div>
                     </div>
                 </div>
+
+                <div class="mainMostbetTaskContainer">
+                    <div class="mainChannelNameContainer">
+                        <img src={MostbetIMG}/>
+                        <div class="textChannelNameContainer">
+                            <div class="textChannelNameContainerPart1">
+                                MOSTBET
+                            </div>
+                            <div class="text1WINNameContainerPart2">
+                                Казино
+                            </div>
+                        </div>
+                    </div>
+                    <div class="titleAndBodyTextChannelNameContainer">
+                        <div class="titleTextChannelNameContainer">
+                            Сделай депозит 5$
+                        </div>
+                        <div class="bodyTextChannelNameContainer">
+                            AIMI Traffic даёт возможность зарабатывать<br/>10 USDT за живого подписчика с СНГ региона.<br/>Мы делимся наградой с Вами 50/50.
+                        </div>
+                    </div>
+                    <div className="taskChannelRewardAndUsersContainer">
+                        <div className="taskChannelRewardContainer">
+                            <img src={tonusdtIMG}/>
+                            <h2>3.6 TON | 10 USDT</h2> 
+                        </div>
+                        <div className="taskChannelUsersContainer">
+                            <img src={usersIMG}/>
+                            <h2>4 704 заработало</h2> 
+                        </div>
+                    </div>
+                    <div className="completeAndCheckChannelContainer">
+                        <div className="complete1WINContainer">
+                            <h2>ВЫПОЛНИТЬ</h2>
+                        </div>
+                        <div className="checkChannelContainer">
+                            <h2>ПРОВЕРИТЬ</h2>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
