@@ -305,12 +305,18 @@ body {
     font-size: 1.75vh;
 }
 
+.titleAndBodyTextChannelNameContainer {
+    height: 25.39%;
+    width: 70%;
+    margin-left: 2.4vw; 
+}
+
 .titleTextChannelNameContainer {
     position: static;     
-    margin-left: 2.4vw;    
+    /* margin-left: 2.4vw;     */
 
-    height: 7.39%;
-    width: 50%;
+    height: 29.11%;
+    width: 71.5%;
 
     color: white;
     font-family: 'Inter', sans-serif;
@@ -326,10 +332,10 @@ body {
 
 .bodyTextChannelNameContainer {
     position: static;     
-    margin-left: 2.4vw;    
+    /* margin-left: 2.4vw;     */
 
-    height: 18%;
-    width: 70%;
+    height: 70.89%;
+    width: 100%;
 
     color: #818181;
     font-family: 'Inter', sans-serif;
