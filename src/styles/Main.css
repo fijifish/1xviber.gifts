@@ -602,8 +602,8 @@ body {
     width: 90%;
     height: 1.5%;
 
-    margin-top: 2.5vh;
-    margin-bottom: 3vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
     margin-left: 0vh;
     margin-right: 0vh;
 
@@ -642,7 +642,7 @@ body {
 }
 
 .footerSupportButton {
-    width: 21%;
+    width: 24%;
     height: 100%;
 
     text-align: start;
