@@ -601,7 +601,7 @@ body {
     width: 85%;
     height: 3%;
 
-    margin-top: 2vh;
+    margin-top: 1.5vh;
     margin-bottom: 3vh;
     margin-left: 0vh;
     margin-right: 0vh;
@@ -615,7 +615,7 @@ body {
 }
 
 .footerTelegramChannel {
-    width: 25%;
+    width: 27%;
     height: 100%;
 
     text-align: start;
@@ -632,7 +632,7 @@ body {
     color: #818181;
     font-family: 'Inter', sans-serif;
     font-weight: 330;  
-    font-size: 1vh;
+    font-size: 1.25vh;
 }
 
 .footerTelegramChannel img {
@@ -641,7 +641,7 @@ body {
 }
 
 .footerSupportButton {
-    width: 28%;
+    width: 30%;
     height: 100%;
 
     text-align: start;
@@ -658,7 +658,7 @@ body {
     color: #818181;
     font-family: 'Inter', sans-serif;
     font-weight: 330;  
-    font-size: 1vh;
+    font-size: 1.25vh;
 }
 
 .footerSupportButton img {
