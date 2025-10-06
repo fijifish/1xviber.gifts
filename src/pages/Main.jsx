@@ -250,6 +250,10 @@ const OnexGifts = () => {
                     </div>
                 </div>
 
+                <div className="footerContainer">
+
+                </div>
+
             </div>
         </div>
     </div>

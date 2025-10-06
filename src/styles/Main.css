@@ -597,3 +597,19 @@ body {
   justify-content: space-around;
 
 }
+
+.footerContainer {
+    width: 90%;
+    height: 7.5%;
+
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    margin-left: 0vh;
+    margin-right: 0vh;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+}
