@@ -200,7 +200,7 @@ body {
     aspect-ratio: 1/1; 
 }
 
-.text-with-linesContainer {
+.text5USDT-with-linesContainer {
   height: 2.46%;
   width: 100%; 
   margin-top: .6vh;
@@ -226,7 +226,7 @@ body {
   border-bottom-right-radius: 3vh;
 }
 
-.text-with-linesContainer h2 {
+.text5USDT-with-linesContainer h2 {
   color: rgba(123, 123, 123, 1);
   font-family: 'Inter', sans-serif;
   font-weight: 400;  
@@ -539,4 +539,21 @@ body {
   font-family: 'Inter', sans-serif;
   font-weight: 550;  
   font-size: 1.4vh;
+}
+
+.text25USDT-with-linesContainer {
+  height: 2.46%;
+  width: 100%; 
+  margin-top: 1.8vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.text25USDT-with-linesContainer h2 {
+  color: rgba(123, 123, 123, 1);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;  
+  font-size: 1.7vh;
 }
