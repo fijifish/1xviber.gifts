@@ -387,17 +387,28 @@ body {
     aspect-ratio: auto; 
 }
 
+.completeAndCheckChannelContainer {
+    width: 90%;
+    height: 15%;
+    margin-left: 1.8vw;
+
+    display: flex;
+    
+
+
+}
+
 .completeChannelContainer {
-  width: 40%;
-  height: 15%;
+  width: 50%;
+  height: 100%;
   background-color: rgba(122, 122, 122, 0.5);
   border-radius: .8vh;
   overflow: hidden;
 
   border: 0.043vh solid #999999; 
   box-sizing: border-box; 
-  margin-right: 3.5vw;
-  margin-left: 1.8vw;
+  /* margin-right: 3.5vw;
+  margin-left: 1.8vw; */
 
   display: flex;
   align-items: center;

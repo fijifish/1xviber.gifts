@@ -104,7 +104,12 @@ const OnexGifts = () => {
                         <h2>1.8 TON | 5 USDT</h2> 
                     </div>
                     <div className="completeChannelContainer">
-                        <h2>ВЫПОЛНИТЬ</h2>
+                        <div className="completeChannelContainer">
+                            <h2>ВЫПОЛНИТЬ</h2>
+                        </div>
+                        <div className="completeChannelContainer">
+                            <h2>ВЫПОЛНИТЬ</h2>
+                        </div>
                     </div>
                 </div>
             </div>
