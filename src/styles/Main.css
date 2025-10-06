@@ -375,8 +375,8 @@ body {
 }
 
 .completeChannelContainer {
-  width: 52%;
-  height: 16%;
+  width: 40%;
+  height: 15%;
   background-color: rgba(122, 122, 122, 0.5);
   border-radius: .8vh;
   overflow: hidden;
