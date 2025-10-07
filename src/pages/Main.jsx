@@ -263,9 +263,11 @@ const OnexGifts = () => {
                         <h2>AIMI TRAFFIC</h2>
                         <img src={TelegramIMG}/>
                     </div>
-                    <div className="footerSupportButton">
+                    <div className="footerSupportButton" onClick={() =>
+                        window.Telegram?.WebApp?.openTelegramLink("https://t.me/YourSupportUsername")
+                    }>
                         <h2>Поддержка 24/7</h2>
-                        <img src={SupportIMG}/>
+                        <img src={SupportIMG} />
                     </div>
                 </div>
 
