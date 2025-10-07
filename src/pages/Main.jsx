@@ -146,12 +146,12 @@ const OnexGifts = () => {
                     </div>
                     <div class="titleAndBodyTextChannelNameContainer">
                         <div class="titleTextChannelNameContainer">
-                            Сделай депозит 5$
+                            Партнёрская программа
                         </div>
                         <div class="bodyTextChannelNameContainer">
-                            С помощью партнёрской программы 1WIN<br />
-                            в формате CPA, мы отдаём 33% наград<br />
-                            пользователям, которые внесли депозит.
+                            В формате условий CPA при внесении депозита<br/>
+                            в размере 5$, мы распределяем 33% от полученных<br/>
+                            наград для наших пользователей.
                         </div>
                     </div>
                     <div className="taskChannelRewardAndUsersContainer">
