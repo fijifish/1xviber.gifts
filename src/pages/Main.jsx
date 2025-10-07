@@ -26,6 +26,27 @@ const OnexGifts = () => {
 
     const { user, loading, refetchUser, updateUser } = useUser();
 
+    const [tonToUsdRate, setTonToUsdRate] = useState(null); // how many USDT for 1 TON
+
+    useEffect(() => {
+      const fetchTonToUsdRate = async () => {
+        try {
+          const response = await fetch("https://api.binance.com/api/v3/ticker/price?symbol=TONUSDT");
+          if (!response.ok) throw new Error(`Binance error: ${response.status}`);
+          const data = await response.json();
+          if (data && data.price) setTonToUsdRate(parseFloat(data.price));
+        } catch (e) {
+          console.error("TON/USDT rate fetch failed:", e);
+        }
+      };
+      fetchTonToUsdRate();
+    }, []);
+
+    const usdToTon = (usd) => (tonToUsdRate ? Number(usd) / tonToUsdRate : 0);
+
+    const usdtBalance = Number(user?.balanceTon ?? 0); // ⚠️ сейчас тут хранится именно USDT
+    const tonBalance  = usdToTon(usdtBalance);
+
     const [taskDone, setTaskDone] = useState(Boolean(user?.tasks?.channelSubscribed));
 
     // если пришёл свежий user из контекста — обновим локальный стейт
@@ -141,7 +162,7 @@ const OnexGifts = () => {
                     </div>
                     <div className="mainBalanceContainer">
                         <img src={tonusdtIMG}/>
-                        <h2> TON | {((user?.balanceTon ?? 0)).toFixed(1)} USDT</h2> 
+                        <h2>{tonToUsdRate ? tonBalance.toFixed(2) : "…"} TON | {usdtBalance.toFixed(2)} USDT</h2> 
                     </div>
                     <div className="withdrawContainer">
                         <img src={withdrawIMG}/>
