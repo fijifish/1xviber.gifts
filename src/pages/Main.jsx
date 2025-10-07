@@ -23,12 +23,14 @@ const openTG = (url) => {
 const OnexGifts = () => {
 
     const { user, loading } = useUser();
-    const telegramId = user?.telegramId;
+
+    const telegramId  = user?.telegramId;
     const displayName = user?.firstName || user?.username || (telegramId ? `id${telegramId}` : "User");
     const displayUsername = user?.username ? `@${user.username}` : (telegramId ? `id${telegramId}` : "");
     const initials = (user?.firstName || user?.username || String(telegramId || "U"))
-    .slice(0, 2)
+    .slice(0,2)
     .toUpperCase();
+
 
     const userLang = (window?.Telegram?.WebApp?.initDataUnsafe?.user?.language_code || navigator.language || "").toLowerCase();
     const isRussianLang = ["ru", "uk", "be", "kk", "uz", "ky", "tt"].some((code) => userLang.startsWith(code));
