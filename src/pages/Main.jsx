@@ -24,7 +24,7 @@ const openTG = (url) => {
 
 const OnexGifts = () => {
 
-    const { user, loading } = useUser();
+    const { user, loading, refetchUser } = useUser();
 
     const telegramId  = user?.telegramId;
     const displayName = user?.firstName || user?.username || (telegramId ? `id${telegramId}` : "User");
@@ -89,7 +89,7 @@ const OnexGifts = () => {
         alert(`Награда начислена: +${data.reward.ton} TON 🎉`);
         // обновим баланс в UI без перезагрузки
         if (data.user?.balanceTon !== undefined) {
-          user.balanceTon = data.user.balanceTon; // простой локальный апдейт через ссылку
+          await refetchUser?.(); // простой локальный апдейт через ссылку
         } else {
           window.location.reload();
         }
