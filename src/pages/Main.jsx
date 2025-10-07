@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "../styles/Main.css";
 import { useUser } from "../UserContext";
 
+const API_BASE = import.meta.env.VITE_API_BASE || "";
+
 import withdrawIMG from "../assets/withdrawIcon.png";
 import refferalsIMG from "../assets/refferalsIcon.png";
 import tonusdtIMG from "../assets/tonusdtIcon.png";
@@ -68,6 +70,35 @@ const OnexGifts = () => {
         completed: "COMPLETED",
     };
 
+  async function verifyChannel() {
+    try {
+      if (!user?.telegramId) return;
+      const r = await fetch(`${API_BASE}/tasks/channel/verify`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ telegramId: user.telegramId })
+      });
+      const data = await r.json();
+      if (!data.ok) throw new Error(data.error || "Ошибка проверки");
+
+      if (data.status === "not_subscribed") {
+        alert("Сначала подпишись на канал, затем нажми ПРОВЕРИТЬ");
+      } else if (data.status === "already_claimed") {
+        alert("Награда уже начислена 🎉");
+      } else if (data.status === "rewarded") {
+        alert(`Награда начислена: +${data.reward.ton} TON 🎉`);
+        // обновим баланс в UI без перезагрузки
+        if (data.user?.balanceTon !== undefined) {
+          user.balanceTon = data.user.balanceTon; // простой локальный апдейт через ссылку
+        } else {
+          window.location.reload();
+        }
+      }
+    } catch (e) {
+      alert(e.message);
+    }
+  }
+
     return (
     <div className="App">
         <div className="Main_Window">   
@@ -88,7 +119,7 @@ const OnexGifts = () => {
                     </div>
                     <div className="mainBalanceContainer">
                         <img src={tonusdtIMG}/>
-                        <h2>21.8 TON | 64 USDT</h2> 
+                        <h2>{((user?.balanceTon ?? 0)).toFixed(2)} TON</h2> 
                     </div>
                     <div className="withdrawContainer">
                         <img src={withdrawIMG}/>
@@ -138,7 +169,7 @@ const OnexGifts = () => {
                         <div className="completeChannelContainer" onClick={() => openTG("https://t.me/aimi_traffic")}>
                             <h2>ПОДПИСАТЬСЯ</h2>
                         </div>
-                        <div className="checkChannelContainer">
+                        <div className="checkChannelContainer" onClick={verifyChannel}>
                             <h2>ПРОВЕРИТЬ</h2>
                         </div>
                     </div>
