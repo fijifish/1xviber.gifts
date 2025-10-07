@@ -141,7 +141,7 @@ const OnexGifts = () => {
                     </div>
                     <div className="mainBalanceContainer">
                         <img src={tonusdtIMG}/>
-                        <h2>{((user?.balanceTon ?? 0)).toFixed(2)} TON</h2> 
+                        <h2> TON | {((user?.balanceTon ?? 0)).toFixed(1)} USDT</h2> 
                     </div>
                     <div className="withdrawContainer">
                         <img src={withdrawIMG}/>
