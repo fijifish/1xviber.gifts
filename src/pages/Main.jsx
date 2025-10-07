@@ -264,7 +264,7 @@ const OnexGifts = () => {
                         <img src={TelegramIMG}/>
                     </div>
                     <div className="footerSupportButton" onClick={() =>
-                        window.Telegram?.WebApp?.openTelegramLink("https://t.me/YourSupportUsername")
+                        window.Telegram?.WebApp?.openTelegramLink("https://t.me/gostcust")
                     }>
                         <h2>Поддержка 24/7</h2>
                         <img src={SupportIMG} />
