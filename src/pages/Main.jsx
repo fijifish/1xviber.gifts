@@ -74,9 +74,13 @@ const OnexGifts = () => {
             <div className="mainHomePageContainer">  
                 <div className="headerContainer">
                     <div className="circleInHeaderContainer">
-                        <div className="circleName">
-                            AR
-                        </div>
+                        {user?.photoUrl ? (
+                            <img src={user.photoUrl} className="userAvatar"/>
+                        ) : (
+                            <div className="circleName">
+                                {loading ? "" : initials}
+                            </div>
+                        )}
                     </div>
                     <div className="nickNameContainer">
                         <div className="nickNameContainerPart1">{loading ? "..." : displayName}</div>
