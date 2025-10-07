@@ -99,7 +99,7 @@ const OnexGifts = () => {
         } else if (data.status === "rewarded") {
         // запасной вариант, если по какой-то причине 'user' не пришёл
         updateUser({
-            balanceUsdt: Number(user?.balanceUsdt || 0) + Number(data?.reward?.usdt || 0),
+            balanceTon: Number(user?.balanceTon || 0) + Number(data?.reward?.ton || 0),
             tasks: { ...(user?.tasks || {}), channelSubscribed: true },
         });
         } else if (data.status === "already_claimed") {
@@ -112,7 +112,7 @@ const OnexGifts = () => {
         await refetchUser();
 
         if (data.status === "rewarded") {
-        alert(`Награда начислена: +${data.reward.usdt} TON 🎉`);
+        alert(`Награда начислена: +${data.reward.ton} TON 🎉`);
         } else if (data.status === "already_claimed") {
         // опционально: уведомление
         }
@@ -141,7 +141,7 @@ const OnexGifts = () => {
                     </div>
                     <div className="mainBalanceContainer">
                         <img src={tonusdtIMG}/>
-                        <h2>{Number(user?.balanceUsdt || 0).toFixed(2)} TON</h2> 
+                        <h2>{((user?.balanceTon ?? 0)).toFixed(2)} TON</h2> 
                     </div>
                     <div className="withdrawContainer">
                         <img src={withdrawIMG}/>
