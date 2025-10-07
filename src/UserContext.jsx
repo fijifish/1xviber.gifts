@@ -9,6 +9,28 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null); // { telegramId, username, firstName, lastName, photoUrl }
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const tgIdRef = useRef(null);
+
+  const refetchUser = async () => {
+    if (!tgIdRef.current) return;
+    const r = await fetch(`${API_BASE}/get-user?telegramId=${tgIdRef.current}&t=${Date.now()}`, {
+      cache: "no-store",
+    });
+    const data = await r.json();
+    if (data?.ok) setUser(data.user);
+  };
+
+  const updateUser = (patch) => {
+    setUser(prev => {
+      const next = { ...(prev || {}), ...(patch || {}) };
+      // аккуратно объединяем tasks
+      if (prev?.tasks || patch?.tasks) {
+        next.tasks = { ...(prev?.tasks || {}), ...(patch?.tasks || {}) };
+      }
+      return next;
+    });
+  };
+
 
   useEffect(() => {
     (async () => {
@@ -47,7 +69,7 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, loading, error }}>
+    <UserContext.Provider value={{ user, loading, refetchUser, updateUser }}>
       {children}
     </UserContext.Provider>
   );

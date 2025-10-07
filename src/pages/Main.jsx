@@ -24,7 +24,7 @@ const openTG = (url) => {
 
 const OnexGifts = () => {
 
-    const { user, loading, refetchUser } = useUser();
+    const { user, loading, refetchUser, updateUser } = useUser();
 
     const [taskDone, setTaskDone] = useState(Boolean(user?.tasks?.channelSubscribed));
 
@@ -83,19 +83,38 @@ const OnexGifts = () => {
         const r = await fetch(`${API_BASE}/tasks/channel/verify`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ telegramId: user.telegramId })
+        body: JSON.stringify({ telegramId: user.telegramId }),
         });
         const data = await r.json();
         if (!data.ok) throw new Error(data.error || "Ошибка проверки");
 
         if (data.status === "not_subscribed") {
         alert("Сначала подпишись на канал, затем нажми ПРОВЕРИТЬ");
-        } else if (data.status === "already_claimed" || data.status === "rewarded") {
-        setTaskDone(true);            // ← переключаем UI
-        await refetchUser?.();        // подтягиваем свежий баланс/флаг
-        if (data.status === "rewarded") {
-            alert(`Награда начислена: +${data.reward.ton} TON 🎉`);
+        return;
         }
+
+        // 1) моментально обновляем UI
+        if (data.user) {
+        updateUser(data.user); // сервер уже вернул обновлённого пользователя
+        } else if (data.status === "rewarded") {
+        // запасной вариант, если по какой-то причине 'user' не пришёл
+        updateUser({
+            balanceTon: Number(user?.balanceTon || 0) + Number(data?.reward?.ton || 0),
+            tasks: { ...(user?.tasks || {}), channelSubscribed: true },
+        });
+        } else if (data.status === "already_claimed") {
+        updateUser({
+            tasks: { ...(user?.tasks || {}), channelSubscribed: true },
+        });
+        }
+
+        // 2) затем жёстко синхронизируемся с БД
+        await refetchUser();
+
+        if (data.status === "rewarded") {
+        alert(`Награда начислена: +${data.reward.ton} TON 🎉`);
+        } else if (data.status === "already_claimed") {
+        // опционально: уведомление
         }
     } catch (e) {
         alert(e.message);
@@ -122,7 +141,7 @@ const OnexGifts = () => {
                     </div>
                     <div className="mainBalanceContainer">
                         <img src={tonusdtIMG}/>
-                        <h2>{((user?.balanceTon ?? 0)).toFixed(2)} TON</h2> 
+                        <h2>{Number(user?.balanceTon || 0).toFixed(2)} TON</h2> 
                     </div>
                     <div className="withdrawContainer">
                         <img src={withdrawIMG}/>
