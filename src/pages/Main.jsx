@@ -26,6 +26,13 @@ const OnexGifts = () => {
 
     const { user, loading, refetchUser } = useUser();
 
+    const [taskDone, setTaskDone] = useState(Boolean(user?.tasks?.channelSubscribed));
+
+    // если пришёл свежий user из контекста — обновим локальный стейт
+    useEffect(() => {
+    setTaskDone(Boolean(user?.tasks?.channelSubscribed));
+    }, [user?.tasks?.channelSubscribed]);
+
     const telegramId  = user?.telegramId;
     const displayName = user?.firstName || user?.username || (telegramId ? `id${telegramId}` : "User");
     const displayUsername = user?.username ? `@${user.username}` : (telegramId ? `id${telegramId}` : "");
@@ -70,34 +77,30 @@ const OnexGifts = () => {
         completed: "COMPLETED",
     };
 
-  async function verifyChannel() {
+    async function verifyChannel() {
     try {
-      if (!user?.telegramId) return;
-      const r = await fetch(`${API_BASE}/tasks/channel/verify`, {
+        if (!user?.telegramId) return;
+        const r = await fetch(`${API_BASE}/tasks/channel/verify`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ telegramId: user.telegramId })
-      });
-      const data = await r.json();
-      if (!data.ok) throw new Error(data.error || "Ошибка проверки");
+        });
+        const data = await r.json();
+        if (!data.ok) throw new Error(data.error || "Ошибка проверки");
 
-      if (data.status === "not_subscribed") {
+        if (data.status === "not_subscribed") {
         alert("Сначала подпишись на канал, затем нажми ПРОВЕРИТЬ");
-      } else if (data.status === "already_claimed") {
-        alert("Награда уже начислена 🎉");
-      } else if (data.status === "rewarded") {
-        alert(`Награда начислена: +${data.reward.ton} TON 🎉`);
-        // обновим баланс в UI без перезагрузки
-        if (data.user?.balanceTon !== undefined) {
-          await refetchUser?.(); // простой локальный апдейт через ссылку
-        } else {
-          window.location.reload();
+        } else if (data.status === "already_claimed" || data.status === "rewarded") {
+        setTaskDone(true);            // ← переключаем UI
+        await refetchUser?.();        // подтягиваем свежий баланс/флаг
+        if (data.status === "rewarded") {
+            alert(`Награда начислена: +${data.reward.ton} TON 🎉`);
         }
-      }
+        }
     } catch (e) {
-      alert(e.message);
+        alert(e.message);
     }
-  }
+    }
 
     return (
     <div className="App">
@@ -165,13 +168,26 @@ const OnexGifts = () => {
                             <h2>2 472 заработало</h2> 
                         </div>
                     </div>
-                    <div className="completeAndCheckChannelContainer">
-                        <div className="completeChannelContainer" onClick={() => openTG("https://t.me/aimi_traffic")}>
-                            <h2>ПОДПИСАТЬСЯ</h2>
-                        </div>
-                        <div className="checkChannelContainer" onClick={verifyChannel}>
-                            <h2>ПРОВЕРИТЬ</h2>
-                        </div>
+                        <div className="completeAndCheckChannelContainer">
+                        {taskDone ? (
+                            // ✅ вариант «после выполнения»
+                            <div className="taskCompletedContainer">
+                                <h2>ВЫПОЛНЕНО</h2>
+                            </div>
+                        ) : (
+                            // ⬅️ вариант «до выполнения»
+                            <>
+                            <div
+                                className="completeChannelContainer"
+                                onClick={() => openTG("https://t.me/aimi_traffic")}
+                            >
+                                <h2>ПОДПИСАТЬСЯ</h2>
+                            </div>
+                            <div className="checkChannelContainer" onClick={verifyChannel}>
+                                <h2>ПРОВЕРИТЬ</h2>
+                            </div>
+                            </>
+                        )}
                     </div>
                 </div>
 
