@@ -259,7 +259,9 @@ const OnexGifts = () => {
                 </div>
 
                 <div className="footerContainer">
-                    <div className="footerTelegramChannel">
+                    <div className="footerTelegramChannel" onClick={() =>
+                        window.Telegram?.WebApp?.openTelegramLink("https://t.me/aimi_traffic")
+                    }>
                         <h2>AIMI TRAFFIC</h2>
                         <img src={TelegramIMG}/>
                     </div>
