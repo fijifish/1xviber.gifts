@@ -83,7 +83,7 @@ const OnexGifts = () => {
                         )}
                     </div>
                     <div className="nickNameContainer">
-                        <div className="nickNameContainerPart1">{loading ? "..." : displayName}</div>
+                        <div className="nickNameContainerPart1">{loading ? "Загрузка" : displayName}</div>
                         <div className="nickNameContainerPart2">{loading ? "" : displayUsername}</div>
                     </div>
                     <div className="mainBalanceContainer">
