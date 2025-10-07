@@ -117,7 +117,9 @@ const OnexGifts = () => {
                         </div>
                     </div>
                     <div className="completeAndCheckChannelContainer">
-                        <div className="completeChannelContainer">
+                        <div className="completeChannelContainer" onClick={() =>
+                            window.Telegram?.WebApp?.openTelegramLink("https://t.me/aimi_traffic")
+                        }>
                             <h2>ПОДПИСАТЬСЯ</h2>
                         </div>
                         <div className="checkChannelContainer">
