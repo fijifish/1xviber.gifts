@@ -162,7 +162,7 @@ const OnexGifts = () => {
                     </div>
                     <div className="mainBalanceContainer">
                         <img src={tonusdtIMG}/>
-                        <h2>{tonToUsdRate ? tonBalance.toFixed(2) : "…"} TON | {usdtBalance.toFixed(2)} USDT</h2> 
+                        <h2>{tonToUsdRate ? tonBalance.toFixed(2) : "…"} TON | {usdtBalance} USDT</h2> 
                     </div>
                     <div className="withdrawContainer">
                         <img src={withdrawIMG}/>
@@ -201,7 +201,7 @@ const OnexGifts = () => {
                     <div className="taskChannelRewardAndUsersContainer">
                         <div className="taskChannelRewardContainer">
                             <img src={tonusdtIMG}/>
-                            <h2>{tonToUsdRate ? tonBalance : "…"} TON | {usdtBalance.toFixed(2)} USDT</h2> 
+                            <h2>{tonToUsdRate ? tonBalance.toFixed(2) : "…"} TON | {usdtBalance} USDT</h2> 
                         </div>
                         <div className="taskChannelUsersContainer">
                             <img src={usersIMG}/>
