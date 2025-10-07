@@ -171,7 +171,7 @@ const OnexGifts = () => {
                         <div className="completeAndCheckChannelContainer">
                         {taskDone ? (
                             // ✅ вариант «после выполнения»
-                            <div className="taskCompletedContainer">
+                            <div className="taskChannelCompletedContainer">
                                 <h2>ВЫПОЛНЕНО</h2>
                             </div>
                         ) : (
