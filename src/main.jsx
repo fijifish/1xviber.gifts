@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { TonConnectUIProvider } from "@tonconnect/ui-react";
 import App from "./App.jsx";
+import { UserProvider } from "./UserContext.jsx";
 
 console.log("🚀 React загружается...");
 
@@ -16,11 +17,13 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
+    <UserProvider>
     <TonConnectUIProvider manifestUrl="https://raw.githubusercontent.com/octiesdev/viber1x-tonconnect/refs/heads/main/viber1x"> 
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </TonConnectUIProvider>
+    </UserProvider>
   </React.StrictMode>
 );
 

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Main.css";
+import { useUser } from "../UserContext";
+
 import withdrawIMG from "../assets/withdrawIcon.png";
 import refferalsIMG from "../assets/refferalsIcon.png";
 import tonusdtIMG from "../assets/tonusdtIcon.png";
@@ -11,8 +13,22 @@ import MostbetIMG from "../assets/MostbetIcon.png";
 import TelegramIMG from "../assets/telegramIcon.png";
 import SupportIMG from "../assets/supportIcon.png";
 
+const openTG = (url) => {
+  const tg = window?.Telegram?.WebApp;
+  if (tg?.openTelegramLink) tg.openTelegramLink(url);
+  else window.open(url, "_blank", "noopener");
+};
+
 
 const OnexGifts = () => {
+
+    const { user, loading } = useUser();
+    const telegramId = user?.telegramId;
+    const displayName = user?.firstName || user?.username || (telegramId ? `id${telegramId}` : "User");
+    const displayUsername = user?.username ? `@${user.username}` : (telegramId ? `id${telegramId}` : "");
+    const initials = (user?.firstName || user?.username || String(telegramId || "U"))
+    .slice(0, 2)
+    .toUpperCase();
 
     const userLang = (window?.Telegram?.WebApp?.initDataUnsafe?.user?.language_code || navigator.language || "").toLowerCase();
     const isRussianLang = ["ru", "uk", "be", "kk", "uz", "ky", "tt"].some((code) => userLang.startsWith(code));
@@ -61,12 +77,8 @@ const OnexGifts = () => {
                         </div>
                     </div>
                     <div className="nickNameContainer">
-                        <div className="nickNameContainerPart1">
-                            Gato Tuz
-                        </div>
-                        <div className="nickNameContainerPart2">
-                            @burmalda
-                        </div>
+                        <div className="nickNameContainerPart1">{loading ? "..." : displayName}</div>
+                        <div className="nickNameContainerPart2">{loading ? "" : displayUsername}</div>
                     </div>
                     <div className="mainBalanceContainer">
                         <img src={tonusdtIMG}/>
@@ -117,9 +129,7 @@ const OnexGifts = () => {
                         </div>
                     </div>
                     <div className="completeAndCheckChannelContainer">
-                        <div className="completeChannelContainer" onClick={() =>
-                            window.Telegram?.WebApp?.openTelegramLink("https://t.me/aimi_traffic")
-                        }>
+                        <div className="completeChannelContainer" onClick={() => openTG("https://t.me/aimi_traffic")}>
                             <h2>ПОДПИСАТЬСЯ</h2>
                         </div>
                         <div className="checkChannelContainer">
