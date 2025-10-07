@@ -149,7 +149,9 @@ const OnexGifts = () => {
                             Сделай депозит 5$
                         </div>
                         <div class="bodyTextChannelNameContainer">
-                            AIMI Traffic даёт возможность зарабатывать<br/>10 USDT за живого подписчика с СНГ региона.<br/>Мы делимся наградой с Вами 50/50.
+                            С помощью партнёрской программы 1WIN<br />
+                            в формате CPA, мы отдаём 33% наград<br />
+                            пользователям, которые внесли депозит.
                         </div>
                     </div>
                     <div className="taskChannelRewardAndUsersContainer">
@@ -229,7 +231,7 @@ const OnexGifts = () => {
                             Сделай депозит 5$
                         </div>
                         <div class="bodyTextChannelNameContainer">
-                            С помощью партнёрства с партнёрской программой 1WIN<br />
+                            С помощью партнёрской программы 1WIN<br />
                             в формате CPA, мы отдаём 33% наград<br />
                             пользователям, которые внесли депозит.
                         </div>
