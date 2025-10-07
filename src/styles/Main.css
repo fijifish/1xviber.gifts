@@ -43,49 +43,49 @@ body {
 }
 
 .mainHomePageContainer {
-    height: 100%; /* ✅ не 100%, иначе выйдет за пределы */
+    height: 100%; 
     width: 100%;
-    overflow-y: auto;  /* ✅ включает вертикальный скролл */
+    overflow-y: auto;  
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
     background-color: black;
-    min-height: 0;              /* ← важно для корректного скролла внутри flex */
+    min-height: 0;          
 }
 
 .headerContainer {
-  position: relative;         /* не absolute, чтобы корректно работать во флексе */
-  height: 8.37vh;             /* фиксируем высоту от экрана, стабильнее */
+  position: relative;    
+  height: 8.37vh;             
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;        /* вертикальное выравнивание */
-  flex: 0 0 8.37vh;           /* ← фиксируем высоту как flex-basis, запрещаем shrink */
+  align-items: center;    
+  flex: 0 0 8.37vh;           
 }
 
 .circleInHeaderContainer {
-  position: static;           /* участвует в флекс-потоке */
-  height: 58.82%;                /* круг зависит от высоты хедера */
-  width: auto;                /* ширину определит aspect-ratio у дочернего элемента */
-  margin-left: 3.1vw;                  /* отступы больше не нужны */
+  position: static;       
+  height: 58.82%;       
+  width: auto;               
+  margin-left: 3.1vw;                  
 }
 
 .circleName {
 
-  height: 100%;          /* высота */
-  aspect-ratio: 1/1;         /* ширина */
-  background-color: #5736BB; /* цвет */
-  border-radius: 50%;    /* делает форму круглой */
+  height: 100%;       
+  aspect-ratio: 1/1;         
+  background-color: #5736BB; 
+  border-radius: 50%;  
 
   color: white;
   display: flex; 
   align-items: center;
   justify-content: center;
-  font-family: 'Inter', sans-serif;  /* ← вот здесь */
-  font-weight: 400;                  /* Regular */
+  font-family: 'Inter', sans-serif;  
+  font-weight: 400;                 
   font-size: 1.6vh;
 }
 
