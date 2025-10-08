@@ -290,3 +290,16 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.AddressWalletContainer {
+  width: 86%;
+  height: 35.1%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  border: .17vh solid rgba(123, 123, 123, 0.6);
+  border-radius: 1.4vh;
+}
