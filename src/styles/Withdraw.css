@@ -401,7 +401,7 @@ body {
   padding-top: 1.8vh;
   padding-left: 3.3vh;
   padding-right: 3.3vh;
-  padding-bottom: 3.2vh;
+  padding-bottom: 2.8vh;
 
   border-radius: 2.46vh;
 
@@ -409,7 +409,7 @@ body {
 
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 
 }
 
