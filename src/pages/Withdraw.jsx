@@ -129,6 +129,10 @@ export default function Withdraw() {
                     <div class="line-right"></div>
                 </div>
 
+                <div class="mainOrderContainer">
+
+                </div>
+
             </div>
         </div>
     </div>
