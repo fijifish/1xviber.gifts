@@ -61,10 +61,9 @@ export default function Withdraw() {
     useEffect(() => {
     const tg = window?.Telegram?.WebApp;
     const onBack = () => {
-        // вариант 1: назад по истории
+        
         navigate(-1);
-        // вариант 2 (если хочешь всегда на главную):
-        // navigate("/");
+
     };
 
     tg?.BackButton?.show();
