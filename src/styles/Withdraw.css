@@ -495,21 +495,21 @@ body {
 }
 
 .infoOrderWalletContainer { 
-  width: 68%;
+  width: 80%;
   height: 16%;
 
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 0.8vh;
+  gap: 0.9vh;
 }
 
 .infoOrderWalletContainer h2 { 
   color: #D5D5D5;
   font-family: 'Inter', sans-serif;
   font-weight: 600;  
-  font-size: 1.3vh;
+  font-size: 1.28vh;
 }
 
 .infoOrderWalletContainer img { 
