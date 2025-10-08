@@ -9,6 +9,7 @@ const API_BASE = import.meta.env.VITE_API_BASE || "";
 import withdrawIMG from "../assets/withdrawIcon.png";
 import refferalsIMG from "../assets/refferalsIcon.png";
 import tonusdtIMG from "../assets/tonusdtIcon.png";
+import usdtIMG from "../assets/usdtIcon.png";
 import TelegramIMG from "../assets/telegramIcon.png";
 import SupportIMG from "../assets/supportIcon.png";
 
@@ -132,7 +133,11 @@ export default function Withdraw() {
                 <div class="mainOrderContainer">
                     <div class="textWithdrawAndAmountContainer">
                         <div class="textWithdrawAndAmountContainerPart1">
-
+                            <h2>ВЫВОД</h2>
+                            <div class="textAmountAndLogoContainer">
+                                <h2>10 USDT</h2>
+                                <img src={usdtIMG}/>
+                            </div>
                         </div>
                         <div class="textWithdrawAndAmountContainerPart2">
                             
