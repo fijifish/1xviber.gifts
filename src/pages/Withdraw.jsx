@@ -119,8 +119,16 @@ export default function Withdraw() {
                         </div>
                     </div>
                     <div class="AddressWalletContainer">
-
+                        
                     </div>
+                </div>
+
+                <div class="textOrderHistory-with-linesContainer">
+                    <div class="line-left"></div>
+                        <h2>
+                            История заявок на вывод
+                        </h2>
+                    <div class="line-right"></div>
                 </div>
 
             </div>
