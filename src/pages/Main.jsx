@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/Main.css";
 import { useUser } from "../UserContext";
 
@@ -23,6 +24,8 @@ const openTG = (url) => {
 
 
 const OnexGifts = () => {
+
+    const navigate = useNavigate();
 
     const { user, loading, refetchUser, updateUser } = useUser();
 
@@ -164,8 +167,8 @@ const OnexGifts = () => {
                         <img src={tonusdtIMG}/>
                         <h2>{tonToUsdRate ? tonBalance.toFixed(2) : "…"} TON | {usdtBalance} USDT</h2> 
                     </div>
-                    <div className="withdrawContainer">
-                        <img src={withdrawIMG}/>
+                    <div className="withdrawContainer" onClick={() => navigate("/withdraw")} role="button">
+                        <img src={withdrawIMG} alt="withdraw" />
                     </div>
                     <div className="refferalsContainer">
                         <img src={refferalsIMG}/>
