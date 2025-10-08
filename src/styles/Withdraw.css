@@ -276,3 +276,17 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.WirthdrawButton {
+  width: 65%;
+  height: 97%;
+
+  border: .17vh solid rgba(123, 123, 123, 0.2);
+  background: rgba(217, 217, 217, 0.1);
+  border-radius: 1.4vh;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
