@@ -130,6 +130,14 @@ export default function Withdraw() {
                 </div>
 
                 <div class="mainOrderContainer">
+                    <div class="textWithdrawAndAmountContainer">
+                        <div class="textWithdrawAndAmountContainerPart1">
+
+                        </div>
+                        <div class="textWithdrawAndAmountContainerPart2">
+                            
+                        </div>
+                    </div>
 
                 </div>
 
