@@ -115,7 +115,9 @@ export default function Withdraw() {
                 </div>
 
                 <div class="mainWithdrawContainer">
+                    <div class="AmountAndWithdrawContainer">
 
+                    </div>
                 </div>
 
             </div>
