@@ -114,6 +114,10 @@ export default function Withdraw() {
                     <div class="line-right"></div>
                 </div>
 
+                <div class="mainWithdrawContainer">
+
+                </div>
+
             </div>
         </div>
     </div>
