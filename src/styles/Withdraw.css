@@ -485,13 +485,12 @@ body {
 }
 
 .lineOrder-right {
-  width: 62vw;
+  width: 64vw;
   height: .2vh;
   background:  rgba(123, 123, 123, 0.5);
   border-top-right-radius: 3vh;
   border-bottom-right-radius: 3vh;
 
   margin-top: .45vh;
-  margin-right: 3vw;
 }
 
