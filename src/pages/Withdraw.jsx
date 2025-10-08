@@ -115,7 +115,7 @@ export default function Withdraw() {
                             <h2>СУММА</h2>
                         </div>
                         <div class="WirthdrawButton">
-
+                            <h2>ВЫВЕСТИ</h2>
                         </div>
                     </div>
                     <div class="AddressWalletContainer">

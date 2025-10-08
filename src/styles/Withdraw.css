@@ -306,6 +306,13 @@ body {
   align-items: center;
 }
 
+.WirthdrawButton h2 {
+  color: rgba(123, 123, 123, 1);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;  
+  font-size: 1.7vh;
+}
+
 .AddressWalletContainer {
   width: 86%;
   height: 35.1%;
