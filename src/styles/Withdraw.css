@@ -517,5 +517,24 @@ body {
   height: 100%;
 }
 
+.infoTimeAndDataContainer { 
+  width: 100%;
+  height: 12%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.infoTimeAndDataContainer h2 { 
+  color: #D5D5D5;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;  
+  font-size: 1.2vh;
+}
+
+
+
 
 
