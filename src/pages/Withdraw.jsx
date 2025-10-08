@@ -10,6 +10,7 @@ import withdrawIMG from "../assets/withdrawIcon.png";
 import refferalsIMG from "../assets/refferalsIcon.png";
 import tonusdtIMG from "../assets/tonusdtIcon.png";
 import usdtIMG from "../assets/usdtIcon.png";
+import walletIMG from "../assets/walletIcon.png";
 import TelegramIMG from "../assets/telegramIcon.png";
 import SupportIMG from "../assets/supportIcon.png";
 
@@ -144,6 +145,11 @@ export default function Withdraw() {
                             <div class="lineOrder-right"></div>
                         </div>
                     </div>
+                    <div class="infoOrderWalletContainer">
+                        <img src={walletIMG}/>
+                        <h2>TFeB3GgLGWHEzK1S2VndNm49Eyajcdogat</h2>
+                    </div>
+
 
                 </div>
 

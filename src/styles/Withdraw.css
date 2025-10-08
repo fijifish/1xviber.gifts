@@ -494,3 +494,28 @@ body {
   margin-top: .45vh;
 }
 
+.infoOrderWalletContainer { 
+  width: 68%;
+  height: 16%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.8vh;
+}
+
+.infoOrderWalletContainer h2 { 
+  color: #D5D5D5;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;  
+  font-size: 1.3vh;
+}
+
+.infoOrderWalletContainer img { 
+  width: auto;
+  height: 100%;
+}
+
+
+
