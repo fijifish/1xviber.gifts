@@ -204,3 +204,29 @@ body {
   height: 55%;
   aspect-ratio: 1/1; 
 }
+
+.textWithdraw-with-linesContainer {
+  height: 2.46%;
+  width: 100%; 
+  margin-top: .6vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.line-left {
+  width: 9.5vw;
+  height: .25vh;
+  background: rgba(123, 123, 123, 0.5);
+  border-top-left-radius: 3vh;
+  border-bottom-left-radius: 3vh;
+}
+
+.line-right {
+  width: 9.5vw;
+  height: .25vh;
+  background:  rgba(123, 123, 123, 0.5);
+  border-top-right-radius: 3vh;
+  border-bottom-right-radius: 3vh;
+}

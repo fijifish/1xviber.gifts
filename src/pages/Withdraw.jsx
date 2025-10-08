@@ -87,6 +87,13 @@ export default function Withdraw() {
                         <img src={refferalsIMG}/>
                     </div>
                 </div>
+
+                <div class="textWithdraw-with-linesContainer">
+                    <div class="line-left"></div>
+                        <h2>Обработка депозита может занимать до нескольких минут.</h2>
+                    <div class="line-right"></div>
+                </div>
+
             </div>
         </div>
     </div>
