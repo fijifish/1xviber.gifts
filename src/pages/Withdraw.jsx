@@ -147,7 +147,11 @@ export default function Withdraw() {
                     </div>
                     <div class="infoOrderWalletContainer">
                         <img src={walletIMG}/>
-                        <h2>TFeB3GgLGWHEzK1S2VndNm49Eyajcdogat</h2>
+                        <h2>
+                            <span className="accent">TFeB3</span>
+                            GgLGWHEzK1S2VndNm49Eyajc
+                            <span className="accent">dogat</span>
+                        </h2>
                     </div>
                     <div class="infoTimeAndDataContainer">
                         <h2>Дата: 08.10.2025г.</h2>
