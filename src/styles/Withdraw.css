@@ -253,3 +253,12 @@ body {
   justify-content: space-around;
 
 }
+
+.AmountAndWithdrawContainer {
+  width: 86%;
+  height: 26.5%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
