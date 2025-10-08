@@ -102,10 +102,7 @@ export default function Withdraw() {
 
                 <div class="textWithdraw-with-linesContainer">
                     <div class="line-left"></div>
-                        <h2>
-                            Обработка депозита может занимать<br/>
-                            до нескольких минут
-                        </h2>
+                        <h2>Обработка депозита может занимать<br/>до нескольких минут</h2>
                     <div class="line-right"></div>
                 </div>
 
@@ -119,19 +116,16 @@ export default function Withdraw() {
                         </div>
                     </div>
                     <div class="AddressWalletContainer">
+                        <h2>Укажите адрес кошелька</h2>
                         <div class="AddressWalletNetworkContainer">
-                            <h2>
-                                TRC20
-                            </h2>
+                            <h2>TRC20</h2>
                         </div>
                     </div>
                 </div>
 
                 <div class="textOrderHistory-with-linesContainer">
                     <div class="line-left"></div>
-                        <h2>
-                            История заявок на вывод
-                        </h2>
+                        <h2>История заявок на вывод</h2>
                     <div class="line-right"></div>
                 </div>
 

@@ -326,6 +326,13 @@ body {
   border-radius: 1.4vh;
 }
 
+.AddressWalletContainer h2{
+  color: rgba(123, 123, 123, 1);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;  
+  font-size: 1.7vh;
+}
+
 .AddressWalletNetworkContainer {
   width: 20%;
   height: 61%;
