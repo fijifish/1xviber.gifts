@@ -326,6 +326,20 @@ body {
   border-radius: 1.4vh;
 }
 
+.AddressWalletNetworkContainer {
+  width: 20%;
+  height: 61%;
+
+  border: .17vh solid rgba(123, 123, 123, 0.6);
+  background: rgba(217, 217, 217, 0.1);
+  border-radius: 1.4vh;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .textOrderHistory-with-linesContainer {
   height: 2.46%;
   width: 100%; 
