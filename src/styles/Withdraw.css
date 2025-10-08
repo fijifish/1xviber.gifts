@@ -317,6 +317,11 @@ body {
   width: 88%;
   height: 35.1%;
 
+  padding-top: 0vh;
+  padding-left: 2vh;
+  padding-right: 2vh;
+  padding-bottom: 0vh;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
