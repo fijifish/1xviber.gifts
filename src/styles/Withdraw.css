@@ -215,6 +215,13 @@ body {
   justify-content: space-evenly;
 }
 
+.textWithdraw-with-linesContainer h2 {
+  color: rgba(123, 123, 123, 1);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;  
+  font-size: 1.7vh;
+}
+
 .line-left {
   width: 9.5vw;
   height: .25vh;
@@ -230,3 +237,4 @@ body {
   border-top-right-radius: 3vh;
   border-bottom-right-radius: 3vh;
 }
+
