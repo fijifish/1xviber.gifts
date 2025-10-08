@@ -239,7 +239,7 @@ body {
 }
 
 .mainWithdrawContainer {
-  width: 86%;
+  width: 84%;
   height: 15%;
   margin-top: 3.4vh;
   padding-top: 2.8vh;
@@ -263,7 +263,7 @@ body {
 }
 
 .AmountAndWithdrawContainer {
-  width: 84%;
+  width: 86%;
   height: 26.5%;
 
   display: flex;
