@@ -332,7 +332,7 @@ body {
 
   border: .17vh solid rgba(123, 123, 123, 0.6);
   background: rgba(217, 217, 217, 0.1);
-  border-radius: 1.4vh;
+  border-radius: 1vh;
 
   display: flex;
   flex-direction: row;
