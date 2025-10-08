@@ -285,6 +285,13 @@ body {
   align-items: center;
 }
 
+.AmountContainer h2 {
+  color: rgba(123, 123, 123, 1);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;  
+  font-size: 1.7vh;
+}
+
 .WirthdrawButton {
   width: 65%;
   height: 97%;

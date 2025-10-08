@@ -104,7 +104,7 @@ export default function Withdraw() {
                     <div class="line-left"></div>
                         <h2>
                             Обработка депозита может занимать<br/>
-                            до нескольких минут.
+                            до нескольких минут
                         </h2>
                     <div class="line-right"></div>
                 </div>
@@ -112,7 +112,7 @@ export default function Withdraw() {
                 <div class="mainWithdrawContainer">
                     <div class="AmountAndWithdrawContainer">
                         <div class="AmountContainer">
-
+                            <h2>СУММА</h2>
                         </div>
                         <div class="WirthdrawButton">
 
