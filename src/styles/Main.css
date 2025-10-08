@@ -14,45 +14,45 @@ body {
 }
 
 .App {
-    margin: 0;
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-    background: #000000;
-    color: white;
-    font-family: Muller;
-    font-size: 2.2vh ;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  background: #000000;
+  color: white;
+  font-family: Muller;
+  font-size: 2.2vh ;
 }
 
 .App p{
-    margin: 0;
+  margin: 0;
 }
 
 .Main_Window{
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    flex-direction: column;
-    top: 0;
-    color: white;
-    z-index: 1001;
-    animation: fade-in 0.3s forwards;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  flex-direction: column;
+  top: 0;
+  color: white;
+  z-index: 1001;
+  animation: fade-in 0.3s forwards;
 }
 
 .mainHomePageContainer {
-    height: 100%; 
-    width: 100%;
-    overflow-y: auto;  
+  height: 100%; 
+  width: 100%;
+  overflow-y: auto;  
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    background-color: black;
-    min-height: 0;          
+  background-color: black;
+  min-height: 0;          
 }
 
 .headerContainer {
@@ -178,9 +178,9 @@ body {
 }
 
 .withdrawContainer img {
-    height: 55%;
-    aspect-ratio: 1/1; 
-    margin-top: 0.15;
+  height: 55%;
+  aspect-ratio: 1/1; 
+  margin-top: 0.15;
 }
 
 .refferalsContainer {
@@ -201,8 +201,8 @@ body {
 }
 
 .refferalsContainer img {
-    height: 55%;
-    aspect-ratio: 1/1; 
+  height: 55%;
+  aspect-ratio: 1/1; 
 }
 
 .text5USDT-with-linesContainer {
