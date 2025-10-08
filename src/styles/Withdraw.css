@@ -461,6 +461,13 @@ body {
   font-size: 1.7vh;
 }
 
+.textAmountAndLogoContainer h2 .accent { 
+  color: #C1C1C1;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;  
+  font-size: 1.7vh;
+}
+
 .textAmountAndLogoContainer img { 
     width: auto;
     height: 100%;

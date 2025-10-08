@@ -136,7 +136,9 @@ export default function Withdraw() {
                         <div class="textWithdrawAndAmountContainerPart1">
                             <h2>ВЫВОД</h2>
                             <div class="textAmountAndLogoContainer">
-                                <h2>10 USDT</h2>
+                                <h2>
+                                    <span className="accent">10</span>USDT
+                                </h2>
                                 <img src={usdtIMG}/>
                             </div>
                         </div>
