@@ -119,7 +119,11 @@ export default function Withdraw() {
                         </div>
                     </div>
                     <div class="AddressWalletContainer">
-                        
+                        <div class="AddressWalletNetworkContainer">
+                            <h2>
+                                TRC20
+                            </h2>
+                        </div>
                     </div>
                 </div>
 
