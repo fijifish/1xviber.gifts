@@ -58,6 +58,24 @@ export default function Withdraw() {
     .slice(0,2)
     .toUpperCase();
 
+    useEffect(() => {
+    const tg = window?.Telegram?.WebApp;
+    const onBack = () => {
+        // вариант 1: назад по истории
+        navigate(-1);
+        // вариант 2 (если хочешь всегда на главную):
+        // navigate("/");
+    };
+
+    tg?.BackButton?.show();
+    tg?.BackButton?.onClick(onBack);
+
+    return () => {
+        tg?.BackButton?.offClick(onBack);
+        tg?.BackButton?.hide();
+    };
+    }, [navigate]);
+
   return (
     <div className="App">
         <div className="Main_Window">   
