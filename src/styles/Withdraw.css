@@ -242,7 +242,10 @@ body {
   width: 86%;
   height: 15%;
   margin-top: 3.4vh;
-  padding: 2.8vh;
+  padding-top: 2.8vh;
+  padding-left: 2.8vh;
+  padding-right: 2.8vh;
+  padding-bottom: 3.2vh;
 
   border-radius: 2.46vh;
 
