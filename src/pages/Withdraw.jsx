@@ -140,7 +140,7 @@ export default function Withdraw() {
                             </div>
                         </div>
                         <div class="textWithdrawAndAmountContainerPart2">
-                            
+                            <h2>в обработке</h2>
                         </div>
                     </div>
 
