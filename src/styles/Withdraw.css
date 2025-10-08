@@ -475,7 +475,7 @@ body {
 }
 
 .textWithdrawAndAmountContainerPart2 h2 { 
-  color: rgba(123, 123, 123, 1);
+  color: #D5D5D5;
   font-family: 'Inter', sans-serif;
   font-weight: 400;  
   font-size: 1.1vh;
