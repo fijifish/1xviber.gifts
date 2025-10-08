@@ -482,3 +482,11 @@ body {
   margin-left: .12vh;
 }
 
+.lineOrder-right {
+  width: 80vw;
+  height: .25vh;
+  background:  rgba(123, 123, 123, 0.5);
+  border-top-right-radius: 3vh;
+  border-bottom-right-radius: 3vh;
+}
+
