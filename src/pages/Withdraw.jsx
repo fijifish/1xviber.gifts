@@ -9,11 +9,6 @@ const API_BASE = import.meta.env.VITE_API_BASE || "";
 import withdrawIMG from "../assets/withdrawIcon.png";
 import refferalsIMG from "../assets/refferalsIcon.png";
 import tonusdtIMG from "../assets/tonusdtIcon.png";
-import channelIMG from "../assets/channelIcon.png";
-import usersIMG from "../assets/usersIcon.png";
-import OneWinIMG from "../assets/OneWinIcon.png";
-import JettonIMG from "../assets/JettonIcon.png";
-import MostbetIMG from "../assets/MostbetIcon.png";
 import TelegramIMG from "../assets/telegramIcon.png";
 import SupportIMG from "../assets/supportIcon.png";
 
