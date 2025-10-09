@@ -52,6 +52,12 @@ body {
   align-items: center;
 
   background-color: black;
+
+  background-image: url("../assets/twirlBackground.png");
+  background-repeat: no-repeat;
+  background-position: right 2vh bottom 0;
+  background-size: auto 100%;
+
   min-height: 0;          
 }
 
