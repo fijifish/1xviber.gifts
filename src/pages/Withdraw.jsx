@@ -18,6 +18,9 @@ export default function Withdraw() {
 
     const navigate = useNavigate();
 
+    const orderRef = useRef(null);
+    const twirlRef = useRef(null);
+
     const { user, loading, refetchUser, updateUser } = useUser();
 
     const [tonToUsdRate, setTonToUsdRate] = useState(null); // how many USDT for 1 TON
@@ -34,6 +37,49 @@ export default function Withdraw() {
         }
       };
       fetchTonToUsdRate();
+    }, []);
+
+    useEffect(() => {
+        const sc    = document.querySelector(".mainHomePageContainer"); // твой скролл-контейнер
+        const order = orderRef.current;
+        const twirl = twirlRef.current;
+        if (!sc || !order || !twirl) return;
+
+        let raf = 0;
+
+        const update = () => {
+            raf = 0;
+            const vpH = sc.clientHeight || window.innerHeight;                 // высота видимой области
+            const H   = twirl.getBoundingClientRect().height;                  // высота спирали
+            const orderBottom = order.getBoundingClientRect().bottom;          // низ блока заказов (в координатах окна)
+
+            // При fixed bottom:0 top спирали = vpH - H.
+            // Чтобы верх спирали совпал с orderBottom, двигаем вниз на разницу:
+            const shift = orderBottom - (vpH - H);
+            const y = Math.max(0, shift);                                      // не поднимаем выше низа экрана
+
+            twirl.style.transform = `translateY(${y}px)`;
+        };
+
+        const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+        const onResize = () => update();
+
+        // если высота карточек меняется динамически
+        const ro = new ResizeObserver(update);
+        ro.observe(order);
+
+        update();
+        sc.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onResize);
+        window.addEventListener("orientationchange", onResize);
+
+        return () => {
+            sc.removeEventListener("scroll", onScroll);
+            window.removeEventListener("resize", onResize);
+            window.removeEventListener("orientationchange", onResize);
+            ro.disconnect();
+            if (raf) cancelAnimationFrame(raf);
+        };
     }, []);
 
     const usdToTon = (usd) => (tonToUsdRate ? Number(usd) / tonToUsdRate : 0);
@@ -108,7 +154,7 @@ export default function Withdraw() {
                     <div class="line-right"></div>
                 </div>
 
-                <div class="mainWithdrawContainer">
+                <div class="mainWithdrawContainer" ref={orderRef}>
                     <div class="AmountAndWithdrawContainer">
                         <div class="AmountContainer">
                             <h2>СУММА</h2>
@@ -124,6 +170,8 @@ export default function Withdraw() {
                         </div>
                     </div>
                 </div>
+
+                <div className="twirlFixed" ref={twirlRef} aria-hidden="true" />
 
                 <div class="textOrderHistory-with-linesContainer">
                     <div class="line-left"></div>

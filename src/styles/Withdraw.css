@@ -53,10 +53,10 @@ body {
 
   background-color: black;
 
-  background-image: url("../assets/twirlBackground.png");
+  /* background-image: url("../assets/twirlBackground.png");
   background-repeat: no-repeat;
   background-position: right 2vh bottom 0;
-  background-size: auto 100%;
+  background-size: auto 100%; */
 
   min-height: 0;          
 }
@@ -558,3 +558,18 @@ body {
 
 
 
+.twirlFixed{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;                              /* низ ВСЕГДА у низа экрана */
+  height: 78vh;                           /* подгони: min(90vh, 720px) и т.п. */
+  background: url("../assets/withdrawContainerImage.png")
+             no-repeat left 0 bottom / auto 62.2%;
+  pointer-events: none;
+  z-index: 0;
+  transform: translateY(0);               /* будем двигать JS-ом */
+}
+
+/* чтобы контент был поверх спирали */
+.mainHomePageContainer > * { position: relative; z-index: 1; }
