@@ -159,8 +159,126 @@ export default function Withdraw() {
                         <h2>Дата: 08.10.2025г.</h2>
                         <h2>Время: 10:53</h2>
                     </div>
+                </div>
 
+                <div class="mainOrderContainer">
+                    <div class="textWithdrawAndAmountContainer">
+                        <div class="textWithdrawAndAmountContainerPart1">
+                            <h2>ВЫВОД</h2>
+                            <div class="textAmountAndLogoContainer">
+                                <h2>
+                                    <span className="accent">10</span> USDT
+                                </h2>
+                                <img src={usdtIMG}/>
+                            </div>
+                        </div>
+                        <div class="textWithdrawAndAmountContainerPart2">
+                            <h2>в обработке</h2>
+                            <div class="lineOrder-right"></div>
+                        </div>
+                    </div>
+                    <div class="infoOrderWalletContainer">
+                        <img src={walletIMG}/>
+                        <h2>
+                            <span className="accent">TFeB3</span>
+                            GgLGWHEzK1S2VndNm49Eyajc
+                            <span className="accent">dogat</span>
+                        </h2>
+                    </div>
+                    <div class="infoTimeAndDataContainer">
+                        <h2>Дата: 08.10.2025г.</h2>
+                        <h2>Время: 10:53</h2>
+                    </div>
+                </div>
 
+                <div class="mainOrderContainer">
+                    <div class="textWithdrawAndAmountContainer">
+                        <div class="textWithdrawAndAmountContainerPart1">
+                            <h2>ВЫВОД</h2>
+                            <div class="textAmountAndLogoContainer">
+                                <h2>
+                                    <span className="accent">10</span> USDT
+                                </h2>
+                                <img src={usdtIMG}/>
+                            </div>
+                        </div>
+                        <div class="textWithdrawAndAmountContainerPart2">
+                            <h2>в обработке</h2>
+                            <div class="lineOrder-right"></div>
+                        </div>
+                    </div>
+                    <div class="infoOrderWalletContainer">
+                        <img src={walletIMG}/>
+                        <h2>
+                            <span className="accent">TFeB3</span>
+                            GgLGWHEzK1S2VndNm49Eyajc
+                            <span className="accent">dogat</span>
+                        </h2>
+                    </div>
+                    <div class="infoTimeAndDataContainer">
+                        <h2>Дата: 08.10.2025г.</h2>
+                        <h2>Время: 10:53</h2>
+                    </div>
+                </div>
+
+                <div class="mainOrderContainer">
+                    <div class="textWithdrawAndAmountContainer">
+                        <div class="textWithdrawAndAmountContainerPart1">
+                            <h2>ВЫВОД</h2>
+                            <div class="textAmountAndLogoContainer">
+                                <h2>
+                                    <span className="accent">10</span> USDT
+                                </h2>
+                                <img src={usdtIMG}/>
+                            </div>
+                        </div>
+                        <div class="textWithdrawAndAmountContainerPart2">
+                            <h2>в обработке</h2>
+                            <div class="lineOrder-right"></div>
+                        </div>
+                    </div>
+                    <div class="infoOrderWalletContainer">
+                        <img src={walletIMG}/>
+                        <h2>
+                            <span className="accent">TFeB3</span>
+                            GgLGWHEzK1S2VndNm49Eyajc
+                            <span className="accent">dogat</span>
+                        </h2>
+                    </div>
+                    <div class="infoTimeAndDataContainer">
+                        <h2>Дата: 08.10.2025г.</h2>
+                        <h2>Время: 10:53</h2>
+                    </div>
+                </div>
+
+                <div class="mainOrderContainer">
+                    <div class="textWithdrawAndAmountContainer">
+                        <div class="textWithdrawAndAmountContainerPart1">
+                            <h2>ВЫВОД</h2>
+                            <div class="textAmountAndLogoContainer">
+                                <h2>
+                                    <span className="accent">10</span> USDT
+                                </h2>
+                                <img src={usdtIMG}/>
+                            </div>
+                        </div>
+                        <div class="textWithdrawAndAmountContainerPart2">
+                            <h2>в обработке</h2>
+                            <div class="lineOrder-right"></div>
+                        </div>
+                    </div>
+                    <div class="infoOrderWalletContainer">
+                        <img src={walletIMG}/>
+                        <h2>
+                            <span className="accent">TFeB3</span>
+                            GgLGWHEzK1S2VndNm49Eyajc
+                            <span className="accent">dogat</span>
+                        </h2>
+                    </div>
+                    <div class="infoTimeAndDataContainer">
+                        <h2>Дата: 08.10.2025г.</h2>
+                        <h2>Время: 10:53</h2>
+                    </div>
                 </div>
 
             </div>
