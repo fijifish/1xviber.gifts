@@ -268,7 +268,7 @@ export default function Withdraw() {
                         <h2>Время: 10:53</h2>
                     </div>
                 </div>
-
+                
                 <div className="footerWithdrawContainer">
                     <div className="footerTelegramChannel" onClick={() =>
                         window.Telegram?.WebApp?.openTelegramLink("https://t.me/aimi_traffic")
