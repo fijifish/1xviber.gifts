@@ -161,7 +161,7 @@ export default function Withdraw() {
                     </div>
                 </div>
 
-                <div class="mainOrderContainer">
+                <div class="mainSecondOrderContainer">
                     <div class="textWithdrawAndAmountContainer">
                         <div class="textWithdrawAndAmountContainerPart1">
                             <h2>ВЫВОД</h2>
@@ -191,7 +191,7 @@ export default function Withdraw() {
                     </div>
                 </div>
 
-                <div class="mainOrderContainer">
+                <div class="mainLastOrderContainer">
                     <div class="textWithdrawAndAmountContainer">
                         <div class="textWithdrawAndAmountContainerPart1">
                             <h2>ВЫВОД</h2>
@@ -221,63 +221,18 @@ export default function Withdraw() {
                     </div>
                 </div>
 
-                <div class="mainOrderContainer">
-                    <div class="textWithdrawAndAmountContainer">
-                        <div class="textWithdrawAndAmountContainerPart1">
-                            <h2>ВЫВОД</h2>
-                            <div class="textAmountAndLogoContainer">
-                                <h2>
-                                    <span className="accent">10</span> USDT
-                                </h2>
-                                <img src={usdtIMG}/>
-                            </div>
-                        </div>
-                        <div class="textWithdrawAndAmountContainerPart2">
-                            <h2>в обработке</h2>
-                            <div class="lineOrder-right"></div>
-                        </div>
+                <div className="footerContainer">
+                    <div className="footerTelegramChannel" onClick={() =>
+                        window.Telegram?.WebApp?.openTelegramLink("https://t.me/aimi_traffic")
+                    }>
+                        <h2>AIMI TRAFFIC</h2>
+                        <img src={TelegramIMG}/>
                     </div>
-                    <div class="infoOrderWalletContainer">
-                        <img src={walletIMG}/>
-                        <h2>
-                            <span className="accent">TFeB3</span>
-                            GgLGWHEzK1S2VndNm49Eyajc
-                            <span className="accent">dogat</span>
-                        </h2>
-                    </div>
-                    <div class="infoTimeAndDataContainer">
-                        <h2>Дата: 08.10.2025г.</h2>
-                        <h2>Время: 10:53</h2>
-                    </div>
-                </div>
-
-                <div class="mainOrderContainer">
-                    <div class="textWithdrawAndAmountContainer">
-                        <div class="textWithdrawAndAmountContainerPart1">
-                            <h2>ВЫВОД</h2>
-                            <div class="textAmountAndLogoContainer">
-                                <h2>
-                                    <span className="accent">10</span> USDT
-                                </h2>
-                                <img src={usdtIMG}/>
-                            </div>
-                        </div>
-                        <div class="textWithdrawAndAmountContainerPart2">
-                            <h2>в обработке</h2>
-                            <div class="lineOrder-right"></div>
-                        </div>
-                    </div>
-                    <div class="infoOrderWalletContainer">
-                        <img src={walletIMG}/>
-                        <h2>
-                            <span className="accent">TFeB3</span>
-                            GgLGWHEzK1S2VndNm49Eyajc
-                            <span className="accent">dogat</span>
-                        </h2>
-                    </div>
-                    <div class="infoTimeAndDataContainer">
-                        <h2>Дата: 08.10.2025г.</h2>
-                        <h2>Время: 10:53</h2>
+                    <div className="footerSupportButton" onClick={() =>
+                        window.Telegram?.WebApp?.openTelegramLink("https://t.me/gostcust")
+                    }>
+                        <h2>Поддержка 24/7</h2>
+                        <img src={SupportIMG} />
                     </div>
                 </div>
 

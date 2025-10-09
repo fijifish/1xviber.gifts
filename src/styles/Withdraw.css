@@ -554,6 +554,118 @@ body {
   font-size: 1.2vh;
 }
 
+.mainSecondOrderContainer {
+  width: 82%;
+  height: 11%;
+
+  margin-top: 1.6vh;
+
+  padding-top: 1.8vh;
+  padding-left: 3.3vh;
+  padding-right: 3.3vh;
+  padding-bottom: 2.8vh;
+
+  border-radius: 2.46vh;
+
+  background-color: rgba(178, 174, 174, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.mainLastOrderContainer {
+  width: 82%;
+  height: 11%;
+
+  margin-top: 1.6vh;
+  margin-bottom: 3.4vh;
+
+
+  padding-top: 1.8vh;
+  padding-left: 3.3vh;
+  padding-right: 3.3vh;
+  padding-bottom: 2.8vh;
+
+  border-radius: 2.46vh;
+
+  background-color: rgba(178, 174, 174, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.footerContainer {
+    width: 85%;
+    height: 3%;
+
+    margin-top: 1.5vh;
+    margin-bottom: 3vh;
+    margin-left: 0vh;
+    margin-right: 0vh;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.footerTelegramChannel {
+    width: 27%;
+    height: 100%;
+
+    text-align: start;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: .5vh;
+}
+
+.footerTelegramChannel h2 {
+    color: #818181;
+    font-family: 'Inter', sans-serif;
+    font-weight: 330;  
+    font-size: 1.25vh;
+}
+
+.footerTelegramChannel img {
+    width: auto;
+    height: 50%;
+}
+
+.footerSupportButton {
+    width: 30%;
+    height: 100%;
+
+    text-align: start;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: .5vh;
+}
+
+.footerSupportButton h2 {
+    color: #818181;
+    font-family: 'Inter', sans-serif;
+    font-weight: 330;  
+    font-size: 1.25vh;
+}
+
+.footerSupportButton img {
+    width: auto;
+    height: 50%;
+}
 
 
 
