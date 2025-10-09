@@ -15,6 +15,7 @@ import JettonIMG from "../assets/JettonIcon.png";
 import MostbetIMG from "../assets/MostbetIcon.png";
 import TelegramIMG from "../assets/telegramIcon.png";
 import SupportIMG from "../assets/supportIcon.png";
+import usdtIMG from "../assets/usdtIcon.png";
 
 const openTG = (url) => {
   const tg = window?.Telegram?.WebApp;
@@ -203,8 +204,8 @@ const OnexGifts = () => {
                     </div>
                     <div className="taskChannelRewardAndUsersContainer">
                         <div className="taskChannelRewardContainer">
-                            <img src={tonusdtIMG}/>
-                            <h2>{tonToUsdRate ? tonBalance.toFixed(2) : "…"} TON | {usdtBalance} USDT</h2> 
+                            <img src={usdtIMG}/>
+                            <h2>5 USDT</h2> 
                         </div>
                         <div className="taskChannelUsersContainer">
                             <img src={usersIMG}/>
