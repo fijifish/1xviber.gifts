@@ -41,21 +41,6 @@ export default function Withdraw() {
     const usdtBalance = Number(user?.balanceTon ?? 0); // ⚠️ сейчас тут хранится именно USDT
     const tonBalance  = usdToTon(usdtBalance);
 
-        // сумма для вывода — только целые числа
-    const [amount, setAmount] = useState("");
-
-    const handleAmountChange = (e) => {
-      const digits = e.target.value.replace(/[^0-9]/g, ""); // оставляем только цифры
-      setAmount(digits);
-    };
-
-    const handleAmountPaste = (e) => {
-      e.preventDefault();
-      const text = (e.clipboardData || window.clipboardData).getData("text");
-      const digits = String(text).replace(/[^0-9]/g, "");
-      setAmount(digits);
-    };
-
     const telegramId  = user?.telegramId;
     const displayName = user?.firstName || user?.username || (telegramId ? `id${telegramId}` : "User");
     const displayUsername = user?.username ? `@${user.username}` : (telegramId ? `id${telegramId}` : "");
@@ -118,18 +103,8 @@ export default function Withdraw() {
 
                 <div class="mainWithdrawContainer">
                     <div class="AmountAndWithdrawContainer">
-                        <div className="AmountContainer">
-                            <input
-                              className="amountInput"
-                              type="text"
-                              inputMode="numeric"
-                              pattern="[0-9]*"
-                              value={amount}
-                              onChange={handleAmountChange}
-                              onPaste={handleAmountPaste}
-                              placeholder="СУММА"
-                              aria-label="Сумма"
-                            />
+                        <div class="AmountContainer">
+                            <h2>СУММА</h2>
                         </div>
                         <div class="WirthdrawButton">
                             <h2>ВЫВЕСТИ</h2>

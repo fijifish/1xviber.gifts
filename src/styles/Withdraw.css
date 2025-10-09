@@ -291,23 +291,6 @@ body {
   align-items: center;
 }
 
-.AmountContainer .amountInput {
-  width: 31%;
-  height: 97%;
-
-  border: .17vh solid rgba(123, 123, 123, 0.2);
-  border-radius: 1.4vh;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.AmountContainer .amountInput::placeholder{
-  color: rgba(255,255,255,.6);
-}
-
 .AmountContainer h2 {
   color: rgba(123, 123, 123, 1);
   font-family: 'Inter', sans-serif;
