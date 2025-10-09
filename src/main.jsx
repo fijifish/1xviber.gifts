@@ -17,12 +17,10 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    <UserProvider>
-    <TonConnectUIProvider manifestUrl="https://raw.githubusercontent.com/octiesdev/viber1x-tonconnect/refs/heads/main/viber1x"> 
+    <UserProvider> 
       <BrowserRouter>
         <App />
       </BrowserRouter>
-    </TonConnectUIProvider>
     </UserProvider>
   </React.StrictMode>
 );
