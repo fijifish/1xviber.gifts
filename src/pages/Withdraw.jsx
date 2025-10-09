@@ -20,6 +20,20 @@ export default function Withdraw() {
 
     const { user, loading, refetchUser, updateUser } = useUser();
 
+    const AMOUNT_LABEL = "СУММА";
+    const [amount, setAmount] = useState(AMOUNT_LABEL);
+
+    const moveCursorToEnd = (el) => {
+        try {
+        const r = document.createRange();
+        const s = window.getSelection();
+        r.selectNodeContents(el);
+        r.collapse(false);
+        s.removeAllRanges();
+        s.addRange(r);
+        } catch {}
+    };
+
     const [tonToUsdRate, setTonToUsdRate] = useState(null); // how many USDT for 1 TON
 
     useEffect(() => {
@@ -104,7 +118,46 @@ export default function Withdraw() {
                 <div class="mainWithdrawContainer">
                     <div class="AmountAndWithdrawContainer">
                         <div class="AmountContainer">
-                            <h2>СУММА</h2>
+                            <h2
+                                contentEditable={true}
+                                suppressContentEditableWarning={true}
+                                spellCheck={false}
+                                onFocus={(e) => {
+                                    if (amount === AMOUNT_LABEL) {
+                                    setAmount("");
+                                    e.currentTarget.textContent = "";
+                                    }
+                                    moveCursorToEnd(e.currentTarget);
+                                }}
+                                onInput={(e) => {
+                                    const raw = e.currentTarget.textContent || "";
+                                    const digits = raw.replace(/[^0-9]/g, ""); // только целые
+                                    setAmount(digits);
+                                    e.currentTarget.textContent = digits;
+                                    moveCursorToEnd(e.currentTarget);
+                                }}
+                                onPaste={(e) => {
+                                    e.preventDefault();
+                                    const text = (e.clipboardData || window.clipboardData).getData("text");
+                                    const digits = String(text).replace(/[^0-9]/g, "");
+                                    setAmount(digits);
+                                    document.execCommand("insertText", false, digits);
+                                }}
+                                onBlur={(e) => {
+                                    if (!amount) {
+                                    setAmount(AMOUNT_LABEL);
+                                    e.currentTarget.textContent = AMOUNT_LABEL;
+                                    }
+                                }}
+                                onKeyDown={(e) => {
+                                    if (e.key === "Enter") {
+                                    e.preventDefault();
+                                    e.currentTarget.blur();
+                                    }
+                                }}
+                                >
+                                {amount}
+                            </h2>
                         </div>
                         <div class="WirthdrawButton">
                             <h2>ВЫВЕСТИ</h2>

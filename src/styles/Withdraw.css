@@ -667,6 +667,13 @@ body {
     height: 50%;
 }
 
-
+.AmountContainer [contenteditable="true"]{
+  user-select: text;     
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  outline: none;
+  background: transparent;
+  caret-color: #fff;    
+}
 
 
