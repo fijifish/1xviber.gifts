@@ -221,7 +221,7 @@ export default function Withdraw() {
                     </div>
                 </div>
 
-                <div className="footerContainer">
+                <div className="footerWithdrawContainer">
                     <div className="footerTelegramChannel" onClick={() =>
                         window.Telegram?.WebApp?.openTelegramLink("https://t.me/aimi_traffic")
                     }>

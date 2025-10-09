@@ -598,11 +598,11 @@ body {
 
 }
 
-.footerContainer {
+.footerWithdrawContainer {
     width: 85%;
     height: 3%;
 
-    margin-top: 1.5vh;
+    margin-top: 0vh;
     margin-bottom: 3vh;
     margin-left: 0vh;
     margin-right: 0vh;
