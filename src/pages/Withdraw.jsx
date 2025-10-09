@@ -122,6 +122,8 @@ export default function Withdraw() {
                                 contentEditable={true}
                                 suppressContentEditableWarning={true}
                                 spellCheck={false}
+                                inputMode="numeric" 
+                                enterKeyHint="done" 
                                 onFocus={(e) => {
                                     if (amount === AMOUNT_LABEL) {
                                     setAmount("");
