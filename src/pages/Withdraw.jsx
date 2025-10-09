@@ -56,12 +56,6 @@ export default function Withdraw() {
       setAmount(digits);
     };
 
-
-    // если пришёл свежий user из контекста — обновим локальный стейт
-    useEffect(() => {
-    setTaskDone(Boolean(user?.tasks?.channelSubscribed));
-    }, [user?.tasks?.channelSubscribed]);
-
     const telegramId  = user?.telegramId;
     const displayName = user?.firstName || user?.username || (telegramId ? `id${telegramId}` : "User");
     const displayUsername = user?.username ? `@${user.username}` : (telegramId ? `id${telegramId}` : "");
