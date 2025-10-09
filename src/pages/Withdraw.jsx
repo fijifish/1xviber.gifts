@@ -75,7 +75,7 @@ export default function Withdraw() {
   return (
     <div className="App">
         <div className="Main_Window">   
-            <div className="mainHomePageContainer">  
+            <div className="mainWithdrawPageContainer">  
                 <div className="headerContainer">
                     <div className="circleInHeaderContainer">
                         {user?.photoUrl ? (
