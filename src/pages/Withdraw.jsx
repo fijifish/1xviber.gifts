@@ -125,8 +125,6 @@ export default function Withdraw() {
                     </div>
                 </div>
 
-                <div className="twirlBg" aria-hidden="true" />
-
                 <div class="textOrderHistory-with-linesContainer">
                     <div class="line-left"></div>
                         <h2>История заявок на вывод</h2>
