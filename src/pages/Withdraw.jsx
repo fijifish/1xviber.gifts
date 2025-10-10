@@ -23,8 +23,8 @@ export default function Withdraw() {
     const AMOUNT_LABEL = "СУММА";
     const [amount, setAmount] = useState(AMOUNT_LABEL);
 
-    const [address, setAddress] = useState("");
-    const [addrTouched, setAddrTouched] = useState(false);
+    const [walletAddress, setWalletAddress] = useState("Адрес кошелька (TRC20)");
+    const [isAddressNeutral, setIsAddressNeutral] = useState(true);
 
     const isTronAddress = (s) => /^T[1-9A-HJ-NP-Za-km-z]{33}$/.test(String(s).trim());
     const addressValid = isTronAddress(address);
@@ -171,23 +171,35 @@ export default function Withdraw() {
                             <h2>ВЫВЕСТИ</h2>
                         </div>
                     </div>
-                    <div className={`AddressWalletContainer ${addrTouched ? (addressValid ? "valid" : "invalid") : ""}`}>
-                    <input
-                        className="addressInput"
-                        type="text"
-                        inputMode="text"          // нормальная клавиатура, но без авто-замен
-                        autoCapitalize="none"
-                        autoCorrect="off"
-                        spellCheck={false}
-                        placeholder="Укажите адрес кошелька (TRC20)"
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value.trim())}
-                        onBlur={() => setAddrTouched(true)}
-                    />
-                    <div className="AddressWalletNetworkContainer">
-                        <h2>TRC20</h2>
-                    </div>
-                    </div>
+                        <div className="AddressWalletContainer">
+                            <div
+                                className="addressInput"
+                                contentEditable={true}
+                                suppressContentEditableWarning={true}
+                                spellCheck={false}
+                                onFocus={(e) => {
+                                if (isAddressNeutral) {
+                                    e.target.textContent = ""; // 🔥 очищаем placeholder
+                                    setIsAddressNeutral(false);
+                                }
+                                }}
+                                onInput={(e) => {
+                                setWalletAddress(e.target.textContent.trim());
+                                }}
+                                onBlur={(e) => {
+                                if (!e.target.textContent.trim()) {
+                                    e.target.textContent = "Адрес кошелька (TRC20)"; // 🔥 возвращаем текст
+                                    setIsAddressNeutral(true);
+                                }
+                                }}
+                            >
+                                {walletAddress}
+                            </div>
+
+                            <div className="AddressWalletNetworkContainer">
+                                <h2>TRC20</h2>
+                            </div>
+                        </div>
                 </div>
 
                 <div class="textOrderHistory-with-linesContainer">
