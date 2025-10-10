@@ -359,7 +359,7 @@ body {
   color: rgba(123, 123, 123, 1);
   font-family: 'Inter', sans-serif;
   font-weight: 400;  
-  font-size: 1.3vh;   
+  font-size: 1.7vh;   
 }
 
 .AddressWalletNetworkContainer {
@@ -547,7 +547,7 @@ body {
   color: #CA6C00;
   font-family: 'Inter', sans-serif;
   font-weight: 600;  
-  font-size: 1.28vh;
+  font-size: 1.7vh;
 }
 
 .infoOrderWalletContainer img { 
