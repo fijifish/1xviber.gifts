@@ -14,6 +14,16 @@ import walletIMG from "../assets/walletIcon.png";
 import TelegramIMG from "../assets/telegramIcon.png";
 import SupportIMG from "../assets/supportIcon.png";
 
+function sanitizeAddress(raw = "") {
+  return String(raw)
+    .replace(/[\s\u200B-\u200D\uFEFF]/g, "")
+    .replace(/[^\x00-\x7F]/g, "");
+}
+
+function isTronAddress(s) {
+  return /^T[1-9A-HJ-NP-Za-km-z]{33}$/.test(s);
+}
+
 export default function Withdraw() {
 
     const navigate = useNavigate();
@@ -24,20 +34,9 @@ export default function Withdraw() {
     const [amount, setAmount] = useState(AMOUNT_LABEL);
 
     const [walletAddress, setWalletAddress] = useState("Укажите адрес кошелька");
-    const [isAddressNeutral, setIsAddressNeutral] = useState(true); // placeholder активен?
+    const [isAddressNeutral, setIsAddressNeutral] = useState(true); 
     const addrClean = sanitizeAddress(isAddressNeutral ? "" : walletAddress);
     const addressValid = !isAddressNeutral && isTronAddress(addrClean);
-
-    const sanitizeAddress = (raw = "") => {
-    return String(raw)
-        // убираем пробелы/переводы/zero-width
-        .replace(/[\s\u200B-\u200D\uFEFF]/g, "")
-        // оставляем только ASCII
-        .replace(/[^\x00-\x7F]/g, "");
-    };
-
-    // ✅ строгая проверка Tron Base58 (TRC-20 использует те же адреса)
-    const isTronAddress = (s) => /^T[1-9A-HJ-NP-Za-km-z]{33}$/.test(s);
 
 
     const moveCursorToEnd = (el) => {
