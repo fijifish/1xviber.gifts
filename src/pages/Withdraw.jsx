@@ -172,7 +172,7 @@ export default function Withdraw() {
                         </div>
                     </div>
                     <div className={`AddressWalletContainer ${addrTouched ? (addressValid ? "valid" : "invalid") : ""}`}>
-                    <h2
+                    <input
                         className="addressInput"
                         type="text"
                         inputMode="text"          // нормальная клавиатура, но без авто-замен

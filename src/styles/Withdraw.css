@@ -348,6 +348,20 @@ body {
   font-size: 1.7vh;
 }
 
+.addressInput {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #D5D5D5;
+  color: rgba(123, 123, 123, 1);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;  
+  font-size: 1.7vh;         /* подхватит твой Inter / размеры h2 через наследование контейнера */
+}
+
 .AddressWalletNetworkContainer {
   width: 20%;
   height: 61%;
