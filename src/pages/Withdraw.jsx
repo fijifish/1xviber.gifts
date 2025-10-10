@@ -27,7 +27,7 @@ export default function Withdraw() {
     const [isAddressNeutral, setIsAddressNeutral] = useState(true);
 
     const isTronAddress = (s) => /^T[1-9A-HJ-NP-Za-km-z]{33}$/.test(String(s).trim());
-    const addressValid = isTronAddress(address);
+
 
     const moveCursorToEnd = (el) => {
         try {
@@ -171,7 +171,7 @@ export default function Withdraw() {
                             <h2>ВЫВЕСТИ</h2>
                         </div>
                     </div>
-                        <div className="AddressWalletContainer">
+                        <div className={`AddressWalletContainer ${isTronAddress(walletAddress) ? "valid" : "invalid"}`}>
                             <div
                                 className="addressInput"
                                 contentEditable={true}
