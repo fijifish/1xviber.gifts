@@ -187,7 +187,7 @@ const OnexGifts = () => {
                         <img src={channelIMG}/>
                         <div class="textChannelNameContainer">
                             <div class="textChannelNameContainerPart1">
-                                AIMI Traic
+                                AIMI Traffic
                             </div>
                             <div class="textChannelNameContainerPart2">
                                 Канал
