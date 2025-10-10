@@ -38,9 +38,7 @@ export default function Withdraw() {
     const addrClean = sanitizeAddress(isAddressNeutral ? "" : walletAddress);
     const addressValid = !isAddressNeutral && isTronAddress(addrClean);
 
-    // Доп. флаги для подсказок (необязательно, но удобно)
-    const badFirstLetter = !isAddressNeutral && !!addrClean && addrClean[0] !== "T";
-    const overLimit      = !isAddressNeutral && addrClean.length > 34;
+
 
     useEffect(() => {
         const el = addrRef.current;
@@ -215,30 +213,64 @@ export default function Withdraw() {
     sel.addRange(r);
   }}
   onInput={(e) => {
-    const raw = e.currentTarget.textContent || "";
+    const el = e.currentTarget;
+    const raw = el.textContent || "";
     let next = sanitizeAddress(raw);
-    // если хочешь резать длину сразу — раскомментируй:
-    // next = next.slice(0, 34);
 
-    // если мы что-то изменили — вернуть текст и каретку в конец
+    // 1) Первая буква обязана быть 'T' (латиница). Иначе — сброс + закрыть клавиатуру.
+    if (next && next[0] !== "T") {
+      el.blur();
+      el.textContent = "Укажите адрес кошелька";
+      setWalletAddress("Укажите адрес кошелька");
+      setIsAddressNeutral(true);
+      return;
+    }
+
+    // 2) Жёсткий лимит 34 символа
+    if (next.length > 34) next = next.slice(0, 34);
+
+    // Если изменили — вернуть текст и каретку в конец
     if (next !== raw) {
-      e.currentTarget.textContent = next;
+      el.textContent = next;
       const sel = window.getSelection();
       const r = document.createRange();
-      r.selectNodeContents(e.currentTarget);
+      r.selectNodeContents(el);
       r.collapse(false);
       sel.removeAllRanges();
       sel.addRange(r);
     }
+
     setWalletAddress(next);
   }}
   onPaste={(e) => {
     e.preventDefault();
     const txt = (e.clipboardData || window.clipboardData).getData("text") || "";
     let cleaned = sanitizeAddress(txt);
-    // cleaned = cleaned.slice(0, 34); // опционально ограничить
+
+    // первая буква обязана быть 'T'
+    if (cleaned && cleaned[0] !== "T") {
+      const el = e.currentTarget;
+      el.blur();
+      el.textContent = "Укажите адрес кошелька";
+      setWalletAddress("Укажите адрес кошелька");
+      setIsAddressNeutral(true);
+      return;
+    }
+
+    // лимит 34 символа
+    if (cleaned.length > 34) cleaned = cleaned.slice(0, 34);
+
     setWalletAddress(cleaned);
     document.execCommand("insertText", false, cleaned);
+
+    // курсор в конец
+    const el = e.currentTarget;
+    const sel = window.getSelection();
+    const r = document.createRange();
+    r.selectNodeContents(el);
+    r.collapse(false);
+    sel.removeAllRanges();
+    sel.addRange(r);
   }}
   onKeyDown={(e) => {
     if (e.key === "Enter") { e.preventDefault(); e.currentTarget.blur(); }
