@@ -350,7 +350,7 @@ body {
 
 .addressInput {
   position: relative;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   min-width: 0;
   background: transparent;
   border: none;
