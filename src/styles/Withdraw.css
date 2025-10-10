@@ -23,8 +23,9 @@ body {
   flex-direction: column;
   background: #000000;
   color: white;
-  font-family: Inter;
+  font-family: Muller;
   font-size: 2.2vh ;
+  overflow: hidden; 
 }
 
 .App p{
@@ -40,6 +41,7 @@ body {
   color: white;
   z-index: 1001;
   animation: fade-in 0.3s forwards;
+  overflow: hidden; 
 }
 
 .mainWithdrawPageContainer {
