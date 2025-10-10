@@ -391,7 +391,8 @@ body {
 
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: .7vh;
 }
 
 .taskChannelRewardContainer h2 {
@@ -399,6 +400,7 @@ body {
   font-family: 'Inter', sans-serif;
   font-weight: 300;  
   font-size: 1.1vh;
+  margin-top: 1.15vh;
 
 }
 
@@ -628,19 +630,19 @@ body {
 }
 
 .footerContainer {
-    width: 85%;
-    height: 3%;
+  width: 85%;
+  height: 3%;
 
-    margin-top: 1.5vh;
-    margin-bottom: 3vh;
-    margin-left: 0vh;
-    margin-right: 0vh;
+  margin-top: 1.5vh;
+  margin-bottom: 3vh;
+  margin-left: 0vh;
+  margin-right: 0vh;
 
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
 
 }
 
