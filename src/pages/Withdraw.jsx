@@ -23,7 +23,7 @@ export default function Withdraw() {
     const AMOUNT_LABEL = "СУММА";
     const [amount, setAmount] = useState(AMOUNT_LABEL);
 
-    const [walletAddress, setWalletAddress] = useState("Адрес кошелька (TRC20)");
+    const [walletAddress, setWalletAddress] = useState("Укажите адрес кошелька");
     const [isAddressNeutral, setIsAddressNeutral] = useState(true);
 
     const isTronAddress = (s) => /^T[1-9A-HJ-NP-Za-km-z]{33}$/.test(String(s).trim());
