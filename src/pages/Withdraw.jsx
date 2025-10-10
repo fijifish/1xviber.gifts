@@ -251,14 +251,6 @@ export default function Withdraw() {
     }
   }}
 />
-{!isAddressNeutral && (
-  <div className="addressHint">
-    {badFirstLetter && "Адрес должен начинаться с латинской T"}
-    {overLimit && "Макс. длина адреса — 34 символа"}
-    {!badFirstLetter && !overLimit && addrClean && addrClean.length === 34 && !addressValid && "Неверный формат адреса"}
-  </div>
-)}
-
                     <div className="AddressWalletNetworkContainer">
                         <h2>TRC20</h2>
                     </div>
