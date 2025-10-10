@@ -242,46 +242,51 @@ export default function Withdraw() {
 
     setWalletAddress(next);
   }}
-  onPaste={(e) => {
-    e.preventDefault();
-    const txt = (e.clipboardData || window.clipboardData).getData("text") || "";
-    let cleaned = sanitizeAddress(txt);
+onPaste={(e) => {
+  e.preventDefault();
 
-    // первая буква обязана быть 'T'
-    if (cleaned && cleaned[0] !== "T") {
-      const el = e.currentTarget;
-      el.blur();
-      el.textContent = "Укажите адрес кошелька";
-      setWalletAddress("Укажите адрес кошелька");
-      setIsAddressNeutral(true);
-      return;
-    }
+  // Получаем текст из буфера обмена
+  const pastedText =
+    (e.clipboardData || window.clipboardData).getData("text") || "";
 
-    // лимит 34 символа
-    if (cleaned.length > 34) cleaned = cleaned.slice(0, 34);
+  // Убираем пробелы и невалидные символы
+  let cleaned = sanitizeAddress(pastedText).slice(0, 34);
 
-    setWalletAddress(cleaned);
-    document.execCommand("insertText", false, cleaned);
+  if (!cleaned.startsWith("T")) {
+    // Если вставленное невалидно (не начинается с T)
+    e.currentTarget.textContent = "Укажите адрес кошелька";
+    setIsAddressNeutral(true);
+    setWalletAddress("");
+    e.currentTarget.blur();
+    return;
+  }
 
-    // курсор в конец
-    const el = e.currentTarget;
-    const sel = window.getSelection();
-    const r = document.createRange();
-    r.selectNodeContents(el);
-    r.collapse(false);
-    sel.removeAllRanges();
-    sel.addRange(r);
-  }}
+  // Вставляем очищенный адрес
+  e.currentTarget.textContent = cleaned;
+
+  // Обновляем состояние
+  setWalletAddress(cleaned);
+  setIsAddressNeutral(false);
+
+  // Устанавливаем курсор в конец
+  const sel = window.getSelection();
+  const r = document.createRange();
+  r.selectNodeContents(e.currentTarget);
+  r.collapse(false);
+  sel.removeAllRanges();
+  sel.addRange(r);
+}}
   onKeyDown={(e) => {
     if (e.key === "Enter") { e.preventDefault(); e.currentTarget.blur(); }
   }}
-  onBlur={(e) => {
-    if (!sanitizeAddress(e.currentTarget.textContent || "")) {
-      e.currentTarget.textContent = "Укажите адрес кошелька";
-      setWalletAddress("Укажите адрес кошелька");
-      setIsAddressNeutral(true);
-    }
-  }}
+onBlur={(e) => {
+  const val = sanitizeAddress(e.currentTarget.textContent || "");
+  if (!val) {
+    e.currentTarget.textContent = "Укажите адрес кошелька";
+    setWalletAddress("");
+    setIsAddressNeutral(true);
+  }
+}}
 />
                     <div className="AddressWalletNetworkContainer">
                         <h2>TRC20</h2>
