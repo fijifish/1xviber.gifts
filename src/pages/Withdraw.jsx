@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 import { useNavigate } from "react-router-dom";
 import "../styles/Withdraw.css";
@@ -16,12 +16,11 @@ import SupportIMG from "../assets/supportIcon.png";
 
 function sanitizeAddress(raw = "") {
   return String(raw)
-    .replace(/[\s\u200B-\u200D\uFEFF]/g, "")
-    .replace(/[^\x00-\x7F]/g, "");
+    .replace(/[\s\u200B-\u200D\uFEFF]/g, "")   // убираем пробелы/zero-width
+    .replace(/[^\x00-\x7F]/g, "");            // только ASCII
 }
-
 function isTronAddress(s) {
-  return /^T[1-9A-HJ-NP-Za-km-z]{33}$/.test(s);
+  return /^T[1-9A-HJ-NP-Za-km-z]{33}$/.test(s); // T + 33 base58 = 34
 }
 
 export default function Withdraw() {
@@ -33,10 +32,23 @@ export default function Withdraw() {
     const AMOUNT_LABEL = "СУММА";
     const [amount, setAmount] = useState(AMOUNT_LABEL);
 
+    const addrRef = useRef(null);
     const [walletAddress, setWalletAddress] = useState("Укажите адрес кошелька");
-    const [isAddressNeutral, setIsAddressNeutral] = useState(true); 
+    const [isAddressNeutral, setIsAddressNeutral] = useState(true);
     const addrClean = sanitizeAddress(isAddressNeutral ? "" : walletAddress);
     const addressValid = !isAddressNeutral && isTronAddress(addrClean);
+
+    // Доп. флаги для подсказок (необязательно, но удобно)
+    const badFirstLetter = !isAddressNeutral && !!addrClean && addrClean[0] !== "T";
+    const overLimit      = !isAddressNeutral && addrClean.length > 34;
+
+    useEffect(() => {
+        const el = addrRef.current;
+        if (!el) return;
+        if (isAddressNeutral) {
+            el.textContent = "Укажите адрес кошелька";
+        }
+    }, [isAddressNeutral]);
 
 
     const moveCursorToEnd = (el) => {
@@ -182,63 +194,70 @@ export default function Withdraw() {
                         </div>
                     </div>
                     <div className={`AddressWalletContainer ${isAddressNeutral ? "" : (addressValid ? "valid" : "invalid")}`}>
-                    <div
-                        className="addressInput"
-                        contentEditable
-                        suppressContentEditableWarning
-                        spellCheck={false}
-                        onFocus={(e) => {
-                        if (isAddressNeutral) {
-                            e.currentTarget.textContent = "";
-                            setWalletAddress("");
-                            setIsAddressNeutral(false);
-                        }
-                        // курсор в конец
-                        const sel = window.getSelection();
-                        const r = document.createRange();
-                        r.selectNodeContents(e.currentTarget);
-                        r.collapse(false);
-                        sel.removeAllRanges();
-                        sel.addRange(r);
-                        }}
-                        onInput={(e) => {
-                        const raw = e.currentTarget.textContent || "";
-                        const cleaned = sanitizeAddress(raw);
-                        // не даём вбить кириллицу/пробелы/недопустимые символы
-                        if (cleaned !== raw) {
-                            e.currentTarget.textContent = cleaned;
-                            const sel = window.getSelection();
-                            const r = document.createRange();
-                            r.selectNodeContents(e.currentTarget);
-                            r.collapse(false);
-                            sel.removeAllRanges();
-                            sel.addRange(r);
-                        }
-                        setWalletAddress(cleaned);
-                        }}
-                        onPaste={(e) => {
-                        e.preventDefault();
-                        const txt = (e.clipboardData || window.clipboardData).getData("text") || "";
-                        const cleaned = sanitizeAddress(txt);
-                        setWalletAddress(cleaned);
-                        document.execCommand("insertText", false, cleaned);
-                        }}
-                        onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                            e.preventDefault();
-                            e.currentTarget.blur();
-                        }
-                        }}
-                        onBlur={(e) => {
-                        if (!sanitizeAddress(e.currentTarget.textContent || "")) {
-                            e.currentTarget.textContent = "Укажите адрес кошелька";
-                            setWalletAddress("Укажите адрес кошелька");
-                            setIsAddressNeutral(true);
-                        }
-                        }}
-                    >
-                        {walletAddress}
-                    </div>
+<div
+  ref={addrRef}
+  className="addressInput"
+  contentEditable
+  suppressContentEditableWarning
+  spellCheck={false}
+  onFocus={(e) => {
+    if (isAddressNeutral) {
+      e.currentTarget.textContent = "";
+      setWalletAddress("");
+      setIsAddressNeutral(false);
+    }
+    // курсор в конец
+    const sel = window.getSelection();
+    const r = document.createRange();
+    r.selectNodeContents(e.currentTarget);
+    r.collapse(false);
+    sel.removeAllRanges();
+    sel.addRange(r);
+  }}
+  onInput={(e) => {
+    const raw = e.currentTarget.textContent || "";
+    let next = sanitizeAddress(raw);
+    // если хочешь резать длину сразу — раскомментируй:
+    // next = next.slice(0, 34);
+
+    // если мы что-то изменили — вернуть текст и каретку в конец
+    if (next !== raw) {
+      e.currentTarget.textContent = next;
+      const sel = window.getSelection();
+      const r = document.createRange();
+      r.selectNodeContents(e.currentTarget);
+      r.collapse(false);
+      sel.removeAllRanges();
+      sel.addRange(r);
+    }
+    setWalletAddress(next);
+  }}
+  onPaste={(e) => {
+    e.preventDefault();
+    const txt = (e.clipboardData || window.clipboardData).getData("text") || "";
+    let cleaned = sanitizeAddress(txt);
+    // cleaned = cleaned.slice(0, 34); // опционально ограничить
+    setWalletAddress(cleaned);
+    document.execCommand("insertText", false, cleaned);
+  }}
+  onKeyDown={(e) => {
+    if (e.key === "Enter") { e.preventDefault(); e.currentTarget.blur(); }
+  }}
+  onBlur={(e) => {
+    if (!sanitizeAddress(e.currentTarget.textContent || "")) {
+      e.currentTarget.textContent = "Укажите адрес кошелька";
+      setWalletAddress("Укажите адрес кошелька");
+      setIsAddressNeutral(true);
+    }
+  }}
+/>
+{!isAddressNeutral && (
+  <div className="addressHint">
+    {badFirstLetter && "Адрес должен начинаться с латинской T"}
+    {overLimit && "Макс. длина адреса — 34 символа"}
+    {!badFirstLetter && !overLimit && addrClean && addrClean.length === 34 && !addressValid && "Неверный формат адреса"}
+  </div>
+)}
 
                     <div className="AddressWalletNetworkContainer">
                         <h2>TRC20</h2>
