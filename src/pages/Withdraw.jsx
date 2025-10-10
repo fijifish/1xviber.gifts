@@ -36,19 +36,19 @@ export default function Withdraw() {
 
     const [tonToUsdRate, setTonToUsdRate] = useState(null); // how many USDT for 1 TON
 
-    // useEffect(() => {
-    //   const fetchTonToUsdRate = async () => {
-    //     try {
-    //       const response = await fetch("https://api.binance.com/api/v3/ticker/price?symbol=TONUSDT");
-    //       if (!response.ok) throw new Error(`Binance error: ${response.status}`);
-    //       const data = await response.json();
-    //       if (data && data.price) setTonToUsdRate(parseFloat(data.price));
-    //     } catch (e) {
-    //       console.error("TON/USDT rate fetch failed:", e);
-    //     }
-    //   };
-    //   fetchTonToUsdRate();
-    // }, []);
+    useEffect(() => {
+      const fetchTonToUsdRate = async () => {
+        try {
+          const response = await fetch("https://api.binance.com/api/v3/ticker/price?symbol=TONUSDT");
+          if (!response.ok) throw new Error(`Binance error: ${response.status}`);
+          const data = await response.json();
+          if (data && data.price) setTonToUsdRate(parseFloat(data.price));
+        } catch (e) {
+          console.error("TON/USDT rate fetch failed:", e);
+        }
+      };
+      fetchTonToUsdRate();
+    }, []);
 
     const usdToTon = (usd) => (tonToUsdRate ? Number(usd) / tonToUsdRate : 0);
 
