@@ -24,9 +24,20 @@ export default function Withdraw() {
     const [amount, setAmount] = useState(AMOUNT_LABEL);
 
     const [walletAddress, setWalletAddress] = useState("Укажите адрес кошелька");
-    const [isAddressNeutral, setIsAddressNeutral] = useState(true);
+    const [isAddressNeutral, setIsAddressNeutral] = useState(true); // placeholder активен?
+    const addrClean = sanitizeAddress(isAddressNeutral ? "" : walletAddress);
+    const addressValid = !isAddressNeutral && isTronAddress(addrClean);
 
-    const isTronAddress = (s) => /^T[1-9A-HJ-NP-Za-km-z]{33}$/.test(String(s).trim());
+    const sanitizeAddress = (raw = "") => {
+    return String(raw)
+        // убираем пробелы/переводы/zero-width
+        .replace(/[\s\u200B-\u200D\uFEFF]/g, "")
+        // оставляем только ASCII
+        .replace(/[^\x00-\x7F]/g, "");
+    };
+
+    // ✅ строгая проверка Tron Base58 (TRC-20 использует те же адреса)
+    const isTronAddress = (s) => /^T[1-9A-HJ-NP-Za-km-z]{33}$/.test(s);
 
 
     const moveCursorToEnd = (el) => {
@@ -171,35 +182,69 @@ export default function Withdraw() {
                             <h2>ВЫВЕСТИ</h2>
                         </div>
                     </div>
-                        <div className={`AddressWalletContainer ${isTronAddress(walletAddress) ? "valid" : "invalid"}`}>
-                            <div
-                                className="addressInput"
-                                contentEditable={true}
-                                suppressContentEditableWarning={true}
-                                spellCheck={false}
-                                onFocus={(e) => {
-                                if (isAddressNeutral) {
-                                    e.target.textContent = ""; // 🔥 очищаем placeholder
-                                    setIsAddressNeutral(false);
-                                }
-                                }}
-                                onInput={(e) => {
-                                setWalletAddress(e.target.textContent.trim());
-                                }}
-                                onBlur={(e) => {
-                                if (!e.target.textContent.trim()) {
-                                    e.target.textContent = "Адрес кошелька (TRC20)"; // 🔥 возвращаем текст
-                                    setIsAddressNeutral(true);
-                                }
-                                }}
-                            >
-                                {walletAddress}
-                            </div>
+                    <div className={`AddressWalletContainer ${isAddressNeutral ? "" : (addressValid ? "valid" : "invalid")}`}>
+                    <div
+                        className="addressInput"
+                        contentEditable
+                        suppressContentEditableWarning
+                        spellCheck={false}
+                        onFocus={(e) => {
+                        if (isAddressNeutral) {
+                            e.currentTarget.textContent = "";
+                            setWalletAddress("");
+                            setIsAddressNeutral(false);
+                        }
+                        // курсор в конец
+                        const sel = window.getSelection();
+                        const r = document.createRange();
+                        r.selectNodeContents(e.currentTarget);
+                        r.collapse(false);
+                        sel.removeAllRanges();
+                        sel.addRange(r);
+                        }}
+                        onInput={(e) => {
+                        const raw = e.currentTarget.textContent || "";
+                        const cleaned = sanitizeAddress(raw);
+                        // не даём вбить кириллицу/пробелы/недопустимые символы
+                        if (cleaned !== raw) {
+                            e.currentTarget.textContent = cleaned;
+                            const sel = window.getSelection();
+                            const r = document.createRange();
+                            r.selectNodeContents(e.currentTarget);
+                            r.collapse(false);
+                            sel.removeAllRanges();
+                            sel.addRange(r);
+                        }
+                        setWalletAddress(cleaned);
+                        }}
+                        onPaste={(e) => {
+                        e.preventDefault();
+                        const txt = (e.clipboardData || window.clipboardData).getData("text") || "";
+                        const cleaned = sanitizeAddress(txt);
+                        setWalletAddress(cleaned);
+                        document.execCommand("insertText", false, cleaned);
+                        }}
+                        onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                            e.preventDefault();
+                            e.currentTarget.blur();
+                        }
+                        }}
+                        onBlur={(e) => {
+                        if (!sanitizeAddress(e.currentTarget.textContent || "")) {
+                            e.currentTarget.textContent = "Укажите адрес кошелька";
+                            setWalletAddress("Укажите адрес кошелька");
+                            setIsAddressNeutral(true);
+                        }
+                        }}
+                    >
+                        {walletAddress}
+                    </div>
 
-                            <div className="AddressWalletNetworkContainer">
-                                <h2>TRC20</h2>
-                            </div>
-                        </div>
+                    <div className="AddressWalletNetworkContainer">
+                        <h2>TRC20</h2>
+                    </div>
+                    </div>
                 </div>
 
                 <div class="textOrderHistory-with-linesContainer">
