@@ -326,10 +326,9 @@ body {
 
 .titleTextChannelNameContainer {
     position: static;     
-    /* margin-left: 2.4vw;     */
 
     height: 29.11%;
-    width: 71.5%;
+    width: 91.5%;
 
     color: white;
     font-family: 'Inter', sans-serif;
@@ -345,7 +344,6 @@ body {
 
 .bodyTextChannelNameContainer {
     position: static;     
-    /* margin-left: 2.4vw;     */
 
     height: 70.89%;
     width: 100%;
