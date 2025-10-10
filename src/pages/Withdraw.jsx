@@ -217,19 +217,22 @@ export default function Withdraw() {
     const raw = el.textContent || "";
     let next = sanitizeAddress(raw);
 
-    // 1) Первая буква обязана быть 'T' (латиница). Иначе — сброс + закрыть клавиатуру.
+    // Нормализуем первую букву: 't' -> 'T'
+    if (next.startsWith("t")) next = "T" + next.slice(1);
+
+    // Если есть первый символ и он НЕ 'T' — сбрасываем к плейсхолдеру
     if (next && next[0] !== "T") {
       el.blur();
       el.textContent = "Укажите адрес кошелька";
-      setWalletAddress("Укажите адрес кошелька");
+      setWalletAddress("");
       setIsAddressNeutral(true);
       return;
     }
 
-    // 2) Жёсткий лимит 34 символа
+    // Жёсткий лимит 34 символа
     if (next.length > 34) next = next.slice(0, 34);
 
-    // Если изменили — вернуть текст и каретку в конец
+    // Применяем нормализованное значение и ставим каретку в конец
     if (next !== raw) {
       el.textContent = next;
       const sel = window.getSelection();
@@ -241,37 +244,41 @@ export default function Withdraw() {
     }
 
     setWalletAddress(next);
+    setIsAddressNeutral(next.length === 0);
   }}
 onPaste={(e) => {
   e.preventDefault();
+  const el = e.currentTarget;
+  const pastedText = (e.clipboardData || window.clipboardData).getData("text") || "";
 
-  // Получаем текст из буфера обмена
-  const pastedText =
-    (e.clipboardData || window.clipboardData).getData("text") || "";
-
-  // Убираем пробелы и невалидные символы
   let cleaned = sanitizeAddress(pastedText).slice(0, 34);
 
-  if (!cleaned.startsWith("T")) {
-    // Если вставленное невалидно (не начинается с T)
-    e.currentTarget.textContent = "Укажите адрес кошелька";
-    setIsAddressNeutral(true);
-    setWalletAddress("");
-    e.currentTarget.blur();
+  // Нормализуем первую букву: 't' -> 'T'
+  if (cleaned.startsWith("t")) cleaned = "T" + cleaned.slice(1);
+
+  if (!cleaned) {
+    // ничего валидного не вставили — остаёмся как есть
     return;
   }
 
-  // Вставляем очищенный адрес
-  e.currentTarget.textContent = cleaned;
+  if (cleaned[0] !== "T") {
+    // первое не T — сброс к плейсхолдеру
+    el.blur();
+    el.textContent = "Укажите адрес кошелька";
+    setWalletAddress("");
+    setIsAddressNeutral(true);
+    return;
+  }
 
-  // Обновляем состояние
+  // вставляем очищенный адрес напрямую (без execCommand)
+  el.textContent = cleaned;
   setWalletAddress(cleaned);
   setIsAddressNeutral(false);
 
-  // Устанавливаем курсор в конец
+  // курсор в конец
   const sel = window.getSelection();
   const r = document.createRange();
-  r.selectNodeContents(e.currentTarget);
+  r.selectNodeContents(el);
   r.collapse(false);
   sel.removeAllRanges();
   sel.addRange(r);
