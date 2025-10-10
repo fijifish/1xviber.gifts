@@ -362,6 +362,17 @@ body {
   font-size: 1.7vh;   
 }
 
+.addressInput {
+  font-size: 1.3vh;          /* ← когда есть текст */
+  transition: font-size .12s ease;
+}
+
+/* когда поле показывает подсказку “Укажите адрес кошелька” */
+.addressInput.is-placeholder {
+  font-size: 1.7vh;          /* ← увеличить */
+  color: rgba(123, 123, 123, 1);   /* как у тебя в макете */
+}
+
 .AddressWalletNetworkContainer {
   width: 20%;
   height: 61%;

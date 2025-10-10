@@ -194,7 +194,7 @@ export default function Withdraw() {
                     <div className={`AddressWalletContainer ${isAddressNeutral ? "" : (addressValid ? "valid" : "invalid")}`}>
 <div
   ref={addrRef}
-  className="addressInput"
+  className={`addressInput ${isAddressNeutral ? "is-placeholder" : ""}`}
   contentEditable
   suppressContentEditableWarning
   spellCheck={false}
