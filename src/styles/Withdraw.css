@@ -150,7 +150,8 @@ body {
 
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: .795vh;
 }
 
 .mainBalanceContainer h2 {
