@@ -95,22 +95,22 @@ export default function Withdraw() {
 
     // при монтировании — подтянуть из бэка
     useEffect(() => {
-    if (!user) return;
-    fetch(`${API_URL}/withdraw/list?telegramId=${userId}`)
+    if (!telegramId) return;
+    fetch(`${API_BASE}/withdraw/list?telegramId=${telegramId}`)
         .then(r => r.json())
         .then(d => { if (d.ok) setOrders(d.orders || []); })
         .catch(console.error);
-    }, [user]);
+    }, [telegramId]);
 
     const handleCreateWithdraw = async () => {
     if (!readyToWithdraw) return;
 
     try {
-        const r = await fetch(`${API_URL}/withdraw/create`, {
+        const r = await fetch(`${API_BASE}/withdraw/create`, {
         method: "POST",
         headers: { "Content-Type":"application/json" },
         body: JSON.stringify({
-            telegramId: userId,          // твой userId/telegramId
+            telegramId: telegramId,          // твой userId/telegramId
             amount: Number(amount),      // сумма в USDT
             address: addrClean           // TRC20 адрес
         })
