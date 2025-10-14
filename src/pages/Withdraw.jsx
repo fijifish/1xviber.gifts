@@ -95,10 +95,10 @@ export default function Withdraw() {
     const sorted = [...orders].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
     const getOrderClass = (i, len) => {
-    if (len === 1) return "mainOrderContainer";             // единственная
-    if (i === 0)     return "mainOrderContainer";            // первая
-    if (i === len-1) return "mainLastOrderContainer";        // последняя
-    return "mainSecondOrderContainer";                       // все промежуточные
+        if (len === 1) return "mainOrderContainer";             // единственная
+        if (i === 0)     return "mainOrderContainer";            // первая
+        if (i === len-1) return "mainLastOrderContainer";        // последняя
+    return "mainSecondOrderContainer";                   
     };
 
 
@@ -384,10 +384,7 @@ export default function Withdraw() {
                     <div class="line-right"></div>
                 </div>
 
-  <div className="ordersList">
-    {sorted.length === 0 && (
-      <div style={{opacity:.6, padding:'1rem'}}>Заявок пока нет</div>
-    )}
+
 
     {sorted.map((o, i) => {
       const cls = getOrderClass(i, sorted.length);
@@ -435,7 +432,7 @@ export default function Withdraw() {
         </div>
       );
     })}
-  </div>
+
 
 
                 {/* <div class="mainSecondOrderContainer">
