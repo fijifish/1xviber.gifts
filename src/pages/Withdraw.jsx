@@ -91,6 +91,78 @@ export default function Withdraw() {
     .slice(0,2)
     .toUpperCase();
 
+    const [orders, setOrders] = React.useState([]);
+
+    // при монтировании — подтянуть из бэка
+    useEffect(() => {
+    if (!user) return;
+    fetch(`${API_URL}/withdraw/list?telegramId=${userId}`)
+        .then(r => r.json())
+        .then(d => { if (d.ok) setOrders(d.orders || []); })
+        .catch(console.error);
+    }, [user]);
+
+    const handleCreateWithdraw = async () => {
+    if (!readyToWithdraw) return;
+
+    try {
+        const r = await fetch(`${API_URL}/withdraw/create`, {
+        method: "POST",
+        headers: { "Content-Type":"application/json" },
+        body: JSON.stringify({
+            telegramId: userId,          // твой userId/telegramId
+            amount: Number(amount),      // сумма в USDT
+            address: addrClean           // TRC20 адрес
+        })
+        });
+        const d = await r.json();
+        if (!r.ok || !d.ok) throw new Error(d.error || "Server error");
+
+        // оптимистично добавим сверху
+        setOrders(prev => [d.order, ...prev]);
+
+        // сброс полей
+        setAmount(AMOUNT_LABEL);         // твой плейсхолдер суммы
+        setIsNeutral(true);
+        const el = addrRef.current;
+        if (el) el.textContent = "Укажите адрес кошелька";
+        setWalletAddress("");
+        setIsAddressNeutral(true);
+    } catch (e) {
+        console.error("Create withdraw error:", e);
+        alert("Не удалось создать заявку: " + e.message);
+    }
+    };
+
+    const fmtDate = (iso) => {
+        const d = new Date(iso);
+        const dd = String(d.getDate()).padStart(2, "0");
+        const mm = String(d.getMonth()+1).padStart(2, "0");
+        const yyyy = d.getFullYear();
+        return `${dd}.${mm}.${yyyy}г.`;
+        };
+
+        const fmtTime = (iso) => {
+        const d = new Date(iso);
+        const hh = String(d.getHours()).padStart(2, "0");
+        const min = String(d.getMinutes()).padStart(2, "0");
+        return `${hh}:${min}`;
+        };
+
+        // Подсветка первых/последних 5 символов
+        const renderAddressWithEdges = (s, n = 5) => {
+        s = String(s || "");
+        if (!s) return null;
+        if (s.length <= n*2) return <span className="accent">{s}</span>;
+        return (
+            <>
+            <span className="accent">{s.slice(0, n)}</span>
+            {s.slice(n, -n)}
+            <span className="accent">{s.slice(-n)}</span>
+            </>
+        );
+    };
+
     useEffect(() => {
     const tg = window?.Telegram?.WebApp;
     const onBack = () => {
@@ -190,9 +262,14 @@ export default function Withdraw() {
                                 {amount}
                             </h2>
                         </div>
-                    <div className={`WirthdrawButton ${readyToWithdraw ? "active" : ""}`}>
-                        <h2>ВЫВЕСТИ</h2>
-                    </div>
+
+                        <div
+                        className={`WirthdrawButton ${readyToWithdraw ? "active" : ""}`}
+                            onClick={handleCreateWithdraw}
+                            >
+                            <h2>ВЫВЕСТИ</h2>
+                        </div>
+                        
                     </div>
                     <div className={`AddressWalletContainer ${isAddressNeutral ? "" : (addressValid ? "valid" : "invalid")}`}>
                     <div
@@ -298,35 +375,35 @@ export default function Withdraw() {
                     <div class="line-right"></div>
                 </div>
 
-                <div class="mainOrderContainer">
-                    <div class="textWithdrawAndAmountContainer">
-                        <div class="textWithdrawAndAmountContainerPart1">
-                            <h2>ВЫВОД</h2>
-                            <div class="textAmountAndLogoContainer">
-                                <h2>
-                                    <span className="accent">10</span> USDT
-                                </h2>
-                                <img src={usdtIMG}/>
-                            </div>
-                        </div>
-                        <div class="textWithdrawAndAmountContainerPart2">
-                            <h2>в обработке</h2>
-                            <div class="lineOrder-right"></div>
-                        </div>
-                    </div>
-                    <div class="infoOrderWalletContainer">
-                        <img src={walletIMG}/>
-                        <h2>
-                            <span className="accent">TFeB3</span>
-                            GgLGWHEzK1S2VndNm49Eyajc
-                            <span className="accent">dogat</span>
-                        </h2>
-                    </div>
-                    <div class="infoTimeAndDataContainer">
-                        <h2>Дата: 08.10.2025г.</h2>
-                        <h2>Время: 10:53</h2>
-                    </div>
-                </div>
+{orders.map((o) => (
+  <div key={o._id} className="mainSecondOrderContainer">
+    <div className="textWithdrawAndAmountContainer">
+      <div className="textWithdrawAndAmountContainerPart1">
+        <h2>ВЫВОД</h2>
+        <div className="textAmountAndLogoContainer">
+          <h2>
+            <span className="accent">{Number(o.amount).toFixed(0)}</span> USDT
+          </h2>
+          <img src={usdtIMG} alt="USDT"/>
+        </div>
+      </div>
+      <div className="textWithdrawAndAmountContainerPart2">
+        <h2>{o.status || "в обработке"}</h2>
+        <div className="lineOrder-right"></div>
+      </div>
+    </div>
+
+    <div className="infoOrderWalletContainer">
+      <img src={walletIMG} alt="wallet"/>
+      <h2>{renderAddressWithEdges(o.address, 5)}</h2>
+    </div>
+
+    <div className="infoTimeAndDataContainer">
+      <h2>Дата: {fmtDate(o.createdAt)}</h2>
+      <h2>Время: {fmtTime(o.createdAt)}</h2>
+    </div>
+  </div>
+))}
 
                 <div class="mainSecondOrderContainer">
                     <div class="textWithdrawAndAmountContainer">
