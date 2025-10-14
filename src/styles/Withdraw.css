@@ -313,6 +313,11 @@ body {
   align-items: center;
 }
 
+.WirthdrawButton.active:hover {
+  border-color: rgba(0, 218, 29, 0.2);      
+  background-color: rgba(11, 209, 83, 0.1);  
+}
+
 .WirthdrawButton h2 {
   color: rgba(123, 123, 123, 1);
   font-family: 'Inter', sans-serif;

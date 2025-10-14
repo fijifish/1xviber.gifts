@@ -81,6 +81,9 @@ export default function Withdraw() {
     const usdtBalance = Number(user?.balanceTon ?? 0); // ⚠️ сейчас тут хранится именно USDT
     const tonBalance  = usdToTon(usdtBalance);
 
+    const amountValid = amount && amount !== AMOUNT_LABEL && Number(amount) > 0;
+    const readyToWithdraw = amountValid && addressValid;
+
     const telegramId  = user?.telegramId;
     const displayName = user?.firstName || user?.username || (telegramId ? `id${telegramId}` : "User");
     const displayUsername = user?.username ? `@${user.username}` : (telegramId ? `id${telegramId}` : "");
@@ -187,102 +190,102 @@ export default function Withdraw() {
                                 {amount}
                             </h2>
                         </div>
-                        <div class="WirthdrawButton">
-                            <h2>ВЫВЕСТИ</h2>
-                        </div>
+                    <div className={`WirthdrawButton ${readyToWithdraw ? "active" : ""}`}>
+                        <h2>ВЫВЕСТИ</h2>
+                    </div>
                     </div>
                     <div className={`AddressWalletContainer ${isAddressNeutral ? "" : (addressValid ? "valid" : "invalid")}`}>
-<div
-  ref={addrRef}
-  className={`addressInput ${isAddressNeutral ? "is-placeholder" : ""}`}
-  contentEditable
-  suppressContentEditableWarning
-  spellCheck={false}
-  onFocus={(e) => {
-    if (isAddressNeutral) {
-      e.currentTarget.textContent = "";
-      setWalletAddress("");
-      setIsAddressNeutral(false);
-    }
-    // курсор в конец
-    const sel = window.getSelection();
-    const r = document.createRange();
-    r.selectNodeContents(e.currentTarget);
-    r.collapse(false);
-    sel.removeAllRanges();
-    sel.addRange(r);
-  }}
-  onInput={(e) => {
-    const el = e.currentTarget;
-    const raw = el.textContent || "";
-    let next = sanitizeAddress(raw);
+                    <div
+                    ref={addrRef}
+                    className={`addressInput ${isAddressNeutral ? "is-placeholder" : ""}`}
+                    contentEditable
+                    suppressContentEditableWarning
+                    spellCheck={false}
+                    onFocus={(e) => {
+                        if (isAddressNeutral) {
+                        e.currentTarget.textContent = "";
+                        setWalletAddress("");
+                        setIsAddressNeutral(false);
+                        }
+                        // курсор в конец
+                        const sel = window.getSelection();
+                        const r = document.createRange();
+                        r.selectNodeContents(e.currentTarget);
+                        r.collapse(false);
+                        sel.removeAllRanges();
+                        sel.addRange(r);
+                    }}
+                    onInput={(e) => {
+                        const el = e.currentTarget;
+                        const raw = el.textContent || "";
+                        let next = sanitizeAddress(raw);
 
-    // 1) Первая буква обязана быть 'T' (латиница). Иначе — сброс + закрыть клавиатуру.
-    if (next && next[0] !== "T") {
-      el.blur();
-      el.textContent = "Укажите адрес кошелька";
-      setWalletAddress("Укажите адрес кошелька");
-      setIsAddressNeutral(true);
-      return;
-    }
+                        // 1) Первая буква обязана быть 'T' (латиница). Иначе — сброс + закрыть клавиатуру.
+                        if (next && next[0] !== "T") {
+                        el.blur();
+                        el.textContent = "Укажите адрес кошелька";
+                        setWalletAddress("Укажите адрес кошелька");
+                        setIsAddressNeutral(true);
+                        return;
+                        }
 
-    // 2) Жёсткий лимит 34 символа
-    if (next.length > 34) next = next.slice(0, 34);
+                        // 2) Жёсткий лимит 34 символа
+                        if (next.length > 34) next = next.slice(0, 34);
 
-    // Если изменили — вернуть текст и каретку в конец
-    if (next !== raw) {
-      el.textContent = next;
-      const sel = window.getSelection();
-      const r = document.createRange();
-      r.selectNodeContents(el);
-      r.collapse(false);
-      sel.removeAllRanges();
-      sel.addRange(r);
-    }
+                        // Если изменили — вернуть текст и каретку в конец
+                        if (next !== raw) {
+                        el.textContent = next;
+                        const sel = window.getSelection();
+                        const r = document.createRange();
+                        r.selectNodeContents(el);
+                        r.collapse(false);
+                        sel.removeAllRanges();
+                        sel.addRange(r);
+                        }
 
-    setWalletAddress(next);
-  }}
-  onPaste={(e) => {
-    e.preventDefault();
-    const txt = (e.clipboardData || window.clipboardData).getData("text") || "";
-    let cleaned = sanitizeAddress(txt);
+                        setWalletAddress(next);
+                    }}
+                    onPaste={(e) => {
+                        e.preventDefault();
+                        const txt = (e.clipboardData || window.clipboardData).getData("text") || "";
+                        let cleaned = sanitizeAddress(txt);
 
-    // первая буква обязана быть 'T'
-    if (cleaned && cleaned[0] !== "T") {
-      const el = e.currentTarget;
-      el.blur();
-      el.textContent = "Укажите адрес кошелька";
-      setWalletAddress("Укажите адрес кошелька");
-      setIsAddressNeutral(true);
-      return;
-    }
+                        // первая буква обязана быть 'T'
+                        if (cleaned && cleaned[0] !== "T") {
+                        const el = e.currentTarget;
+                        el.blur();
+                        el.textContent = "Укажите адрес кошелька";
+                        setWalletAddress("Укажите адрес кошелька");
+                        setIsAddressNeutral(true);
+                        return;
+                        }
 
-    // лимит 34 символа
-    if (cleaned.length > 34) cleaned = cleaned.slice(0, 34);
+                        // лимит 34 символа
+                        if (cleaned.length > 34) cleaned = cleaned.slice(0, 34);
 
-    setWalletAddress(cleaned);
-    document.execCommand("insertText", false, cleaned);
+                        setWalletAddress(cleaned);
+                        document.execCommand("insertText", false, cleaned);
 
-    // курсор в конец
-    const el = e.currentTarget;
-    const sel = window.getSelection();
-    const r = document.createRange();
-    r.selectNodeContents(el);
-    r.collapse(false);
-    sel.removeAllRanges();
-    sel.addRange(r);
-  }}
-  onKeyDown={(e) => {
-    if (e.key === "Enter") { e.preventDefault(); e.currentTarget.blur(); }
-  }}
-  onBlur={(e) => {
-    if (!sanitizeAddress(e.currentTarget.textContent || "")) {
-      e.currentTarget.textContent = "Укажите адрес кошелька";
-      setWalletAddress("Укажите адрес кошелька");
-      setIsAddressNeutral(true);
-    }
-  }}
-/>
+                        // курсор в конец
+                        const el = e.currentTarget;
+                        const sel = window.getSelection();
+                        const r = document.createRange();
+                        r.selectNodeContents(el);
+                        r.collapse(false);
+                        sel.removeAllRanges();
+                        sel.addRange(r);
+                    }}
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter") { e.preventDefault(); e.currentTarget.blur(); }
+                    }}
+                    onBlur={(e) => {
+                        if (!sanitizeAddress(e.currentTarget.textContent || "")) {
+                        e.currentTarget.textContent = "Укажите адрес кошелька";
+                        setWalletAddress("Укажите адрес кошелька");
+                        setIsAddressNeutral(true);
+                        }
+                    }}
+                    />
                     <div className="AddressWalletNetworkContainer">
                         <h2>TRC20</h2>
                     </div>
