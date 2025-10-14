@@ -39,19 +39,6 @@ export default function Withdraw() {
     const addressValid = !isAddressNeutral && isTronAddress(addrClean);
 
 
-
-    // на всякий случай — сортировка по времени (свежие сверху)
-    const sorted = [...orders].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-
-    const getOrderClass = (i, len) => {
-    if (len === 1) return "mainOrderContainer";             // единственная
-    if (i === 0)     return "mainOrderContainer";            // первая
-    if (i === len-1) return "mainLastOrderContainer";        // последняя
-    return "mainSecondOrderContainer";                       // все промежуточные
-    };
-
-
-
     useEffect(() => {
         const el = addrRef.current;
         if (!el) return;
@@ -104,6 +91,16 @@ export default function Withdraw() {
     .toUpperCase();
 
     const [orders, setOrders] = React.useState([]);
+
+    const sorted = [...orders].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+    const getOrderClass = (i, len) => {
+    if (len === 1) return "mainOrderContainer";             // единственная
+    if (i === 0)     return "mainOrderContainer";            // первая
+    if (i === len-1) return "mainLastOrderContainer";        // последняя
+    return "mainSecondOrderContainer";                       // все промежуточные
+    };
+
 
     // при монтировании — подтянуть из бэка
     useEffect(() => {
