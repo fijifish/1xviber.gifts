@@ -123,7 +123,7 @@ export default function Withdraw() {
 
         // сброс полей
         setAmount(AMOUNT_LABEL);         // твой плейсхолдер суммы
-        setIsNeutral(true);
+      
         const el = addrRef.current;
         if (el) el.textContent = "Укажите адрес кошелька";
         setWalletAddress("");
