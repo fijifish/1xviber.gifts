@@ -375,37 +375,37 @@ export default function Withdraw() {
                     <div class="line-right"></div>
                 </div>
 
-{orders.map((o) => (
-  <div key={o._id} className="mainSecondOrderContainer">
-    <div className="textWithdrawAndAmountContainer">
-      <div className="textWithdrawAndAmountContainerPart1">
-        <h2>ВЫВОД</h2>
-        <div className="textAmountAndLogoContainer">
-          <h2>
-            <span className="accent">{Number(o.amount).toFixed(0)}</span> USDT
-          </h2>
-          <img src={usdtIMG} alt="USDT"/>
-        </div>
-      </div>
-      <div className="textWithdrawAndAmountContainerPart2">
-        <h2>{o.status || "в обработке"}</h2>
-        <div className="lineOrder-right"></div>
-      </div>
-    </div>
+                {orders.map((o) => (
+                <div key={o._id} className="mainSecondOrderContainer">
+                    <div className="textWithdrawAndAmountContainer">
+                    <div className="textWithdrawAndAmountContainerPart1">
+                        <h2>ВЫВОД</h2>
+                        <div className="textAmountAndLogoContainer">
+                        <h2>
+                            <span className="accent">{Number(o.amount).toFixed(0)}</span> USDT
+                        </h2>
+                        <img src={usdtIMG} alt="USDT"/>
+                        </div>
+                    </div>
+                    <div className="textWithdrawAndAmountContainerPart2">
+                        <h2>{o.status || "в обработке"}</h2>
+                        <div className="lineOrder-right"></div>
+                    </div>
+                    </div>
 
-    <div className="infoOrderWalletContainer">
-      <img src={walletIMG} alt="wallet"/>
-      <h2>{renderAddressWithEdges(o.address, 5)}</h2>
-    </div>
+                    <div className="infoOrderWalletContainer">
+                    <img src={walletIMG} alt="wallet"/>
+                    <h2>{renderAddressWithEdges(o.address, 5)}</h2>
+                    </div>
 
-    <div className="infoTimeAndDataContainer">
-      <h2>Дата: {fmtDate(o.createdAt)}</h2>
-      <h2>Время: {fmtTime(o.createdAt)}</h2>
-    </div>
-  </div>
-))}
+                    <div className="infoTimeAndDataContainer">
+                    <h2>Дата: {fmtDate(o.createdAt)}</h2>
+                    <h2>Время: {fmtTime(o.createdAt)}</h2>
+                    </div>
+                </div>
+                ))}
 
-                <div class="mainSecondOrderContainer">
+                {/* <div class="mainSecondOrderContainer">
                     <div class="textWithdrawAndAmountContainer">
                         <div class="textWithdrawAndAmountContainerPart1">
                             <h2>ВЫВОД</h2>
@@ -433,37 +433,8 @@ export default function Withdraw() {
                         <h2>Дата: 08.10.2025г.</h2>
                         <h2>Время: 10:53</h2>
                     </div>
-                </div>
+                </div> */}
 
-                <div class="mainLastOrderContainer">
-                    <div class="textWithdrawAndAmountContainer">
-                        <div class="textWithdrawAndAmountContainerPart1">
-                            <h2>ВЫВОД</h2>
-                            <div class="textAmountAndLogoContainer">
-                                <h2>
-                                    <span className="accent">10</span> USDT
-                                </h2>
-                                <img src={usdtIMG}/>
-                            </div>
-                        </div>
-                        <div class="textWithdrawAndAmountContainerPart2">
-                            <h2>в обработке</h2>
-                            <div class="lineOrder-right"></div>
-                        </div>
-                    </div>
-                    <div class="infoOrderWalletContainer">
-                        <img src={walletIMG}/>
-                        <h2>
-                            <span className="accent">TFeB3</span>
-                            GgLGWHEzK1S2VndNm49Eyajc
-                            <span className="accent">dogat</span>
-                        </h2>
-                    </div>
-                    <div class="infoTimeAndDataContainer">
-                        <h2>Дата: 08.10.2025г.</h2>
-                        <h2>Время: 10:53</h2>
-                    </div>
-                </div>
                 
                 <div className="footerWithdrawContainer">
                     <div className="footerTelegramChannel" onClick={() =>
