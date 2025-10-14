@@ -313,7 +313,7 @@ body {
   align-items: center;
 }
 
-.WirthdrawButton.active:hover {
+.WirthdrawButton.active {
   border-color: rgba(0, 218, 29, 0.2);      
   background-color: rgba(11, 209, 83, 0.1);  
 }
