@@ -38,6 +38,18 @@ export default function Withdraw() {
     const addrClean = sanitizeAddress(isAddressNeutral ? "" : walletAddress);
     const addressValid = !isAddressNeutral && isTronAddress(addrClean);
 
+    const orders = withdrawHistory; // или как у тебя называется
+
+    // на всякий случай — сортировка по времени (свежие сверху)
+    const sorted = [...orders].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+    const getOrderClass = (i, len) => {
+    if (len === 1) return "mainOrderContainer";             // единственная
+    if (i === 0)     return "mainOrderContainer";            // первая
+    if (i === len-1) return "mainLastOrderContainer";        // последняя
+    return "mainSecondOrderContainer";                       // все промежуточные
+    };
+
 
 
     useEffect(() => {
@@ -91,7 +103,6 @@ export default function Withdraw() {
     .slice(0,2)
     .toUpperCase();
 
-    const [orders, setOrders] = React.useState([]);
 
     // при монтировании — подтянуть из бэка
     useEffect(() => {
@@ -375,35 +386,59 @@ export default function Withdraw() {
                     <div class="line-right"></div>
                 </div>
 
-                {orders.map((o) => (
-                <div key={o._id} className="mainSecondOrderContainer">
-                    <div className="textWithdrawAndAmountContainer">
-                    <div className="textWithdrawAndAmountContainerPart1">
-                        <h2>ВЫВОД</h2>
-                        <div className="textAmountAndLogoContainer">
-                        <h2>
-                            <span className="accent">{Number(o.amount).toFixed(0)}</span> USDT
-                        </h2>
-                        <img src={usdtIMG} alt="USDT"/>
-                        </div>
-                    </div>
-                    <div className="textWithdrawAndAmountContainerPart2">
-                        <h2>{o.status || "в обработке"}</h2>
-                        <div className="lineOrder-right"></div>
-                    </div>
-                    </div>
+  <div className="ordersList">
+    {sorted.length === 0 && (
+      <div style={{opacity:.6, padding:'1rem'}}>Заявок пока нет</div>
+    )}
 
-                    <div className="infoOrderWalletContainer">
-                    <img src={walletIMG} alt="wallet"/>
-                    <h2>{renderAddressWithEdges(o.address, 5)}</h2>
-                    </div>
+    {sorted.map((o, i) => {
+      const cls = getOrderClass(i, sorted.length);
 
-                    <div className="infoTimeAndDataContainer">
-                    <h2>Дата: {fmtDate(o.createdAt)}</h2>
-                    <h2>Время: {fmtTime(o.createdAt)}</h2>
-                    </div>
-                </div>
-                ))}
+      // удобный формат для даты/времени:
+      const dt = new Date(o.createdAt || Date.now());
+      const dateStr = dt.toLocaleDateString("ru-RU");
+      const timeStr = dt.toLocaleTimeString("ru-RU", {hour: "2-digit", minute: "2-digit"});
+
+      // пример подсветки адреса (первые/последние 5 символов)
+      const addr = o.address || "";
+      const head = addr.slice(0, 5);
+      const tail = addr.slice(-5);
+      const mid  = addr.slice(5, -5);
+
+      return (
+        <div key={o._id || `${o.address}-${o.createdAt}-${i}`} className={cls}>
+          <div className="textWithdrawAndAmountContainer">
+            <div className="textWithdrawAndAmountContainerPart1">
+              <h2>ВЫВОД</h2>
+              <div className="textAmountAndLogoContainer">
+                <h2><span className="accent">{o.amount}</span> USDT</h2>
+                <img src={usdtIMG} alt="" />
+              </div>
+            </div>
+            <div className="textWithdrawAndAmountContainerPart2">
+              <h2>{o.status || "в обработке"}</h2>
+              <div className="lineOrder-right" />
+            </div>
+          </div>
+
+          <div className="infoOrderWalletContainer">
+            <img src={walletIMG} alt="" />
+            <h2>
+              <span className="accent">{head}</span>
+              {mid}
+              <span className="accent">{tail}</span>
+            </h2>
+          </div>
+
+          <div className="infoTimeAndDataContainer">
+            <h2>Дата: {dateStr}</h2>
+            <h2>Время: {timeStr}</h2>
+          </div>
+        </div>
+      );
+    })}
+  </div>
+);
 
                 {/* <div class="mainSecondOrderContainer">
                     <div class="textWithdrawAndAmountContainer">
