@@ -38,7 +38,7 @@ export default function Withdraw() {
     const addrClean = sanitizeAddress(isAddressNeutral ? "" : walletAddress);
     const addressValid = !isAddressNeutral && isTronAddress(addrClean);
 
-    const orders = withdrawHistory; // или как у тебя называется
+
 
     // на всякий случай — сортировка по времени (свежие сверху)
     const sorted = [...orders].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
@@ -103,6 +103,7 @@ export default function Withdraw() {
     .slice(0,2)
     .toUpperCase();
 
+    const [orders, setOrders] = React.useState([]);
 
     // при монтировании — подтянуть из бэка
     useEffect(() => {
@@ -438,7 +439,7 @@ export default function Withdraw() {
       );
     })}
   </div>
-);
+
 
                 {/* <div class="mainSecondOrderContainer">
                     <div class="textWithdrawAndAmountContainer">
