@@ -17,6 +17,11 @@ import TelegramIMG from "../assets/telegramIcon.png";
 import SupportIMG from "../assets/supportIcon.png";
 import usdtIMG from "../assets/usdtIcon.png";
 
+const JETTON_REF  = import.meta.env.VITE_JETTON_REF  ; 
+
+const MOSTBET_REF = import.meta.env.VITE_MOSTBET_REF ; 
+
+
 const openTG = (url) => {
   const tg = window?.Telegram?.WebApp;
   if (tg?.openTelegramLink) tg.openTelegramLink(url);
@@ -101,6 +106,39 @@ const OnexGifts = () => {
         claim: "Join",
         completed: "COMPLETED",
     };
+
+    const openRef = (baseUrl) => {
+      const url = String(baseUrl)
+        .replace("{telegramId}", String(user?.telegramId || ""))
+        .replace("{click_id}", `tg_${user?.telegramId || "0"}`);
+      openTG(url);
+    };
+
+    const checkDeposit = async (minUsd) => {
+      try {
+        if (!user?.telegramId) return alert(isRussianLang ? "Откройте через Telegram" : "Open via Telegram");
+        const qs = new URLSearchParams({ userId: String(user.telegramId), minUsd: String(minUsd) });
+        const r = await fetch(`${API_BASE}/check-casino-deposit?${qs.toString()}`);
+        const d = await r.json();
+        if (d?.ok && d.deposited) {
+          return alert(isRussianLang ? "Депозит найден — задача выполнена ✅" : "Deposit detected — task completed ✅");
+        }
+        const need = Number(d?.minUsd || minUsd || 0);
+        const have = Number(d?.totalUsd || 0);
+        if (need > 0) {
+          const left = Math.max(0, need - have).toFixed(2);
+          return alert(isRussianLang
+            ? `Недостаточно депозита. Нужно: ${need}$, есть: ${have}$. Осталось: ${left}$.`
+            : `Insufficient deposit. Required: ${need}$, you have: ${have}$. Left: ${left}$.`);
+        }
+        return alert(isRussianLang ? "Депозит пока не найден. Попробуйте позже." : "No deposit yet. Try again later.");
+      } catch (e) {
+        console.error("checkDeposit error", e);
+        alert(isRussianLang ? "Ошибка проверки депозита" : "Deposit check error");
+      }
+    };
+
+
 
     async function verifyChannel() {
     try {
@@ -316,10 +354,10 @@ const OnexGifts = () => {
                         </div>
                     </div>
                     <div className="completeAndCheckChannelContainer">
-                        <div className="complete1WINContainer">
+                        <div className="complete1WINContainer" onClick={() => openRef(JETTON_REF)} role="button">
                             <h2>ВЫПОЛНИТЬ</h2>
                         </div>
-                        <div className="checkChannelContainer">
+                        <div className="checkChannelContainer" onClick={() => checkDeposit(5)} role="button">
                             <h2>ПРОВЕРИТЬ</h2>
                         </div>
                     </div>
@@ -358,10 +396,10 @@ const OnexGifts = () => {
                         </div>
                     </div>
                     <div className="completeAndCheckChannelContainer">
-                        <div className="complete1WINContainer">
+                        <div className="complete1WINContainer" onClick={() => openRef(MOSTBET_REF)} role="button">
                             <h2>ВЫПОЛНИТЬ</h2>
                         </div>
-                        <div className="checkChannelContainer">
+                        <div className="checkChannelContainer" onClick={() => checkDeposit(10)} role="button">
                             <h2>ПРОВЕРИТЬ</h2>
                         </div>
                     </div>
