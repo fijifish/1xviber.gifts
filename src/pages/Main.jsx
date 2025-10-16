@@ -369,7 +369,7 @@ const OnexGifts = () => {
                         </div>
                     </div>
                     <div className="completeAndCheckChannelContainer">
-                        <div className="complete1WINContainer" onClick={() => openTG(`${API_BASE}/go/jetton?userId=${user?.telegramId}`)}>
+                        <div className="complete1WINContainer" onClick="https://jetton.direct/cgc494NciBw?click_id={click_id}">
                             <h2>ВЫПОЛНИТЬ</h2>
                         </div>
                         <div className="checkChannelContainer" onClick={() => openTG(`${API_BASE}/go/mostbet?userId=${user?.telegramId}`)}>
