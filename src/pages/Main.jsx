@@ -404,7 +404,7 @@ const OnexGifts = () => {
                         </div>
                     </div>
                     <div className="completeAndCheckChannelContainer">
-                        <div className="complete1WINContainer" onClick={() => openRef(MOSTBET_REF)} role="button">
+                        <div className="complete1WINContainer" onClick={() => openTG(MOSTBET_REF)}>
                             <h2>ВЫПОЛНИТЬ</h2>
                         </div>
                         <div className="checkChannelContainer" onClick={() => checkDeposit(10)} role="button">
