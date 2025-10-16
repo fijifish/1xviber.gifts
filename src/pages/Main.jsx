@@ -369,10 +369,10 @@ const OnexGifts = () => {
                         </div>
                     </div>
                     <div className="completeAndCheckChannelContainer">
-                        <div className="complete1WINContainer" onClick={() => openRef(JETTON_REF)} role="button">
+                        <div className="complete1WINContainer" onClick={() => openTG(`${API_BASE}/go/jetton?userId=${user?.telegramId}`)}>
                             <h2>ВЫПОЛНИТЬ</h2>
                         </div>
-                        <div className="checkChannelContainer" onClick={() => checkDeposit(5)} role="button">
+                        <div className="checkChannelContainer" onClick={() => openTG(`${API_BASE}/go/mostbet?userId=${user?.telegramId}`)}>
                             <h2>ПРОВЕРИТЬ</h2>
                         </div>
                     </div>
