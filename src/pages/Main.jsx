@@ -17,30 +17,15 @@ import TelegramIMG from "../assets/telegramIcon.png";
 import SupportIMG from "../assets/supportIcon.png";
 import usdtIMG from "../assets/usdtIcon.png";
 
-const JETTON_REF  = import.meta.env.VITE_JETTON_REF || "https://jetton.direct/cgc494NciBw?click_id={click_id}"; 
+const JETTON_REF  = import.meta.env.VITE_JETTON_REF || ""; 
 
-const MOSTBET_REF = import.meta.env.VITE_MOSTBET_REF || "https://vs66cd75semb.com/zAuF?sub1={telegramId}"; 
+const MOSTBET_REF = import.meta.env.VITE_MOSTBET_REF || ""; 
 
 
 const openTG = (url) => {
-  const href = String(url || "").trim();
-  if (!href) return;
   const tg = window?.Telegram?.WebApp;
-
-  // t.me ссылки открываем через специальный метод Telegram
-  if (/^https?:\/\/t\.me\//i.test(href) && tg?.openTelegramLink) {
-    tg.openTelegramLink(href);
-    return;
-  }
-
-  // Все прочие домены (jetton.direct, vs66cd75semb.com, и т.д.)
-  if (tg?.openLink) {
-    tg.openLink(href, { try_browser: true });
-    return;
-  }
-
-  // Фолбэк для обычного браузера
-  window.open(href, "_blank", "noopener,noreferrer");
+  if (tg?.openTelegramLink) tg.openTelegramLink(url);
+  else window.open(url, "_blank", "noopener");
 };
 
 
@@ -369,10 +354,10 @@ const OnexGifts = () => {
                         </div>
                     </div>
                     <div className="completeAndCheckChannelContainer">
-                        <div className="complete1WINContainer" onClick="https://jetton.direct/cgc494NciBw?click_id={click_id}">
+                        <div className="complete1WINContainer" onClick={() => openRef(JETTON_REF)} role="button">
                             <h2>ВЫПОЛНИТЬ</h2>
                         </div>
-                        <div className="checkChannelContainer" onClick={() => openTG(`${API_BASE}/go/mostbet?userId=${user?.telegramId}`)}>
+                        <div className="checkChannelContainer" onClick={() => checkDeposit(5)} role="button">
                             <h2>ПРОВЕРИТЬ</h2>
                         </div>
                     </div>
