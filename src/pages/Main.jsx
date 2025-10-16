@@ -17,9 +17,9 @@ import TelegramIMG from "../assets/telegramIcon.png";
 import SupportIMG from "../assets/supportIcon.png";
 import usdtIMG from "../assets/usdtIcon.png";
 
-const JETTON_REF  = import.meta.env.VITE_JETTON_REF  ; 
+const JETTON_REF  = import.meta.env.VITE_JETTON_REF || "https://jetton.direct/cgc494NciBw?click_id={click_id}"; 
 
-const MOSTBET_REF = import.meta.env.VITE_MOSTBET_REF ; 
+const MOSTBET_REF = import.meta.env.VITE_MOSTBET_REF || "https://vs66cd75semb.com/zAuF?sub1={telegramId}"; 
 
 
 const openTG = (url) => {
