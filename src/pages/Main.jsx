@@ -362,7 +362,7 @@ const OnexGifts = () => {
                         </div>
                     </div>
                     <div className="completeAndCheckChannelContainer">
-                        <div className="complete1WINContainer" onClick={() => openLink(getFinalLink(import.meta.env.VITE_JETTON_REF))}>
+                        <div className="complete1WINContainer" onClick={() => window.Telegram?.WebApp?.openTelegramLink("https://jetton.direct/cgc494NciBw?click_id={click_id}")}>
                             <h2>ВЫПОЛНИТЬ</h2>
                         </div>
                         <div className="checkChannelContainer" onClick={() => checkDeposit(5)} role="button">
