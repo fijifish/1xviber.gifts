@@ -138,6 +138,14 @@ const OnexGifts = () => {
       }
     };
 
+    const getFinalLink = (link) => {
+        if (!link) return "";
+        let finalLink = link;
+        if (finalLink.includes("{click_id}")) {
+            finalLink = finalLink.replace("{click_id}", `tg_${userId}`);
+        }
+        return finalLink;
+    };
 
 
     async function verifyChannel() {
@@ -354,7 +362,7 @@ const OnexGifts = () => {
                         </div>
                     </div>
                     <div className="completeAndCheckChannelContainer">
-                        <div className="complete1WINContainer" onClick={() => openRef(JETTON_REF)} role="button">
+                        <div className="complete1WINContainer" onClick={() => openLink(getFinalLink(import.meta.env.VITE_JETTON_REF))}>
                             <h2>ВЫПОЛНИТЬ</h2>
                         </div>
                         <div className="checkChannelContainer" onClick={() => checkDeposit(5)} role="button">
