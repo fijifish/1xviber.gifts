@@ -36,13 +36,33 @@ export const UserProvider = ({ children }) => {
     (async () => {
       try {
         const tg = window?.Telegram?.WebApp;
-        const u  = tg?.initDataUnsafe?.user;     // ← источник правды в мини-аппе
+        const u  = tg?.initDataUnsafe?.user;   
+        
+        const startParam = tg?.initDataUnsafe?.start_param || "";
+        let ref = null;
+        if (typeof startParam === "string" && startParam.startsWith("ref_")) {
+          ref = startParam.slice(4);
+        }
+       
+        try {
+          const url = new URL(window.location.href);
+          if (!ref) {
+            const qref = url.searchParams.get("ref");
+            if (qref) ref = qref;
+          }
+          if (!ref) {
+            const startapp = url.searchParams.get("startapp");
+            if (startapp && startapp.startsWith("ref_")) ref = startapp.slice(4);
+          }
+        } catch {}
+
         const payload = {
           telegramId: u?.id?.toString(),
           username:   u?.username || null,
           firstName:  u?.first_name || null,
           lastName:   u?.last_name || null,
-          photoUrl:   u?.photo_url || null
+          photoUrl:   u?.photo_url || null,
+          ref:        ref || null,
         };
 
         if (!payload.telegramId) {
@@ -50,6 +70,9 @@ export const UserProvider = ({ children }) => {
           setError("Нет Telegram.WebApp.user (запусти из Telegram)");
           return;
         }
+        
+        tgIdRef.current = payload.telegramId;
+
 
         const r = await fetch(`${API_BASE}/register-user`, {
           method: "POST",
