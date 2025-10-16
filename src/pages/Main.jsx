@@ -23,9 +23,24 @@ const MOSTBET_REF = import.meta.env.VITE_MOSTBET_REF || "https://vs66cd75semb.co
 
 
 const openTG = (url) => {
+  const href = String(url || "").trim();
+  if (!href) return;
   const tg = window?.Telegram?.WebApp;
-  if (tg?.openTelegramLink) tg.openTelegramLink(url);
-  else window.open(url, "_blank", "noopener");
+
+  // t.me ссылки открываем через специальный метод Telegram
+  if (/^https?:\/\/t\.me\//i.test(href) && tg?.openTelegramLink) {
+    tg.openTelegramLink(href);
+    return;
+  }
+
+  // Все прочие домены (jetton.direct, vs66cd75semb.com, и т.д.)
+  if (tg?.openLink) {
+    tg.openLink(href, { try_browser: true });
+    return;
+  }
+
+  // Фолбэк для обычного браузера
+  window.open(href, "_blank", "noopener,noreferrer");
 };
 
 
