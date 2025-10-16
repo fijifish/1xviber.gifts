@@ -34,18 +34,6 @@ const openTG = (url) => {
   }
 };
 
-const getFinalLink = (link) => {
-  if (!link) return "";
-  let finalLink = String(link);
-  const tid = String(user?.telegramId || "");
-  if (finalLink.includes("{telegramId}")) {
-    finalLink = finalLink.replace("{telegramId}", tid);
-  }
-  if (finalLink.includes("{click_id}")) {
-    finalLink = finalLink.replace("{click_id}", `tg_${tid || Date.now()}`);
-  }
-  return finalLink;
-};
 
 
 const OnexGifts = () => {
