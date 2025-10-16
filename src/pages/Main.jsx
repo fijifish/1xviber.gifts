@@ -23,9 +23,28 @@ const MOSTBET_REF = import.meta.env.VITE_MOSTBET_REF || "";
 
 
 const openTG = (url) => {
+  const href = String(url || "").trim();
   const tg = window?.Telegram?.WebApp;
-  if (tg?.openTelegramLink) tg.openTelegramLink(url);
-  else window.open(url, "_blank", "noopener");
+  if (tg?.openLink) {
+    tg.openLink(href, { try_browser: true });
+  } else if (tg?.openTelegramLink && /^https?:\/\/t\.me\//i.test(href)) {
+    tg.openTelegramLink(href);
+  } else {
+    window.open(href, "_blank", "noopener,noreferrer");
+  }
+};
+
+const getFinalLink = (link) => {
+  if (!link) return "";
+  let finalLink = String(link);
+  const tid = String(user?.telegramId || "");
+  if (finalLink.includes("{telegramId}")) {
+    finalLink = finalLink.replace("{telegramId}", tid);
+  }
+  if (finalLink.includes("{click_id}")) {
+    finalLink = finalLink.replace("{click_id}", `tg_${tid || Date.now()}`);
+  }
+  return finalLink;
 };
 
 
@@ -138,14 +157,6 @@ const OnexGifts = () => {
       }
     };
 
-    const getFinalLink = (link) => {
-        if (!link) return "";
-        let finalLink = link;
-        if (finalLink.includes("{click_id}")) {
-            finalLink = finalLink.replace("{click_id}", `tg_${userId}`);
-        }
-        return finalLink;
-    };
 
 
     async function verifyChannel() {
@@ -362,7 +373,7 @@ const OnexGifts = () => {
                         </div>
                     </div>
                     <div className="completeAndCheckChannelContainer">
-                        <div className="complete1WINContainer" onClick={() => window.Telegram?.WebApp?.openTelegramLink("https://jetton.direct/cgc494NciBw?click_id={click_id}")}>
+                        <div className="complete1WINContainer" onClick={() => openLink(getFinalLink(import.meta.env.VITE_JETTON_REF))}>
                             <h2>ВЫПОЛНИТЬ</h2>
                         </div>
                         <div className="checkChannelContainer" onClick={() => checkDeposit(5)} role="button">
@@ -404,7 +415,7 @@ const OnexGifts = () => {
                         </div>
                     </div>
                     <div className="completeAndCheckChannelContainer">
-                        <div className="complete1WINContainer" onClick={() => openTG(MOSTBET_REF)}>
+                        <div className="complete1WINContainer" onClick={() => openLink(getFinalLink(import.meta.env.VITE_MOSTBET_REF))}>
                             <h2>ВЫПОЛНИТЬ</h2>
                         </div>
                         <div className="checkChannelContainer" onClick={() => checkDeposit(10)} role="button">
