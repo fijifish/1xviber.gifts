@@ -316,7 +316,7 @@ const OnexGifts = () => {
                     <div class="line-right"></div>
                 </div> 
                 
-                <div class="main1WINTaskContainer">
+                {/* <div class="main1WINTaskContainer">
                     <div class="mainChannelNameContainer">
                         <img src={OneWinIMG}/>
                         <div class="textChannelNameContainer">
@@ -356,7 +356,7 @@ const OnexGifts = () => {
                             <h2>ПРОВЕРИТЬ</h2>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div class="mainJettonTaskContainer">
                     <div class="mainChannelNameContainer">
