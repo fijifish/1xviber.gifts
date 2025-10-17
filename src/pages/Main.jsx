@@ -145,6 +145,36 @@ const OnexGifts = () => {
       }
     };
 
+    const checkDepositMostbet = async (minUsd) => {
+    try {
+        if (!user?.telegramId) {
+        alert("Нет telegramId пользователя");
+        return;
+        }
+        const url = `${API_BASE}/mostbet/check-deposit?telegramId=${user.telegramId}&minUsd=${minUsd}`;
+        const r = await fetch(url);
+        const d = await r.json();
+        if (!r.ok || !d?.ok) throw new Error(d?.error || "Server error");
+
+        if (d.deposited) {
+        alert(`✅ Найден первый депозит: ${d.fdpUsd}$ (порог: ${d.minUsd}$)`);
+        // тут можешь отмечать задание выполненным, если нужно
+        return;
+        } else {
+        const need = Number(d.minUsd || 0);
+        const have = Number(d.fdpUsd || 0);
+        if (need > 0) {
+            const left = Math.max(0, need - have).toFixed(2);
+            alert(`❌ Пока недостаточно. Требуется: ${need}$, найдено: ${have}$. Осталось: ${left}$.`);
+        } else {
+            alert("❌ Первый депозит не найден. Попробуйте позже.");
+        }
+        }
+    } catch (e) {
+        console.error("checkDeposit error:", e);
+        alert("Ошибка проверки депозита");
+    }
+    };
 
 
     async function verifyChannel() {
@@ -406,7 +436,7 @@ const OnexGifts = () => {
                         <div className="complete1WINContainer" onClick={() => openRef(import.meta.env.VITE_MOSTBET_REF)}>
                             <h2>ВЫПОЛНИТЬ</h2>
                         </div>
-                        <div className="checkChannelContainer" onClick={() => checkDeposit(10)} role="button">
+                        <div className="checkChannelContainer" onClick={() => checkDepositMostbet(5)} role="button">
                             <h2>ПРОВЕРИТЬ</h2>
                         </div>
                     </div>
