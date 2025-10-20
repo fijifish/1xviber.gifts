@@ -260,6 +260,32 @@ body {
   font-size: 1.5vh;
 }
 
+.secondAvaliableBalanceContainer {
+  width: 35%;
+  height: 100%;
+
+  border-radius: 1vh;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center !important;
+  gap: 1vh !important;
+}
+
+.secondAvaliableBalanceContainer h2 {
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;  
+  font-size: 1.15vh;
+
+}
+
+.secondAvaliableBalanceContainer img {
+    height: 80%;
+    width: auto; 
+}
+
 .textWithdraw-with-linesContainer {
   height: 2.46%;
   width: 100%; 
