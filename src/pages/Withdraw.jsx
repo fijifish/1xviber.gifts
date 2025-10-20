@@ -33,7 +33,7 @@ export default function Withdraw() {
     const [amount, setAmount] = useState(AMOUNT_LABEL);
 
     const addrRef = useRef(null);
-    const [walletAddress, setWalletAddress] = useState("Укажите адрес кошелька");
+    const [walletAddress, setWalletAddress] = useState("Кошелёк TON или реквизиты");
     const [isAddressNeutral, setIsAddressNeutral] = useState(true);
     const addrClean = sanitizeAddress(isAddressNeutral ? "" : walletAddress);
     const addressValid = !isAddressNeutral && isTronAddress(addrClean);
@@ -43,7 +43,7 @@ export default function Withdraw() {
         const el = addrRef.current;
         if (!el) return;
         if (isAddressNeutral) {
-            el.textContent = "Укажите адрес кошелька";
+            el.textContent = "Кошелёк TON или реквизиты";
         }
     }, [isAddressNeutral]);
 
@@ -134,7 +134,7 @@ export default function Withdraw() {
         setAmount(AMOUNT_LABEL);         // твой плейсхолдер суммы
       
         const el = addrRef.current;
-        if (el) el.textContent = "Укажите адрес кошелька";
+        if (el) el.textContent = "Кошелёк TON или реквизиты";
         setWalletAddress("");
         setIsAddressNeutral(true);
     } catch (e) {
@@ -310,8 +310,8 @@ export default function Withdraw() {
                             // 1) Первая буква обязана быть 'T' (латиница). Иначе — сброс + закрыть клавиатуру.
                             if (next && next[0] !== "T") {
                             el.blur();
-                            el.textContent = "Укажите адрес кошелька";
-                            setWalletAddress("Укажите адрес кошелька");
+                            el.textContent = "Кошелёк TON или реквизиты";
+                            setWalletAddress("Кошелёк TON или реквизиты");
                             setIsAddressNeutral(true);
                             return;
                             }
@@ -341,8 +341,8 @@ export default function Withdraw() {
                             if (cleaned && cleaned[0] !== "T") {
                             const el = e.currentTarget;
                             el.blur();
-                            el.textContent = "Укажите адрес кошелька";
-                            setWalletAddress("Укажите адрес кошелька");
+                            el.textContent = "Кошелёк TON или реквизиты";
+                            setWalletAddress("Кошелёк TON или реквизиты");
                             setIsAddressNeutral(true);
                             return;
                             }
@@ -367,8 +367,8 @@ export default function Withdraw() {
                         }}
                         onBlur={(e) => {
                             if (!sanitizeAddress(e.currentTarget.textContent || "")) {
-                            e.currentTarget.textContent = "Укажите адрес кошелька";
-                            setWalletAddress("Укажите адрес кошелька");
+                            e.currentTarget.textContent = "Кошелёк TON или реквизиты";
+                            setWalletAddress("Кошелёк TON или реквизиты");
                             setIsAddressNeutral(true);
                             }
                         }}
