@@ -227,7 +227,13 @@ export default function Withdraw() {
                             <img src={tonusdtIMG}/>
                             <h2>2.11 TON | 5 USDT</h2>
                         </div>
-                        
+                    </div>
+                    <div className="AvaliableBalanceContainer">
+                        <h2>Доступный баланс</h2> 
+                        <div className="secondAvaliableBalanceContainer">
+                            <img src={tonusdtIMG}/>
+                            <h2>2.11 TON | 5 USDT</h2>
+                        </div>
                     </div>
                 </div>
 
