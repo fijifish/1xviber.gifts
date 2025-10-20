@@ -241,7 +241,7 @@ body {
 
 .AvaliableBalanceContainer {
   width: 100%;
-  height: 15.5%;
+  height: 17.5%;
 
   display: flex;
   flex-direction: row;
@@ -261,7 +261,7 @@ body {
 }
 
 .secondAvaliableBalanceContainer {
-  width: 35%;
+  width: 37%;
   height: 100%;
 
   border-radius: 1vh;
@@ -270,7 +270,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center !important;
-  gap: 1vh !important;
+  gap: .8vh !important;
+
+  flex-wrap: nowrap;
+
 }
 
 .secondAvaliableBalanceContainer h2 {
@@ -282,7 +285,7 @@ body {
 }
 
 .secondAvaliableBalanceContainer img {
-    height: 80%;
+    height: 40%;
     width: auto; 
 }
 
