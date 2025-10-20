@@ -222,7 +222,7 @@ export default function Withdraw() {
 
                 <div class="mainAllBalanceContainer">
                     <div className="AvaliableBalanceContainer">
-
+                        <h2>Доступный баланс</h2> 
                     </div>
                 </div>
 

@@ -245,12 +245,19 @@ body {
 
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 
   border-radius: 1.23vh;
 
   border: .17vh solid rgba(255, 255, 255, 0.2);
+}
+
+.AvaliableBalanceContainer h2 {
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;  
+  font-size: 1.5vh;
 }
 
 .textWithdraw-with-linesContainer {
