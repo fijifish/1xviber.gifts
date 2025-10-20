@@ -13,6 +13,7 @@ import usdtIMG from "../assets/usdtIcon.png";
 import walletIMG from "../assets/walletIcon.png";
 import TelegramIMG from "../assets/telegramIcon.png";
 import SupportIMG from "../assets/supportIcon.png";
+import PasteIMG from "../assets/paste-icon.png";
 
 function sanitizeAddress(raw = "") {
   return String(raw)
@@ -373,6 +374,9 @@ export default function Withdraw() {
                             }
                         }}
                         />
+                        <div class="AddressWalletPasteContainer">
+                            <img src={PasteIMG}/>
+                        </div>
                     </div>
                     </div>
                 </div>
