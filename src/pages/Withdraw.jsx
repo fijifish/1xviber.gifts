@@ -232,7 +232,7 @@ export default function Withdraw() {
                         <h2>Заблокированный остаток</h2> 
                         <div className="secondLockedBalanceContainer">
                             <img src={tonusdtIMG}/>
-                            <h2>2.11 TON | 5 USDT</h2>
+                            <h2>23 TON | 52 USDT</h2>
                         </div>
                     </div>
                 </div>
