@@ -220,9 +220,9 @@ export default function Withdraw() {
                     </div>
                 </div>
 
-                <div class="mainAllBalanceContainer">AvaliableBalanceContainer
-                    <div class="AvaliableBalanceContainer">
-                        
+                <div class="mainAllBalanceContainer">
+                    <div className="AvaliableBalanceContainer">
+
                     </div>
                 </div>
 
