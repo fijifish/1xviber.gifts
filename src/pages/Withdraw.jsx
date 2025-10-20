@@ -306,17 +306,17 @@ export default function Withdraw() {
                         const raw = el.textContent || "";
                         let next = sanitizeAddress(raw);
 
-                        // 1) Первая буква обязана быть 'T' (латиница). Иначе — сброс + закрыть клавиатуру.
-                        if (next && next[0] !== "T") {
-                        el.blur();
-                        el.textContent = "Укажите адрес кошелька";
-                        setWalletAddress("Укажите адрес кошелька");
-                        setIsAddressNeutral(true);
-                        return;
-                        }
+                        // // 1) Первая буква обязана быть 'T' (латиница). Иначе — сброс + закрыть клавиатуру.
+                        // if (next && next[0] !== "T") {
+                        // el.blur();
+                        // el.textContent = "Укажите адрес кошелька";
+                        // setWalletAddress("Укажите адрес кошелька");
+                        // setIsAddressNeutral(true);
+                        // return;
+                        // }
 
-                        // 2) Жёсткий лимит 34 символа
-                        if (next.length > 34) next = next.slice(0, 34);
+                        // // 2) Жёсткий лимит 34 символа
+                        // if (next.length > 34) next = next.slice(0, 34);
 
                         // Если изменили — вернуть текст и каретку в конец
                         if (next !== raw) {
@@ -336,18 +336,18 @@ export default function Withdraw() {
                         const txt = (e.clipboardData || window.clipboardData).getData("text") || "";
                         let cleaned = sanitizeAddress(txt);
 
-                        // первая буква обязана быть 'T'
-                        if (cleaned && cleaned[0] !== "T") {
-                        const el = e.currentTarget;
-                        el.blur();
-                        el.textContent = "Укажите адрес кошелька";
-                        setWalletAddress("Укажите адрес кошелька");
-                        setIsAddressNeutral(true);
-                        return;
-                        }
+                        // // первая буква обязана быть 'T'
+                        // if (cleaned && cleaned[0] !== "T") {
+                        // const el = e.currentTarget;
+                        // el.blur();
+                        // el.textContent = "Укажите адрес кошелька";
+                        // setWalletAddress("Укажите адрес кошелька");
+                        // setIsAddressNeutral(true);
+                        // return;
+                        // }
 
-                        // лимит 34 символа
-                        if (cleaned.length > 34) cleaned = cleaned.slice(0, 34);
+                        // // лимит 34 символа
+                        // if (cleaned.length > 34) cleaned = cleaned.slice(0, 34);
 
                         setWalletAddress(cleaned);
                         document.execCommand("insertText", false, cleaned);
