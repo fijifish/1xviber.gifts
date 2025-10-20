@@ -374,9 +374,9 @@ export default function Withdraw() {
                             }
                         }}
                         />
-                        <div class="AddressWalletPasteContainer">
-                            <img src={PasteIMG}/>
-                        </div>
+                    </div>
+                    <div class="AddressWalletPasteContainer">
+                        <img src={PasteIMG}/>
                     </div>
                     </div>
                 </div>
