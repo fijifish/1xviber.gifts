@@ -220,8 +220,10 @@ export default function Withdraw() {
                     </div>
                 </div>
 
-                <div class="mainAllBalanceContainer">
-                    
+                <div class="mainAllBalanceContainer">AvaliableBalanceContainer
+                    <div class="AvaliableBalanceContainer">
+                        
+                    </div>
                 </div>
 
                 <div class="textWithdraw-with-linesContainer">

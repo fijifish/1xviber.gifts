@@ -239,6 +239,23 @@ body {
 
 }
 
+.AvaliableBalanceContainer {
+  width: 100%;
+  height: 15.5%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-left: 1vh;
+  padding-right: 1vh;
+
+  border-radius: 1.23vh;
+
+  border: rgba(255, 255, 255, 0.2);
+}
+
 .textWithdraw-with-linesContainer {
   height: 2.46%;
   width: 100%; 
