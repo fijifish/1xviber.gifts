@@ -215,7 +215,10 @@ body {
 .mainAllBalanceContainer {
   width: 84%;
   height: 24.6%;
-  margin-top: 3.4vh;
+
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+
   padding-top: 2.8vh;
   padding-left: 2.8vh;
   padding-right: 2.8vh;
