@@ -220,6 +220,10 @@ export default function Withdraw() {
                     </div>
                 </div>
 
+                <div class="mainAllBalanceContainer">
+                    
+                </div>
+
                 <div class="textWithdraw-with-linesContainer">
                     <div class="line-left"></div>
                         <h2>Обработка депозита может занимать<br/>до нескольких минут</h2>
