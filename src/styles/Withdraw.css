@@ -248,7 +248,7 @@ body {
 
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 
   border-radius: 1.23vh;
