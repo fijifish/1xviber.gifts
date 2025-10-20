@@ -253,7 +253,7 @@ body {
 
   border-radius: 1.23vh;
 
-  border: rgba(255, 255, 255, 0.2);
+  border: .17vh solid rgba(255, 255, 255, 0.2);
 }
 
 .textWithdraw-with-linesContainer {
