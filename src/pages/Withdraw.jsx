@@ -36,7 +36,12 @@ export default function Withdraw() {
     const [walletAddress, setWalletAddress] = useState("Укажите адрес кошелька");
     const [isAddressNeutral, setIsAddressNeutral] = useState(true);
     const addrClean = sanitizeAddress(isAddressNeutral ? "" : walletAddress);
-    const addressValid = !isAddressNeutral && isTronAddress(addrClean);
+    // Упрощённые условия для доступности кнопки:
+    //  - адрес: поле не плейсхолдер и не пустое (валидность TRC20 проверит бэкенд)
+    //  - сумма: что-то введено (не плейсхолдер)
+    const addressFilled = !isAddressNeutral && addrClean.length > 0;
+    const amountFilled  = amount && amount !== AMOUNT_LABEL && String(amount).trim().length > 0;
+    const readyToWithdraw = addressFilled && amountFilled;
 
 
     useEffect(() => {
@@ -80,8 +85,6 @@ export default function Withdraw() {
     const usdtBalance = Number(user?.balanceTon ?? 0); // ⚠️ сейчас тут хранится именно USDT
     const tonBalance  = usdToTon(usdtBalance);
 
-    const amountValid = amount && amount !== AMOUNT_LABEL && Number(amount) > 0;
-    const readyToWithdraw = amountValid && addressValid;
 
     const telegramId  = user?.telegramId;
     const displayName = user?.firstName || user?.username || (telegramId ? `id${telegramId}` : "User");
@@ -280,7 +283,7 @@ export default function Withdraw() {
                         </div>
                         
                     </div>
-                    <div className={`AddressWalletContainer ${isAddressNeutral ? "" : (addressValid ? "valid" : "invalid")}`}>
+                    <div className={`AddressWalletContainer ${isAddressNeutral ? "" : (addressFilled ? "valid" : "invalid")}`}>
                     <div
                     ref={addrRef}
                     className={`addressInput ${isAddressNeutral ? "is-placeholder" : ""}`}
