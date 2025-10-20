@@ -228,9 +228,9 @@ export default function Withdraw() {
                             <h2>2.11 TON | 5 USDT</h2>
                         </div>
                     </div>
-                    <div className="AvaliableBalanceContainer">
-                        <h2>Доступный баланс</h2> 
-                        <div className="secondAvaliableBalanceContainer">
+                    <div className="LockedBalanceContainer">
+                        <h2>Заблокированный остаток</h2> 
+                        <div className="secondLockedBalanceContainer">
                             <img src={tonusdtIMG}/>
                             <h2>2.11 TON | 5 USDT</h2>
                         </div>

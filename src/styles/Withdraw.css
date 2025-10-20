@@ -263,6 +263,30 @@ body {
   font-size: 1.5vh;
 }
 
+.LockedBalanceContainer {
+  width: 89%;
+  height: 17.5%;
+
+  padding-left: 2vh;
+  padding-right: 2vh;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 1.23vh;
+
+  border: .17vh solid rgba(123, 123, 123, 0.2);
+}
+
+.LockedBalanceContainer h2 {
+  color: #7B7B7B;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;  
+  font-size: 1.5vh;
+}
+
 .secondAvaliableBalanceContainer {
   width: 39%;
   height: 100%;
@@ -288,6 +312,35 @@ body {
 }
 
 .secondAvaliableBalanceContainer img {
+    height: 40%;
+    width: auto; 
+}
+
+.secondLockedBalanceContainer {
+  width: 39%;
+  height: 100%;
+
+  border-radius: 1vh;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center !important;
+  gap: .8vh !important;
+
+  flex-wrap: nowrap;
+
+}
+
+.secondLockedBalanceContainer h2 {
+  color: #7B7B7B;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;  
+  font-size: 1.15vh;
+
+}
+
+.secondLockedBalanceContainer img {
     height: 40%;
     width: auto; 
 }
