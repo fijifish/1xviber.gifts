@@ -357,12 +357,12 @@ body {
 .AddressWalletContainer.invalid { border-color: rgba(123, 123, 123, 0.6); } 
 
 .AddressWalletPasteContainer {
-  width: 25%;
+  width: 20%;
   height: 100%;
 
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 
   border: .17vh solid rgba(123, 123, 123, 0.6);
@@ -372,7 +372,7 @@ body {
 
 .AddressWalletPasteContainer img {
   width: auto;
-  height: 50%;
+  height: 60%;
 }
 
 .AddressWalletContainer h2{
