@@ -21,8 +21,9 @@ function sanitizeAddress(raw = "") {
     .replace(/[\s\u200B-\u200D\uFEFF]/g, "")   // убираем пробелы/zero-width
     .replace(/[^\x00-\x7F]/g, "");            // только ASCII
 }
-function isTronAddress(s) {
-  return /^T[1-9A-HJ-NP-Za-km-z]{33}$/.test(s); // T + 33 base58 = 34
+// NOTE: Валидация TRC20 отключена по задаче. Оставляем заглушку на будущее.
+function isTronAddress(_s) {
+  return true;
 }
 
 export default function Withdraw() {
@@ -38,7 +39,7 @@ export default function Withdraw() {
     const [walletAddress, setWalletAddress] = useState("Кошелёк TON или реквизиты");
     const [isAddressNeutral, setIsAddressNeutral] = useState(true);
     const addrClean = sanitizeAddress(isAddressNeutral ? "" : walletAddress);
-    const addressValid = !isAddressNeutral && isTronAddress(addrClean);
+    const addressValid = !isAddressNeutral && addrClean.length > 0; // валидно, если поле не пустое
 
 
     useEffect(() => {
@@ -312,7 +313,7 @@ export default function Withdraw() {
                         
                     </div>
                     <div class="AddressWalletMainContainer">
-                    <div className={`AddressWalletContainer ${isAddressNeutral ? "" : (addressValid ? "valid" : "invalid")}`}>
+                    <div className={`AddressWalletContainer ${isAddressNeutral ? "" : (addrClean.length > 0 ? "valid" : "invalid")}`}>
                         <div
                         ref={addrRef}
                         className={`addressInput ${isAddressNeutral ? "is-placeholder" : ""}`}
@@ -336,29 +337,16 @@ export default function Withdraw() {
                         onInput={(e) => {
                             const el = e.currentTarget;
                             const raw = el.textContent || "";
-                            let next = sanitizeAddress(raw);
+                            let next = sanitizeAddress(raw); // только базовая санитизация
 
-                            // 1) Первая буква обязана быть 'T' (латиница). Иначе — сброс + закрыть клавиатуру.
-                            if (next && next[0] !== "T") {
-                            el.blur();
-                            el.textContent = "Кошелёк TON или реквизиты";
-                            setWalletAddress("Кошелёк TON или реквизиты");
-                            setIsAddressNeutral(true);
-                            return;
-                            }
-
-                            // 2) Жёсткий лимит 34 символа
-                            if (next.length > 34) next = next.slice(0, 34);
-
-                            // Если изменили — вернуть текст и каретку в конец
                             if (next !== raw) {
-                            el.textContent = next;
-                            const sel = window.getSelection();
-                            const r = document.createRange();
-                            r.selectNodeContents(el);
-                            r.collapse(false);
-                            sel.removeAllRanges();
-                            sel.addRange(r);
+                                el.textContent = next;
+                                const sel = window.getSelection();
+                                const r = document.createRange();
+                                r.selectNodeContents(el);
+                                r.collapse(false);
+                                sel.removeAllRanges();
+                                sel.addRange(r);
                             }
 
                             setWalletAddress(next);
@@ -366,25 +354,11 @@ export default function Withdraw() {
                         onPaste={(e) => {
                             e.preventDefault();
                             const txt = (e.clipboardData || window.clipboardData).getData("text") || "";
-                            let cleaned = sanitizeAddress(txt);
-
-                            // первая буква обязана быть 'T'
-                            if (cleaned && cleaned[0] !== "T") {
-                            const el = e.currentTarget;
-                            el.blur();
-                            el.textContent = "Кошелёк TON или реквизиты";
-                            setWalletAddress("Кошелёк TON или реквизиты");
-                            setIsAddressNeutral(true);
-                            return;
-                            }
-
-                            // лимит 34 символа
-                            if (cleaned.length > 34) cleaned = cleaned.slice(0, 34);
+                            let cleaned = sanitizeAddress(txt); // без доп. проверок
 
                             setWalletAddress(cleaned);
                             document.execCommand("insertText", false, cleaned);
 
-                            // курсор в конец
                             const el = e.currentTarget;
                             const sel = window.getSelection();
                             const r = document.createRange();
