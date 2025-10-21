@@ -51,16 +51,14 @@ body {
   flex-direction: column;
   align-items: center;
 
-  background-color: linear-gradient(
-      to bottom right,
-      #0C0F1E -25%,   /* точка 0 — немного за пределами сверху-слева */
-      #000000 125%   /* точка 100 — немного за пределами снизу-справа */
-    );
-
-  background-image: url("../assets/mountainBg.png");
-  background-repeat: no-repeat;
-  background-position: center bottom 0;
-  background-size: 100% auto;
+  background-color: black;
+  background-image:
+    linear-gradient(to bottom right, #0C0F1E -25%, #000000 125%),
+    url("../assets/mountainBg.png");
+  background-repeat: no-repeat, no-repeat;
+  background-position: center bottom 0, center bottom 0;
+  background-size: 100% auto, 100% auto;
+  background-blend-mode: multiply; /* или overlay/soft-light — по вкусу */
 
   min-height: 0;          
 }
