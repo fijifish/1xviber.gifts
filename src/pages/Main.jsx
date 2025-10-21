@@ -151,27 +151,46 @@ const OnexGifts = () => {
         alert("Нет telegramId пользователя");
         return;
         }
-        const url = `${API_BASE}/mostbet/check-deposit?telegramId=${user.telegramId}&minUsd=${minUsd}`;
-        const r = await fetch(url);
+
+        // 1️⃣ Проверяем депозит
+        const checkUrl = `${API_BASE}/mostbet/check-deposit?telegramId=${user.telegramId}&minUsd=${minUsd}`;
+        const r = await fetch(checkUrl);
         const d = await r.json();
+
         if (!r.ok || !d?.ok) throw new Error(d?.error || "Server error");
 
-        if (d.deposited) {
-        alert(`✅ Найден первый депозит: ${d.fdpUsd}$ (порог: ${d.minUsd}$)`);
-        // тут можешь отмечать задание выполненным, если нужно
-        return;
-        } else {
+        if (!d.deposited) {
         const need = Number(d.minUsd || 0);
         const have = Number(d.fdpUsd || 0);
-        if (need > 0) {
-            const left = Math.max(0, need - have).toFixed(2);
-            alert(`❌ Пока недостаточно. Требуется: ${need}$, найдено: ${have}$. Осталось: ${left}$.`);
-        } else {
-            alert("❌ Первый депозит не найден. Попробуйте позже.");
+        const left = Math.max(0, need - have).toFixed(2);
+        alert(`❌ Недостаточно депозита. Нужно ${need}$, найдено ${have}$. Осталось ${left}$.`);
+        return;
         }
+
+        // 2️⃣ Если депозит найден — вызываем verify для награды
+        const verifyResp = await fetch(`${API_BASE}/tasks/mostbet/verify`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ telegramId: user.telegramId, minUsd }),
+        });
+
+        const verifyData = await verifyResp.json();
+        if (!verifyResp.ok || !verifyData?.ok) throw new Error(verifyData?.error || "Ошибка verify");
+
+        if (verifyData.status === "rewarded") {
+        alert(`✅ Задание выполнено! Награда: +${verifyData.reward} TON 🎉`);
+        updateUser(verifyData.user);   // обновляем баланс и задания
+        await refetchUser();
+        } else if (verifyData.status === "already_completed") {
+        alert("✅ Задание уже выполнено ранее!");
+        updateUser(verifyData.user);
+        await refetchUser();
+        } else if (verifyData.status === "not_completed") {
+        alert("❌ Депозит найден, но не соответствует условиям (например, сумма меньше минимальной).");
         }
+
     } catch (e) {
-        console.error("checkDeposit error:", e);
+        console.error("checkDepositMostbet error:", e);
         alert("Ошибка проверки депозита");
     }
     };
@@ -437,7 +456,7 @@ const OnexGifts = () => {
                             <h2>ВЫПОЛНИТЬ</h2>
                         </div>
                         <div className="checkChannelContainer" onClick={() => checkDepositMostbet(5)} role="button">
-                            <h2>ПРОВЕРИТЬ</h2>
+                            <h2>ПРОВЕРИТЬ</h2> 
                         </div>
                     </div>
                 </div>
