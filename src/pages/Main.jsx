@@ -82,6 +82,11 @@ const OnexGifts = () => {
       if (user?.telegramId) fetchBalances(user.telegramId);
     }, [user?.telegramId]);
 
+    // auto-refresh balances when task flags flip
+    useEffect(() => {
+      if (user?.telegramId) fetchBalances(user.telegramId);
+    }, [taskDone, mostbetDone]);
+
     const availableTON = usdToTon(usdAvailable);
     const lockedTON    = usdToTon(usdLocked);
 
@@ -537,8 +542,3 @@ const OnexGifts = () => {
 };
 
 export default OnexGifts;
-
-    // // auto-refresh balances when task flags flip
-    // useEffect(() => {
-    //   if (user?.telegramId) fetchBalances(user.telegramId);
-    // }, [taskDone, mostbetDone]);
