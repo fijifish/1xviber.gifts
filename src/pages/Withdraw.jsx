@@ -21,9 +21,9 @@ function sanitizeAddress(raw = "") {
     .replace(/[\s\u200B-\u200D\uFEFF]/g, "")   // убираем пробелы/zero-width
     .replace(/[^\x00-\x7F]/g, "");            // только ASCII
 }
-// function isTronAddress(s) {
-//   return /^T[1-9A-HJ-NP-Za-km-z]{33}$/.test(s); // T + 33 base58 = 34
-// }
+function isTronAddress(s) {
+  return /^T[1-9A-HJ-NP-Za-km-z]{33}$/.test(s); // T + 33 base58 = 34
+}
 
 export default function Withdraw() {
 
@@ -38,7 +38,7 @@ export default function Withdraw() {
     const [walletAddress, setWalletAddress] = useState("Кошелёк TON или реквизиты");
     const [isAddressNeutral, setIsAddressNeutral] = useState(true);
     const addrClean = sanitizeAddress(isAddressNeutral ? "" : walletAddress);
-    // const addressValid = !isAddressNeutral && isTronAddress(addrClean);
+    const addressValid = !isAddressNeutral && isTronAddress(addrClean);
 
 
     useEffect(() => {
