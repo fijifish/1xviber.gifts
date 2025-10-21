@@ -240,11 +240,11 @@ body {
 }
 
 .AvaliableBalanceContainer {
-  width: 91.5%;
+  width: 91%;
   height: 17.5%;
 
-  padding-left: 1.5vh;
-  padding-right: 1.5vh;
+  padding-left: 1.6vh;
+  padding-right: 1.6vh;
 
   display: flex;
   flex-direction: row;
@@ -264,11 +264,11 @@ body {
 }
 
 .LockedBalanceContainer {
-  width: 92%;
+  width: 91%;
   height: 17.5%;
 
-  padding-left: 1.4vh;
-  padding-right: 1.4vh;
+  padding-left: 1.6vh;
+  padding-right: 1.6vh;
 
   display: flex;
   flex-direction: row;
