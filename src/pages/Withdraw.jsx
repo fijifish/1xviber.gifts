@@ -14,6 +14,7 @@ import walletIMG from "../assets/walletIcon.png";
 import TelegramIMG from "../assets/telegramIcon.png";
 import SupportIMG from "../assets/supportIcon.png";
 import PasteIMG from "../assets/paste-icon.png";
+import InfoIMG from "../assets/info-icon.png";
 
 function sanitizeAddress(raw = "") {
   return String(raw)
@@ -234,6 +235,10 @@ export default function Withdraw() {
                             <img src={tonusdtIMG}/>
                             <h2>23 TON | 52 USDT</h2>
                         </div>
+                    </div>
+                    <div className="infoAvaliableBalanceContainer">
+                            <img src={InfoIMG}/>
+                            <h2>Доступный баланс - это баланс, который доступен к выводу в данный момент временни.</h2>
                     </div>
                 </div>
 
