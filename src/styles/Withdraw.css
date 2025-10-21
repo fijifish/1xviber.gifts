@@ -346,13 +346,15 @@ body {
 }
 
 .infoAvaliableBalanceContainer {
-  width: 100%;
+  width: 97%;
   height: 12%;
 
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+
+  gap: 2.2vh;
 }
 
 .infoAvaliableBalanceContainer h2 {
@@ -360,11 +362,15 @@ body {
   font-family: 'Inter', sans-serif;
   font-weight: 400;  
   font-size: 1.5vh;
+
+  text-align: justify;
 }
 
 .infoAvaliableBalanceContainer img {
   height: 60%;
   width: auto;
+
+  align-self: flex-start;
 }
 
 .textWithdraw-with-linesContainer {

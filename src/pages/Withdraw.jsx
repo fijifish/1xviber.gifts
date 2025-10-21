@@ -238,7 +238,7 @@ export default function Withdraw() {
                     </div>
                     <div className="infoAvaliableBalanceContainer">
                             <img src={InfoIMG}/>
-                            <h2>Доступный баланс - это баланс, который <br /> доступен к выводу в данный момент временни.</h2>
+                            <h2>Доступный баланс - это баланс, который до- <br />ступен к выводу в данный момент временни.</h2>
                     </div>
                 </div>
 
