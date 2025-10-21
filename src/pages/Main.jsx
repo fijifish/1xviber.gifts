@@ -16,8 +16,6 @@ import MostbetIMG from "../assets/MostbetIcon.png";
 import TelegramIMG from "../assets/telegramIcon.png";
 import SupportIMG from "../assets/supportIcon.png";
 import usdtIMG from "../assets/usdtIcon.png";
-import React from "react";
-import { API_BASE } from "./Withdraw";
 
 const JETTON_REF  = import.meta.env.VITE_JETTON_REF || ""; 
 
