@@ -481,7 +481,7 @@ export default function Withdraw() {
                         <img src={TelegramIMG}/>
                     </div>
                     <div className="footerSupportButton" onClick={() =>
-                        window.Telegram?.WebApp?.openTelegramLink("https://t.me/gostcust")
+                        window.Telegram?.WebApp?.openTelegramLink("https://t.me/")
                     }>
                         <h2>Поддержка 24/7</h2>
                         <img src={SupportIMG} />
