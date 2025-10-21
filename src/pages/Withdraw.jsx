@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Withdraw.css";
 import { useUser } from "../UserContext";
 
-const API_BASE = import.meta.env.VITE_API_BASE || "";
+export const API_BASE = import.meta.env.VITE_API_BASE || "";
 
 import withdrawIMG from "../assets/withdrawIcon.png";
 import refferalsIMG from "../assets/refferalsIcon.png";
@@ -40,6 +40,29 @@ export default function Withdraw() {
     const [isAddressNeutral, setIsAddressNeutral] = useState(true);
     const addrClean = sanitizeAddress(isAddressNeutral ? "" : walletAddress);
     const addressValid = !isAddressNeutral && addrClean.length > 0; // валидно, если поле не пустое
+
+    const [usdAvailable, setUsdAvailable] = useState(0);
+    const [usdLocked, setUsdLocked] = useState(0);
+
+    const availableTON = usdToTon(usdAvailable);
+    const lockedTON    = usdToTon(usdLocked);
+
+    const totalUSD = usdAvailable + usdLocked;
+    const totalTON = usdToTon(totalUSD);
+
+    useEffect(() => {
+    if (!user?.telegramId || !API_BASE) return;
+
+    fetch(`${API_BASE}/balances?telegramId=${user.telegramId}`)
+        .then(r => r.json())
+        .then(d => {
+        if (d?.ok) {
+            setUsdAvailable(Number(d.usdAvailable || 0));
+            setUsdLocked(Number(d.usdLocked || 0));
+        }
+        })
+        .catch(console.error);
+    }, [user?.telegramId]);
 
 
     useEffect(() => {
@@ -212,7 +235,7 @@ export default function Withdraw() {
                     </div>
                     <div className="mainBalanceContainer">
                         <img src={tonusdtIMG}/>
-                        <h2>{tonToUsdRate ? tonBalance.toFixed(2) : "…"} TON | {usdtBalance} USDT</h2> 
+                        <h2>{tonToUsdRate ? totalTON.toFixed(2) : "…"} TON | {totalUSD.toFixed(2)} USDT</h2> 
                     </div>
                     <div className="withdrawContainer" onClick={() => navigate("/withdraw")} role="button">
                         <img src={withdrawIMG} alt="withdraw" />
@@ -227,14 +250,14 @@ export default function Withdraw() {
                         <h2>Доступный баланс</h2> 
                         <div className="secondAvaliableBalanceContainer">
                             <img src={tonusdtIMG}/>
-                            <h2>2.11 TON | 5 USDT</h2>
+                            <h2>{availableTON ? availableTON.toFixed(2) : "…"} TON | {usdAvailable.toFixed(2)} USDT</h2>
                         </div>
                     </div>
                     <div className="LockedBalanceContainer">
                         <h2>Заблокированный остаток</h2> 
                         <div className="secondLockedBalanceContainer">
                             <img src={tonusdtIMG}/>
-                            <h2>23 TON | 52 USDT</h2>
+                            <h2>{lockedTON ? lockedTON.toFixed(2) : "…"} TON | {usdLocked.toFixed(2)} USDT</h2>
                         </div>
                     </div>
                     <div className="infoAvaliableBalanceContainer">

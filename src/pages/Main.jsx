@@ -16,6 +16,8 @@ import MostbetIMG from "../assets/MostbetIcon.png";
 import TelegramIMG from "../assets/telegramIcon.png";
 import SupportIMG from "../assets/supportIcon.png";
 import usdtIMG from "../assets/usdtIcon.png";
+import React from "react";
+import { API_BASE } from "./Withdraw";
 
 const JETTON_REF  = import.meta.env.VITE_JETTON_REF || ""; 
 
@@ -62,6 +64,29 @@ const OnexGifts = () => {
 
     const usdtBalance = Number(user?.balanceTon ?? 0); // ⚠️ сейчас тут хранится именно USDT
     const tonBalance  = usdToTon(usdtBalance);
+
+    const [usdAvailable, setUsdAvailable] = useState(0);
+    const [usdLocked, setUsdLocked] = useState(0);
+
+    const availableTON = usdToTon(usdAvailable);
+    const lockedTON    = usdToTon(usdLocked);
+
+    const totalUSD = usdAvailable + usdLocked;
+    const totalTON = usdToTon(totalUSD);
+
+    useEffect(() => {
+    if (!user?.telegramId || !API_BASE) return;
+
+    fetch(`${API_BASE}/balances?telegramId=${user.telegramId}`)
+        .then(r => r.json())
+        .then(d => {
+        if (d?.ok) {
+            setUsdAvailable(Number(d.usdAvailable || 0));
+            setUsdLocked(Number(d.usdLocked || 0));
+        }
+        })
+        .catch(console.error);
+    }, [user?.telegramId]);
 
     const [taskDone, setTaskDone] = useState(Boolean(user?.tasks?.channelSubscribed));
 
@@ -265,7 +290,7 @@ const OnexGifts = () => {
                     </div>
                     <div className="mainBalanceContainer">
                         <img src={tonusdtIMG}/>
-                        <h2>{tonToUsdRate ? tonBalance.toFixed(2) : "…"} TON | {usdtBalance} USDT</h2> 
+                        <h2>{tonToUsdRate ? totalTON.toFixed(2) : "…"} TON | {totalUSD.toFixed(2)} USDT</h2> 
                     </div>
                     <div className="withdrawContainer" onClick={() => navigate("/withdraw")} role="button">
                         <img src={withdrawIMG} alt="withdraw" />
