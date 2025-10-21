@@ -53,12 +53,20 @@ body {
 
   background-color: black;
 
-  background-image: url("../assets/mountainBg.png");
+  /* Сначала градиент, потом фон-картинка */
+  background-image:
+    linear-gradient(
+      to bottom right,
+      #0C0F1E -25%,   /* точка 0 — немного за пределами сверху-слева */
+      #000000 125%   /* точка 100 — немного за пределами снизу-справа */
+    ),
+    url("../assets/mountainBg.png");
+
   background-repeat: no-repeat;
   background-position: center bottom 0;
   background-size: 100% auto;
 
-  min-height: 0;          
+  min-height: 0;
 }
 
 .headerContainer {
