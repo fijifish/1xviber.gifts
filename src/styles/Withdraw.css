@@ -392,10 +392,11 @@ body {
   font-size: 1.5vh;
 
   text-align: justify;
+  margin-right: .95vh;
 }
 
 .infoLockedBalanceContainer img {
-  height: 35%;
+  height: 37%;
   width: auto;
 
   align-self: flex-start;
