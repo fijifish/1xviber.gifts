@@ -70,6 +70,11 @@ const OnexGifts = () => {
     setTaskDone(Boolean(user?.tasks?.channelSubscribed));
     }, [user?.tasks?.channelSubscribed]);
 
+    const [mostbetDone, setMostbetDone] = useState(Boolean(user?.tasks?.mostbetCompleted));
+    useEffect(() => {
+    setMostbetDone(Boolean(user?.tasks?.mostbetCompleted));
+    }, [user?.tasks?.mostbetCompleted]);
+
     const telegramId  = user?.telegramId;
     const displayName = user?.firstName || user?.username || (telegramId ? `id${telegramId}` : "User");
     const displayUsername = user?.username ? `@${user.username}` : (telegramId ? `id${telegramId}` : "");
@@ -452,12 +457,27 @@ const OnexGifts = () => {
                         </div>
                     </div>
                     <div className="completeAndCheckChannelContainer">
-                        <div className="complete1WINContainer" onClick={() => openRef(import.meta.env.VITE_MOSTBET_REF)}>
+                    {mostbetDone ? (
+                        <div className="taskChannelCompletedContainer">
+                        <h2>ВЫПОЛНЕНО</h2>
+                        </div>
+                    ) : (
+                        <>
+                        <div
+                            className="complete1WINContainer"
+                            onClick={() => openRef(import.meta.env.VITE_MOSTBET_REF)}
+                        >
                             <h2>ВЫПОЛНИТЬ</h2>
                         </div>
-                        <div className="checkChannelContainer" onClick={() => checkDepositMostbet(5)} role="button">
-                            <h2>ПРОВЕРИТЬ</h2> 
+                        <div
+                            className="checkChannelContainer"
+                            onClick={() => checkDepositMostbet(5)}
+                            role="button"
+                        >
+                            <h2>ПРОВЕРИТЬ</h2>
                         </div>
+                        </>
+                    )}
                     </div>
                 </div>
 
