@@ -243,7 +243,7 @@ export default function Withdraw() {
                     <div className="infoLockedBalanceContainer">
                         <img src={InfoIMG}/>
                         <h2>Заблокированный остаток — это часть<br />
-                            средств, которая станет доступна после выполнения<br />
+                            средств, которая станет доступна после<br />
                             выполнения всех представленных заданий.
                         </h2>
                         
