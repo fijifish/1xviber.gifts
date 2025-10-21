@@ -66,6 +66,26 @@ const OnexGifts = () => {
     const [usdAvailable, setUsdAvailable] = useState(0);
     const [usdLocked, setUsdLocked] = useState(0);
 
+    // --- balances helper: fetch fresh values from backend
+    const fetchBalances = async (tid = user?.telegramId) => {
+      try {
+        if (!tid || !API_BASE) return;
+        const r = await fetch(`${API_BASE}/balances?telegramId=${tid}`);
+        const d = await r.json();
+        if (d?.ok) {
+          setUsdAvailable(Number(d.usdAvailable || 0));
+          setUsdLocked(Number(d.usdLocked || 0));
+        }
+      } catch (e) {
+        console.error("balances fetch failed:", e);
+      }
+    };
+
+    // initial balances load
+    useEffect(() => {
+      if (user?.telegramId) fetchBalances(user.telegramId);
+    }, [user?.telegramId]);
+
     const availableTON = usdToTon(usdAvailable);
     const lockedTON    = usdToTon(usdLocked);
 
@@ -73,17 +93,7 @@ const OnexGifts = () => {
     const totalTON = usdToTon(totalUSD);
 
     useEffect(() => {
-    if (!user?.telegramId || !API_BASE) return;
-
-    fetch(`${API_BASE}/balances?telegramId=${user.telegramId}`)
-        .then(r => r.json())
-        .then(d => {
-        if (d?.ok) {
-            setUsdAvailable(Number(d.usdAvailable || 0));
-            setUsdLocked(Number(d.usdLocked || 0));
-        }
-        })
-        .catch(console.error);
+      if (user?.telegramId) fetchBalances(user.telegramId);
     }, [user?.telegramId]);
 
     const [taskDone, setTaskDone] = useState(Boolean(user?.tasks?.channelSubscribed));
@@ -174,10 +184,10 @@ const OnexGifts = () => {
     };
 
     const checkDepositMostbet = async (minUsd) => {
-    try {
+      try {
         if (!user?.telegramId) {
-        alert("Нет telegramId пользователя");
-        return;
+          alert("Нет telegramId пользователя");
+          return;
         }
 
         // 1️⃣ Проверяем депозит
@@ -188,84 +198,89 @@ const OnexGifts = () => {
         if (!r.ok || !d?.ok) throw new Error(d?.error || "Server error");
 
         if (!d.deposited) {
-        const need = Number(d.minUsd || 0);
-        const have = Number(d.fdpUsd || 0);
-        const left = Math.max(0, need - have).toFixed(2);
-        alert(`❌ Недостаточно депозита. Нужно ${need}$, найдено ${have}$. Осталось ${left}$.`);
-        return;
+          const need = Number(d.minUsd || 0);
+          const have = Number(d.fdpUsd || 0);
+          const left = Math.max(0, need - have).toFixed(2);
+          alert(`❌ Недостаточно депозита. Нужно ${need}$, найдено ${have}$. Осталось ${left}$.`);
+          return;
         }
 
         // 2️⃣ Если депозит найден — вызываем verify для награды
         const verifyResp = await fetch(`${API_BASE}/tasks/mostbet/verify`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ telegramId: user.telegramId, minUsd }),
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ telegramId: user.telegramId, minUsd }),
         });
 
         const verifyData = await verifyResp.json();
         if (!verifyResp.ok || !verifyData?.ok) throw new Error(verifyData?.error || "Ошибка verify");
 
         if (verifyData.status === "rewarded") {
-        alert(`✅ Задание выполнено! Награда: +${verifyData.reward} TON 🎉`);
-        updateUser(verifyData.user);   // обновляем баланс и задания
-        await refetchUser();
+          const plus = typeof verifyData.rewardUsd === "number" ? `${verifyData.rewardUsd} USDT` : "награда";
+          alert(`✅ Задание выполнено! ${plus} начислено 🎉`);
+          updateUser(verifyData.user);
+          setMostbetDone(true);
+          await refetchUser();
+          await fetchBalances(user.telegramId);
         } else if (verifyData.status === "already_completed") {
-        alert("✅ Задание уже выполнено ранее!");
-        updateUser(verifyData.user);
-        await refetchUser();
+          alert("✅ Задание уже выполнено ранее!");
+          updateUser(verifyData.user);
+          setMostbetDone(true);
+          await refetchUser();
+          await fetchBalances(user.telegramId);
         } else if (verifyData.status === "not_completed") {
-        alert("❌ Депозит найден, но не соответствует условиям (например, сумма меньше минимальной).");
+          alert("❌ Депозит найден, но не соответствует условиям (например, сумма меньше минимальной).");
         }
 
-    } catch (e) {
+      } catch (e) {
         console.error("checkDepositMostbet error:", e);
         alert("Ошибка проверки депозита");
-    }
+      }
     };
 
 
     async function verifyChannel() {
-    try {
+      try {
         if (!user?.telegramId) return;
         const r = await fetch(`${API_BASE}/tasks/channel/verify`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ telegramId: user.telegramId }),
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ telegramId: user.telegramId }),
         });
         const data = await r.json();
         if (!data.ok) throw new Error(data.error || "Ошибка проверки");
 
         if (data.status === "not_subscribed") {
-        alert("Сначала подпишись на канал, затем нажми ПРОВЕРИТЬ");
-        return;
+          alert("Сначала подпишись на канал, затем нажми ПРОВЕРИТЬ");
+          return;
         }
 
         // 1) моментально обновляем UI
         if (data.user) {
-        updateUser(data.user); // сервер уже вернул обновлённого пользователя
+          updateUser(data.user);
         } else if (data.status === "rewarded") {
-        // запасной вариант, если по какой-то причине 'user' не пришёл
-        updateUser({
+          updateUser({
             balanceTon: Number(user?.balanceTon || 0) + Number(data?.reward?.ton || 0),
             tasks: { ...(user?.tasks || {}), channelSubscribed: true },
-        });
+          });
         } else if (data.status === "already_claimed") {
-        updateUser({
+          updateUser({
             tasks: { ...(user?.tasks || {}), channelSubscribed: true },
-        });
+          });
         }
-
+        setTaskDone(true);
         // 2) затем жёстко синхронизируемся с БД
         await refetchUser();
+        await fetchBalances(user.telegramId);
 
         if (data.status === "rewarded") {
-        alert(`Награда начислена: +${data.reward.ton} TON 🎉`);
+          alert(`Награда начислена: +${data.reward.ton} TON 🎉`);
         } else if (data.status === "already_claimed") {
-        // опционально: уведомление
+          // опционально: уведомление
         }
-    } catch (e) {
+      } catch (e) {
         alert(e.message);
-    }
+      }
     }
 
     return (
@@ -526,3 +541,8 @@ const OnexGifts = () => {
 };
 
 export default OnexGifts;
+
+    // auto-refresh balances when task flags flip
+    useEffect(() => {
+      if (user?.telegramId) fetchBalances(user.telegramId);
+    }, [taskDone, mostbetDone]);
