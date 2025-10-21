@@ -17,10 +17,6 @@ import TelegramIMG from "../assets/telegramIcon.png";
 import SupportIMG from "../assets/supportIcon.png";
 import usdtIMG from "../assets/usdtIcon.png";
 
-const JETTON_REF  = import.meta.env.VITE_JETTON_REF || ""; 
-
-const MOSTBET_REF = import.meta.env.VITE_MOSTBET_REF || ""; 
-
 
 const openTG = (url) => {
   const href = String(url || "").trim();
