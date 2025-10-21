@@ -237,8 +237,16 @@ export default function Withdraw() {
                         </div>
                     </div>
                     <div className="infoAvaliableBalanceContainer">
-                            <img src={InfoIMG}/>
-                            <h2>Доступный баланс - это баланс, который до- <br />ступен к выводу в данный момент временни.</h2>
+                        <img src={InfoIMG}/>
+                        <h2>Доступный баланс - это баланс, который до- <br />ступен к выводу в данный момент временни.</h2>
+                    </div>
+                    <div className="infoLockedBalanceContainer">
+                        <img src={InfoIMG}/>
+                        <h2>Заблокированный остаток - это сумма средств, <br />
+                        которая будет перенесена в доступный <br />
+                        после выполнения всех представленных заданий.
+                        </h2>
+                        
                     </div>
                 </div>
 
