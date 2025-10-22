@@ -275,42 +275,56 @@ const OnexGifts = () => {
 
         // --- GetBonus helpers ---
     const openGbClick = async (taskId) => {
-    try {
+      try {
         if (!user?.telegramId) return alert("Откройте через Telegram");
-        const resp = await fetch(`${API_BASE}/gb/click`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ telegramId: String(user.telegramId), taskId: String(taskId) })
+
+        const tg = window?.Telegram?.WebApp;
+        const platform = String(tg?.platform || "").toLowerCase();
+
+        const resp = await fetch(`${API_BASE}/gb/click?platform=${encodeURIComponent(platform)}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-telegram-platform": platform
+          },
+          body: JSON.stringify({ telegramId: String(user.telegramId), taskId: String(taskId) })
         });
         const data = await resp.json();
         if (!resp.ok || !data?.ok || !data?.url) throw new Error(data?.error || "Нет ссылки");
         openTG(data.url);
-    } catch (e) {
+      } catch (e) {
         console.error("openGbClick error", e);
         alert("Не удалось открыть оффер");
-    }
+      }
     };
 
     const checkGbTask = async (taskId) => {
-    try {
+      try {
         if (!user?.telegramId) return alert("Откройте через Telegram");
-        const resp = await fetch(`${API_BASE}/gb/check`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ telegramId: String(user.telegramId), taskId: String(taskId) })
+
+        const tg = window?.Telegram?.WebApp;
+        const platform = String(tg?.platform || "").toLowerCase();
+
+        const resp = await fetch(`${API_BASE}/gb/check?platform=${encodeURIComponent(platform)}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-telegram-platform": platform
+          },
+          body: JSON.stringify({ telegramId: String(user.telegramId), taskId: String(taskId) })
         });
         const data = await resp.json();
         if (!resp.ok || !data?.ok) throw new Error(data?.error || "Ошибка проверки");
         const status = String(data?.status ?? "").toLowerCase();
         if (["ok", "done", "success", "completed", "true"].includes(status)) {
-        alert("✅ Задание засчитано партнёром. Награда будет начислена по правилам оффера.");
+          alert("✅ Задание засчитано партнёром. Награда будет начислена по правилам оффера.");
         } else {
-        alert("❌ Пока не засчитано. Попробуйте позже — возможна задержка трекинга.");
+          alert("❌ Пока не засчитано. Попробуйте позже — возможна задержка трекинга.");
         }
-    } catch (e) {
+      } catch (e) {
         console.error("checkGbTask error", e);
         alert("Ошибка проверки задания");
-    }
+      }
     };
 
     return (
