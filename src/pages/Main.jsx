@@ -43,6 +43,12 @@ const OnexGifts = () => {
     const [offersLoading, setOffersLoading] = useState(true);
     const [userId, setUserId] = useState(null);
 
+    // Fallback: если партнёр вернул 0 офферов, чтобы UI не пустовал — показываем "фиксированный" список
+    const FALLBACK_GB_TASKS = [
+      { id: 22, name: "Winline" },
+      { id: 81, name: "BetBoom" },
+    ];
+
     const [tonToUsdRate, setTonToUsdRate] = useState(null); // how many USDT for 1 TON
 
     useEffect(() => {
@@ -136,6 +142,11 @@ const OnexGifts = () => {
         }
     })();
     }, []);
+
+    // Что реально рендерим: либо то, что пришло от GetBonus, либо наш fallback
+    const tasksForRender = (!offersLoading && gbTasks.length === 0)
+      ? FALLBACK_GB_TASKS
+      : gbTasks;
 
 
     const openRef = (baseUrl) => {
@@ -404,7 +415,7 @@ const OnexGifts = () => {
                     <div class="line-right"></div>
                 </div> 
 
-                {!offersLoading && gbTasks.length > 0 && gbTasks.slice(0, 4).map((t) => (
+                {!offersLoading && tasksForRender.length > 0 && tasksForRender.slice(0, 4).map((t) => (
                 <div key={t.id || t.task_id} className="mainJettonTaskContainer">
                     <div className="mainChannelNameContainer">
                     <img src={OneWinIMG} />
@@ -441,6 +452,16 @@ const OnexGifts = () => {
                     </div>
                 </div>
                 ))}
+                {!offersLoading && tasksForRender.length === 0 && (
+                  <div className="mainJettonTaskContainer">
+                    <div className="titleAndBodyTextChannelNameContainer">
+                      <div className="titleTextChannelNameContainer">Партнёрские задания</div>
+                      <div className="bodyTextChannelNameContainer">
+                        В вашем регионе пока нет доступных офферов. Зайдите позже — список обновляется.
+                      </div>
+                    </div>
+                  </div>
+                )}
                 
                 {/* <div class="main1WINTaskContainer">
                     <div class="mainChannelNameContainer">
