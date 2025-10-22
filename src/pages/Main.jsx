@@ -627,7 +627,3 @@ const OnexGifts = () => {
 
 export default OnexGifts;
 
-    // // auto-refresh balances when task flags flip
-    // useEffect(() => {
-    //   if (user?.telegramId) fetchBalances(user.telegramId);
-    // }, [taskDone, mostbetDone]);
