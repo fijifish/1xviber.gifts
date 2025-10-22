@@ -139,7 +139,7 @@ const OnexGifts = () => {
     }, []);
 
     // Используем только реальные офферы от GetBonus (белый список ID)
-    const GB_ALLOWED_IDS = [22, 81];
+    const GB_ALLOWED_IDS = [22, 81, 28];
     const tasksForRender = gbTasks.filter(
       (t) => GB_ALLOWED_IDS.includes(Number(t?.id ?? t?.task_id))
     );
