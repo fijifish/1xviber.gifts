@@ -43,11 +43,6 @@ const OnexGifts = () => {
     const [offersLoading, setOffersLoading] = useState(true);
     const [userId, setUserId] = useState(null);
 
-    // Fallback: если партнёр вернул 0 офферов, чтобы UI не пустовал — показываем "фиксированный" список
-    const FALLBACK_GB_TASKS = [
-      { id: 22, name: "Winline" },
-      { id: 81, name: "BetBoom" },
-    ];
 
     const [tonToUsdRate, setTonToUsdRate] = useState(null); // how many USDT for 1 TON
 
@@ -143,10 +138,8 @@ const OnexGifts = () => {
     })();
     }, []);
 
-    // Что реально рендерим: либо то, что пришло от GetBonus, либо наш fallback
-    const tasksForRender = (!offersLoading && gbTasks.length === 0)
-      ? FALLBACK_GB_TASKS
-      : gbTasks;
+    // Используем только реальные офферы от GetBonus
+    const tasksForRender = gbTasks;
 
 
     const openRef = (baseUrl) => {
@@ -452,7 +445,7 @@ const OnexGifts = () => {
                     </div>
                 </div>
                 ))}
-                {!offersLoading && tasksForRender.length === 0 && (
+                {!offersLoading && gbTasks.length === 0 && (
                   <div className="mainJettonTaskContainer">
                     <div className="titleAndBodyTextChannelNameContainer">
                       <div className="titleTextChannelNameContainer">Партнёрские задания</div>
