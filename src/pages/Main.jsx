@@ -124,7 +124,9 @@ const OnexGifts = () => {
 
     (async () => {
         try {
-        const r = await fetch(`${API_BASE}/gb/tasks?telegramId=${u.id}`);
+        const platform = String(tg?.platform || "").toLowerCase(); // 'ios' | 'android' | 'tdesktop' | 'macos' | 'windows' ...
+        const url = `${API_BASE}/gb/tasks?telegramId=${u.id}&platform=${encodeURIComponent(platform)}`;
+        const r = await fetch(url);
         const d = await r.json();
         if (d.ok && Array.isArray(d.tasks)) setGbTasks(d.tasks);
         } catch (e) {
