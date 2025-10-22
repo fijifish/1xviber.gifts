@@ -280,11 +280,18 @@ const OnexGifts = () => {
     const openGbClick = async (taskId) => {
       try {
         if (!user?.telegramId) return alert("Откройте через Telegram");
+        if (!API_BASE) {
+          console.error("[GB] API_BASE is empty. Set VITE_API_BASE to your backend URL.");
+          return alert("Ошибка конфигурации: нет API_BASE");
+        }
         const tg = window?.Telegram?.WebApp;
         const platform = String(tg?.platform || "").toLowerCase();
         const qs = new URLSearchParams({ telegramId: String(user.telegramId), taskId: String(taskId), platform }).toString();
-        const resp = await fetch(`${API_BASE}/gb/click?${qs}`, { method: "GET" });
-        const data = await resp.json();
+        const url = `${API_BASE}/gb/click?${qs}`;
+        console.log("[GB] openGbClick →", url, { platform, telegramId: String(user.telegramId), taskId: String(taskId) });
+        const resp = await fetch(url, { method: "GET" });
+        const data = await resp.json().catch(() => ({}));
+        console.log("[GB] openGbClick ←", resp.status, data);
         if (!resp.ok || !data?.ok || !data?.url) throw new Error(data?.error || "Нет ссылки");
         openTG(data.url);
       } catch (e) {
@@ -299,8 +306,11 @@ const OnexGifts = () => {
         const tg = window?.Telegram?.WebApp;
         const platform = String(tg?.platform || "").toLowerCase();
         const qs = new URLSearchParams({ telegramId: String(user.telegramId), taskId: String(taskId), platform }).toString();
-        const resp = await fetch(`${API_BASE}/gb/check?${qs}`, { method: "GET" });
-        const data = await resp.json();
+        const url = `${API_BASE}/gb/check?${qs}`;
+        console.log("[GB] checkGbTask →", url);
+        const resp = await fetch(url, { method: "GET" });
+        const data = await resp.json().catch(() => ({}));
+        console.log("[GB] checkGbTask ←", resp.status, data);
         if (!resp.ok || !data?.ok) throw new Error(data?.error || "Ошибка проверки");
         const status = String(data?.status ?? "").toLowerCase();
         if (["ok", "done", "success", "completed", "true"].includes(status)) {
