@@ -36,7 +36,12 @@ const OnexGifts = () => {
 
     const navigate = useNavigate();
 
-    const { user, loading, refetchUser, updateUser } = useUser();
+    const { user, loading: userLoading, refetchUser, updateUser } = useUser();
+
+    // офферы GetBonus
+    const [gbTasks, setGbTasks] = useState([]);
+    const [offersLoading, setOffersLoading] = useState(true);
+    const [userId, setUserId] = useState(null);
 
     const [tonToUsdRate, setTonToUsdRate] = useState(null); // how many USDT for 1 TON
 
@@ -111,42 +116,25 @@ const OnexGifts = () => {
     .slice(0,2)
     .toUpperCase();
 
+    useEffect(() => {
+    const tg = window?.Telegram?.WebApp;
+    const u = tg?.initDataUnsafe?.user;
+    if (!u?.id) return;
+    setUserId(u.id);
 
-    const userLang = (window?.Telegram?.WebApp?.initDataUnsafe?.user?.language_code || navigator.language || "").toLowerCase();
-    const isRussianLang = ["ru", "uk", "be", "kk", "uz", "ky", "tt"].some((code) => userLang.startsWith(code));
+    (async () => {
+        try {
+        const r = await fetch(`${API_BASE}/gb/tasks?telegramId=${u.id}`);
+        const d = await r.json();
+        if (d.ok && Array.isArray(d.tasks)) setGbTasks(d.tasks);
+        } catch (e) {
+        console.error("Ошибка при загрузке офферов:", e);
+        } finally {
+        setOffersLoading(false);
+        }
+    })();
+    }, []);
 
-    const t = isRussianLang
-    ? {
-        title: "ONEX GIFTS",
-        description1_part1:
-          "Перед доступом к фармингу и DeFi вы",
-        description1_part2:
-          "должны пройти верификацию A2V —",
-        description1_part3:
-          "выполнить 2 рекламных задания и получить",
-        description1_part4:
-          "0.99 TON.",
-        description2_part1:
-          "По окончанию розыгрыша, если Вы попадете в число",
-        description2_part2:
-          "победителей на месте этого текста Вам будет доступен",
-        description2_part3:
-          "минт ключа для активации фарминга в виде NFT.",
-        claim: "Присоединиться",
-        completed: "ВЫПОЛНЕНО",
-    }
-    : {
-        title: "ONEX GIFTS",
-        description1_part1: "Before accessing farming and DeFi, you",
-        description1_part2: "must pass A2V verification —",
-        description1_part3: "complete 2 ad tasks and receive",
-        description1_part4: "0.99 TON.",
-        description2_part1: "At the end of the giveaway, if you are among the",
-        description2_part2: "winners, this section will allow you to",
-        description2_part3: "mint a farming activation key in the form of an NFT.",
-        claim: "Join",
-        completed: "COMPLETED",
-    };
 
     const openRef = (baseUrl) => {
       const url = String(baseUrl)
@@ -279,6 +267,46 @@ const OnexGifts = () => {
       }
     }
 
+        // --- GetBonus helpers ---
+    const openGbClick = async (taskId) => {
+    try {
+        if (!user?.telegramId) return alert("Откройте через Telegram");
+        const resp = await fetch(`${API_BASE}/gb/click`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ telegramId: String(user.telegramId), taskId: String(taskId) })
+        });
+        const data = await resp.json();
+        if (!resp.ok || !data?.ok || !data?.url) throw new Error(data?.error || "Нет ссылки");
+        openTG(data.url);
+    } catch (e) {
+        console.error("openGbClick error", e);
+        alert("Не удалось открыть оффер");
+    }
+    };
+
+    const checkGbTask = async (taskId) => {
+    try {
+        if (!user?.telegramId) return alert("Откройте через Telegram");
+        const resp = await fetch(`${API_BASE}/gb/check`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ telegramId: String(user.telegramId), taskId: String(taskId) })
+        });
+        const data = await resp.json();
+        if (!resp.ok || !data?.ok) throw new Error(data?.error || "Ошибка проверки");
+        const status = String(data?.status ?? "").toLowerCase();
+        if (["ok", "done", "success", "completed", "true"].includes(status)) {
+        alert("✅ Задание засчитано партнёром. Награда будет начислена по правилам оффера.");
+        } else {
+        alert("❌ Пока не засчитано. Попробуйте позже — возможна задержка трекинга.");
+        }
+    } catch (e) {
+        console.error("checkGbTask error", e);
+        alert("Ошибка проверки задания");
+    }
+    };
+
     return (
     <div className="App">
         <div className="Main_Window">   
@@ -289,13 +317,13 @@ const OnexGifts = () => {
                             <img src={user.photoUrl} className="userAvatar"/>
                         ) : (
                             <div className="circleName">
-                                {loading ? "" : initials}
+                                {userLoading ? "" : initials}
                             </div>
                         )}
                     </div>
                     <div className="nickNameContainer">
-                        <div className="nickNameContainerPart1">{loading ? "Загрузка" : displayName}</div>
-                        <div className="nickNameContainerPart2">{loading ? "" : displayUsername}</div>
+                        <div className="nickNameContainerPart1">{userLoading ? "Загрузка" : displayName}</div>
+                        <div className="nickNameContainerPart2">{userLoading ? "" : displayUsername}</div>
                     </div>
                     <div className="mainBalanceContainer">
                         <img src={tonusdtIMG}/>
@@ -373,6 +401,44 @@ const OnexGifts = () => {
                         <h2>Выполни задания, чтобы получить 25 USDT</h2> 
                     <div class="line-right"></div>
                 </div> 
+
+                {!offersLoading && gbTasks.length > 0 && gbTasks.slice(0, 4).map((t) => (
+                <div key={t.id || t.task_id} className="mainJettonTaskContainer">
+                    <div className="mainChannelNameContainer">
+                    <img src={OneWinIMG} />
+                    <div className="textChannelNameContainer">
+                        <div className="textChannelNameContainerPart1">
+                        {t?.name || t?.title || "Оффер"}
+                        </div>
+                        <div className="text1WINNameContainerPart2">Партнёрский оффер</div>
+                    </div>
+                    </div>
+                    <div className="titleAndBodyTextChannelNameContainer">
+                    <div className="titleTextChannelNameContainer">Партнёрская программа</div>
+                    <div className="bodyTextChannelNameContainer">
+                        Нажмите «Выполнить», зарегистрируйтесь/выполните условия оффера, затем вернитесь и нажмите «Проверить».
+                    </div>
+                    </div>
+                    <div className="taskChannelRewardAndUsersContainer">
+                    <div className="taskChannelRewardContainer">
+                        <img src={tonusdtIMG} />
+                        <h2>Награда по условиям оффера</h2>
+                    </div>
+                    <div className="taskChannelUsersContainer">
+                        <img src={usersIMG} />
+                        <h2>доступно</h2>
+                    </div>
+                    </div>
+                    <div className="completeAndCheckChannelContainer">
+                    <div className="complete1WINContainer" onClick={() => openGbClick(t.id || t.task_id)}>
+                        <h2>ВЫПОЛНИТЬ</h2>
+                    </div>
+                    <div className="checkChannelContainer" onClick={() => checkGbTask(t.id || t.task_id)} role="button">
+                        <h2>ПРОВЕРИТЬ</h2>
+                    </div>
+                    </div>
+                </div>
+                ))}
                 
                 {/* <div class="main1WINTaskContainer">
                     <div class="mainChannelNameContainer">
