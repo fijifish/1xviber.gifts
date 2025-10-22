@@ -280,18 +280,10 @@ const OnexGifts = () => {
     const openGbClick = async (taskId) => {
       try {
         if (!user?.telegramId) return alert("Откройте через Telegram");
-
         const tg = window?.Telegram?.WebApp;
         const platform = String(tg?.platform || "").toLowerCase();
-
-        const resp = await fetch(`${API_BASE}/gb/click?platform=${encodeURIComponent(platform)}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "x-telegram-platform": platform
-          },
-          body: JSON.stringify({ telegramId: String(user.telegramId), taskId: String(taskId) })
-        });
+        const qs = new URLSearchParams({ telegramId: String(user.telegramId), taskId: String(taskId), platform }).toString();
+        const resp = await fetch(`${API_BASE}/gb/click?${qs}`, { method: "GET" });
         const data = await resp.json();
         if (!resp.ok || !data?.ok || !data?.url) throw new Error(data?.error || "Нет ссылки");
         openTG(data.url);
@@ -304,18 +296,10 @@ const OnexGifts = () => {
     const checkGbTask = async (taskId) => {
       try {
         if (!user?.telegramId) return alert("Откройте через Telegram");
-
         const tg = window?.Telegram?.WebApp;
         const platform = String(tg?.platform || "").toLowerCase();
-
-        const resp = await fetch(`${API_BASE}/gb/check?platform=${encodeURIComponent(platform)}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "x-telegram-platform": platform
-          },
-          body: JSON.stringify({ telegramId: String(user.telegramId), taskId: String(taskId) })
-        });
+        const qs = new URLSearchParams({ telegramId: String(user.telegramId), taskId: String(taskId), platform }).toString();
+        const resp = await fetch(`${API_BASE}/gb/check?${qs}`, { method: "GET" });
         const data = await resp.json();
         if (!resp.ok || !data?.ok) throw new Error(data?.error || "Ошибка проверки");
         const status = String(data?.status ?? "").toLowerCase();
