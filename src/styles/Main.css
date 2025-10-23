@@ -738,3 +738,10 @@ body {
   pointer-events: none;
   opacity: 0.6;
 }
+
+.complete1WINContainer.disabled,
+.checkChannelContainer.disabled {
+  opacity: 0.6;
+  pointer-events: none;
+  cursor: default;
+}

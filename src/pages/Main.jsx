@@ -284,6 +284,82 @@ const OnexGifts = () => {
       }
     }
 
+    async function openGbClick(taskId) {
+    try {
+        const tgId = user?.telegramId;
+        if (!tgId) throw new Error("No telegramId");
+        const r = await fetch(`${API_BASE}/gb/click?telegramId=${tgId}&taskId=${taskId}`);
+        const d = await r.json();
+        if (!d.ok || !d.url) throw new Error(d.error || "link error");
+        if (window?.Telegram?.WebApp?.openLink) {
+        window.Telegram.WebApp.openLink(d.url);
+        } else {
+        window.open(d.url, "_blank", "noopener,noreferrer");
+        }
+    } catch (e) {
+        alert("Не удалось получить ссылку оффера: " + e.message);
+    }
+    }
+
+    async function checkGbTask(taskId) {
+    try {
+        const tgId = user?.telegramId;
+        if (!tgId) throw new Error("No telegramId");
+
+        setGbCheckLoading(prev => ({ ...prev, [taskId]: true }));
+
+        const r = await fetch(`${API_BASE}/gb/check?telegramId=${tgId}&taskId=${taskId}`);
+        const d = await r.json();
+        if (!d.ok) throw new Error(d.error || "Server error");
+
+        if (d.done_status === 2 || d.status === "already_completed") {
+        // Мгновенно отмечаем done, чтобы UI сменился на «ВЫПОЛНЕНО»
+        updateUser(prev => {
+            const gbPrev = prev?.tasks?.gb || {};
+            const nodePrev = gbPrev[String(taskId)] || {};
+
+            // если раньше не было done — добавим 5/10 «глянцево»;
+            // бек уже начислил, но так UI обновится сразу.
+            const wasDone = Boolean(nodePrev?.done);
+            const curA = Number(prev?.balances?.usdAvailable || 0);
+            const curL = Number(prev?.balances?.usdLocked || 0);
+
+            return {
+            ...prev,
+            tasks: {
+                ...(prev?.tasks || {}),
+                gb: {
+                ...gbPrev,
+                [String(taskId)]: {
+                    ...nodePrev,
+                    done: true,
+                    at: nodePrev.at || new Date().toISOString(),
+                    rewardUsd: nodePrev.rewardUsd ?? 15
+                }
+                }
+            },
+            balances: wasDone
+                ? prev?.balances
+                : {
+                    usdAvailable: curA + 5,
+                    usdLocked:    curL + 10
+                }
+            };
+        });
+
+        // Для консистентности можно подтянуть свежие данные с бэка:
+        refetchUser?.();
+        } else {
+        // pending / not completed
+        alert("Пока не засчитано. Попробуйте позже.");
+        }
+    } catch (e) {
+        alert("Ошибка проверки задания: " + e.message);
+    } finally {
+        setGbCheckLoading(prev => ({ ...prev, [taskId]: false }));
+    }
+    }
+
         // --- GetBonus helpers ---
     const openGbClick = async (taskId) => {
       try {
@@ -374,6 +450,17 @@ const OnexGifts = () => {
     const isGbDone = (id) =>
     gbStatus[id] === "done" || Boolean(user?.tasks?.[`gb_${id}`]);
 
+    const [gbCheckLoading, setGbCheckLoading] = React.useState({}); // { [taskId]: boolean }
+
+    // GB: универсальный читатель done-статуса (работает и с Map, и с plain-объектом)
+    const isGbTaskDoneFn = (u, taskId) => {
+    const gb = u?.tasks?.gb;
+    if (!gb) return false;
+    const key = String(taskId);
+    const node = typeof gb.get === "function" ? gb.get(key) : gb[key];
+    return Boolean(node?.done);
+    };
+
     // —–– Универсальный рендер оффера GetBonus
     const renderGbTaskCard = ({ task, idx }) => {
     const id = Number(task?.id ?? task?.task_id);
@@ -422,30 +509,30 @@ const OnexGifts = () => {
             </div>
         </div>
 
-        <div className="completeAndCheckChannelContainer">
-        {isGbDone(id) ? (
-            <div className="taskChannelCompletedContainer">
+      <div className="completeAndCheckChannelContainer">
+        {isGbTaskDoneFn ? (
+          <div className="taskChannelCompletedContainer">
             <h2>ВЫПОЛНЕНО</h2>
-            </div>
+          </div>
         ) : (
-            <>
+          <>
             <div
-                className={`complete1WINContainer ${gbStatus[id]==='checking' ? 'isDisabled' : ''}`}
-                onClick={() => gbStatus[id] === 'checking' ? null : openGbClick(id)}
+              className={`complete1WINContainer ${isBusy ? "disabled" : ""}`}
+              onClick={() => !isBusy && openGbClick(id)}
             >
-                <h2>ВЫПОЛНИТЬ</h2>
+              <h2>{isBusy ? "…" : "ВЫПОЛНИТЬ"}</h2>
             </div>
             <div
-                className={`checkChannelContainer ${gbStatus[id]==='checking' ? 'isDisabled' : ''}`}
-                onClick={() => gbStatus[id] === 'checking' ? null : checkGbTask(id)}
-                role="button"
+              className={`checkChannelContainer ${isBusy ? "disabled" : ""}`}
+              onClick={() => !isBusy && checkGbTask(id)}
+              role="button"
             >
-                <h2>{gbStatus[id] === 'checking' ? 'ПРОВЕРКА…' : 'ПРОВЕРИТЬ'}</h2>
+              <h2>{isBusy ? "ПРОВЕРКА…" : "ПРОВЕРИТЬ"}</h2>
             </div>
-            </>
+          </>
         )}
-        </div>
-        </div>
+      </div>
+    </div>
 
     );
     };
