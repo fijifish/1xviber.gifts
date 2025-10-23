@@ -36,11 +36,33 @@ export default function Withdraw() {
     const [amount, setAmount] = useState(AMOUNT_LABEL);
 
     const addrRef = useRef(null);
-    const [walletAddress, setWalletAddress] = useState("");
+    const [walletAddress, setWalletAddress] = useState("Кошелёк TON или реквизиты");
     const [isAddressNeutral, setIsAddressNeutral] = useState(true);
     const addrClean = sanitizeAddress(isAddressNeutral ? "" : walletAddress);
     const addressValid = !isAddressNeutral && addrClean.length > 0; // валидно, если поле не пустое
 
+    const [usdAvailable, setUsdAvailable] = useState(0);
+    const [usdLocked, setUsdLocked] = useState(0);
+
+    const availableTON = usdToTon(usdAvailable);
+    const lockedTON    = usdToTon(usdLocked);
+
+    const totalUSD = usdAvailable + usdLocked;
+    const totalTON = usdToTon(totalUSD);
+
+    useEffect(() => {
+    if (!user?.telegramId || !API_BASE) return;
+
+    fetch(`${API_BASE}/balances?telegramId=${user.telegramId}`)
+        .then(r => r.json())
+        .then(d => {
+        if (d?.ok) {
+            setUsdAvailable(Number(d.usdAvailable || 0));
+            setUsdLocked(Number(d.usdLocked || 0));
+        }
+        })
+        .catch(console.error);
+    }, [user?.telegramId]);
 
 
     useEffect(() => {
@@ -63,7 +85,6 @@ export default function Withdraw() {
         } catch {}
     };
 
-
     const [tonToUsdRate, setTonToUsdRate] = useState(null); // how many USDT for 1 TON
 
     useEffect(() => {
@@ -80,30 +101,7 @@ export default function Withdraw() {
       fetchTonToUsdRate();
     }, []);
 
-    function usdToTon(usd) { return tonToUsdRate ? Number(usd) / tonToUsdRate : 0; }
-
-    // ===== Balances hooks (moved here to ensure usdToTon is defined) =====
-    const [usdAvailable, setUsdAvailable] = useState(0);
-    const [usdLocked, setUsdLocked] = useState(0);
-
-    const availableTON = usdToTon(usdAvailable);
-    const lockedTON    = usdToTon(usdLocked);
-
-    const totalUSD = usdAvailable + usdLocked;
-    const totalTON = usdToTon(totalUSD);
-
-    useEffect(() => {
-      if (!user?.telegramId || !API_BASE) return;
-      fetch(`${API_BASE}/balances?telegramId=${user.telegramId}`)
-        .then(r => r.json())
-        .then(d => {
-          if (d?.ok) {
-            setUsdAvailable(Number(d.usdAvailable || 0));
-            setUsdLocked(Number(d.usdLocked || 0));
-          }
-        })
-        .catch(console.error);
-    }, [user?.telegramId]);
+    const usdToTon = (usd) => (tonToUsdRate ? Number(usd) / tonToUsdRate : 0);
 
     const usdtBalance = Number(user?.balanceTon ?? 0); // ⚠️ сейчас тут хранится именно USDT
     const tonBalance  = usdToTon(usdtBalance);
@@ -216,28 +214,6 @@ export default function Withdraw() {
         tg?.BackButton?.hide();
     };
     }, [navigate]);
-
-    const handlePasteAddress = async () => {
-    try {
-        const text = await navigator.clipboard.readText();  // работает по клику/HTTPS/WebApp
-        const cleaned = String(text || "")
-        .replace(/[\u200B-\u200D\uFEFF]/g, "") // убрать zero-width символы
-        .trim();
-
-        if (!cleaned) {
-        alert("В буфере обмена пусто");
-        return;
-        }
-
-        const limited = cleaned.slice(0, 30);   // ограничиваем 30 символами
-        setWalletAddress(limited);
-
-        // если у тебя есть валидация доступности кнопки «Вывести» — она может смотреть на walletAddress
-    } catch (e) {
-        console.error("clipboard read error:", e);
-        alert("Не удалось прочитать буфер обмена. Разреши доступ к буферу или попробуй снова.");
-    }
-    };
 
   return (
     <div className="App">
@@ -360,24 +336,73 @@ export default function Withdraw() {
                         
                     </div>
                     <div class="AddressWalletMainContainer">
-                    <div className="AddressWalletContainer">
-                    {/* <h2>Кошелек TON или реквизиты</h2> */}
+                    <div className={`AddressWalletContainer ${isAddressNeutral ? "" : (addrClean.length > 0 ? "valid" : "invalid")}`}>
+                        <div
+                        ref={addrRef}
+                        className={`addressInput ${isAddressNeutral ? "is-placeholder" : ""}`}
+                        contentEditable
+                        suppressContentEditableWarning
+                        spellCheck={false}
+                        onFocus={(e) => {
+                            if (isAddressNeutral) {
+                            e.currentTarget.textContent = "";
+                            setWalletAddress("");
+                            setIsAddressNeutral(false);
+                            }
+                            // курсор в конец
+                            const sel = window.getSelection();
+                            const r = document.createRange();
+                            r.selectNodeContents(e.currentTarget);
+                            r.collapse(false);
+                            sel.removeAllRanges();
+                            sel.addRange(r);
+                        }}
+                        onInput={(e) => {
+                            const el = e.currentTarget;
+                            const raw = el.textContent || "";
+                            let next = sanitizeAddress(raw); // только базовая санитизация
 
-                    {/* Нередактируемое поле отображения */}
-                    <input
-                        className={`addressInput ${walletAddress ? "filled" : "placeholder"}`}
-                        type="text"
-                        readOnly                  // 🔒 запрет редактирования
-                        value={walletAddress || "Кошелек TON или реквизиты"}
-                        onFocus={(e) => e.target.blur()}  // не даём фокус/клавиатуру
-                    />
+                            if (next !== raw) {
+                                el.textContent = next;
+                                const sel = window.getSelection();
+                                const r = document.createRange();
+                                r.selectNodeContents(el);
+                                r.collapse(false);
+                                sel.removeAllRanges();
+                                sel.addRange(r);
+                            }
+
+                            setWalletAddress(next);
+                        }}
+                        onPaste={(e) => {
+                            e.preventDefault();
+                            const txt = (e.clipboardData || window.clipboardData).getData("text") || "";
+                            let cleaned = sanitizeAddress(txt); // без доп. проверок
+
+                            setWalletAddress(cleaned);
+                            document.execCommand("insertText", false, cleaned);
+
+                            const el = e.currentTarget;
+                            const sel = window.getSelection();
+                            const r = document.createRange();
+                            r.selectNodeContents(el);
+                            r.collapse(false);
+                            sel.removeAllRanges();
+                            sel.addRange(r);
+                        }}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") { e.preventDefault(); e.currentTarget.blur(); }
+                        }}
+                        onBlur={(e) => {
+                            if (!sanitizeAddress(e.currentTarget.textContent || "")) {
+                            e.currentTarget.textContent = "Кошелёк TON или реквизиты";
+                            setWalletAddress("Кошелёк TON или реквизиты");
+                            setIsAddressNeutral(true);
+                            }
+                        }}
+                        />
                     </div>
-                    {/* Кнопка «Вставить» рядом с полем */}
-                    <div
-                        className="AddressWalletPasteContainer"
-                        onClick={handlePasteAddress}
-                        role="button"
-                    >
+                    <div class="AddressWalletPasteContainer">
                         <img src={PasteIMG}/>
                     </div>
                     </div>
@@ -391,7 +416,7 @@ export default function Withdraw() {
 
 
 
-    {sorted.map((o, i) => {                 
+    {sorted.map((o, i) => {
       const cls = getOrderClass(i, sorted.length);
 
       // удобный формат для даты/времени:
