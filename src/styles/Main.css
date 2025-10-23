@@ -661,6 +661,7 @@ body {
 .gbTaskCard .mainChannelNameContainer img {
   width: auto;
   height: 100%;
+  border-radius: 24.6%;
 }
 
 .footerContainer {
