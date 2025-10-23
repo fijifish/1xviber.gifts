@@ -341,27 +341,13 @@ const OnexGifts = () => {
     // const bg = gbImgUrl(task?.background_photo);
     const bg = null; 
 
-    // Разные контейнеры по индексу (чтобы 3 задания выглядели по-разному)
-    const containerClass =
-        idx === 0
-        ? "mainJettonTaskContainer"
-        : idx === 1
-        ? "main1WINTaskContainer"
-        : "mainMostbetTaskContainer";
+    // Класс карточки по id задачи: общий базовый + специфичный для id
+    const containerClass = `gbTaskCard gbTaskId-${id}`;
 
     return (
         <div
         key={id}
         className={containerClass}
-        style={
-            bg
-            ? {
-                backgroundImage: `url(${bg})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                }
-            : undefined
-        }
         >
         <div className="mainChannelNameContainer">
             <img src={photo || OneWinIMG} />

@@ -628,6 +628,36 @@ body {
 
 }
 
+.gbTaskCard {
+  width: 90%;
+  height: 25%;
+  margin-top: 2vh;
+  padding: 1vh;
+
+  border: .17vh solid #CECECE;
+  border-radius: 2.46vh;
+
+  background-repeat: no-repeat;
+  background-position: right 0 bottom 0;
+  background-size: auto 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.gbTaskId-22 { 
+  background-image: url("../assets/1WINBackgroundIcon.png");
+}
+
+.gbTaskId-81 {
+  background-image: url("../assets/WinlineBackgroundIcon.png");
+}
+
+.gbTaskId-28 {
+  background-image: url("../assets/RedotPayBackgroundIcon.png");
+}
+
 .footerContainer {
   width: 85%;
   height: 3%;
