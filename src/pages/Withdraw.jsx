@@ -365,7 +365,7 @@ export default function Withdraw() {
 
                     {/* Нередактируемое поле отображения */}
                     <input
-                        className={`AddressWalletContainer h2 ${walletAddress ? "filled" : "placeholder"}`}
+                        className={`addressInput ${walletAddress ? "filled" : "placeholder"}`}
                         type="text"
                         readOnly                  // 🔒 запрет редактирования
                         value={walletAddress || "Кошелек TON или реквизиты"}
