@@ -368,7 +368,7 @@ export default function Withdraw() {
                         className={`addressInput ${walletAddress ? "filled" : "placeholder"}`}
                         type="text"
                         readOnly                  // 🔒 запрет редактирования
-                        value={walletAddress || "Укажите адрес кошелька"}
+                        value={walletAddress || ""}
                         onFocus={(e) => e.target.blur()}  // не даём фокус/клавиатуру
                     />
                     </div>
