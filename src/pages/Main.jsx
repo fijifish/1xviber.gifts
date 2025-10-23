@@ -309,28 +309,70 @@ const OnexGifts = () => {
     };
 
     const checkGbTask = async (taskId) => {
-      try {
+    try {
         if (!user?.telegramId) return alert("Откройте через Telegram");
+
+        setGbStatus(s => ({ ...s, [taskId]: "checking" }));
+
         const tg = window?.Telegram?.WebApp;
         const platform = String(tg?.platform || "").toLowerCase();
-        const qs = new URLSearchParams({ telegramId: String(user.telegramId), taskId: String(taskId), platform }).toString();
+        const qs = new URLSearchParams({
+        telegramId: String(user.telegramId),
+        taskId: String(taskId),
+        platform
+        }).toString();
+
         const url = `${API_BASE}/gb/check?${qs}`;
-        console.log("[GB] checkGbTask →", url);
         const resp = await fetch(url, { method: "GET" });
         const data = await resp.json().catch(() => ({}));
-        console.log("[GB] checkGbTask ←", resp.status, data);
-        if (!resp.ok || !data?.ok) throw new Error(data?.error || "Ошибка проверки");
-        const status = String(data?.status ?? "").toLowerCase();
-        if (["ok", "done", "success", "completed", "true"].includes(status)) {
-          alert("✅ Задание засчитано партнёром. Награда будет начислена по правилам оффера.");
-        } else {
-          alert("❌ Пока не засчитано. Попробуйте позже — возможна задержка трекинга.");
+
+        if (!resp.ok || !data?.ok) {
+        throw new Error(data?.error || "Ошибка проверки");
         }
-      } catch (e) {
+
+        // Бек может вернуть: status: rewarded|already_completed|pending (+ done_status=2)
+        const status = String(data?.status || "").toLowerCase();
+        const done =
+        data?.done_status === 2 ||
+        ["rewarded", "already_completed", "done", "completed", "success", "true"].includes(status);
+
+        if (done) {
+        setGbStatus(s => ({ ...s, [taskId]: "done" }));
+        // подтянем свежего юзера и балансы (учитывая начисления 5$ / 10$)
+        await refetchUser();
+        if (user?.telegramId) await fetchBalances(user.telegramId);
+        alert(status === "already_completed"
+            ? "✅ Задание уже было выполнено ранее."
+            : "✅ Задание выполнено! Награда начислена/начисляется 🎉"
+        );
+        return;
+        }
+
+        // не засчитано
+        setGbStatus(s => ({ ...s, [taskId]: "idle" }));
+        alert("❌ Пока не засчитано. Попробуйте позже — возможна задержка трекинга.");
+    } catch (e) {
         console.error("checkGbTask error", e);
+        setGbStatus(s => ({ ...s, [taskId]: "idle" }));
         alert("Ошибка проверки задания");
-      }
+    }
     };
+
+    const [gbStatus, setGbStatus] = useState({}); 
+    // форма: { [taskId]: 'idle' | 'checking' | 'done' }
+
+    useEffect(() => {
+        const init = {};
+        (gbTasks || []).forEach(t => {
+            const id = Number(t?.id ?? t?.task_id);
+            if (id && user?.tasks?.[`gb_${id}`] === true) init[id] = "done";
+        });
+        setGbStatus(s => ({ ...s, ...init }));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [user?.tasks, gbTasks]);
+
+    const isGbDone = (id) =>
+    gbStatus[id] === "done" || Boolean(user?.tasks?.[`gb_${id}`]);
 
     // —–– Универсальный рендер оффера GetBonus
     const renderGbTaskCard = ({ task, idx }) => {
@@ -343,6 +385,7 @@ const OnexGifts = () => {
 
     // Класс карточки по id задачи: общий базовый + специфичный для id
     const containerClass = `gbTaskCard gbTaskId-${id}`;
+
 
     return (
         <div
@@ -380,21 +423,30 @@ const OnexGifts = () => {
         </div>
 
         <div className="completeAndCheckChannelContainer">
+        {isGbDone(id) ? (
+            <div className="taskChannelCompletedContainer">
+            <h2>ВЫПОЛНЕНО</h2>
+            </div>
+        ) : (
+            <>
             <div
-            className="complete1WINContainer"
-            onClick={() => openGbClick(id)}
+                className={`complete1WINContainer ${gbStatus[id]==='checking' ? 'isDisabled' : ''}`}
+                onClick={() => gbStatus[id] === 'checking' ? null : openGbClick(id)}
             >
-            <h2>ВЫПОЛНИТЬ</h2>
+                <h2>ВЫПОЛНИТЬ</h2>
             </div>
             <div
-            className="checkChannelContainer"
-            onClick={() => checkGbTask(id)}
-            role="button"
+                className={`checkChannelContainer ${gbStatus[id]==='checking' ? 'isDisabled' : ''}`}
+                onClick={() => gbStatus[id] === 'checking' ? null : checkGbTask(id)}
+                role="button"
             >
-            <h2>ПРОВЕРИТЬ</h2>
+                <h2>{gbStatus[id] === 'checking' ? 'ПРОВЕРКА…' : 'ПРОВЕРИТЬ'}</h2>
             </div>
+            </>
+        )}
         </div>
         </div>
+
     );
     };
 
