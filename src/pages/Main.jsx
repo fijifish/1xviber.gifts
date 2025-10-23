@@ -338,7 +338,8 @@ const OnexGifts = () => {
     const title = task?.title || task?.name || "Партнёрский оффер";
     const category = task?.category || "Оффер";
     const photo = gbImgUrl(task?.photo);
-    const bg = gbImgUrl(task?.background_photo);
+    // const bg = gbImgUrl(task?.background_photo);
+    const bg = null; 
 
     // Разные контейнеры по индексу (чтобы 3 задания выглядели по-разному)
     const containerClass =
