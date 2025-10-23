@@ -283,6 +283,7 @@ body {
     width: 72%;
     height: 100%;
     margin-left: .45vh;
+    margin-bottom: .25vh;
 
     display: flex;
     flex-direction: column;
