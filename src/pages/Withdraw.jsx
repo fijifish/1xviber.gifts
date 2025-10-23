@@ -371,7 +371,7 @@ export default function Withdraw() {
                         value={walletAddress || "Укажите адрес кошелька"}
                         onFocus={(e) => e.target.blur()}  // не даём фокус/клавиатуру
                     />
-
+                    </div>
                     {/* Кнопка «Вставить» рядом с полем */}
                     <div
                         className="AddressWalletPasteContainer"
@@ -379,7 +379,6 @@ export default function Withdraw() {
                         role="button"
                     >
                         <img src={PasteIMG}/>
-                    </div>
                     </div>
                     </div>
                 </div>
