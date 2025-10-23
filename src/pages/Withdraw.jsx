@@ -36,7 +36,7 @@ export default function Withdraw() {
     const [amount, setAmount] = useState(AMOUNT_LABEL);
 
     const addrRef = useRef(null);
-    const [walletAddress, setWalletAddress] = useState("Кошелёк TON или реквизиты");
+    const [walletAddress, setWalletAddress] = useState("");
     const [isAddressNeutral, setIsAddressNeutral] = useState(true);
     const addrClean = sanitizeAddress(isAddressNeutral ? "" : walletAddress);
     const addressValid = !isAddressNeutral && addrClean.length > 0; // валидно, если поле не пустое
