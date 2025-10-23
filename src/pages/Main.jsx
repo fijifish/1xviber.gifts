@@ -353,7 +353,7 @@ const OnexGifts = () => {
             <img src={photo || OneWinIMG} />
             <div className="textChannelNameContainer">
             <div className="textChannelNameContainerPart1">{title}</div>
-            <div className="text1WINNameContainerPart2">{category}</div>
+            <div className="text1WINNameContainerPart2">Казино</div>
             </div>
         </div>
 
@@ -369,11 +369,11 @@ const OnexGifts = () => {
         <div className="taskChannelRewardAndUsersContainer">
             <div className="taskChannelRewardContainer">
             <img src={tonusdtIMG} />
-            <h2>Награда: {task?.reward_stars || 0} Stars</h2>
+            <h2>7 TON | 15 USDT</h2>
             </div>
             <div className="taskChannelUsersContainer">
             <img src={usersIMG} />
-            <h2>Доступно</h2>
+            <h2>794 заработало</h2>
             </div>
         </div>
 
