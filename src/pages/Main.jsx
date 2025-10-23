@@ -17,6 +17,14 @@ import TelegramIMG from "../assets/telegramIcon.png";
 import SupportIMG from "../assets/supportIcon.png";
 import usdtIMG from "../assets/usdtIcon.png";
 
+// === GetBonus image proxy (RU GEO-friendly) ===
+const GB_S3_PROXY =
+  import.meta.env.VITE_GB_S3_PROXY ||
+  "https://production.getbonus.dev/api/v1/s3/proxy";
+
+const gbImgUrl = (fileName) =>
+  fileName ? `${GB_S3_PROXY}?file_name=${encodeURIComponent(fileName)}` : "";
+
 
 const openTG = (url) => {
   const href = String(url || "").trim();
@@ -324,6 +332,83 @@ const OnexGifts = () => {
       }
     };
 
+    // —–– Универсальный рендер оффера GetBonus
+    const renderGbTaskCard = ({ task, idx }) => {
+    const id = Number(task?.id ?? task?.task_id);
+    const title = task?.title || task?.name || "Партнёрский оффер";
+    const category = task?.category || "Оффер";
+    const photo = gbImgUrl(task?.photo);
+    const bg = gbImgUrl(task?.background_photo);
+
+    // Разные контейнеры по индексу (чтобы 3 задания выглядели по-разному)
+    const containerClass =
+        idx === 0
+        ? "mainJettonTaskContainer"
+        : idx === 1
+        ? "main1WINTaskContainer"
+        : "mainMostbetTaskContainer";
+
+    return (
+        <div
+        key={id}
+        className={containerClass}
+        style={
+            bg
+            ? {
+                backgroundImage: `url(${bg})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                }
+            : undefined
+        }
+        >
+        <div className="mainChannelNameContainer">
+            <img src={photo || OneWinIMG} />
+            <div className="textChannelNameContainer">
+            <div className="textChannelNameContainerPart1">{title}</div>
+            <div className="text1WINNameContainerPart2">{category}</div>
+            </div>
+        </div>
+
+        <div className="titleAndBodyTextChannelNameContainer">
+            <div className="titleTextChannelNameContainer">
+            Партнёрская программа
+            </div>
+            <div className="bodyTextChannelNameContainer">
+            Нажмите «Выполнить» и выполните условия оффера.
+            </div>
+        </div>
+
+        <div className="taskChannelRewardAndUsersContainer">
+            <div className="taskChannelRewardContainer">
+            <img src={tonusdtIMG} />
+            <h2>Награда: {task?.reward_stars || 0} Stars</h2>
+            </div>
+            <div className="taskChannelUsersContainer">
+            <img src={usersIMG} />
+            <h2>Доступно</h2>
+            </div>
+        </div>
+
+        <div className="completeAndCheckChannelContainer">
+            <div
+            className="complete1WINContainer"
+            onClick={() => openGbClick(id)}
+            >
+            <h2>ВЫПОЛНИТЬ</h2>
+            </div>
+            <div
+            className="checkChannelContainer"
+            onClick={() => checkGbTask(id)}
+            role="button"
+            >
+            <h2>ПРОВЕРИТЬ</h2>
+            </div>
+        </div>
+        </div>
+    );
+    };
+
     return (
     <div className="App">
         <div className="Main_Window">   
@@ -419,53 +504,9 @@ const OnexGifts = () => {
                     <div class="line-right"></div>
                 </div> 
 
-                {!offersLoading && tasksForRender.length > 0 && tasksForRender.slice(0, 4).map((t) => (
-                <div key={t.id || t.task_id} className="mainJettonTaskContainer">
-                    <div className="mainChannelNameContainer">
-                    <img src={OneWinIMG} />
-                    <div className="textChannelNameContainer">
-                        <div className="textChannelNameContainerPart1">
-                        {t?.name || t?.title || "Оффер"}
-                        </div>
-                        <div className="text1WINNameContainerPart2">Партнёрский оффер</div>
-                    </div>
-                    </div>
-                    <div className="titleAndBodyTextChannelNameContainer">
-                    <div className="titleTextChannelNameContainer">Партнёрская программа</div>
-                    <div className="bodyTextChannelNameContainer">
-                        Нажмите «Выполнить», зарегистрируйтесь/выполните условия оффера, затем вернитесь и нажмите «Проверить».
-                    </div>
-                    </div>
-                    <div className="taskChannelRewardAndUsersContainer">
-                    <div className="taskChannelRewardContainer">
-                        <img src={tonusdtIMG} />
-                        <h2>Награда по условиям оффера</h2>
-                    </div>
-                    <div className="taskChannelUsersContainer">
-                        <img src={usersIMG} />
-                        <h2>доступно</h2>
-                    </div>
-                    </div>
-                    <div className="completeAndCheckChannelContainer">
-                    <div className="complete1WINContainer" onClick={() => openGbClick(t.id || t.task_id)}>
-                        <h2>ВЫПОЛНИТЬ</h2>
-                    </div>
-                    <div className="checkChannelContainer" onClick={() => checkGbTask(t.id || t.task_id)} role="button">
-                        <h2>ПРОВЕРИТЬ</h2>
-                    </div>
-                    </div>
-                </div>
-                ))}
-                {!offersLoading && gbTasks.length === 0 && (
-                  <div className="mainJettonTaskContainer">
-                    <div className="titleAndBodyTextChannelNameContainer">
-                      <div className="titleTextChannelNameContainer">Партнёрские задания</div>
-                      <div className="bodyTextChannelNameContainer">
-                        В вашем регионе пока нет доступных офферов. Зайдите позже — список обновляется.
-                      </div>
-                    </div>
-                  </div>
-                )}
+                {!offersLoading &&
+                tasksForRender.length > 0 &&
+                tasksForRender.slice(0, 3).map((t, i) => renderGbTaskCard({ task: t, idx: i }))}
                 
                 {/* <div class="main1WINTaskContainer">
                     <div class="mainChannelNameContainer">
