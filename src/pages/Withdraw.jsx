@@ -140,7 +140,14 @@ export default function Withdraw() {
     }, [telegramId]);
 
     const handleCreateWithdraw = async () => {
+
     if (!readyToWithdraw) return;
+
+    // ✅ Проверка доступного баланса
+    if (Number(amount) > usdAvailable) {
+        alert("⚠️ Недостаточно средств для вывода. Проверьте сумму.");
+        return;
+    }
 
     try {
         const r = await fetch(`${API_BASE}/withdraw/create`, {
