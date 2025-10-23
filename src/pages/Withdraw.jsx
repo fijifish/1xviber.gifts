@@ -217,6 +217,28 @@ export default function Withdraw() {
     };
     }, [navigate]);
 
+    const handlePasteAddress = async () => {
+    try {
+        const text = await navigator.clipboard.readText();  // работает по клику/HTTPS/WebApp
+        const cleaned = String(text || "")
+        .replace(/[\u200B-\u200D\uFEFF]/g, "") // убрать zero-width символы
+        .trim();
+
+        if (!cleaned) {
+        alert("В буфере обмена пусто");
+        return;
+        }
+
+        const limited = cleaned.slice(0, 30);   // ограничиваем 30 символами
+        setWalletAddress(limited);
+
+        // если у тебя есть валидация доступности кнопки «Вывести» — она может смотреть на walletAddress
+    } catch (e) {
+        console.error("clipboard read error:", e);
+        alert("Не удалось прочитать буфер обмена. Разреши доступ к буферу или попробуй снова.");
+    }
+    };
+
   return (
     <div className="App">
         <div className="Main_Window">   
@@ -338,75 +360,27 @@ export default function Withdraw() {
                         
                     </div>
                     <div class="AddressWalletMainContainer">
-                    <div className={`AddressWalletContainer ${isAddressNeutral ? "" : (addrClean.length > 0 ? "valid" : "invalid")}`}>
-                        <div
-                        ref={addrRef}
-                        className={`addressInput ${isAddressNeutral ? "is-placeholder" : ""}`}
-                        contentEditable
-                        suppressContentEditableWarning
-                        spellCheck={false}
-                        onFocus={(e) => {
-                            if (isAddressNeutral) {
-                            e.currentTarget.textContent = "";
-                            setWalletAddress("");
-                            setIsAddressNeutral(false);
-                            }
-                            // курсор в конец
-                            const sel = window.getSelection();
-                            const r = document.createRange();
-                            r.selectNodeContents(e.currentTarget);
-                            r.collapse(false);
-                            sel.removeAllRanges();
-                            sel.addRange(r);
-                        }}
-                        onInput={(e) => {
-                            const el = e.currentTarget;
-                            const raw = el.textContent || "";
-                            let next = sanitizeAddress(raw); // только базовая санитизация
+<div className="AddressWalletContainer">
+  <h2>Кошелек TON или реквизиты</h2>
 
-                            if (next !== raw) {
-                                el.textContent = next;
-                                const sel = window.getSelection();
-                                const r = document.createRange();
-                                r.selectNodeContents(el);
-                                r.collapse(false);
-                                sel.removeAllRanges();
-                                sel.addRange(r);
-                            }
+  {/* Нередактируемое поле отображения */}
+  <input
+    className={`addressInput ${walletAddress ? "filled" : "placeholder"}`}
+    type="text"
+    readOnly                  // 🔒 запрет редактирования
+    value={walletAddress || "Укажите адрес кошелька"}
+    onFocus={(e) => e.target.blur()}  // не даём фокус/клавиатуру
+  />
 
-                            setWalletAddress(next);
-                        }}
-                        onPaste={(e) => {
-                            e.preventDefault();
-                            const txt = (e.clipboardData || window.clipboardData).getData("text") || "";
-                            let cleaned = sanitizeAddress(txt); // без доп. проверок
-
-                            setWalletAddress(cleaned);
-                            document.execCommand("insertText", false, cleaned);
-
-                            const el = e.currentTarget;
-                            const sel = window.getSelection();
-                            const r = document.createRange();
-                            r.selectNodeContents(el);
-                            r.collapse(false);
-                            sel.removeAllRanges();
-                            sel.addRange(r);
-                        }}
-                        onKeyDown={(e) => {
-                            if (e.key === "Enter") { e.preventDefault(); e.currentTarget.blur(); }
-                        }}
-                        onBlur={(e) => {
-                            if (!sanitizeAddress(e.currentTarget.textContent || "")) {
-                            e.currentTarget.textContent = "Кошелёк TON или реквизиты";
-                            setWalletAddress("Кошелёк TON или реквизиты");
-                            setIsAddressNeutral(true);
-                            }
-                        }}
-                        />
-                    </div>
-                    <div class="AddressWalletPasteContainer">
-                        <img src={PasteIMG}/>
-                    </div>
+  {/* Кнопка «Вставить» рядом с полем */}
+  <div
+    className="AddressWalletPasteContainer"
+    onClick={handlePasteAddress}
+    role="button"
+  >
+    <img src={PasteIMG}/>
+  </div>
+</div>
                     </div>
                 </div>
 
@@ -418,7 +392,7 @@ export default function Withdraw() {
 
 
 
-    {sorted.map((o, i) => {
+    {sorted.map((o, i) => {                 
       const cls = getOrderClass(i, sorted.length);
 
       // удобный формат для даты/времени:
