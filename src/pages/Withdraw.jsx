@@ -41,28 +41,6 @@ export default function Withdraw() {
     const addrClean = sanitizeAddress(isAddressNeutral ? "" : walletAddress);
     const addressValid = !isAddressNeutral && addrClean.length > 0; // валидно, если поле не пустое
 
-    const [usdAvailable, setUsdAvailable] = useState(0);
-    const [usdLocked, setUsdLocked] = useState(0);
-
-    const availableTON = usdToTon(usdAvailable);
-    const lockedTON    = usdToTon(usdLocked);
-
-    const totalUSD = usdAvailable + usdLocked;
-    const totalTON = usdToTon(totalUSD);
-
-    useEffect(() => {
-    if (!user?.telegramId || !API_BASE) return;
-
-    fetch(`${API_BASE}/balances?telegramId=${user.telegramId}`)
-        .then(r => r.json())
-        .then(d => {
-        if (d?.ok) {
-            setUsdAvailable(Number(d.usdAvailable || 0));
-            setUsdLocked(Number(d.usdLocked || 0));
-        }
-        })
-        .catch(console.error);
-    }, [user?.telegramId]);
 
 
     useEffect(() => {
@@ -85,6 +63,7 @@ export default function Withdraw() {
         } catch {}
     };
 
+
     const [tonToUsdRate, setTonToUsdRate] = useState(null); // how many USDT for 1 TON
 
     useEffect(() => {
@@ -101,7 +80,30 @@ export default function Withdraw() {
       fetchTonToUsdRate();
     }, []);
 
-    const usdToTon = (usd) => (tonToUsdRate ? Number(usd) / tonToUsdRate : 0);
+    function usdToTon(usd) { return tonToUsdRate ? Number(usd) / tonToUsdRate : 0; }
+
+    // ===== Balances hooks (moved here to ensure usdToTon is defined) =====
+    const [usdAvailable, setUsdAvailable] = useState(0);
+    const [usdLocked, setUsdLocked] = useState(0);
+
+    const availableTON = usdToTon(usdAvailable);
+    const lockedTON    = usdToTon(usdLocked);
+
+    const totalUSD = usdAvailable + usdLocked;
+    const totalTON = usdToTon(totalUSD);
+
+    useEffect(() => {
+      if (!user?.telegramId || !API_BASE) return;
+      fetch(`${API_BASE}/balances?telegramId=${user.telegramId}`)
+        .then(r => r.json())
+        .then(d => {
+          if (d?.ok) {
+            setUsdAvailable(Number(d.usdAvailable || 0));
+            setUsdLocked(Number(d.usdLocked || 0));
+          }
+        })
+        .catch(console.error);
+    }, [user?.telegramId]);
 
     const usdtBalance = Number(user?.balanceTon ?? 0); // ⚠️ сейчас тут хранится именно USDT
     const tonBalance  = usdToTon(usdtBalance);
