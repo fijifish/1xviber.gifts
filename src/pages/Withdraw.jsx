@@ -361,14 +361,14 @@ export default function Withdraw() {
                     </div>
                     <div class="AddressWalletMainContainer">
                     <div className="AddressWalletContainer">
-                    <h2>Кошелек TON или реквизиты</h2>
+                    {/* <h2>Кошелек TON или реквизиты</h2> */}
 
                     {/* Нередактируемое поле отображения */}
                     <input
                         className={`addressInput ${walletAddress ? "filled" : "placeholder"}`}
                         type="text"
                         readOnly                  // 🔒 запрет редактирования
-                        value={walletAddress || ""}
+                        value={walletAddress || "Кошелек TON или реквизиты"}
                         onFocus={(e) => e.target.blur()}  // не даём фокус/клавиатуру
                     />
                     </div>
