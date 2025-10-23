@@ -282,7 +282,7 @@ body {
     position: static;  
     width: 72%;
     height: 100%;
-    margin-left: .7vh;
+    margin-left: .45vh;
 
     display: flex;
     flex-direction: column;
