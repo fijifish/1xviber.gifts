@@ -359,10 +359,12 @@ const OnexGifts = () => {
 
         <div className="titleAndBodyTextChannelNameContainer">
             <div className="titleTextChannelNameContainer">
-            Партнёрская программа
+                Партнёрская программа
             </div>
-            <div className="bodyTextChannelNameContainer">
-            Нажмите «Выполнить» и выполните условия оффера.
+            <div class="bodyTextChannelNameContainer">
+                В формате условий CPA при внесении депо-<br/>
+                зита в размере 5$, мы распределяем 40% от<br/>
+                полученных наград для наших пользователей.
             </div>
         </div>
 
