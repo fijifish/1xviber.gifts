@@ -51,24 +51,12 @@ body {
   flex-direction: column;
   align-items: center;
 
-  /* === Имитация Diamond из Figma === */
-  background: radial-gradient(
-      circle at 25% 30%, 
-      rgba(85, 61, 158, 0.85) 0%, 
-      rgba(85, 61, 158, 0.15) 35%, 
-      rgba(0, 0, 0, 1) 100%
-    ),
-    linear-gradient(
-      135deg,
-      rgba(85, 61, 158, 0.3) 0%, 
-      rgba(0, 0, 0, 0.8) 60%
-    );
-  background-blend-mode: overlay, normal;
+  /* 🔥 Вместо обычного чёрного — добавляем “Diamond” эффект */
+  background:
+    radial-gradient(200% 150% at 0% 60%,rgba(85,61,158,.8),transparent 30%),
+    radial-gradient(100% 180% at 80% 80%,#000,#000);
   background-color: #000;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-
+  background-blend-mode: screen;
   min-height: 0;
 }
 
