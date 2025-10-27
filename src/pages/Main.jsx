@@ -117,6 +117,44 @@ const OnexGifts = () => {
 
     const [taskDone, setTaskDone] = useState(Boolean(user?.tasks?.channelSubscribed));
 
+    const [onexDone, setOnexDone] = useState(Boolean(user?.tasks?.onexReferralDone));
+    useEffect(() => { setOnexDone(Boolean(user?.tasks?.onexReferralDone)); }, [user?.tasks?.onexReferralDone]);
+    const ONEX_OWNER_ID = import.meta.env.VITE_ONEX_OWNER_ID || "";   // telegramId владельца, чьи рефералы считаем
+    const ONEX_OWNER_REF = import.meta.env.VITE_ONEX_OWNER_REF || ""; // альтернативно его реф-код из 1x.back
+
+    async function verifyOnexReferral() {
+      try {
+        if (!user?.telegramId) return alert("Открой через Telegram");
+        const payload = {
+          telegramId: String(user.telegramId),
+          ...(ONEX_OWNER_ID ? { ownerId: String(ONEX_OWNER_ID) } : {}),
+          ...(ONEX_OWNER_REF ? { ownerRef: String(ONEX_OWNER_REF) } : {}),
+        };
+        const r = await fetch(`${API_BASE}/tasks/onex/verify`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        const d = await r.json();
+        if (!r.ok || !d?.ok) throw new Error(d?.error || "Server error");
+
+        if (d.status === "rewarded" || d.status === "already_completed") {
+          setOnexDone(true);
+          if (d.user) updateUser(d.user);
+          await refetchUser();
+          await fetchBalances(user.telegramId);
+          alert(d.status === "rewarded" ? "✅ Задание выполнено! Награда начислена" : "✅ Уже выполнено ранее");
+        } else if (d.status === "not_found_in_owner_referrals") {
+          alert("❌ Вас пока нет в списке рефералов. Завершите действие в ONEX и повторите проверку.");
+        } else {
+          alert("⚠️ Не удалось подтвердить выполнение. Попробуйте позже.");
+        }
+      } catch (e) {
+        console.error("verifyOnexReferral error", e);
+        alert("Ошибка проверки ONEX задания");
+      }
+    }
+
     // если пришёл свежий user из контекста — обновим локальный стейт
     useEffect(() => {
     setTaskDone(Boolean(user?.tasks?.channelSubscribed));
@@ -756,23 +794,24 @@ const OnexGifts = () => {
                         <div className="line-right"></div>
                     </div>
 
-                <div class="mainOnexTaskContainer">
-                    <div class="mainChannelNameContainer">
+                {/* ONEX referral task */}
+                <div className="mainOnexTaskContainer">
+                    <div className="mainChannelNameContainer">
                         <img src={onexIMG}/>
-                        <div class="textChannelNameContainer">
-                            <div class="textChannelNameContainerPart1">
+                        <div className="textChannelNameContainer">
+                            <div className="textChannelNameContainerPart1">
                                 ONEX
                             </div>
-                            <div class="textOnexNameContainerPart2">
+                            <div className="textOnexNameContainerPart2">
                                 Стейкинг
                             </div>
                         </div>
                     </div>
-                    <div class="titleAndBodyTextChannelNameContainer">
-                        <div class="titleTextChannelNameContainer">
+                    <div className="titleAndBodyTextChannelNameContainer">
+                        <div className="titleTextChannelNameContainer">
                             Партнёрская программа
                         </div>
-                        <div class="bodyTextChannelNameContainer">
+                        <div className="bodyTextChannelNameContainer">
                             В формате условий CPA при активации любой<br/>
                             фарминг ноды, вы получите 33% от<br/>
                             фиксированной выплаты за реферала.
@@ -789,17 +828,24 @@ const OnexGifts = () => {
                         </div>
                     </div>
                     <div className="completeAndCheckChannelContainer">
-                        <div className="complete1WINContainer"
+                      {onexDone ? (
+                        <div className="taskChannelCompletedContainer"><h2>ВЫПОЛНЕНО</h2></div>
+                      ) : (
+                        <>
+                          <div className="complete1WINContainer"
                             onClick={() => window.Telegram?.WebApp?.openTelegramLink("https://t.me/onex_ton_bot?start=DoJ9KL1V")}>
                             <h2>ВЫПОЛНИТЬ</h2>
-                        </div>
-                        <div className="checkChannelContainer">
+                          </div>
+                          <div className="checkChannelContainer" onClick={verifyOnexReferral} role="button">
                             <h2>ПРОВЕРИТЬ</h2>
-                        </div>
+                          </div>
+                        </>
+                      )}
                     </div>
                 </div>
                 </>
                 )}
+
 
 
                 <div className="footerContainer">
