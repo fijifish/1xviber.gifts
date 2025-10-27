@@ -755,7 +755,7 @@ const OnexGifts = () => {
                         <div className="line-right"></div>
                     </div>
 
-                <div class="mainMostbetTaskContainer">
+                <div class="mainOnexTaskContainer">
                     <div class="mainChannelNameContainer">
                         <img src={onexIMG}/>
                         <div class="textChannelNameContainer">
