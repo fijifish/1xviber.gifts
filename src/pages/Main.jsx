@@ -557,9 +557,9 @@ const OnexGifts = () => {
                 </div>
 
                 <div class="textAvaliableWay-with-linesContainer">
-                    <div class="line-left"></div> 
+                    <div class="AvaliableWay-line-left"></div> 
                         <h2>Направления доступных CPA заданий</h2> 
-                    <div class="line-right"></div>
+                    <div class="AvaliableWay-line-right"></div>
                 </div> 
 
                 <div class="selectAvaliableWayContainer">

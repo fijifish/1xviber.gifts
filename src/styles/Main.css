@@ -232,6 +232,22 @@ body {
   border-bottom-right-radius: 3vh;
 }
 
+.AvaliableWay-line-left {
+  width: 12.5vw;
+  height: .25vh;
+  background: rgba(123, 123, 123, 0.5);
+  border-top-left-radius: 3vh;
+  border-bottom-left-radius: 3vh;
+}
+
+.AvaliableWay-line-right {
+  width: 12.5vw;
+  height: .25vh;
+  background:  rgba(123, 123, 123, 0.5);
+  border-top-right-radius: 3vh;
+  border-bottom-right-radius: 3vh;
+}
+
 .text5USDT-with-linesContainer h2 {
   color: rgba(123, 123, 123, 1);
   font-family: 'Inter', sans-serif;
