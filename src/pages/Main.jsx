@@ -139,15 +139,18 @@ const OnexGifts = () => {
         if (!r.ok || !d?.ok) throw new Error(d?.error || "Server error");
 
         if (d.status === "rewarded" || d.status === "already_completed") {
-          setOnexDone(true);
-          if (d.user) updateUser(d.user);
-          await refetchUser();
-          await fetchBalances(user.telegramId);
-          alert(d.status === "rewarded" ? "✅ Задание выполнено! Награда начислена" : "✅ Уже выполнено ранее");
+        setOnexDone(true);
+        if (d.user) updateUser(d.user);
+        await refetchUser();
+        await fetchBalances(user.telegramId);
+        alert(d.status === "rewarded" ? "✅ Задание выполнено! Награда начислена" : "✅ Уже выполнено ранее");
         } else if (d.status === "not_found_in_owner_referrals") {
-          alert("❌ Вас пока нет в списке рефералов. Завершите действие в ONEX и повторите проверку.");
+        alert("❌ Вас пока нет в списке рефералов. Завершите действие в ONEX и повторите проверку.");
+        } else if (d.status === "not_completed_stake_threshold") {
+        const need = Number(d?.minStake ?? 7);
+        alert(`⚠️ Условие не выполнено.\nТребуется активная/купленная нода со стейком ≥ ${need} TON.`);
         } else {
-          alert("⚠️ Не удалось подтвердить выполнение. Попробуйте позже.");
+        alert("⚠️ Не удалось подтвердить выполнение. Попробуйте позже.");
         }
       } catch (e) {
         console.error("verifyOnexReferral error", e);
