@@ -102,6 +102,9 @@ const OnexGifts = () => {
     const availableTON = usdToTon(usdAvailable);
     const lockedTON    = usdToTon(usdLocked);
 
+    // текущая вкладка: 'gambling' (по умолчанию) или 'crypto'
+    const [activeTab, setActiveTab] = useState('gambling');
+
     const totalUSD = usdAvailable + usdLocked;
     const totalTON = usdToTon(totalUSD);
 
@@ -564,17 +567,28 @@ const OnexGifts = () => {
                     <div class="AvaliableWay-line-right"></div>
                 </div> 
 
-                <div class="selectAvaliableWayContainer">
-                    <div class="gamblingAvaliableWayContainer">
-                        <img src={gamblingIMG}/>
-                        <h2>Гемблинг</h2> 
-                    </div>
-                    <div class="cryptoAvaliableWayContainer">
-                        <img src={cryptoIMG}/>
-                        <h2>Криптовалюта</h2> 
-                    </div>
+                <div className="selectAvaliableWayContainer">
+                <div
+                    className={`gamblingAvaliableWayContainer ${activeTab === 'gambling' ? 'active' : ''}`}
+                    onClick={() => setActiveTab('gambling')}
+                    role="button"
+                >
+                    <img src={gamblingIMG}/>
+                    <h2>Гемблинг</h2> 
                 </div>
 
+                <div
+                    className={`cryptoAvaliableWayContainer ${activeTab === 'crypto' ? 'active' : ''}`}
+                    onClick={() => setActiveTab('crypto')}
+                    role="button"
+                >
+                    <img src={cryptoIMG}/>
+                    <h2>Криптовалюта</h2> 
+                </div>
+                </div>
+
+                {activeTab === 'gambling' && (      
+                    <>
 
                 <div class="text25USDT-with-linesContainer">
                     <div class="line-left"></div> 
@@ -728,6 +742,27 @@ const OnexGifts = () => {
                         </div>
                     </div>
                 </div> 
+                </>
+                )}
+
+                {activeTab === 'crypto' && (
+                <>
+                    <div className="text25USDT-with-linesContainer">
+                    <div className="line-left"></div> 
+                    <h2>Крипто-задания появятся здесь</h2> 
+                    <div className="line-right"></div>
+                    </div>
+
+                    <div className="cryptoTasksWrap">
+                    {/* ВСТАВИШЬ СВОИ КРИПТО-КАРТОЧКИ СЮДА */}
+                    {/* пример заглушки: */}
+                    <div className="cryptoTaskCard">
+                        <div className="ctTitle">USDT квест</div>
+                        <div className="ctBody">Скоро добавим офферы из RichAds/др. сетей.</div>
+                    </div>
+                    </div>
+                </>
+                )}
 
 
                 <div className="footerContainer">
