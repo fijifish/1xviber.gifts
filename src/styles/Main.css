@@ -52,15 +52,11 @@ body {
   align-items: center;
 
   /* 🔥 Вместо обычного чёрного — добавляем “Diamond” эффект */
-  background: radial-gradient(
-    150% 200% at 30% 20%, /* направление и форма блика */
-    #553D9E 0%,            /* центр блика */
-    #000000 100%           /* плавный уход в чёрный */
-  );
-
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
+  background:
+    radial-gradient(150% 200% at 30% 20%, rgba(85, 61, 158, 0.8), transparent 60%),
+    radial-gradient(100% 180% at 80% 90%, rgba(0, 0, 0, 1), #000000 100%);
+  background-color: #000;
+  background-blend-mode: screen;
   min-height: 0;
 }
 
