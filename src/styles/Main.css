@@ -572,6 +572,23 @@ body {
   font-size: 1.4vh;
 }
 
+.textAvaliableWay-with-linesContainer {
+  height: 2.46%;
+  width: 100%; 
+  margin-top: 1.8vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.textAvaliableWay-with-linesContainer h2 {
+  color: rgba(123, 123, 123, 1);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;  
+  font-size: 1.7vh;
+}
+
 .text25USDT-with-linesContainer {
   height: 2.46%;
   width: 100%; 

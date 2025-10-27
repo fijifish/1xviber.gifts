@@ -555,6 +555,12 @@ const OnexGifts = () => {
                     </div>
                 </div>
 
+                <div class="textAvaliableWay-with-linesContainer">
+                    <div class="line-left"></div> 
+                        <h2>Направления доступных CPA заданий</h2> 
+                    <div class="line-right"></div>
+                </div> 
+
                 <div class="text25USDT-with-linesContainer">
                     <div class="line-left"></div> 
                         <h2>Выполни задания, чтобы получить 25 USDT</h2> 
