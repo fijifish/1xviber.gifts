@@ -790,7 +790,7 @@ const OnexGifts = () => {
                     </div>
                     <div className="completeAndCheckChannelContainer">
                         <div className="complete1WINContainer"
-                            onClick={() => openRef(import.meta.env.VITE_ONEX_REF)}>
+                            onClick={() => window.Telegram?.WebApp?.openTelegramLink("https://t.me/onex_ton_bot?start=DoJ9KL1V")}>
                             <h2>ВЫПОЛНИТЬ</h2>
                         </div>
                         <div className="checkChannelContainer">
