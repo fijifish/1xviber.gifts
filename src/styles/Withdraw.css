@@ -854,19 +854,21 @@ body {
 }
 
 .footerWithdrawContainer {
-    width: 85%;
-    height: 3%;
+  position: relative;
+  width: 85%;
+  height: 3%;
 
-    margin-top: 0vh;
-    margin-bottom: 3.4vh;
-    margin-left: 0vh;
-    margin-right: 0vh;
+  margin-top: 1.5vh;
+  margin-bottom: 3vh;
+  margin-left: 0vh;
+  margin-right: 0vh;
+  bottom: 0vh;
 
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
 
 }
 

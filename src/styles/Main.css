@@ -774,6 +774,7 @@ body {
 }
 
 .footerContainer {
+  position: relative;
   width: 85%;
   height: 3%;
 
@@ -781,6 +782,7 @@ body {
   margin-bottom: 3vh;
   margin-left: 0vh;
   margin-right: 0vh;
+  bottom: 0vh;
 
   display: flex;
   flex-direction: row;
