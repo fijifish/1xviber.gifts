@@ -22,6 +22,7 @@ import onexIMG from "../assets/onexIMG.png";
 
 
 
+
 // === GetBonus image proxy (RU GEO-friendly) ===
 const GB_S3_PROXY =
   import.meta.env.VITE_GB_S3_PROXY ||
