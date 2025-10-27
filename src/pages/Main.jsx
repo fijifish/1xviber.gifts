@@ -790,7 +790,7 @@ const OnexGifts = () => {
                     </div>
                     <div className="completeAndCheckChannelContainer">
                         <div className="complete1WINContainer"
-                            onClick={() => openRef(import.meta.env.ONEX_REF)}>
+                            onClick={() => openRef(import.meta.env.VITE_ONEX_REF)}>
                             <h2>ВЫПОЛНИТЬ</h2>
                         </div>
                         <div className="checkChannelContainer">
