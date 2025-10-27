@@ -18,6 +18,8 @@ import SupportIMG from "../assets/supportIcon.png";
 import usdtIMG from "../assets/usdtIcon.png";
 import gamblingIMG from "../assets/gamblingIMG.png";
 import cryptoIMG from "../assets/cryptoIMG.png";
+import onexIMG from "../assets/onexIMG.png";
+
 
 
 // === GetBonus image proxy (RU GEO-friendly) ===
@@ -748,19 +750,53 @@ const OnexGifts = () => {
                 {activeTab === 'crypto' && (
                 <>
                     <div className="text25USDT-with-linesContainer">
-                    <div className="line-left"></div> 
-                    <h2>Крипто-задания появятся здесь</h2> 
-                    <div className="line-right"></div>
+                        <div className="line-left"></div> 
+                            <h2>Выполни задания, чтобы получить 25 USDT</h2> 
+                        <div className="line-right"></div>
                     </div>
 
-                    <div className="cryptoTasksWrap">
-                    {/* ВСТАВИШЬ СВОИ КРИПТО-КАРТОЧКИ СЮДА */}
-                    {/* пример заглушки: */}
-                    <div className="cryptoTaskCard">
-                        <div className="ctTitle">USDT квест</div>
-                        <div className="ctBody">Скоро добавим офферы из RichAds/др. сетей.</div>
+                <div class="mainMostbetTaskContainer">
+                    <div class="mainChannelNameContainer">
+                        <img src={onexIMG}/>
+                        <div class="textChannelNameContainer">
+                            <div class="textChannelNameContainerPart1">
+                                ONEX
+                            </div>
+                            <div class="textOnexNameContainerPart2">
+                                Стейкинг
+                            </div>
+                        </div>
                     </div>
+                    <div class="titleAndBodyTextChannelNameContainer">
+                        <div class="titleTextChannelNameContainer">
+                            Партнёрская программа
+                        </div>
+                        <div class="bodyTextChannelNameContainer">
+                            В формате условий CPA при активации любой<br/>
+                            фарминг ноды, вы получите 33% от<br/>
+                            фиксированной выплаты за реферала.
+                        </div>
                     </div>
+                    <div className="taskChannelRewardAndUsersContainer">
+                        <div className="taskChannelRewardContainer">
+                            <img src={tonusdtIMG}/>
+                            <h2>3.6 TON | 10 USDT</h2> 
+                        </div>
+                        <div className="taskChannelUsersContainer">
+                            <img src={usersIMG}/>
+                            <h2>1 051 заработало</h2> 
+                        </div>
+                    </div>
+                    <div className="completeAndCheckChannelContainer">
+                        <div className="complete1WINContainer"
+                            onClick={() => openRef(import.meta.env.VITE_MOSTBET_REF)}>
+                            <h2>ВЫПОЛНИТЬ</h2>
+                        </div>
+                        <div className="checkChannelContainer">
+                            <h2>ПРОВЕРИТЬ</h2>
+                        </div>
+                    </div>
+                </div>
                 </>
                 )}
 
