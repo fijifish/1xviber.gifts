@@ -16,6 +16,7 @@ import MostbetIMG from "../assets/MostbetIcon.png";
 import TelegramIMG from "../assets/telegramIcon.png";
 import SupportIMG from "../assets/supportIcon.png";
 import usdtIMG from "../assets/usdtIcon.png";
+import gamblingIMG from "../assets/gamblingIMG.png";
 
 // === GetBonus image proxy (RU GEO-friendly) ===
 const GB_S3_PROXY =
@@ -560,6 +561,13 @@ const OnexGifts = () => {
                         <h2>Направления доступных CPA заданий</h2> 
                     <div class="line-right"></div>
                 </div> 
+
+                <div class="selectAvaliableWayContainer">
+                    <div class="gamblingAvaliableWayContainer">
+                        <img src={gamblingIMG}/>
+                        <h2>Гемблинг</h2> 
+                    </div>
+                </div>
 
                 <div class="text25USDT-with-linesContainer">
                     <div class="line-left"></div> 
