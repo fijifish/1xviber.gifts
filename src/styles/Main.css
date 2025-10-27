@@ -886,3 +886,16 @@ body {
   pointer-events: none;
   cursor: default;
 }
+
+.gamblingAvaliableWayContainer.active,
+.cryptoAvaliableWayContainer.active {
+  background-color: rgba(69, 69, 69, 1); /* тёмный фон */
+  border: 0.15vh solid #B6B6B6; /* обводка остаётся */
+  transition: background-color 0.2s ease;
+}
+
+/* === Неактивная кнопка (без фона) === */
+.gamblingAvaliableWayContainer:not(.active),
+.cryptoAvaliableWayContainer:not(.active) {
+  background-color: transparent;
+}
