@@ -569,14 +569,12 @@ const OnexGifts = () => {
                         <img src={gamblingIMG}/>
                         <h2>Гемблинг</h2> 
                     </div>
-                </div>
-
-                <div class="selectAvaliableWayContainer">
                     <div class="gamblingAvaliableWayContainer">
-                        <img src={gamblingIMG}/>
+                        <img src={cryptoIMG}/>
                         <h2>Криптовалюта</h2> 
                     </div>
                 </div>
+
 
                 <div class="text25USDT-with-linesContainer">
                     <div class="line-left"></div> 
