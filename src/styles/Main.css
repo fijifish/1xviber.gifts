@@ -590,17 +590,19 @@ body {
 
 .selectAvaliableWayContainer {
   width: 95%;
-  height: 20%;
+  height: 4%;
 
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
+
+  margin-top: 1.7vh;
 }
 
 .gamblingAvaliableWayContainer {
-  width: 32%;
-  height: 98%;
+  width: 28%;
+  height: 80%;
 
   display: flex;
   align-items: center;
@@ -608,21 +610,21 @@ body {
   flex-direction: row;
 
   background-color: rgba(69, 69, 69, 1);
-  border-radius: .8vh;
-  border: 0.8vh solid #B6B6B6;
+  border-radius: 1vh;
+  border: 0.15vh solid #B6B6B6;
 
   gap: 1vh
 }
 
 .gamblingAvaliableWayContainer img {
   width: auto;
-  height: 80%;
+  height: 50%;
 }
 
 .gamblingAvaliableWayContainer h2 {
   color: white;
   font-family: 'Inter', sans-serif;
-  font-weight: 550;  
+  font-weight: 400;  
   font-size: 1.4vh;
 }
 
