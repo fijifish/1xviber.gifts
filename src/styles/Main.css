@@ -53,8 +53,8 @@ body {
 
   /* 🔥 Вместо обычного чёрного — добавляем “Diamond” эффект */
   background:
-    radial-gradient(150% 200% at 30% 20%, rgba(85, 61, 158, 0.8), transparent 60%),
-    radial-gradient(100% 180% at 80% 90%, rgba(0, 0, 0, 1), #000000 100%);
+    radial-gradient(200% 150% at 0% 60%,rgba(85,61,158,.8),transparent 30%),
+    radial-gradient(100% 180% at 80% 80%,#000,#000);
   background-color: #000;
   background-blend-mode: screen;
   min-height: 0;
