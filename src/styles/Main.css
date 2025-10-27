@@ -598,6 +598,8 @@ body {
   flex-direction: row;
 
   margin-top: 1.7vh;
+
+  gap: 1.5vh;
 }
 
 .gamblingAvaliableWayContainer {
@@ -622,6 +624,34 @@ body {
 }
 
 .gamblingAvaliableWayContainer h2 {
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;  
+  font-size: 1.4vh;
+}
+
+.cryptoAvaliableWayContainer {
+  width: 36%;
+  height: 80%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+
+  background-color: rgba(69, 69, 69, 1);
+  border-radius: 1vh;
+  border: 0.15vh solid #B6B6B6;
+
+  gap: 1vh
+}
+
+.cryptoAvaliableWayContainer img {
+  width: auto;
+  height: 60%;
+}
+
+.cryptoAvaliableWayContainer h2 {
   color: white;
   font-family: 'Inter', sans-serif;
   font-weight: 400;  
