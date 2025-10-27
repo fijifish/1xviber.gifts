@@ -609,7 +609,7 @@ body {
 
 .gamblingAvaliableWayContainer {
   width: 28%;
-  height: 80%;
+  height: 90%;
 
   display: flex;
   align-items: center;
@@ -637,7 +637,7 @@ body {
 
 .cryptoAvaliableWayContainer {
   width: 36%;
-  height: 80%;
+  height: 90%;
 
   display: flex;
   align-items: center;
