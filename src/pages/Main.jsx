@@ -628,47 +628,6 @@ const OnexGifts = () => {
                     </div>
                 </div> */}
 
-                <div class="mainJettonTaskContainer">
-                    <div class="mainChannelNameContainer">
-                        <img src={JettonIMG}/>
-                        <div class="textChannelNameContainer">
-                            <div class="textChannelNameContainerPart1">
-                                JETTON
-                            </div>
-                            <div class="text1WINNameContainerPart2">
-                                Казино
-                            </div>
-                        </div>
-                    </div>
-                    <div class="titleAndBodyTextChannelNameContainer">
-                        <div class="titleTextChannelNameContainer">
-                            Партнёрская программа
-                        </div>
-                        <div class="bodyTextChannelNameContainer">
-                            В формате условий CPA при внесении депо-<br/>
-                            зита в размере 5$, мы распределяем 33% от<br/>
-                            полученных наград для наших пользователей.
-                        </div>
-                    </div>
-                    <div className="taskChannelRewardAndUsersContainer">
-                        <div className="taskChannelRewardContainer">
-                            <img src={tonusdtIMG}/>
-                            <h2>1.8 TON | 5 USDT</h2> 
-                        </div>
-                        <div className="taskChannelUsersContainer">
-                            <img src={usersIMG}/>
-                            <h2>1 636 заработало</h2> 
-                        </div>
-                    </div>
-                    <div className="completeAndCheckChannelContainer">
-                        <div className="complete1WINContainer" onClick={() => openRef(import.meta.env.VITE_JETTON_REF)}>
-                            <h2>ВЫПОЛНИТЬ</h2>
-                        </div>
-                        <div className="checkChannelContainer" onClick={() => checkDeposit(5)} role="button">
-                            <h2>ПРОВЕРИТЬ</h2>
-                        </div>
-                    </div>
-                </div> 
 
                 <div class="mainMostbetTaskContainer">
                     <div class="mainChannelNameContainer">
@@ -726,6 +685,50 @@ const OnexGifts = () => {
                     )}
                     </div>
                 </div>
+
+
+                <div class="mainJettonTaskContainer">
+                    <div class="mainChannelNameContainer">
+                        <img src={JettonIMG}/>
+                        <div class="textChannelNameContainer">
+                            <div class="textChannelNameContainerPart1">
+                                JETTON
+                            </div>
+                            <div class="text1WINNameContainerPart2">
+                                Казино
+                            </div>
+                        </div>
+                    </div>
+                    <div class="titleAndBodyTextChannelNameContainer">
+                        <div class="titleTextChannelNameContainer">
+                            Партнёрская программа
+                        </div>
+                        <div class="bodyTextChannelNameContainer">
+                            В формате условий CPA при внесении депо-<br/>
+                            зита в размере 5$, мы распределяем 33% от<br/>
+                            полученных наград для наших пользователей.
+                        </div>
+                    </div>
+                    <div className="taskChannelRewardAndUsersContainer">
+                        <div className="taskChannelRewardContainer">
+                            <img src={tonusdtIMG}/>
+                            <h2>1.8 TON | 5 USDT</h2> 
+                        </div>
+                        <div className="taskChannelUsersContainer">
+                            <img src={usersIMG}/>
+                            <h2>1 636 заработало</h2> 
+                        </div>
+                    </div>
+                    <div className="completeAndCheckChannelContainer">
+                        <div className="complete1WINContainer" onClick={() => openRef(import.meta.env.VITE_JETTON_REF)}>
+                            <h2>ВЫПОЛНИТЬ</h2>
+                        </div>
+                        <div className="checkChannelContainer" onClick={() => checkDeposit(5)} role="button">
+                            <h2>ПРОВЕРИТЬ</h2>
+                        </div>
+                    </div>
+                </div> 
+
 
                 <div className="footerContainer">
                     <div className="footerTelegramChannel" onClick={() =>
