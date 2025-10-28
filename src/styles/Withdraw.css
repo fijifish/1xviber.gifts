@@ -1078,39 +1078,52 @@ body {
 .dropdownRoot.bank { width: 40%; }
 .dropdownRoot.pay  { width: 49%; }
 
-/* Панель, которая и есть «кнопка + раскрытая часть» */
+/* Панель: не растягиваем всю кнопку, растёт только меню */
 .dd-panel {
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 100%;                /* в закрытом состоянии равна высоте кнопки */
+
+  /* фиксируем высоту «кнопки» */
+  --btn-h: 100%;   /* высота шапки-кнопки = высоте твоего контейнера (16.5%) */
+  --menu-h: 100%;  /* высота раскрытия меню = высоте кнопки (итого примерно х2) */
+
+  min-height: var(--btn-h);  /* шапка всегда фиксированной высоты */
+  height: auto;              /* панель может расти за счёт меню */
   z-index: 5;
 
   border: .15vh solid rgba(182,182,182,1);
   border-radius: 1.3vh;
   background: rgba(69,69,69,1);
-  overflow: hidden;
+  overflow: visible;         /* позволяем меню выйти вниз */
 
   display: flex;
   flex-direction: column;
-  transition: height .25s ease; /* вместо max-height */
 }
 
-/* «Шапка» — прежняя кнопка */
+/* Шапка-кнопка: фикс высота, не тянется при открытии */
 .dd-header {
-  height: 100%;
-  display: flex; align-items: center; justify-content: center;
+  height: var(--btn-h);
+  flex: 0 0 var(--btn-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 1.1vh;
 }
+
 .dd-header h2 { margin: 0; font-size: 1.7vh; font-weight: 500; color: #fff; }
 .dd-header img:first-child { height: 40%; width: auto; }
 .dd-header img:last-child  { height: 30%; width: auto; margin-top: .3vh; margin-left: .3vh; }
 
 /* Пустая область «меню», появляется при open */
+/* Меню закрыто */
 .dd-empty {
-  flex: 1 0 auto;
-  min-height: 0;
+  max-height: 0;
+  overflow: hidden;
   background: rgba(26,26,26,.95);
+  transition: max-height .25s ease;
 }
 
-/* когда открыт — увеличиваем контейнер до ~33% высоты блока (x2 от 16.5%) */
-.dropdownRoot.open .dd-panel { height: 200%; }
+/* Меню открыто: раскрываемся на высоту кнопки */
+.dropdownRoot.open .dd-empty {
+  max-height: var(--menu-h);
+}
