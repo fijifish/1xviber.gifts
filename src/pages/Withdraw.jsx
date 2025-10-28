@@ -15,6 +15,10 @@ import TelegramIMG from "../assets/telegramIcon.png";
 import SupportIMG from "../assets/supportIcon.png";
 import PasteIMG from "../assets/paste-icon.png";
 import InfoIMG from "../assets/info-icon.png";
+import polygonIMG from "../assets/polygonIMG.png";
+import cardIMG from "../assets/cardIMG.png";
+
+
 
 function sanitizeAddress(raw = "") {
   return String(raw)
@@ -290,6 +294,13 @@ export default function Withdraw() {
                 </div>
 
                 <div class="mainWithdrawContainer">
+                    <div class="bankInfoAndPayMethodContainer">
+                        <div class="bankInfoContainer">
+                            <img src={polygonIMG}/>
+                                <h2>Реквизиты</h2>
+                            <img src={cardIMG}/>
+                        </div>
+                    </div>
                     <div class="AmountAndWithdrawContainer">
                         <div class="AmountContainer">
                             <h2
