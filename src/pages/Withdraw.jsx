@@ -332,6 +332,10 @@ export default function Withdraw() {
     const [payType, setPayType]     = useState("crypto");  // "Крипто" по умолчанию
     const [payMethod, setPayMethod] = useState("sber");
 
+
+    const refBank = useRef(null);
+    const refPay  = useRef(null);
+
   return (
     <div className="App">
         <div className="Main_Window">   
