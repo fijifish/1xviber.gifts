@@ -1110,7 +1110,7 @@ body {
   gap: 1.1vh;
 }
 
-.dd-header h2 { margin: 0; font-size: 1.7vh; font-weight: 500; color: #fff; }
+.dd-header h2 { margin: 0; font-size: 1.7vh; font-weight: 500; font-family: 'Inter', sans-serif; color: #fff; }
 .dd-header img:first-child { height: 40%; width: auto; }
 .dd-header img:last-child  { height: 30%; width: auto; margin-top: .3vh; margin-left: .3vh; }
 
