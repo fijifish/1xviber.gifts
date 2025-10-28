@@ -964,17 +964,22 @@ body {
 
 .bankInfoContainer img:first-child  {
   width: auto;
-  height: 35%;
+  height: 40%;
 }
 
 .bankInfoContainer img:last-child  {
   width: auto;
-  height: 35%;
+  height: 30%;
+
+  margin-top: .3vh;
+  margin-left: .3vh;
 }
 
 .bankInfoContainer h2 {
   color: white;
   font-family: 'Inter', sans-serif;
   font-weight: 500;  
-  font-size: 1.8vh;
+  font-size: 1.7vh;
+
+  margin-left: -.2vh;
 }
