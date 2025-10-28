@@ -292,6 +292,7 @@ export default function Withdraw() {
 
     const TYPE_OPTIONS = [
     { value: "crypto", label: "Крипто", icon: "/icons/btc.svg" },
+    { value: "bank",   label: "Банковские реквизиты", icon: "/icons/bank.svg" },
     ];
 
     const METHOD_OPTIONS = [
