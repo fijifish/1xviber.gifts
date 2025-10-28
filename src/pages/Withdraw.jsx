@@ -306,7 +306,7 @@ export default function Withdraw() {
                         <div className="dd-header">
                             <img src={cardIMG} />
                             <h2>Реквизиты</h2>
-                            <img src={caretIMG} />
+                            <img src={polygonIMG} />
                         </div>
                         <div className="dd-empty"/> {/* пустое меню */}
                         </div>
@@ -316,9 +316,9 @@ export default function Withdraw() {
                     <div className={`dropdownRoot pay ${openDD==='pay' ? 'open' : ''}`}>
                         <div className="dd-panel" onClick={() => toggleDD('pay')}>
                         <div className="dd-header">
-                            <img src={cardIMG} />
+                            <img src={cardGrayIMG} />
                             <h2>Способ оплаты</h2>
-                            <img src={caretIMG} />
+                            <img src={polygonGrayIMG} />
                         </div>
                         <div className="dd-empty"/>
                         </div>
