@@ -1014,7 +1014,7 @@ body {
 }
 
 .payMethodContainer h2 {
-  color: white;
+  color: #B3B3B3;
   font-family: 'Inter', sans-serif;
   font-weight: 500;  
   font-size: 1.7vh;
@@ -1033,14 +1033,13 @@ body {
   align-items: center;
 
   gap: 2.2vh;
-  margin-top: 2.5vh;
 }
 
 .descriptionBankInfoContainer h2 {
   color: #ABABAB;
   font-family: 'Inter', sans-serif;
   font-weight: 400;  
-  font-size: 1.5vh;
+  font-size: 1.4vh;
 
   text-align: justify;
 }

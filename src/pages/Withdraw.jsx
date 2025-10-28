@@ -306,10 +306,10 @@ export default function Withdraw() {
                                 <h2>Способ оплаты</h2>
                             <img src={polygonGrayIMG} className="last-child"/>
                         </div>
-                        <div class="descriptionBankInfoContainer">
-                            <img src={InfoIMG}/>
-                            <h2>Реквизиты - способ оплаты на банковский счёт.</h2>
-                        </div>
+                    </div>
+                    <div class="descriptionBankInfoContainer">
+                        <img src={InfoIMG}/>
+                        <h2>Реквизиты - способ оплаты на банковский счёт.</h2>
                     </div>
                     <div class="AmountAndWithdrawContainer">
                         <div class="AmountContainer">
