@@ -236,7 +236,13 @@ export default function Withdraw() {
     const [open, setOpen] = useState({ bank:false, pay:false });
 
     useEffect(() => {
-    const onDoc = () => setOpen({ bank:false, pay:false });
+    const onDoc = (e) => {
+        const targets = document.querySelectorAll('.dd-root');
+        for (const node of targets) {
+        if (node.contains(e.target)) return; // клик внутри — не закрываем
+        }
+        setOpen({ bank:false, pay:false });
+    };
     document.addEventListener('click', onDoc);
     return () => document.removeEventListener('click', onDoc);
     }, []);
@@ -313,7 +319,7 @@ export default function Withdraw() {
                 <div className={`dd-root bank ${open.bank ? "open" : ""}`}>
                     <div
                     className="bankInfoContainer"
-                    onClick={() => setOpen(s => ({ bank: !s.bank, pay:false }))}
+                    onClick={(e) => { e.stopPropagation(); setOpen(s => ({ bank: !s.bank, pay:false })); }}
                     role="button"
                     >
                     <img src={cardIMG} alt="" />
@@ -333,7 +339,7 @@ export default function Withdraw() {
                 <div className={`dd-root pay ${open.pay ? "open" : ""}`}>
                     <div
                     className="payMethodContainer"
-                    onClick={() => setOpen(s => ({ bank:false, pay: !s.pay }))}
+                    onClick={(e) => { e.stopPropagation(); setOpen(s => ({ bank:false, pay: !s.pay })); }}
                     role="button"
                     >
                     <img src={cardGrayIMG} alt="" />
