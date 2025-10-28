@@ -233,6 +233,14 @@ export default function Withdraw() {
     const [openDD, setOpenDD] = useState(null); // 'bank' | 'pay' | null
     const toggleDD = (which) => setOpenDD(prev => prev === which ? null : which);
 
+    const [open, setOpen] = useState({ bank:false, pay:false });
+
+    useEffect(() => {
+    const onDoc = () => setOpen({ bank:false, pay:false });
+    document.addEventListener('click', onDoc);
+    return () => document.removeEventListener('click', onDoc);
+    }, []);
+
   return (
     <div className="App">
         <div className="Main_Window">   
@@ -299,30 +307,47 @@ export default function Withdraw() {
                 </div>
 
                 <div class="mainWithdrawContainer">
-                    <div class="bankInfoAndPayMethodContainer">
+                <div className="bankInfoAndPayMethodContainer">
 
-                    <div className={`dropdownRoot bank ${openDD==='bank' ? 'open' : ''}`}>
-                        <div className="dd-panel" onClick={() => toggleDD('bank')}>
-                        <div className="dd-header">
-                            <img src={cardIMG} />
-                            <h2>Реквизиты</h2>
-                            <img src={polygonIMG} />
-                        </div>
-                        <div className="dd-empty"/> {/* пустое меню */}
-                        </div>
+                {/* Реквизиты */}
+                <div className={`dd-root bank ${open.bank ? "open" : ""}`}>
+                    <div
+                    className="bankInfoContainer"
+                    onClick={() => setOpen(s => ({ bank: !s.bank, pay:false }))}
+                    role="button"
+                    >
+                    <img src={cardIMG} alt="" />
+                    <h2>Реквизиты</h2>
+                    <img src={chevronIMG} alt="" />
                     </div>
 
-                    {/* right */}
-                    <div className={`dropdownRoot pay ${openDD==='pay' ? 'open' : ''}`}>
-                        <div className="dd-panel" onClick={() => toggleDD('pay')}>
-                        <div className="dd-header">
-                            <img src={cardGrayIMG} />
-                            <h2>Способ оплаты</h2>
-                            <img src={polygonGrayIMG} />
-                        </div>
-                        <div className="dd-empty"/>
-                        </div>
+                    {/* Выпадающее меню (пока пустое) */}
+                    <div className="dd-menu" onClick={e => e.stopPropagation()}>
+                    <div className="dd-menu__inner">
+                        {/* сюда позже добавишь пункты */}
                     </div>
+                    </div>
+                </div>
+
+                {/* Способ оплаты */}
+                <div className={`dd-root pay ${open.pay ? "open" : ""}`}>
+                    <div
+                    className="payMethodContainer"
+                    onClick={() => setOpen(s => ({ bank:false, pay: !s.pay }))}
+                    role="button"
+                    >
+                    <img src={bankIMG} alt="" />
+                    <h2>Способ оплаты</h2>
+                    <img src={chevronIMG} alt="" />
+                    </div>
+
+                    <div className="dd-menu" onClick={e => e.stopPropagation()}>
+                    <div className="dd-menu__inner">
+                        {/* позже добавим список банков */}
+                    </div>
+                    </div>
+
+                </div>
 
                     </div>
                     <div class="descriptionBankInfoContainer">

@@ -1058,72 +1058,71 @@ body {
   align-self: flex-start;
 }
 
-/* Контейнер двух кнопок */
-.bankInfoAndPayMethodContainer {
+/* Корневой контейнер секции (оставляем как было) */
+.bankInfoAndPayMethodContainer{
   position: relative;
   width: 100%;
   height: 16.5%;
-
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-start;   /* важно: раскрытие вниз от верха блока */
+  align-items: center;   /* центр, чтобы кнопки не прыгали */
   gap: 1.5vh;
-
-  overflow: visible;         /* позволяем дропдауну выходить за пределы высоты */
+  overflow: visible;     /* меню сможет вылезать вниз */
 }
 
-/* Обёртки (сохраняем ширины как у тебя) */
-.dropdownRoot { position: relative; height: 100%; overflow: visible; }
-.dropdownRoot.bank { width: 40%; }
-.dropdownRoot.pay  { width: 49%; }
+/* Обёртки вокруг КАЖДОЙ кнопки */
+.dd-root{
+  position: relative;    /* якорь для меню */
+  height: 100%;
+  overflow: visible;
+  flex: 0 0 auto;
+}
+.dd-root.bank{ width: 40%; }
+.dd-root.pay { width: 49%; }
 
-/* Панель: не растягиваем всю кнопку, растёт только меню */
-.dd-panel {
+/* Сами кнопки — оставляем твои стили! */
+.bankInfoContainer,
+.payMethodContainer{
+  width: 100%;
+  height: 100%;
+  /* дальше — как у тебя уже задано */
+}
+
+/* Меню дропдауна: по умолчанию скрыто, не влияет на поток */
+.dd-menu{
   position: absolute;
-  top: 0; left: 0; right: 0;
-
-  /* фиксируем высоту «кнопки» */
-  --btn-h: 100%;   /* высота шапки-кнопки = высоте твоего контейнера (16.5%) */
-  --menu-h: 100%;  /* высота раскрытия меню = высоте кнопки (итого примерно х2) */
-
-  min-height: var(--btn-h);  /* шапка всегда фиксированной высоты */
-  height: auto;              /* панель может расти за счёт меню */
-  z-index: 5;
-
-  border: .15vh solid rgba(182,182,182,1);
-  border-radius: 1.3vh;
-  background: rgba(69,69,69,1);
-  overflow: visible;         /* позволяем меню выйти вниз */
-
-  display: flex;
-  flex-direction: column;
-}
-
-/* Шапка-кнопка: фикс высота, не тянется при открытии */
-.dd-header {
-  height: var(--btn-h);
-  flex: 0 0 var(--btn-h);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.1vh;
-}
-
-.dd-header h2 { margin: 0; font-size: 1.7vh; font-weight: 500; font-family: 'Inter', sans-serif; color: #fff; }
-.dd-header img:first-child { height: 40%; width: auto; }
-.dd-header img:last-child  { height: 30%; width: auto; margin-top: .3vh; margin-left: .3vh; }
-
-/* Пустая область «меню», появляется при open */
-/* Меню закрыто */
-.dd-empty {
+  top: 100%;             /* сразу под кнопкой */
+  left: 0;
+  width: 100%;
   max-height: 0;
   overflow: hidden;
-  background: rgba(26,26,26,.95);
-  transition: max-height .25s ease;
+
+  background: rgba(26,26,26,.96);
+  border: .15vh solid rgba(182,182,182,1);
+  border-radius: 1.3vh;
+
+  z-index: 50;           /* поверх всего в этой секции */
+  box-shadow: 0 0 2vh rgba(0,0,0,.5);
+
+  transition: max-height .22s ease;
 }
 
-/* Меню открыто: раскрываемся на высоту кнопки */
-.dropdownRoot.open .dd-empty {
-  max-height: var(--menu-h);
+/* Когда открыт */
+.dd-root.open .dd-menu{
+  max-height: 13vh;      /* ≈ высота кнопки; подбери по макету */
+}
+
+/* Внутренности меню — просто заглушка, чтобы видеть блок */
+.dd-menu__inner{
+  padding: 1.6vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+/* Чтобы иконки/текст внутри кнопок не сжимались при hover/open */
+.bankInfoContainer *, .payMethodContainer *{
+  transform: none !important;
+  flex-shrink: 0;
 }
