@@ -947,7 +947,7 @@ body {
 }
 
 .bankInfoContainer {
-  width: 50.7%;
+  width: 48.7%;
   height: 100%;
 
   background-color: rgba(69, 69, 69, 1);
@@ -959,7 +959,7 @@ body {
   justify-content: center;
   align-items: center;
 
-  gap: 1.3vh;
+  gap: 1.1vh;
 }
 
 .bankInfoContainer img:first-child  {
