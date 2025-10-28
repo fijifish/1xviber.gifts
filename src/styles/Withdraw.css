@@ -951,8 +951,8 @@ body {
   height: 100%;
 
   background-color: rgba(69, 69, 69, 1);
-  border: .25vh solid rgba(182, 182, 182, 1);
-  border-radius: 1.4vh;
+  border: .15vh solid rgba(182, 182, 182, 1);
+  border-radius: 1.6vh;
 
   display: flex;
   flex-direction: row;
