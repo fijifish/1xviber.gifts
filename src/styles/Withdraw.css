@@ -962,7 +962,12 @@ body {
   gap: 1.3vh;
 }
 
-.bankInfoContainer img {
+.bankInfoContainer img:first-child  {
+  width: auto;
+  height: 35%;
+}
+
+.bankInfoContainer img:last-child  {
   width: auto;
   height: 35%;
 }

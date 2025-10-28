@@ -296,9 +296,9 @@ export default function Withdraw() {
                 <div class="mainWithdrawContainer">
                     <div class="bankInfoAndPayMethodContainer">
                         <div class="bankInfoContainer">
-                            <img src={cardIMG}/>
+                            <img:first-child src={cardIMG}/>
                                 <h2>Реквизиты</h2>
-                            <img src={polygonIMG}/>
+                            <img:last-child src={polygonIMG}/>
                         </div>
                     </div>
                     <div class="AmountAndWithdrawContainer">
