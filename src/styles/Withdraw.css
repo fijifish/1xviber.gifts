@@ -1056,43 +1056,53 @@ body {
   align-self: flex-start;
 }
 
-/* === Dropdown base === */
+/* Контейнер двух кнопок */
 .bankInfoAndPayMethodContainer {
   position: relative;
+  width: 100%;
+  height: 16.5%;
   display: flex;
-  gap: 2.2vh; /* как и было по макету */
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5vh;
 }
 
-/* обёртка пары: «кнопка + меню» */
-.dropdownRoot {
-  position: relative;
-  width: 49%;
-  height: 100%;
-}
+/* Обёртки (сохраняем ширины как у тебя) */
+.dropdownRoot { position: relative; height: 100%; }
+.dropdownRoot.bank { width: 40%; }
+.dropdownRoot.pay  { width: 49%; }
 
-/* курсор у кликабельных кнопок */
-.bankInfoContainer,
-.payMethodContainer {
-  cursor: pointer;
-}
-
-/* само меню — по умолчанию скрыто max-height:0; анимация на высоту */
-.dd-menu {
+/* Панель, которая и есть «кнопка + раскрытая часть» */
+.dd-panel {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: calc(100% + 0.8vh);  /* сразу под кнопкой */
-  background: rgba(26, 26, 26, 0.95);
-  border: .15vh solid rgba(182, 182, 182, 1);
+  inset: 0;                          /* left:0; right:0; top:0; bottom:0 */
+  border: .15vh solid rgba(182,182,182,1);
   border-radius: 1.3vh;
+  background: rgba(69,69,69,1);      /* как у активной кнопки */
   overflow: hidden;
-  max-height: 0;                 /* закрыто */
-  transition: max-height .25s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  transition: max-height .25s ease;
+  max-height: 100%;                  /* = высота кнопки (закрыто) */
 }
 
-/* чтобы «пустое» меню на открытии имело видимую площадь */
-.dd-menu::after {
-  content: "";
-  display: block;
-  height: 16.6vh;                /* начальная визуальная высота на открытии */
+/* «Шапка» — прежняя кнопка */
+.dd-header {
+  height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  gap: 1.1vh;
 }
+.dd-header h2 { margin: 0; font-size: 1.7vh; font-weight: 500; color: #fff; }
+.dd-header img:first-child { height: 40%; width: auto; }
+.dd-header img:last-child  { height: 30%; width: auto; margin-top: .3vh; margin-left: .3vh; }
+
+/* Пустая область «меню», появляется при open */
+.dd-empty {
+  flex: 1 0 auto;
+  min-height: 0;
+  background: rgba(26,26,26,.95);
+}
+
+/* когда открыт — увеличиваем контейнер до ~33% высоты блока (x2 от 16.5%) */
+.dropdownRoot.open .dd-panel { max-height: 200%; }
