@@ -439,7 +439,7 @@ body {
 
 .mainWithdrawContainer {
   width: 84%;
-  height: 15%;
+  height: 25%;
   margin-top: 3.4vh;
   padding-top: 2.8vh;
   padding-left: 2.8vh;
@@ -464,7 +464,7 @@ body {
 
 .AmountAndWithdrawContainer {
   width: 97%;
-  height: 32.5%;
+  height: 16.5%;
 
   display: flex;
   flex-direction: row;
@@ -520,7 +520,7 @@ body {
 
 .AddressWalletMainContainer {
   width: 97%;
-  height: 39.1%;
+  height: 19.6%;
 
   display: flex;
   flex-direction: row;
@@ -936,7 +936,7 @@ body {
 
 .bankInfoAndPayMethodContainer {
   width: 97%;
-  height: 30%;
+  height: 15%;
 
   display: flex;
   flex-direction: row;
