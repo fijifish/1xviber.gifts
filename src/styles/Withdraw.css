@@ -438,12 +438,12 @@ body {
 }
 
 .mainWithdrawContainer {
-  width: 88%;
+  width: 85%;
   height: 20%;
   margin-top: 3.4vh;
   padding-top: 2vh;
-  padding-left: 2vh;
-  padding-right: 2vh;
+  padding-left: 2.4vh;
+  padding-right: 2.4vh;
   padding-bottom: 2vh;
 
   border-radius: 2.46vh;
