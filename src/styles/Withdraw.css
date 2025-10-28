@@ -950,8 +950,8 @@ body {
   width: 50.7%;
   height: 100%;
 
-  background-color: rgba(69, 69, 69, 0.1);
-  border: .17vh solid rgba(182, 182, 182, 0.2);
+  background-color: rgba(69, 69, 69, 1);
+  border: .17vh solid rgba(182, 182, 182, 1);
   border-radius: 1.4vh;
 
   display: flex;
