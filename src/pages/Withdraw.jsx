@@ -410,8 +410,8 @@ export default function Withdraw() {
                         </div> */}
                         <div className="dropdown" ref={refBank}>
                         <div
-  className="bankInfoContainer dropdown__button"
-  onClick={() => setOpen(v => !v)}
+                            className="bankInfoContainer dropdown__button"
+                            onClick={() => setOpen(v => !v)}
                         >
                             {/* ...иконки/тексты... */}
                         </div>
