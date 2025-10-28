@@ -52,7 +52,7 @@ body {
   align-items: center;
 
   background:
-    radial-gradient(200% 150% at 0% 60%,rgba(85,61,158,.8),transparent 30%),
+    radial-gradient(200% 165% at 0% 55%,rgba(85,61,158,.4),transparent 30%),
     radial-gradient(100% 180% at 80% 80%,#000,#000);
 
   background-color: #000;            /* базовый запасной фон */
