@@ -936,7 +936,7 @@ body {
 
 .bankInfoAndPayMethodContainer {
   width: 97%;
-  height: 15%;
+  height: 15.5%;
 
   display: flex;
   flex-direction: row;
@@ -951,7 +951,7 @@ body {
   height: 100%;
 
   background-color: rgba(69, 69, 69, 1);
-  border: .17vh solid rgba(182, 182, 182, 1);
+  border: .25vh solid rgba(182, 182, 182, 1);
   border-radius: 1.4vh;
 
   display: flex;
