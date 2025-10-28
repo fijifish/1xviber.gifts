@@ -449,6 +449,7 @@ body {
   border-radius: 2.46vh;
 
   background-color: rgba(178,174,174,0.1);
+  border: solid .12vh #818181;
 
   /* background-image: url("../assets/withdrawContainerImage.png"); */
   background-repeat: no-repeat;
