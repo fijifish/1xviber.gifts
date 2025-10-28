@@ -17,7 +17,8 @@ import PasteIMG from "../assets/paste-icon.png";
 import InfoIMG from "../assets/info-icon.png";
 import polygonIMG from "../assets/polygonIMG.png";
 import cardIMG from "../assets/cardIMG.png";
-
+import polygonGrayIMG from "../assets/polygonGrayIMG.png";
+import cardGrayIMG from "../assets/cardGrayIMG.png";
 
 
 function sanitizeAddress(raw = "") {
@@ -299,6 +300,11 @@ export default function Withdraw() {
                             <img src={cardIMG} className="first-child"/>
                                 <h2>Реквизиты</h2>
                             <img src={polygonIMG} className="last-child"/>
+                        </div>
+                        <div class="payMethodContainer">
+                            <img src={cardGrayIMG} className="first-child"/>
+                                <h2>Способ оплаты</h2>
+                            <img src={polygonGrayIMG} className="last-child"/>
                         </div>
                     </div>
                     <div class="AmountAndWithdrawContainer">

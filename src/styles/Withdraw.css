@@ -983,3 +983,41 @@ body {
 
   margin-left: -.2vh;
 }
+
+.payMethodContainer {
+  width: 53.3%;
+  height: 100%;
+
+  background-color: rgba(69, 69, 69, 1);
+  border: .15vh solid rgba(182, 182, 182, 1);
+  border-radius: 1.5vh;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  gap: 1.1vh;
+}
+
+.payMethodContainer img:first-child  {
+  width: auto;
+  height: 40%;
+}
+
+.payMethodContainer img:last-child  {
+  width: auto;
+  height: 30%;
+
+  margin-top: .3vh;
+  margin-left: .3vh;
+}
+
+.payMethodContainer h2 {
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;  
+  font-size: 1.7vh;
+
+  margin-left: -.2vh;
+}
