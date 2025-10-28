@@ -336,7 +336,7 @@ export default function Withdraw() {
                     onClick={() => setOpen(s => ({ bank:false, pay: !s.pay }))}
                     role="button"
                     >
-                    <img src={bankGrayIMG} alt="" />
+                    <img src={cardGrayIMG} alt="" />
                     <h2>Способ оплаты</h2>
                     <img src={polygonGrayIMG} alt="" />
                     </div>
