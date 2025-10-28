@@ -318,7 +318,7 @@ export default function Withdraw() {
                     >
                     <img src={cardIMG} alt="" />
                     <h2>Реквизиты</h2>
-                    <img src={chevronIMG} alt="" />
+                    <img src={polygonIMG} alt="" />
                     </div>
 
                     {/* Выпадающее меню (пока пустое) */}
@@ -336,9 +336,9 @@ export default function Withdraw() {
                     onClick={() => setOpen(s => ({ bank:false, pay: !s.pay }))}
                     role="button"
                     >
-                    <img src={bankIMG} alt="" />
+                    <img src={bankGrayIMG} alt="" />
                     <h2>Способ оплаты</h2>
-                    <img src={chevronIMG} alt="" />
+                    <img src={polygonGrayIMG} alt="" />
                     </div>
 
                     <div className="dd-menu" onClick={e => e.stopPropagation()}>
