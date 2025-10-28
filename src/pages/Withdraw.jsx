@@ -229,6 +229,10 @@ export default function Withdraw() {
     };
     }, [navigate]);
 
+    // ▼ простой стейт дропдаунов: 'bank' | 'method' | null
+    const [openDD, setOpenDD] = useState(null);
+    const toggleDD = (key) => setOpenDD(prev => (prev === key ? null : key));
+
   return (
     <div className="App">
         <div className="Main_Window">   
@@ -296,15 +300,40 @@ export default function Withdraw() {
 
                 <div class="mainWithdrawContainer">
                     <div class="bankInfoAndPayMethodContainer">
-                        <div class="bankInfoContainer">
-                            <img src={cardIMG} className="first-child"/>
-                                <h2>Реквизиты</h2>
-                            <img src={polygonIMG} className="last-child"/>
+                        <div class="dropdownRoot">
+                        <div
+                            class="bankInfoContainer"
+                            onClick={() => toggleDD('bank')}
+                            role="button"
+                            tabIndex="0"
+                        >
+                            <img src={cardIMG} className="first-child" />
+                            <h2>Реквизиты</h2>
+                            <img src={polygonIMG} className="last-child" />
                         </div>
-                        <div class="payMethodContainer">
-                            <img src={cardGrayIMG} className="first-child"/>
-                                <h2>Способ оплаты</h2>
-                            <img src={polygonGrayIMG} className="last-child"/>
+                        {/* пустое раскрывающееся меню */}
+                        <div
+                            class="dd-menu"
+                            style={{ maxHeight: openDD === 'bank' ? '33vh' : '0' }}
+                        />
+                        </div>
+
+                        <div class="dropdownRoot">
+                        <div
+                            class="payMethodContainer"
+                            onClick={() => toggleDD('method')}
+                            role="button"
+                            tabIndex="0"
+                        >
+                            <img src={cardGrayIMG} className="first-child" />
+                            <h2>Способ оплаты</h2>
+                            <img src={polygonGrayIMG} className="last-child" />
+                        </div>
+                        {/* пустое раскрывающееся меню */}
+                        <div
+                            class="dd-menu"
+                            style={{ maxHeight: openDD === 'method' ? '33vh' : '0' }}
+                        />
                         </div>
                     </div>
                     <div class="descriptionBankInfoContainer">

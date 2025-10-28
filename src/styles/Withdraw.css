@@ -1056,3 +1056,43 @@ body {
   align-self: flex-start;
 }
 
+/* === Dropdown base === */
+.bankInfoAndPayMethodContainer {
+  position: relative;
+  display: flex;
+  gap: 2.2vh; /* как и было по макету */
+}
+
+/* обёртка пары: «кнопка + меню» */
+.dropdownRoot {
+  position: relative;
+  width: 49%;
+  height: 100%;
+}
+
+/* курсор у кликабельных кнопок */
+.bankInfoContainer,
+.payMethodContainer {
+  cursor: pointer;
+}
+
+/* само меню — по умолчанию скрыто max-height:0; анимация на высоту */
+.dd-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 0.8vh);  /* сразу под кнопкой */
+  background: rgba(26, 26, 26, 0.95);
+  border: .15vh solid rgba(182, 182, 182, 1);
+  border-radius: 1.3vh;
+  overflow: hidden;
+  max-height: 0;                 /* закрыто */
+  transition: max-height .25s ease-in-out;
+}
+
+/* чтобы «пустое» меню на открытии имело видимую площадь */
+.dd-menu::after {
+  content: "";
+  display: block;
+  height: 16.6vh;                /* начальная визуальная высота на открытии */
+}
