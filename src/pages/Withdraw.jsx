@@ -238,33 +238,6 @@ export default function Withdraw() {
         }) {
         const [open, setOpen] = useState(false);
         const rootRef = useRef(null);
-        
-        // вызывать при открытии/закрытии
-        function toggleDropdown(dropEl, open) {
-        if (!dropEl) return;
-        const menu = dropEl.querySelector(".dropdown__menu");
-        const willOpen = open ?? !dropEl.classList.contains("open");
-
-        if (willOpen) {
-            // посчитать реальную высоту меню
-            const h = menu ? menu.scrollHeight : 0;
-            dropEl.style.setProperty("--menu-h", `${h}px`);
-            dropEl.classList.add("open");
-        } else {
-            dropEl.classList.remove("open");
-        }
-        }
-
-        // закрытие по клику вне
-        useEffect(() => {
-        function onDocClick(e){
-            document.querySelectorAll(".dropdown.open").forEach(dd => {
-            if (!dd.contains(e.target)) dd.classList.remove("open");
-            });
-        }
-        document.addEventListener("click", onDocClick);
-        return () => document.removeEventListener("click", onDocClick);
-        }, []);
 
         // клик вне — закрыть
         useEffect(() => {
@@ -331,10 +304,6 @@ export default function Withdraw() {
 
     const [payType, setPayType]     = useState("crypto");  // "Крипто" по умолчанию
     const [payMethod, setPayMethod] = useState("sber");
-
-
-    const refBank = useRef(null);
-    const refPay  = useRef(null);
 
   return (
     <div className="App">
@@ -408,41 +377,21 @@ export default function Withdraw() {
                                 <h2>Реквизиты</h2>
                             <img src={polygonIMG} className="last-child"/>
                         </div> */}
-                        <div className="dropdown" ref={refBank}>
-                        <div
-                            className="bankInfoContainer dropdown__button"
-                            onClick={() => setOpen(v => !v)}
-                        >
-                            {/* ...иконки/тексты... */}
-                        </div>
+                        <Dropdown
+                        className="bankInfoContainer"
+                        label="Реквизиты"
+                        value={payType}
+                        options={TYPE_OPTIONS}
+                        onChange={setPayType}
+                        />
 
-                        <ul className="dropdown__menu">
-                            {/* пункты */}
-                            <li className="dropdown__item" onClick={() => {
-                            setBank("Крипто");           // твоя логика выбора
-                            toggleDropdown(refBank.current, false);
-                            }}>Крипто</li>
-                            {/* … */}
-                        </ul>
-                        </div>
-
-                        <div className="dropdown" ref={refPay}>
-                        <div
-                            className="payMethodContainer dropdown__button"
-                            onClick={() => toggleDropdown(refPay.current)}
-                        >
-                            {/* … */}
-                        </div>
-
-                        <ul className="dropdown__menu">
-                            {/* пункты */}
-                            <li className="dropdown__item" onClick={() => {
-                            setPayMethod("Сбербанк");
-                            toggleDropdown(refPay.current, false);
-                            }}>Сбербанк</li>
-                            {/* … */}
-                        </ul>
-                        </div>
+                        <Dropdown
+                        className="payMethodContainer"
+                        label="Способ оплаты"
+                        value={payMethod}
+                        options={METHOD_OPTIONS}
+                        onChange={setPayMethod}
+                        />
                         {/* <div class="payMethodContainer">
                             <img src={cardGrayIMG} className="first-child"/>
                                 <h2>Способ оплаты</h2>
