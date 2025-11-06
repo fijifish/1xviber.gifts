@@ -1057,7 +1057,7 @@ body {
 }
 
 /* ====== Dropdown generic ====== */
-.dropdown { position: relative; width: 40%; height: 100%; }
+.dropdown { position: relative; width: 48%; height: 100%; }
 
 .dropdown__button {
   cursor: pointer;

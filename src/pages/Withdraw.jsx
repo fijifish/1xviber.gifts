@@ -289,6 +289,7 @@ export default function Withdraw() {
 
     const TYPE_OPTIONS = [
     { value: "crypto", label: "Крипто", icon: "../assets/cryptoIMG.png" },
+    { value: "bank", label: "Реквизиты", icon: "../assets/cryptoIMG.png" },
     ];
 
     const METHOD_OPTIONS = [
@@ -299,7 +300,7 @@ export default function Withdraw() {
     { value: "ton",     label: "TON",         icon: "/icons/ton.svg" },
     ];
 
-    const [payType, setPayType]     = useState("crypto");  // "Крипто" по умолчанию
+    const [payType, setPayType]     = useState("bank");  // "Крипто" по умолчанию
     const [payMethod, setPayMethod] = useState("sber");
 
   return (
