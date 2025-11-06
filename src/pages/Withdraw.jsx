@@ -22,6 +22,14 @@ import cardGrayIMG from "../assets/cardGrayIMG.png";
 import paymethodIMG from "../assets/paymethodIMG.png";
 import cryptoIMG from "../assets/cryptoIMG.png";
 import sberLogoIMG from "../assets/sberLogoIMG.png";
+import sberLeftIMG from "../assets/sberLeftIMG.png";
+import tinkoffLeftIMG from "../assets/tinkoffLeftIMG.png";
+import tinkoffLogoIMG from "../assets/tinkoffLogoIMG.png";
+import alfaLeftIMG from "../assets/alfaLeftIMG.png";
+import alfaLogoIMG from "../assets/alfaLogoIMG.png";
+import vtbLeftIMG from "../assets/vtbLeftIMG.png";
+import vtbLogoIMG from "../assets/vtbLogoIMG.png";
+
 
 
 
@@ -346,12 +354,13 @@ export default function Withdraw() {
     ];
 
     const METHOD_OPTIONS = [
-        { value: "paymethod", label: "Способ оплаты", icon: paymethodIMG, iconHeight: "1.5vh" },
-        { value: "sber",      label: "Сбербанк",       icon: paymethodIMG, rightIcon: sberLogoIMG, iconHeight: "1.5vh", rightIconHeight: "2vh" },
-        { value: "tinkoff",   label: "Тинькофф",       icon: paymethodIMG, iconHeight: "1.5vh" },
-        { value: "yoom",      label: "ЮMoney",         icon: paymethodIMG, iconHeight: "1.5vh" },
-        { value: "usdt",      label: "USDT TRC20",   icon: usdtIMG, iconHeight: "1.5vh" },
-        { value: "ton",       label: "TON",            icon: tonusdtIMG, iconHeight: "1.5vh" },
+        { value: "paymethod",  label: "Способ оплаты",  icon: paymethodIMG, iconHeight: "1.5vh" },
+        { value: "sber",       label: "Сбербанк",       icon: sberLeftIMG, rightIcon: sberLogoIMG, iconHeight: "1.5vh", rightIconHeight: "2vh" },
+        { value: "tinkoff",    label: "Тинькофф",       icon: tinkoffLeftIMG, rightIcon: tinkoffLogoIMG, iconHeight: "1.5vh", rightIconHeight: "2vh" },
+        { value: "alfa",       label: "А-Банк",         icon: alfaLeftIMG, rightIcon: alfaLogoIMG, iconHeight: "1.5vh", rightIconHeight: "2vh" },
+        { value: "vtb",        label: "ВТБ Банк",       icon: vtbLeftIMG, rightIcon: vtbLogoIMG, iconHeight: "1.5vh", rightIconHeight: "2vh" },
+        { value: "usdt",       label: "USDT TRC20",     icon: usdtIMG, iconHeight: "1.5vh" },
+        { value: "ton",        label: "TON",            icon: tonusdtIMG, iconHeight: "1.5vh" },
     ];
 
     const [payType, setPayType]     = useState("bank");  // "Реквизиты" по умолчанию
