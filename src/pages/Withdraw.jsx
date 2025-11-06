@@ -268,8 +268,17 @@ export default function Withdraw() {
                     aria-haspopup="listbox"
                     aria-expanded={open}
                 >
-                    {iconToShow && <img src={iconToShow} className="first-child" alt="" />}
+                    {iconToShow && (
+                        <img
+                            src={iconToShow}
+                            className="first-child"
+                            alt=""
+                            style={{ height: selected?.iconHeight || "auto" }}
+                        />
+                    )}
+
                     <h2>{currentLabel}</h2>
+
                     {rightIcon && <img src={rightIcon} className="last-child" alt="" />}
                 </button>
 
@@ -293,7 +302,7 @@ export default function Withdraw() {
     }
 
     const TYPE_OPTIONS = [
-        { value: "crypto", label: "Крипто", icon: cryptoIMG },
+        { value: "crypto", label: "Крипто", icon: cryptoIMG, iconHeight: "55%" },
         { value: "bank", label: "Реквизиты", icon: cardIMG },
     ];
 
