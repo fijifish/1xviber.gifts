@@ -230,69 +230,65 @@ export default function Withdraw() {
     }, [navigate]);
 
     function Dropdown({
-        className,           // внешний вид кнопки (твои .bankInfoContainer / .payMethodContainer)
-        label,               // заголовок слева (например "Реквизиты" / "Способ оплаты")
-        value,               // выбранное значение, что показываем крупно
-        options,             // [{ value:'crypto', label:'Крипто', icon: <img .../> }, ...]
-        onChange,            // (newValue) => void
-        }) {
-        const [open, setOpen] = useState(false);
-        const rootRef = useRef(null);
+    className,           // .bankInfoContainer / .payMethodContainer
+    staticLabel,         // базовый текст если ничего не выбрано
+    leftIcon,            // иконка слева
+    rightIcon,           // иконка-стрелка справа
+    value,               // выбранное значение
+    options,             // [{ value:'crypto', label:'Крипто' }, ...]
+    onChange,            // (newValue) => void
+    }) {
+    const [open, setOpen] = useState(false);
+    const rootRef = useRef(null);
 
-        // клик вне — закрыть
-        useEffect(() => {
-            function onDoc(e) {
-            if (!rootRef.current) return;
-            if (!rootRef.current.contains(e.target)) setOpen(false);
-            }
-            document.addEventListener("mousedown", onDoc);
-            return () => document.removeEventListener("mousedown", onDoc);
-        }, []);
+    // клик вне — закрыть
+    useEffect(() => {
+        function onDoc(e) {
+        if (!rootRef.current) return;
+        if (!rootRef.current.contains(e.target)) setOpen(false);
+        }
+        document.addEventListener("mousedown", onDoc);
+        return () => document.removeEventListener("mousedown", onDoc);
+    }, []);
 
-        const selected = options.find(o => o.value === value);
+    const selected = options.find(o => o.value === value);
+    const currentLabel = selected?.label || staticLabel;
 
-        return (
-            <div ref={rootRef} className={`dropdown ${open ? "open" : ""}`}>
-            <button
-                type="button"
-                className={`${className} dropdown__button`}
-                onClick={() => setOpen(v => !v)}
-                aria-haspopup="listbox"
-                aria-expanded={open}
+    return (
+        <div ref={rootRef} className={`dropdown ${open ? "open" : ""}`}>
+        <button
+            type="button"
+            className={`${className} dropdown__button`}
+            onClick={() => setOpen(v => !v)}
+            aria-haspopup="listbox"
+            aria-expanded={open}
+        >
+            {/* именно твоя разметка: img + h2 + img */}
+            {leftIcon && <img src={leftIcon} className="first-child" alt="" />}
+            <h2>{currentLabel}</h2>
+            {rightIcon && <img src={rightIcon} className="last-child" alt="" />}
+        </button>
+
+        <ul className="dropdown__menu" role="listbox">
+            {options.map((o) => (
+            <li
+                key={o.value}
+                role="option"
+                aria-selected={o.value === value}
+                className={`dropdown__item ${o.value === value ? "selected" : ""}`}
+                onClick={() => { onChange(o.value); setOpen(false); }}
             >
-                {/* левый маленький значок */}
-                <img aria-hidden src={selected?.iconLeft || "/"} style={{display: selected?.iconLeft ? "block":"none"}} />
-                {/* заголовок + выбранное значение */}
-                <div className="dropdown__texts">
-                <div className="dropdown__label">{label}</div>
-                <div className="dropdown__value">{selected?.label || value}</div>
-                </div>
-                {/* стрелочка справа */}
-                <img aria-hidden className="dropdown__caret" src={selected?.iconRight || "/"} />
-            </button>
-
-            <ul className="dropdown__menu" role="listbox">
-                {options.map((o) => (
-                <li
-                    key={o.value}
-                    role="option"
-                    aria-selected={o.value === value}
-                    className={`dropdown__item ${o.value === value ? "selected" : ""}`}
-                    onClick={() => { onChange(o.value); setOpen(false); }}
-                >
-                    {o.icon && <img src={o.icon} alt="" />}
-                    <span>{o.label}</span>
-                    {o.value === value && <span className="dropdown__check">✓</span>}
-                </li>
-                ))}
-            </ul>
-            </div>
-        );
+                <span>{o.label}</span>
+                {o.value === value && <span className="dropdown__check">✓</span>}
+            </li>
+            ))}
+        </ul>
+        </div>
+    );
     }
 
     const TYPE_OPTIONS = [
-    { value: "crypto", label: "Крипто", icon: "/icons/btc.svg" },
-    { value: "bank",   label: "Банковские реквизиты", icon: "/icons/bank.svg" },
+    { value: "crypto", label: "Крипто", icon: "../assets/cryptoIMG.png" },
     ];
 
     const METHOD_OPTIONS = [
@@ -378,21 +374,25 @@ export default function Withdraw() {
                                 <h2>Реквизиты</h2>
                             <img src={polygonIMG} className="last-child"/>
                         </div> */}
-                        <Dropdown
-                        className="bankInfoContainer"
-                        label="Реквизиты"
-                        value={payType}
-                        options={TYPE_OPTIONS}
-                        onChange={setPayType}
-                        />
+<Dropdown
+  className="bankInfoContainer"
+  staticLabel="Реквизиты"
+  leftIcon={cardIMG}
+  rightIcon={polygonIMG}
+  value={payType}
+  options={TYPE_OPTIONS}
+  onChange={setPayType}
+/>
 
-                        <Dropdown
-                        className="payMethodContainer"
-                        label="Способ оплаты"
-                        value={payMethod}
-                        options={METHOD_OPTIONS}
-                        onChange={setPayMethod}
-                        />
+<Dropdown
+  className="payMethodContainer"
+  staticLabel="Способ оплаты"
+  leftIcon={cardGrayIMG}
+  rightIcon={polygonGrayIMG}
+  value={payMethod}
+  options={METHOD_OPTIONS}
+  onChange={setPayMethod}
+/>
                         {/* <div class="payMethodContainer">
                             <img src={cardGrayIMG} className="first-child"/>
                                 <h2>Способ оплаты</h2>
