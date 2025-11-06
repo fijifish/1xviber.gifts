@@ -18,7 +18,6 @@ import InfoIMG from "../assets/info-icon.png";
 import polygonIMG from "../assets/polygonIMG.png";
 import cardIMG from "../assets/cardIMG.png";
 import polygonGrayIMG from "../assets/polygonGrayIMG.png";
-import cardGrayIMG from "../assets/cardGrayIMG.png";
 import paymethodIMG from "../assets/paymethodIMG.png";
 import cryptoIMG from "../assets/cryptoIMG.png";
 import sberLogoIMG from "../assets/sberLogoIMG.png";
@@ -364,12 +363,12 @@ export default function Withdraw() {
     }
 
     const TYPE_OPTIONS = [
-        { value: "crypto", label: "Крипто", icon: cryptoIMG, iconHeight: "2vh" },
-        { value: "bank", label: "Реквизиты", icon: cardIMG, iconHeight: "1.5vh" },
+        { value: "crypto", label: "Крипто", icon: cryptoIMG, rightIcon: polygonIMG, iconHeight: "2vh", rightIconHeight: "1.15vh" },
+        { value: "bank", label: "Реквизиты", icon: cardIMG, rightIcon: polygonIMG, iconHeight: "1.5vh", rightIconHeight: "1.15vh" },
     ];
 
     const METHOD_OPTIONS = [
-        { value: "paymethod",  label: "Способ оплаты",  icon: paymethodIMG, iconHeight: "1.5vh" },
+        { value: "paymethod",  label: "Способ оплаты",  icon: paymethodIMG, rightIcon: polygonGrayIMG, iconHeight: "1.5vh", rightIconHeight: "1.15vh" },
         { value: "sber",       label: "Сбербанк",       icon: sberLeftIMG, rightIcon: sberLogoIMG, iconHeight: "1.5vh", rightIconHeight: "2vh" },
         { value: "tinkoff",    label: "Тинькофф",       icon: tinkoffLeftIMG, rightIcon: tinkoffLogoIMG, iconHeight: "1.5vh", rightIconHeight: "2vh" },
         { value: "alfa",       label: "А-Банк",         icon: alfaLeftIMG, rightIcon: alfaLogoIMG, iconHeight: "1.5vh", rightIconHeight: "2vh" },
