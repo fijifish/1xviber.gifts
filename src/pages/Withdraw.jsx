@@ -19,6 +19,8 @@ import polygonIMG from "../assets/polygonIMG.png";
 import cardIMG from "../assets/cardIMG.png";
 import polygonGrayIMG from "../assets/polygonGrayIMG.png";
 import cardGrayIMG from "../assets/cardGrayIMG.png";
+import paymethodIMG from "../assets/paymethodIMG.png";
+
 
 
 function sanitizeAddress(raw = "") {
@@ -293,6 +295,7 @@ export default function Withdraw() {
     ];
 
     const METHOD_OPTIONS = [
+    { value: "paymethod",    label: "Способ оплаты",    icon: "/icons/sber.svg" },
     { value: "sber",    label: "Сбербанк",    icon: "/icons/sber.svg" },
     { value: "tinkoff", label: "Тинькофф",    icon: "/icons/tinkoff.svg" },
     { value: "yoom",    label: "ЮMoney",      icon: "/icons/yoomoney.svg" },
@@ -300,8 +303,8 @@ export default function Withdraw() {
     { value: "ton",     label: "TON",         icon: "/icons/ton.svg" },
     ];
 
-    const [payType, setPayType]     = useState("bank");  // "Крипто" по умолчанию
-    const [payMethod, setPayMethod] = useState("sber");
+    const [payType, setPayType]     = useState("bank");  // "Реквизиты" по умолчанию
+    const [payMethod, setPayMethod] = useState("paymethod");
 
   return (
     <div className="App">
@@ -388,7 +391,7 @@ export default function Withdraw() {
                         <Dropdown
                         className="payMethodContainer"
                         staticLabel="Способ оплаты"
-                        leftIcon={cardGrayIMG}
+                        leftIcon={paymethodIMG}
                         rightIcon={polygonGrayIMG}
                         value={payMethod}
                         options={METHOD_OPTIONS}
