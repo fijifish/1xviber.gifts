@@ -284,7 +284,7 @@ export default function Withdraw() {
 
                 <ul className="dropdown__menu" role="listbox">
                 {options
-                    .filter(o => o.value !== value)
+                    .filter(o => o.value !== value) // 🟢 исключаем выбранный пункт
                     .map(o => (
                     <li
                         key={o.value}
@@ -293,11 +293,7 @@ export default function Withdraw() {
                         className="dropdown__item"
                         onClick={() => { onChange(o.value); setOpen(false); }}
                     >
-                        <div className="dropdown__item-content">
-                        <img src={o.icon} className="dropdown__item-icon-left" alt="" />
-                        <span className="dropdown__item-label">{o.label}</span>
-                        <img src={o.iconRight || polygonGrayIMG} className="dropdown__item-icon-right" alt="" />
-                        </div>
+                        <span>{o.label}</span>
                     </li>
                     ))}
                 </ul>
@@ -306,7 +302,7 @@ export default function Withdraw() {
     }
 
     const TYPE_OPTIONS = [
-        { value: "crypto", label: "Крипто", icon: cryptoIMG, iconRight: polygonGrayIMG, iconHeight: "55%" },
+        { value: "crypto", label: "Крипто", icon: cryptoIMG, iconHeight: "55%" },
         { value: "bank", label: "Реквизиты", icon: cardIMG, iconHeight: "40%" },
     ];
 
