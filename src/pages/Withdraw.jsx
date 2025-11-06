@@ -28,6 +28,7 @@ import alfaLeftIMG from "../assets/alfaLeftIMG.png";
 import alfaLogoIMG from "../assets/alfaLogoIMG.png";
 import vtbLeftIMG from "../assets/vtbLeftIMG.png";
 import vtbLogoIMG from "../assets/vtbLogoIMG.png";
+import selectDropDown from "../assets/selectDropDown.png";
 
 
 
@@ -398,10 +399,10 @@ export default function Withdraw() {
 
     const METHOD_OPTIONS = [
         { value: "paymethod",  label: "Способ оплаты",  icon: paymethodIMG, rightIcon: polygonGrayIMG, iconHeight: "1.5vh", rightIconHeight: "1vh" },
-        { value: "sber",       label: "Сбербанк",       icon: sberLeftIMG, midRightIcon: sberLogoIMG, rightIcon: polygonGrayIMG, iconHeight: "1.5vh", midRightIconHeight: "2vh", rightIconHeight: "1vh" },
-        { value: "tinkoff",    label: "Тинькофф",       icon: tinkoffLeftIMG, rightIcon: tinkoffLogoIMG, iconHeight: "1.5vh", rightIconHeight: "2vh" },
-        { value: "alfa",       label: "А-Банк",         icon: alfaLeftIMG, rightIcon: alfaLogoIMG, iconHeight: "1.5vh", rightIconHeight: "2vh" },
-        { value: "vtb",        label: "ВТБ Банк",       icon: vtbLeftIMG, rightIcon: vtbLogoIMG, iconHeight: "1.5vh", rightIconHeight: "2vh" },
+        { value: "sber",       label: "Сбербанк",       icon: sberLeftIMG, midRightIcon: sberLogoIMG, rightIcon: selectDropDown, iconHeight: "1.5vh", midRightIconHeight: "2vh", rightIconHeight: "1.8vh" },
+        { value: "tinkoff",    label: "Тинькофф",       icon: tinkoffLeftIMG, midRightIcon: tinkoffLogoIMG, rightIcon: selectDropDown, iconHeight: "1.5vh", midRightIconHeight: "2vh", rightIconHeight: "1.8vh" },
+        { value: "alfa",       label: "А-Банк",         icon: alfaLeftIMG, midRightIcon: alfaLogoIMG, rightIcon: selectDropDown, iconHeight: "1.5vh", midRightIconHeight: "2vh", rightIconHeight: "1.8vh" },
+        { value: "vtb",        label: "ВТБ Банк",       icon: vtbLeftIMG, midRightIcon: vtbLogoIMG, rightIcon: selectDropDown, iconHeight: "1.5vh", midRightIconHeight: "2vh", rightIconHeight: "1.8vh" },
         // { value: "usdt",       label: "USDT TRC20",     icon: usdtIMG, iconHeight: "1.5vh" },
         // { value: "ton",        label: "TON",            icon: tonusdtIMG, iconHeight: "1.5vh" },
     ];
