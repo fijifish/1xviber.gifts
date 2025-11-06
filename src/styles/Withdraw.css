@@ -950,7 +950,7 @@ body {
 }
 
 .bankInfoContainer {
-  width: 40%;
+  width: 100%;
   height: 100%;
 
   background-color: rgba(69, 69, 69, 1);
@@ -988,7 +988,7 @@ body {
 }
 
 .payMethodContainer {
-  width: 49%;
+  width: 100%;
   height: 100%;
 
 
@@ -1057,7 +1057,18 @@ body {
 }
 
 /* ====== Dropdown generic ====== */
-.dropdown { position: relative; width: 48%; height: 100%; }
+.dropdown {
+  position: relative;
+  height: 100%;
+  width: auto; /* wrapper width will be controlled per-variant */
+}
+
+/* Width variants for specific dropdowns */
+.dropdown--type { width: 40%; }
+.dropdown--method { width: 49%; }
+
+/* Optional: content-driven width (shrinks/grows to text up to a cap) */
+.dropdown--auto { width: fit-content; max-width: 49%; }
 
 .dropdown__button {
   cursor: pointer;
