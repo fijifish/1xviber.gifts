@@ -1132,7 +1132,7 @@ body {
   display: flex;
   align-items: center;
   /* gap: 1vh; */
-  padding: 0.5vh 0.5vh;
+  padding: 0.5vh 1.6vh 0.5vh .7vh;
   cursor: pointer;
   color: #D5D5D5;
   font-size: 1.6vh;
