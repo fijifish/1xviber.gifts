@@ -303,7 +303,7 @@ export default function Withdraw() {
 
     const TYPE_OPTIONS = [
         { value: "crypto", label: "Крипто", icon: cryptoIMG, iconHeight: "55%" },
-        { value: "bank", label: "Реквизиты", icon: cardIMG },
+        { value: "bank", label: "Реквизиты", icon: cardIMG, iconHeight: "40%" },
     ];
 
     const METHOD_OPTIONS = [
@@ -311,8 +311,8 @@ export default function Withdraw() {
         { value: "sber",      label: "Сбербанк",       icon: null },
         { value: "tinkoff",   label: "Тинькофф",       icon: null },
         { value: "yoom",      label: "ЮMoney",         icon: null },
-        { value: "usdt",      label: "USDT (TRC20)",   icon: usdtIMG },
-        { value: "ton",       label: "TON",            icon: tonusdtIMG },
+        { value: "usdt",      label: "USDT (TRC20)",   icon: usdtIMG, iconHeight: "40%"},
+        { value: "ton",       label: "TON",            icon: tonusdtIMG, iconHeight: "40%" },
     ];
 
     const [payType, setPayType]     = useState("bank");  // "Реквизиты" по умолчанию
