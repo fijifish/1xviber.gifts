@@ -1162,7 +1162,7 @@ body {
 
 /* Только для TYPE_OPTIONS (например, Крипто / Реквизиты) */
 .dropdown--type .dropdown__item-row {
-  padding: 0.5vh .8vh 0.5vh .8vh;
+  padding: 0.5vh .6vh 0.5vh .6vh;
   justify-content: space-around;
 }
 
