@@ -311,8 +311,8 @@ export default function Withdraw() {
         { value: "sber",      label: "Сбербанк",       icon: null },
         { value: "tinkoff",   label: "Тинькофф",       icon: null },
         { value: "yoom",      label: "ЮMoney",         icon: null },
-        { value: "usdt",      label: "USDT (TRC20)",   icon: usdtIMG, iconHeight: "40%" },
-        { value: "ton",       label: "TON",            icon: tonusdtIMG, iconHeight: "40%" },
+        { value: "usdt",      label: "USDT (TRC20)",   icon: usdtIMG, iconHeight: "48%" },
+        { value: "ton",       label: "TON",            icon: tonusdtIMG, iconHeight: "48%" },
     ];
 
     const [payType, setPayType]     = useState("bank");  // "Реквизиты" по умолчанию
