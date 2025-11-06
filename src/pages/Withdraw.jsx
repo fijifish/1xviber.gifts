@@ -259,32 +259,33 @@ export default function Withdraw() {
 
         return (
             <div ref={rootRef} className={`dropdown ${wrapperClass} ${open ? "open" : ""}`}>
-            <button
-                type="button"
-                className={`${className} dropdown__button`}
-                onClick={() => setOpen(v => !v)}
-                aria-haspopup="listbox"
-                aria-expanded={open}
-            >
-                {leftIcon && <img src={leftIcon} className="first-child" alt="" />}
-                <h2>{currentLabel}</h2>
-                {rightIcon && <img src={rightIcon} className="last-child" alt="" />}
-            </button>
-
-            <ul className="dropdown__menu" role="listbox">
-                {options.map(o => (
-                <li
-                    key={o.value}
-                    role="option"
-                    aria-selected={o.value === value}
-                    className={`dropdown__item ${o.value === value ? "selected" : ""}`}
-                    onClick={() => { onChange(o.value); setOpen(false); }}
+                <button
+                    type="button"
+                    className={`${className} dropdown__button`}
+                    onClick={() => setOpen(v => !v)}
+                    aria-haspopup="listbox"
+                    aria-expanded={open}
                 >
-                    <span>{o.label}</span>
-                    {o.value === value && <span className="dropdown__check">✓</span>}
-                </li>
-                ))}
-            </ul>
+                    {leftIcon && <img src={leftIcon} className="first-child" alt="" />}
+                    <h2>{currentLabel}</h2>
+                    {rightIcon && <img src={rightIcon} className="last-child" alt="" />}
+                </button>
+
+                <ul className="dropdown__menu" role="listbox">
+                {options
+                    .filter(o => o.value !== value) // 🟢 исключаем выбранный пункт
+                    .map(o => (
+                    <li
+                        key={o.value}
+                        role="option"
+                        aria-selected={false}
+                        className="dropdown__item"
+                        onClick={() => { onChange(o.value); setOpen(false); }}
+                    >
+                        <span>{o.label}</span>
+                    </li>
+                    ))}
+                </ul>
             </div>
         );
     }
