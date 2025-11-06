@@ -307,10 +307,10 @@ export default function Withdraw() {
     ];
 
     const METHOD_OPTIONS = [
-        { value: "paymethod", label: "Способ оплаты", icon: paymethodIMG, iconHeight: "40%"  },
-        { value: "sber",      label: "Сбербанк",       icon: null },
-        { value: "tinkoff",   label: "Тинькофф",       icon: null },
-        { value: "yoom",      label: "ЮMoney",         icon: null },
+        { value: "paymethod", label: "Способ оплаты", icon: paymethodIMG, iconHeight: "40%" },
+        { value: "sber",      label: "Сбербанк",       icon: paymethodIMG, iconHeight: "40%" },
+        { value: "tinkoff",   label: "Тинькофф",       icon: paymethodIMG, iconHeight: "40%" },
+        { value: "yoom",      label: "ЮMoney",         icon: paymethodIMG, iconHeight: "40%" },
         { value: "usdt",      label: "USDT (TRC20)",   icon: usdtIMG, iconHeight: "48%" },
         { value: "ton",       label: "TON",            icon: tonusdtIMG, iconHeight: "48%" },
     ];
