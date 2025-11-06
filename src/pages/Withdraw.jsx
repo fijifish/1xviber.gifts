@@ -289,7 +289,23 @@ export default function Withdraw() {
 
                     <h2>{currentLabel}</h2>
 
-                    {rightIcon && <img src={rightIcon} className="last-child" alt="" />}
+                    {selected?.rightIcon ? (
+                    <img
+                        src={selected.rightIcon}
+                        className="last-child"
+                        alt=""
+                        style={{ height: selected?.rightIconHeight || "1.5vh", objectFit: "contain" }}
+                    />
+                    ) : (
+                    rightIcon && (
+                        <img
+                        src={rightIcon}
+                        className="last-child"
+                        alt=""
+                        style={{ height: "auto" }}
+                        />
+                    )
+                    )}
                 </button>
 
                 <ul className="dropdown__menu" role="listbox">
