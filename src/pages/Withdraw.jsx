@@ -340,8 +340,8 @@ export default function Withdraw() {
     }
 
     const TYPE_OPTIONS = [
-        { value: "crypto", label: "Крипто", icon: cryptoIMG, iconHeight: "55%" },
-        { value: "bank", label: "Реквизиты", icon: cardIMG, iconHeight: "40%" },
+        { value: "crypto", label: "Крипто", icon: cryptoIMG, iconHeight: "1.5vh" },
+        { value: "bank", label: "Реквизиты", icon: cardIMG, iconHeight: "1.5vh" },
     ];
 
     const METHOD_OPTIONS = [
