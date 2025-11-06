@@ -311,7 +311,7 @@ export default function Withdraw() {
         { value: "sber",      label: "Сбербанк",       icon: paymethodIMG, iconHeight: "40%" },
         { value: "tinkoff",   label: "Тинькофф",       icon: paymethodIMG, iconHeight: "40%" },
         { value: "yoom",      label: "ЮMoney",         icon: paymethodIMG, iconHeight: "40%" },
-        { value: "usdt",      label: "USDT (TRC20)",   icon: usdtIMG, iconHeight: "48%" },
+        { value: "usdt",      label: "USDT TRC20",   icon: usdtIMG, iconHeight: "48%" },
         { value: "ton",       label: "TON",            icon: tonusdtIMG, iconHeight: "48%" },
     ];
 
