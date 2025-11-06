@@ -20,6 +20,7 @@ import cardIMG from "../assets/cardIMG.png";
 import polygonGrayIMG from "../assets/polygonGrayIMG.png";
 import cardGrayIMG from "../assets/cardGrayIMG.png";
 import paymethodIMG from "../assets/paymethodIMG.png";
+import cryptoIMG from "../assets/cryptoIMG.png";
 
 
 
@@ -256,6 +257,7 @@ export default function Withdraw() {
 
         const selected = options.find(o => o.value === value);
         const currentLabel = selected?.label || staticLabel;
+        const iconToShow = (selected?.icon || leftIcon);
 
         return (
             <div ref={rootRef} className={`dropdown ${wrapperClass} ${open ? "open" : ""}`}>
@@ -266,7 +268,7 @@ export default function Withdraw() {
                     aria-haspopup="listbox"
                     aria-expanded={open}
                 >
-                    {leftIcon && <img src={leftIcon} className="first-child" alt="" />}
+                    {iconToShow && <img src={iconToShow} className="first-child" alt="" />}
                     <h2>{currentLabel}</h2>
                     {rightIcon && <img src={rightIcon} className="last-child" alt="" />}
                 </button>
@@ -291,17 +293,17 @@ export default function Withdraw() {
     }
 
     const TYPE_OPTIONS = [
-    { value: "crypto", label: "Крипто", icon: "../assets/cryptoIMG.png" },
-    { value: "bank", label: "Реквизиты", icon: "../assets/cryptoIMG.png" },
+        { value: "crypto", label: "Крипто", icon: cryptoIMG },
+        { value: "bank", label: "Реквизиты", icon: cardIMG },
     ];
 
     const METHOD_OPTIONS = [
-    { value: "paymethod",    label: "Способ оплаты",    icon: "/icons/sber.svg" },
-    { value: "sber",    label: "Сбербанк",    icon: "/icons/sber.svg" },
-    { value: "tinkoff", label: "Тинькофф",    icon: "/icons/tinkoff.svg" },
-    { value: "yoom",    label: "ЮMoney",      icon: "/icons/yoomoney.svg" },
-    { value: "usdt",    label: "USDT (TRC20)",icon: "/icons/usdt.svg" },
-    { value: "ton",     label: "TON",         icon: "/icons/ton.svg" },
+        { value: "paymethod", label: "Способ оплаты", icon: null },
+        { value: "sber",      label: "Сбербанк",       icon: null },
+        { value: "tinkoff",   label: "Тинькофф",       icon: null },
+        { value: "yoom",      label: "ЮMoney",         icon: null },
+        { value: "usdt",      label: "USDT (TRC20)",   icon: usdtIMG },
+        { value: "ton",       label: "TON",            icon: tonusdtIMG },
     ];
 
     const [payType, setPayType]     = useState("bank");  // "Реквизиты" по умолчанию
