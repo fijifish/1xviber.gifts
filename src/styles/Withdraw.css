@@ -1057,15 +1057,11 @@ body {
 }
 
 /* ====== Dropdown generic ====== */
-.dropdown {
-  position: relative;
-  height: 100%;
-  width: auto; /* wrapper width will be controlled per-variant */
-}
+.dropdown { width: auto; }
 
-/* Width variants for specific dropdowns */
-.dropdown--type { width: 40%; }
-.dropdown--method { width: 49%; }
+/* разные ширины для двух дропдаунов */
+.dropdown--type   { width: 40%; }   /* «Реквизиты» */
+.dropdown--method { width: 49%; } 
 
 /* Optional: content-driven width (shrinks/grows to text up to a cap) */
 .dropdown--auto { width: fit-content; max-width: 49%; }
