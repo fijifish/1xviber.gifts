@@ -363,18 +363,18 @@ export default function Withdraw() {
     }
 
     const TYPE_OPTIONS = [
-        { value: "crypto", label: "Крипто", icon: cryptoIMG, rightIcon: polygonIMG, iconHeight: "2vh", rightIconHeight: "1.15vh" },
-        { value: "bank", label: "Реквизиты", icon: cardIMG, rightIcon: polygonIMG, iconHeight: "1.5vh", rightIconHeight: "1.15vh" },
+        { value: "crypto", label: "Крипто", icon: cryptoIMG, rightIcon: polygonIMG, iconHeight: "2vh", rightIconHeight: "1vh" },
+        { value: "bank", label: "Реквизиты", icon: cardIMG, rightIcon: polygonIMG, iconHeight: "1.5vh", rightIconHeight: "1vh" },
     ];
 
     const METHOD_OPTIONS = [
-        { value: "paymethod",  label: "Способ оплаты",  icon: paymethodIMG, rightIcon: polygonGrayIMG, iconHeight: "1.5vh", rightIconHeight: "1.15vh" },
+        { value: "paymethod",  label: "Способ оплаты",  icon: paymethodIMG, rightIcon: polygonGrayIMG, iconHeight: "1.5vh", rightIconHeight: "1vh" },
         { value: "sber",       label: "Сбербанк",       icon: sberLeftIMG, rightIcon: sberLogoIMG, iconHeight: "1.5vh", rightIconHeight: "2vh" },
         { value: "tinkoff",    label: "Тинькофф",       icon: tinkoffLeftIMG, rightIcon: tinkoffLogoIMG, iconHeight: "1.5vh", rightIconHeight: "2vh" },
         { value: "alfa",       label: "А-Банк",         icon: alfaLeftIMG, rightIcon: alfaLogoIMG, iconHeight: "1.5vh", rightIconHeight: "2vh" },
         { value: "vtb",        label: "ВТБ Банк",       icon: vtbLeftIMG, rightIcon: vtbLogoIMG, iconHeight: "1.5vh", rightIconHeight: "2vh" },
-        { value: "usdt",       label: "USDT TRC20",     icon: usdtIMG, iconHeight: "1.5vh" },
-        { value: "ton",        label: "TON",            icon: tonusdtIMG, iconHeight: "1.5vh" },
+        // { value: "usdt",       label: "USDT TRC20",     icon: usdtIMG, iconHeight: "1.5vh" },
+        // { value: "ton",        label: "TON",            icon: tonusdtIMG, iconHeight: "1.5vh" },
     ];
 
     const [payType, setPayType]     = useState("bank");  // "Реквизиты" по умолчанию
