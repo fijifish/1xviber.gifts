@@ -291,6 +291,15 @@ export default function Withdraw() {
                       />
                     )}
                     <h2>{currentLabel}</h2>
+                    {/* mid icon inside the button (next to the label) */}
+                    {selected?.midRightIcon && (
+                      <img
+                        src={selected.midRightIcon}
+                        alt=""
+                        className="dropdown__btn-mid-right"
+                        style={{ height: selected?.midRightIconHeight || "1.5vh", objectFit: "contain" }}
+                      />
+                    )}
                   </div>
 
                   <div
