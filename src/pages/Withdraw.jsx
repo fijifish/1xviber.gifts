@@ -229,23 +229,82 @@ export default function Withdraw() {
     };
     }, [navigate]);
 
-    // ▼ простой стейт дропдаунов: 'bank' | 'method' | null
-    const [openDD, setOpenDD] = useState(null); // 'bank' | 'pay' | null
-    const toggleDD = (which) => setOpenDD(prev => prev === which ? null : which);
+    function Dropdown({
+        className,           // внешний вид кнопки (твои .bankInfoContainer / .payMethodContainer)
+        label,               // заголовок слева (например "Реквизиты" / "Способ оплаты")
+        value,               // выбранное значение, что показываем крупно
+        options,             // [{ value:'crypto', label:'Крипто', icon: <img .../> }, ...]
+        onChange,            // (newValue) => void
+        }) {
+        const [open, setOpen] = useState(false);
+        const rootRef = useRef(null);
 
-    const [open, setOpen] = useState({ bank:false, pay:false });
+        // клик вне — закрыть
+        useEffect(() => {
+            function onDoc(e) {
+            if (!rootRef.current) return;
+            if (!rootRef.current.contains(e.target)) setOpen(false);
+            }
+            document.addEventListener("mousedown", onDoc);
+            return () => document.removeEventListener("mousedown", onDoc);
+        }, []);
 
-    useEffect(() => {
-    const onDoc = (e) => {
-        const targets = document.querySelectorAll('.dd-root');
-        for (const node of targets) {
-        if (node.contains(e.target)) return; // клик внутри — не закрываем
-        }
-        setOpen({ bank:false, pay:false });
-    };
-    document.addEventListener('click', onDoc);
-    return () => document.removeEventListener('click', onDoc);
-    }, []);
+        const selected = options.find(o => o.value === value);
+
+        return (
+            <div ref={rootRef} className={`dropdown ${open ? "open" : ""}`}>
+            <button
+                type="button"
+                className={`${className} dropdown__button`}
+                onClick={() => setOpen(v => !v)}
+                aria-haspopup="listbox"
+                aria-expanded={open}
+            >
+                {/* левый маленький значок */}
+                <img aria-hidden src={selected?.iconLeft || "/"} style={{display: selected?.iconLeft ? "block":"none"}} />
+                {/* заголовок + выбранное значение */}
+                <div className="dropdown__texts">
+                <div className="dropdown__label">{label}</div>
+                <div className="dropdown__value">{selected?.label || value}</div>
+                </div>
+                {/* стрелочка справа */}
+                <img aria-hidden className="dropdown__caret" src={selected?.iconRight || "/"} />
+            </button>
+
+            <ul className="dropdown__menu" role="listbox">
+                {options.map((o) => (
+                <li
+                    key={o.value}
+                    role="option"
+                    aria-selected={o.value === value}
+                    className={`dropdown__item ${o.value === value ? "selected" : ""}`}
+                    onClick={() => { onChange(o.value); setOpen(false); }}
+                >
+                    {o.icon && <img src={o.icon} alt="" />}
+                    <span>{o.label}</span>
+                    {o.value === value && <span className="dropdown__check">✓</span>}
+                </li>
+                ))}
+            </ul>
+            </div>
+        );
+    }
+
+    const TYPE_OPTIONS = [
+    { value: "crypto", label: "Крипто", icon: "/icons/btc.svg" },
+    { value: "bank",   label: "Банковские реквизиты", icon: "/icons/bank.svg" },
+    ];
+
+    const METHOD_OPTIONS = [
+    { value: "sber",    label: "Сбербанк",    icon: "/icons/sber.svg" },
+    { value: "tinkoff", label: "Тинькофф",    icon: "/icons/tinkoff.svg" },
+    { value: "yoom",    label: "ЮMoney",      icon: "/icons/yoomoney.svg" },
+    { value: "usdt",    label: "USDT (TRC20)",icon: "/icons/usdt.svg" },
+    { value: "ton",     label: "TON",         icon: "/icons/ton.svg" },
+    ];
+
+    const [payType, setPayType]     = useState("crypto");  // "Крипто" по умолчанию
+    const [payMethod, setPayMethod] = useState("sber");
 
   return (
     <div className="App">
@@ -313,48 +372,32 @@ export default function Withdraw() {
                 </div>
 
                 <div class="mainWithdrawContainer">
-                <div className="bankInfoAndPayMethodContainer">
+                    <div class="bankInfoAndPayMethodContainer">
+                        {/* <div class="bankInfoContainer">
+                            <img src={cardIMG} className="first-child"/>
+                                <h2>Реквизиты</h2>
+                            <img src={polygonIMG} className="last-child"/>
+                        </div> */}
+                        <Dropdown
+                        className="bankInfoContainer"
+                        label="Реквизиты"
+                        value={payType}
+                        options={TYPE_OPTIONS}
+                        onChange={setPayType}
+                        />
 
-                {/* Реквизиты */}
-                <div className={`dd-root bank ${open.bank ? "open" : ""}`}>
-                    <div
-                    className="bankInfoContainer"
-                    onClick={(e) => { e.stopPropagation(); setOpen(s => ({ bank: !s.bank, pay:false })); }}
-                    role="button"
-                    >
-                    <img src={cardIMG} alt="" />
-                    <h2>Реквизиты</h2>
-                    <img src={polygonIMG} alt="" />
-                    </div>
-
-                    {/* Выпадающее меню (пока пустое) */}
-                    <div className="dd-menu" onClick={e => e.stopPropagation()}>
-                    <div className="dd-menu__inner">
-                        {/* сюда позже добавишь пункты */}
-                    </div>
-                    </div>
-                </div>
-
-                {/* Способ оплаты */}
-                <div className={`dd-root pay ${open.pay ? "open" : ""}`}>
-                    <div
-                    className="payMethodContainer"
-                    onClick={(e) => { e.stopPropagation(); setOpen(s => ({ bank:false, pay: !s.pay })); }}
-                    role="button"
-                    >
-                    <img src={cardGrayIMG} alt="" />
-                    <h2>Способ оплаты</h2>
-                    <img src={polygonGrayIMG} alt="" />
-                    </div>
-
-                    <div className="dd-menu" onClick={e => e.stopPropagation()}>
-                    <div className="dd-menu__inner">
-                        {/* позже добавим список банков */}
-                    </div>
-                    </div>
-
-                </div>
-
+                        <Dropdown
+                        className="payMethodContainer"
+                        label="Способ оплаты"
+                        value={payMethod}
+                        options={METHOD_OPTIONS}
+                        onChange={setPayMethod}
+                        />
+                        {/* <div class="payMethodContainer">
+                            <img src={cardGrayIMG} className="first-child"/>
+                                <h2>Способ оплаты</h2>
+                            <img src={polygonGrayIMG} className="last-child"/>
+                        </div> */}
                     </div>
                     <div class="descriptionBankInfoContainer">
                         <img src={InfoIMG}/>
