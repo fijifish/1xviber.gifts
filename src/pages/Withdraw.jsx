@@ -276,35 +276,45 @@ export default function Withdraw() {
                     onClick={() => setOpen(v => !v)}
                     aria-haspopup="listbox"
                     aria-expanded={open}
+                    style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}
                 >
+                  <div
+                    className="dropdown__btn-left"
+                    style={{ display: "flex", alignItems: "center", gap: "1vh" }}
+                  >
                     {iconToShow && (
-                        <img
-                            src={iconToShow}
-                            className="first-child"
-                            alt=""
-                            style={{ height: selected?.iconHeight || "auto" }}
-                        />
+                      <img
+                        src={iconToShow}
+                        className="first-child"
+                        alt=""
+                        style={{ height: selected?.iconHeight || "auto" }}
+                      />
                     )}
-
                     <h2>{currentLabel}</h2>
+                  </div>
 
+                  <div
+                    className="dropdown__btn-right"
+                    style={{ display: "flex", alignItems: "center" }}
+                  >
                     {selected?.rightIcon ? (
-                    <img
+                      <img
                         src={selected.rightIcon}
                         className="last-child"
                         alt=""
                         style={{ height: selected?.rightIconHeight || "1.5vh", objectFit: "contain" }}
-                    />
+                      />
                     ) : (
-                    rightIcon && (
+                      rightIcon && (
                         <img
-                        src={rightIcon}
-                        className="last-child"
-                        alt=""
-                        style={{ height: "auto" }}
+                          src={rightIcon}
+                          className="last-child"
+                          alt=""
+                          style={{ height: "auto" }}
                         />
-                    )
+                      )
                     )}
+                  </div>
                 </button>
 
                 <ul className="dropdown__menu" role="listbox">
