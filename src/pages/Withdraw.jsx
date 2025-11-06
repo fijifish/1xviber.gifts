@@ -306,12 +306,12 @@ export default function Withdraw() {
                             style={{
                             display: "flex",
                             alignItems: "center",
-                            justifyContent: "space-between",
+                            justifyContent: "center",
                             width: "100%",
-                            gap: "8px"
+                            gap: "1vh"
                             }}
                         >
-                            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                            <div style={{ display: "flex", alignItems: "center", gap: "1vh" }}>
                             {leftSrc && (
                                 <img
                                 src={leftSrc}
@@ -327,7 +327,7 @@ export default function Withdraw() {
                                 src={rightSrc}
                                 alt=""
                                 className="dropdown__item-icon-right"
-                                style={{ height: "1em", objectFit: "contain" }}
+                                style={{ height: "1vh", objectFit: "contain" }}
                             />
                             )}
                         </div>
