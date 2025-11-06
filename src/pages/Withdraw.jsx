@@ -21,6 +21,7 @@ import polygonGrayIMG from "../assets/polygonGrayIMG.png";
 import cardGrayIMG from "../assets/cardGrayIMG.png";
 import paymethodIMG from "../assets/paymethodIMG.png";
 import cryptoIMG from "../assets/cryptoIMG.png";
+import sberLogoIMG from "../assets/sberLogoIMG.png";
 
 
 
@@ -322,12 +323,12 @@ export default function Withdraw() {
                             )}
                             <span className="dropdown__item-label">{o.label}</span>
                             </div>
-                            {rightSrc && (
+                            {(o.rightIcon || rightSrc) && (
                             <img
-                                src={rightSrc}
+                                src={o.rightIcon || rightSrc}
                                 alt=""
                                 className="dropdown__item-icon-right"
-                                style={{ height: "1vh", objectFit: "contain" }}
+                                style={{ height: o.rightIconHeight || "1vh", objectFit: "contain" }}
                             />
                             )}
                         </div>
@@ -346,7 +347,7 @@ export default function Withdraw() {
 
     const METHOD_OPTIONS = [
         { value: "paymethod", label: "Способ оплаты", icon: paymethodIMG, iconHeight: "1.5vh" },
-        { value: "sber",      label: "Сбербанк",       icon: paymethodIMG, iconHeight: "1.5vh" },
+        { value: "sber",      label: "Сбербанк",       icon: paymethodIMG, rightIcon: sberLogoIMG, iconHeight: "1.5vh" },
         { value: "tinkoff",   label: "Тинькофф",       icon: paymethodIMG, iconHeight: "1.5vh" },
         { value: "yoom",      label: "ЮMoney",         icon: paymethodIMG, iconHeight: "1.5vh" },
         { value: "usdt",      label: "USDT TRC20",   icon: usdtIMG, iconHeight: "1.5vh" },
