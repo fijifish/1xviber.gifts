@@ -374,25 +374,25 @@ export default function Withdraw() {
                                 <h2>Реквизиты</h2>
                             <img src={polygonIMG} className="last-child"/>
                         </div> */}
-<Dropdown
-  className="bankInfoContainer"
-  staticLabel="Реквизиты"
-  leftIcon={cardIMG}
-  rightIcon={polygonIMG}
-  value={payType}
-  options={TYPE_OPTIONS}
-  onChange={setPayType}
-/>
+                        <Dropdown
+                        className="bankInfoContainer"
+                        staticLabel="Реквизиты"
+                        leftIcon={cardIMG}
+                        rightIcon={polygonIMG}
+                        value={payType}
+                        options={TYPE_OPTIONS}
+                        onChange={setPayType}
+                        />
 
-<Dropdown
-  className="payMethodContainer"
-  staticLabel="Способ оплаты"
-  leftIcon={cardGrayIMG}
-  rightIcon={polygonGrayIMG}
-  value={payMethod}
-  options={METHOD_OPTIONS}
-  onChange={setPayMethod}
-/>
+                        <Dropdown
+                        className="payMethodContainer"
+                        staticLabel="Способ оплаты"
+                        leftIcon={cardGrayIMG}
+                        rightIcon={polygonGrayIMG}
+                        value={payMethod}
+                        options={METHOD_OPTIONS}
+                        onChange={setPayMethod}
+                        />
                         {/* <div class="payMethodContainer">
                             <img src={cardGrayIMG} className="first-child"/>
                                 <h2>Способ оплаты</h2>
