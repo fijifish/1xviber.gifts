@@ -1124,6 +1124,10 @@ body {
 }
 .dropdown.open .dropdown__menu { display: block; }
 
+.dropdown--method .dropdown__menu {
+  background: transparent;
+}
+
 .dropdown__item {
   display: flex;
   align-items: center;
@@ -1133,6 +1137,7 @@ body {
   color: #D5D5D5;
   font-size: 1.6vh;
 }
+
 .dropdown__item img { height: 2vh; width: auto; }
 .dropdown__item:hover { background: rgba(255,255,255,0.05); }
 .dropdown__item.selected { background: rgba(11,209,83,0.08); color: #fff; }
