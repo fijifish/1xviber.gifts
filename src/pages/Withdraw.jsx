@@ -232,15 +232,16 @@ export default function Withdraw() {
     };
     }, [navigate]);
 
-    function Dropdown({
-        wrapperClass = "",   // ⬅️ добавили
-        className,           // .bankInfoContainer / .payMethodContainer (кнопка)
-        staticLabel,
-        leftIcon,
-        rightIcon,
-        value,
-        options,
-        onChange,
+        function Dropdown({
+            wrapperClass = "",
+            className,
+            staticLabel,
+            leftIcon,
+            rightIcon,        // иконка справа в кнопке
+            menuRightIcon,    // единая иконка справа для пунктов меню
+            value,
+            options,
+            onChange,
         }) {
         const [open, setOpen] = useState(false);
         const rootRef = useRef(null);
@@ -284,18 +285,55 @@ export default function Withdraw() {
 
                 <ul className="dropdown__menu" role="listbox">
                 {options
-                    .filter(o => o.value !== value) // 🟢 исключаем выбранный пункт
-                    .map(o => (
-                    <li
+                    .filter(o => o.value !== value)
+                    .map(o => {
+                    const leftSrc = o.icon || leftIcon;
+                    const rightSrc = menuRightIcon; // единая правая иконка для меню
+                    const leftH = o.iconHeight
+                        ? (typeof o.iconHeight === "number" ? `${o.iconHeight}px` : o.iconHeight)
+                        : "auto";
+
+                    return (
+                        <li
                         key={o.value}
                         role="option"
                         aria-selected={false}
                         className="dropdown__item"
                         onClick={() => { onChange(o.value); setOpen(false); }}
-                    >
-                        <span>{o.label}</span>
-                    </li>
-                    ))}
+                        >
+                        <div
+                            className="dropdown__item-row"
+                            style={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                            width: "100%",
+                            gap: "8px"
+                            }}
+                        >
+                            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                            {leftSrc && (
+                                <img
+                                src={leftSrc}
+                                alt=""
+                                className="dropdown__item-icon-left"
+                                style={{ height: leftH, objectFit: "contain" }}
+                                />
+                            )}
+                            <span className="dropdown__item-label">{o.label}</span>
+                            </div>
+                            {rightSrc && (
+                            <img
+                                src={rightSrc}
+                                alt=""
+                                className="dropdown__item-icon-right"
+                                style={{ height: "1em", objectFit: "contain" }}
+                            />
+                            )}
+                        </div>
+                        </li>
+                    );
+                    })}
                 </ul>
             </div>
         );
@@ -391,25 +429,27 @@ export default function Withdraw() {
                             <img src={polygonIMG} className="last-child"/>
                         </div> */}
                         <Dropdown
-                            wrapperClass="dropdown--type"      // ⬅️ модификатор для ширины «Тип»
-                            className="bankInfoContainer"
-                            staticLabel="Реквизиты"
-                            leftIcon={cardIMG}
-                            rightIcon={polygonIMG}
-                            value={payType}
-                            options={TYPE_OPTIONS}
-                            onChange={setPayType}
+                        wrapperClass="dropdown--type"
+                        className="bankInfoContainer"
+                        staticLabel="Реквизиты"
+                        leftIcon={cardIMG}
+                        rightIcon={polygonIMG}
+                        menuRightIcon={polygonGrayIMG}
+                        value={payType}
+                        options={TYPE_OPTIONS}
+                        onChange={setPayType}
                         />
 
                         <Dropdown
-                            wrapperClass="dropdown--method"    // ⬅️ модификатор для ширины «Метод»
-                            className="payMethodContainer"
-                            staticLabel="Способ оплаты"
-                            leftIcon={paymethodIMG}
-                            rightIcon={polygonGrayIMG}
-                            value={payMethod}
-                            options={METHOD_OPTIONS}
-                            onChange={setPayMethod}
+                        wrapperClass="dropdown--method"
+                        className="payMethodContainer"
+                        staticLabel="Способ оплаты"
+                        leftIcon={paymethodIMG}
+                        rightIcon={polygonGrayIMG}
+                        menuRightIcon={polygonGrayIMG}
+                        value={payMethod}
+                        options={METHOD_OPTIONS}
+                        onChange={setPayMethod}
                         />
                         {/* <div class="payMethodContainer">
                             <img src={cardGrayIMG} className="first-child"/>
