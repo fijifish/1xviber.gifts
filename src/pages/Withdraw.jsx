@@ -306,7 +306,7 @@ export default function Withdraw() {
                             style={{
                             display: "flex",
                             alignItems: "center",
-                            justifyContent: "center",
+                            justifyContent: "space-around",
                             width: "100%",
                             gap: "1vh"
                             }}
