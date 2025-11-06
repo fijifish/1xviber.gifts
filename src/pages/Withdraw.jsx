@@ -284,7 +284,7 @@ export default function Withdraw() {
 
                 <ul className="dropdown__menu" role="listbox">
                 {options
-                    .filter(o => o.value !== value) // 🟢 исключаем выбранный пункт
+                    .filter(o => o.value !== value)
                     .map(o => (
                     <li
                         key={o.value}
@@ -293,7 +293,11 @@ export default function Withdraw() {
                         className="dropdown__item"
                         onClick={() => { onChange(o.value); setOpen(false); }}
                     >
-                        <span>{o.label}</span>
+                        <div className="dropdown__item-content">
+                        <img src={o.icon} className="dropdown__item-icon-left" alt="" />
+                        <span className="dropdown__item-label">{o.label}</span>
+                        <img src={o.iconRight || polygonGrayIMG} className="dropdown__item-icon-right" alt="" />
+                        </div>
                     </li>
                     ))}
                 </ul>

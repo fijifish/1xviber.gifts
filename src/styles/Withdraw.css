@@ -1138,6 +1138,24 @@ body {
   font-size: 1.6vh;
 }
 
+.dropdown__item-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1vh 1.4vh;
+  gap: 1vh;
+}
+
+.dropdown__item-icon-left {
+  height: 45%;
+  width: auto;
+}
+
+.dropdown__item-icon-right {
+  height: 25%;
+  width: auto;
+}
+
 .dropdown__item img { height: 2vh; width: auto; }
 .dropdown__item:hover { background: rgba(255,255,255,0.05); }
 .dropdown__item.selected { background: rgba(11,209,83,0.08); color: #fff; }
