@@ -354,6 +354,16 @@ export default function Withdraw() {
                                 />
                             )}
                             <span className="dropdown__item-label">{o.label}</span>
+
+                            {/* новая иконка сразу справа от текста */}
+                            {o.midRightIcon && (
+                                <img
+                                src={o.midRightIcon}
+                                alt=""
+                                className="dropdown__item-icon-mid-right"
+                                style={{ height: o.midRightIconHeight || "1.5vh", objectFit: "contain" }}
+                                />
+                            )}
                             </div>
                             {(o.rightIcon || rightSrc) && (
                             <img
@@ -379,7 +389,7 @@ export default function Withdraw() {
 
     const METHOD_OPTIONS = [
         { value: "paymethod",  label: "Способ оплаты",  icon: paymethodIMG, rightIcon: polygonGrayIMG, iconHeight: "1.5vh", rightIconHeight: "1vh" },
-        { value: "sber",       label: "Сбербанк",       icon: sberLeftIMG, rightIcon: sberLogoIMG, iconHeight: "1.5vh", rightIconHeight: "2vh" },
+        { value: "sber",       label: "Сбербанк",       icon: sberLeftIMG, midRightIcon: sberLogoIMG, rightIcon: polygonGrayIMG, iconHeight: "1.5vh", midRightIconHeight: "2vh", rightIconHeight: "1vh" },
         { value: "tinkoff",    label: "Тинькофф",       icon: tinkoffLeftIMG, rightIcon: tinkoffLogoIMG, iconHeight: "1.5vh", rightIconHeight: "2vh" },
         { value: "alfa",       label: "А-Банк",         icon: alfaLeftIMG, rightIcon: alfaLogoIMG, iconHeight: "1.5vh", rightIconHeight: "2vh" },
         { value: "vtb",        label: "ВТБ Банк",       icon: vtbLeftIMG, rightIcon: vtbLogoIMG, iconHeight: "1.5vh", rightIconHeight: "2vh" },
