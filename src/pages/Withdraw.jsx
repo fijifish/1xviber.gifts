@@ -345,12 +345,12 @@ export default function Withdraw() {
     ];
 
     const METHOD_OPTIONS = [
-        { value: "paymethod", label: "Способ оплаты", icon: paymethodIMG, iconHeight: "40%" },
-        { value: "sber",      label: "Сбербанк",       icon: paymethodIMG, iconHeight: "40%" },
-        { value: "tinkoff",   label: "Тинькофф",       icon: paymethodIMG, iconHeight: "40%" },
-        { value: "yoom",      label: "ЮMoney",         icon: paymethodIMG, iconHeight: "40%" },
-        { value: "usdt",      label: "USDT TRC20",   icon: usdtIMG, iconHeight: "48%" },
-        { value: "ton",       label: "TON",            icon: tonusdtIMG, iconHeight: "48%" },
+        { value: "paymethod", label: "Способ оплаты", icon: paymethodIMG, iconHeight: "1.5vh" },
+        { value: "sber",      label: "Сбербанк",       icon: paymethodIMG, iconHeight: "1.5vh" },
+        { value: "tinkoff",   label: "Тинькофф",       icon: paymethodIMG, iconHeight: "1.5vh" },
+        { value: "yoom",      label: "ЮMoney",         icon: paymethodIMG, iconHeight: "1.5vh" },
+        { value: "usdt",      label: "USDT TRC20",   icon: usdtIMG, iconHeight: "1.5vh" },
+        { value: "ton",       label: "TON",            icon: tonusdtIMG, iconHeight: "1.5vh" },
     ];
 
     const [payType, setPayType]     = useState("bank");  // "Реквизиты" по умолчанию
