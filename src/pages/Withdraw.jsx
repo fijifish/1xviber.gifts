@@ -232,61 +232,61 @@ export default function Withdraw() {
     }, [navigate]);
 
     function Dropdown({
-    className,           // .bankInfoContainer / .payMethodContainer
-    staticLabel,         // базовый текст если ничего не выбрано
-    leftIcon,            // иконка слева
-    rightIcon,           // иконка-стрелка справа
-    value,               // выбранное значение
-    options,             // [{ value:'crypto', label:'Крипто' }, ...]
-    onChange,            // (newValue) => void
-    }) {
-    const [open, setOpen] = useState(false);
-    const rootRef = useRef(null);
+        wrapperClass = "",   // ⬅️ добавили
+        className,           // .bankInfoContainer / .payMethodContainer (кнопка)
+        staticLabel,
+        leftIcon,
+        rightIcon,
+        value,
+        options,
+        onChange,
+        }) {
+        const [open, setOpen] = useState(false);
+        const rootRef = useRef(null);
 
-    // клик вне — закрыть
-    useEffect(() => {
-        function onDoc(e) {
-        if (!rootRef.current) return;
-        if (!rootRef.current.contains(e.target)) setOpen(false);
-        }
-        document.addEventListener("mousedown", onDoc);
-        return () => document.removeEventListener("mousedown", onDoc);
-    }, []);
+        // клик вне — закрыть
+        useEffect(() => {
+            function onDoc(e) {
+            if (!rootRef.current) return;
+            if (!rootRef.current.contains(e.target)) setOpen(false);
+            }
+            document.addEventListener("mousedown", onDoc);
+            return () => document.removeEventListener("mousedown", onDoc);
+        }, []);
 
-    const selected = options.find(o => o.value === value);
-    const currentLabel = selected?.label || staticLabel;
+        const selected = options.find(o => o.value === value);
+        const currentLabel = selected?.label || staticLabel;
 
-    return (
-        <div ref={rootRef} className={`dropdown ${open ? "open" : ""}`}>
-        <button
-            type="button"
-            className={`${className} dropdown__button`}
-            onClick={() => setOpen(v => !v)}
-            aria-haspopup="listbox"
-            aria-expanded={open}
-        >
-            {/* именно твоя разметка: img + h2 + img */}
-            {leftIcon && <img src={leftIcon} className="first-child" alt="" />}
-            <h2>{currentLabel}</h2>
-            {rightIcon && <img src={rightIcon} className="last-child" alt="" />}
-        </button>
-
-        <ul className="dropdown__menu" role="listbox">
-            {options.map((o) => (
-            <li
-                key={o.value}
-                role="option"
-                aria-selected={o.value === value}
-                className={`dropdown__item ${o.value === value ? "selected" : ""}`}
-                onClick={() => { onChange(o.value); setOpen(false); }}
+        return (
+            <div ref={rootRef} className={`dropdown ${wrapperClass} ${open ? "open" : ""}`}>
+            <button
+                type="button"
+                className={`${className} dropdown__button`}
+                onClick={() => setOpen(v => !v)}
+                aria-haspopup="listbox"
+                aria-expanded={open}
             >
-                <span>{o.label}</span>
-                {o.value === value && <span className="dropdown__check">✓</span>}
-            </li>
-            ))}
-        </ul>
-        </div>
-    );
+                {leftIcon && <img src={leftIcon} className="first-child" alt="" />}
+                <h2>{currentLabel}</h2>
+                {rightIcon && <img src={rightIcon} className="last-child" alt="" />}
+            </button>
+
+            <ul className="dropdown__menu" role="listbox">
+                {options.map(o => (
+                <li
+                    key={o.value}
+                    role="option"
+                    aria-selected={o.value === value}
+                    className={`dropdown__item ${o.value === value ? "selected" : ""}`}
+                    onClick={() => { onChange(o.value); setOpen(false); }}
+                >
+                    <span>{o.label}</span>
+                    {o.value === value && <span className="dropdown__check">✓</span>}
+                </li>
+                ))}
+            </ul>
+            </div>
+        );
     }
 
     const TYPE_OPTIONS = [
@@ -379,23 +379,25 @@ export default function Withdraw() {
                             <img src={polygonIMG} className="last-child"/>
                         </div> */}
                         <Dropdown
-                        className="bankInfoContainer"
-                        staticLabel="Реквизиты"
-                        leftIcon={cardIMG}
-                        rightIcon={polygonIMG}
-                        value={payType}
-                        options={TYPE_OPTIONS}
-                        onChange={setPayType}
+                            wrapperClass="dropdown--type"      // ⬅️ модификатор для ширины «Тип»
+                            className="bankInfoContainer"
+                            staticLabel="Реквизиты"
+                            leftIcon={cardIMG}
+                            rightIcon={polygonIMG}
+                            value={payType}
+                            options={TYPE_OPTIONS}
+                            onChange={setPayType}
                         />
 
                         <Dropdown
-                        className="payMethodContainer"
-                        staticLabel="Способ оплаты"
-                        leftIcon={paymethodIMG}
-                        rightIcon={polygonGrayIMG}
-                        value={payMethod}
-                        options={METHOD_OPTIONS}
-                        onChange={setPayMethod}
+                            wrapperClass="dropdown--method"    // ⬅️ модификатор для ширины «Метод»
+                            className="payMethodContainer"
+                            staticLabel="Способ оплаты"
+                            leftIcon={paymethodIMG}
+                            rightIcon={polygonGrayIMG}
+                            value={payMethod}
+                            options={METHOD_OPTIONS}
+                            onChange={setPayMethod}
                         />
                         {/* <div class="payMethodContainer">
                             <img src={cardGrayIMG} className="first-child"/>
