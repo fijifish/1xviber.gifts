@@ -347,7 +347,7 @@ export default function Withdraw() {
 
     const METHOD_OPTIONS = [
         { value: "paymethod", label: "Способ оплаты", icon: paymethodIMG, iconHeight: "1.5vh" },
-        { value: "sber",      label: "Сбербанк",       icon: paymethodIMG, rightIcon: sberLogoIMG, iconHeight: "1.5vh" },
+        { value: "sber",      label: "Сбербанк",       icon: paymethodIMG, rightIcon: sberLogoIMG, iconHeight: "1.5vh", rightIconHeight: "2vh" },
         { value: "tinkoff",   label: "Тинькофф",       icon: paymethodIMG, iconHeight: "1.5vh" },
         { value: "yoom",      label: "ЮMoney",         icon: paymethodIMG, iconHeight: "1.5vh" },
         { value: "usdt",      label: "USDT TRC20",   icon: usdtIMG, iconHeight: "1.5vh" },
