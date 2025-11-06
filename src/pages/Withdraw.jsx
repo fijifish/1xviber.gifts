@@ -297,7 +297,7 @@ export default function Withdraw() {
                         src={selected.midRightIcon}
                         alt=""
                         className="dropdown__btn-mid-right"
-                        style={{ height: selected?.midRightIconHeight || "1.5vh", objectFit: "contain" }}
+                        style={{ height: selected?.midRightIconHeight || "1.5vh", objectFit: "contain", marginLeft: "-.3vh" }}
                       />
                     )}
                   </div>
