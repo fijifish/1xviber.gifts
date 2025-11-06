@@ -1157,16 +1157,17 @@ body {
 .dropdown__item-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
 }
 
 /* Только для TYPE_OPTIONS (например, Крипто / Реквизиты) */
 .dropdown--type .dropdown__item-row {
   padding: 0.5vh .8vh 0.5vh .8vh;
+  justify-content: space-around;
 }
 
 /* Только для METHOD_OPTIONS (например, Сбер, Тинькофф и т.д.) */
 .dropdown--method .dropdown__item-row {
+  justify-content: space-between;
   padding: 0.5vh 1vh 0.5vh 1.6vh;
 }
