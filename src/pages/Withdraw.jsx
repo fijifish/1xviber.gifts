@@ -303,7 +303,7 @@ export default function Withdraw() {
                     )}
                   </div>
 
-                  <div
+                {/* <div
                     className="dropdown__btn-right"
                     style={{ display: "flex", alignItems: "center" }}
                   >
@@ -324,7 +324,20 @@ export default function Withdraw() {
                         />
                       )
                     )}
-                  </div>
+                </div> */}
+                <div
+                    className="dropdown__btn-right"
+                    style={{ display: "flex", alignItems: "center" }}
+                    >
+                    {rightIcon && (
+                        <img
+                        src={rightIcon}
+                        className="last-child"
+                        alt=""
+                        style={{ height: "1.5vh", objectFit: "contain" }}
+                        />
+                    )}
+                </div>
                 </button>
 
                 <ul className="dropdown__menu" role="listbox">
@@ -487,8 +500,8 @@ export default function Withdraw() {
                         className="bankInfoContainer"
                         staticLabel="Реквизиты"
                         leftIcon={cardIMG}
-                        rightIcon={polygonIMG}
-                        menuRightIcon={polygonGrayIMG}
+                        rightIcon={polygonIMG}        // ✅ стрелка для кнопки
+                        menuRightIcon={selectDropDown} // ✅ квадрат для меню
                         value={payType}
                         options={TYPE_OPTIONS}
                         onChange={setPayType}
@@ -499,8 +512,8 @@ export default function Withdraw() {
                         className="payMethodContainer"
                         staticLabel="Способ оплаты"
                         leftIcon={paymethodIMG}
-                        rightIcon={polygonGrayIMG}
-                        menuRightIcon={polygonGrayIMG}
+                        rightIcon={polygonGrayIMG}    // ✅ стрелка для кнопки
+                        menuRightIcon={selectDropDown} // ✅ квадрат для меню
                         value={payMethod}
                         options={METHOD_OPTIONS}
                         onChange={setPayMethod}
