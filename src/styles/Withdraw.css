@@ -1060,7 +1060,7 @@ body {
 .dropdown { position: relative; }
 
 /* разные ширины для двух дропдаунов */
-.dropdown--type   { width: 40%; height: 100%; }   /* «Реквизиты» */
+.dropdown--type   { width: 41.5%; height: 100%; }   /* «Реквизиты» */
 .dropdown--method { width: 52%; height: 100%; } 
 
 /* Optional: content-driven width (shrinks/grows to text up to a cap) */
