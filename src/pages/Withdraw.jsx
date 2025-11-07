@@ -433,6 +433,21 @@ export default function Withdraw() {
     const [selectedMethod, setSelectedMethod] = useState(null); // null = показ плейсхолдера
     const [openMethod, setOpenMethod] = useState(false);
 
+    const methodRootRef = useRef(null);
+    useEffect(() => {
+      function onDocMouseDown(e) {
+        if (!methodRootRef.current) return;
+        if (!methodRootRef.current.contains(e.target)) setOpenMethod(false);
+      }
+      function onKey(e){ if (e.key === "Escape") setOpenMethod(false); }
+      document.addEventListener("mousedown", onDocMouseDown);
+      document.addEventListener("keydown", onKey);
+      return () => {
+        document.removeEventListener("mousedown", onDocMouseDown);
+        document.removeEventListener("keydown", onKey);
+      };
+    }, []);
+
     const methodButtonModel = selectedMethod ?? METHOD_DEFAULT; 
 
     const methodMenu = useMemo(() => {
@@ -528,7 +543,10 @@ export default function Withdraw() {
                         />
 
                         {/* ===== METHOD (Способ оплаты): кастомная кнопка + меню ===== */}
-                        <div className="dropdown dropdown--method">
+                        <div
+                          className={`dropdown dropdown--method ${openMethod ? "open" : ""}`}
+                          ref={methodRootRef}
+                        >
                           <div
                             className="payMethodContainer dropdown__button"
                             onClick={() => setOpenMethod(v => !v)}
@@ -536,6 +554,7 @@ export default function Withdraw() {
                             aria-haspopup="listbox"
                             aria-expanded={openMethod}
                             style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}
+                            data-role="dropdown-button"
                           >
                             {/* ЛЕВАЯ иконка */}
                             {methodButtonModel.leftIcon && (
@@ -560,7 +579,7 @@ export default function Withdraw() {
                           </div>
 
                           {/* Меню */}
-                          <ul className={`dropdown__menu ${openMethod ? "open" : ""}`} role="listbox">
+                          <ul className="dropdown__menu" role="listbox">
                             {methodMenu.map(o => {
                               const leftH = o.iconHeight ? (typeof o.iconHeight === "number" ? `${o.iconHeight}px` : o.iconHeight) : "1.3vh";
                               const midH  = o.midRightIconHeight ? (typeof o.midRightIconHeight === "number" ? `${o.midRightIconHeight}px` : o.midRightIconHeight) : "2.2vh";
