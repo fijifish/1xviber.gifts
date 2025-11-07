@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useMemo } from "react";
 
 import { useNavigate } from "react-router-dom";
 import "../styles/Withdraw.css";
@@ -420,8 +420,28 @@ export default function Withdraw() {
         // { value: "ton",        label: "TON",            icon: tonusdtIMG, iconHeight: "1.5vh" },
     ];
 
+    // Показывается ТОЛЬКО в кнопке, пока ничего не выбрано
+    const METHOD_DEFAULT = {
+        value: "__placeholder__",    // специальное значение
+        label: "Способ оплаты",
+        leftIcon: paymethodIMG,      // используем существующую иконку
+        midRightIcon: null,          // на будущее
+        rightIcon: polygonGrayIMG,   // в КНОПКЕ справа всегда стрелка
+    };
+
     const [payType, setPayType]     = useState("bank");  // "Реквизиты" по умолчанию
-    const [payMethod, setPayMethod] = useState("paymethod");
+    const [selectedMethod, setSelectedMethod] = useState(null); // null = показ плейсхолдера
+    const [openMethod, setOpenMethod] = useState(false);
+
+    const methodButtonModel = selectedMethod ?? METHOD_DEFAULT; 
+
+    const methodMenu = useMemo(() => {
+        return METHOD_OPTIONS.filter(o => o.value !== selectedMethod?.value);
+    }, [selectedMethod]);
+
+    useEffect(() => {
+        setSelectedMethod(null);
+    }, [payType]); // сбрасываем метод, когда меняется тип
 
   return (
     <div className="App">
@@ -507,17 +527,86 @@ export default function Withdraw() {
                         onChange={setPayType}
                         />
 
-                        <Dropdown
-                        wrapperClass="dropdown--method"
-                        className="payMethodContainer"
-                        staticLabel="Способ оплаты"
-                        leftIcon={paymethodIMG}
-                        rightIcon={polygonGrayIMG}    // ✅ стрелка для кнопки
-                        menuRightIcon={selectDropDown} // ✅ квадрат для меню
-                        value={payMethod}
-                        options={METHOD_OPTIONS}
-                        onChange={setPayMethod}
-                        />
+                        {/* ===== METHOD (Способ оплаты): кастомная кнопка + меню ===== */}
+                        <div className="dropdown dropdown--method">
+                          <div
+                            className="payMethodContainer dropdown__button"
+                            onClick={() => setOpenMethod(v => !v)}
+                            role="button"
+                            aria-haspopup="listbox"
+                            aria-expanded={openMethod}
+                            style={{ display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" }}
+                          >
+                            {/* ЛЕВАЯ иконка */}
+                            {methodButtonModel.leftIcon && (
+                              <img src={methodButtonModel.leftIcon} className="first-child" alt="" />
+                            )}
+
+                            {/* Центр: текст + mid-иконка (если есть) */}
+                            <div className="dropdown__item-row" style={{ justifyContent: "space-between", width: "100%" }}>
+                              <h2>{methodButtonModel.label}</h2>
+                              {(methodButtonModel.midRightIcon || methodButtonModel.midIcon) && (
+                                <img
+                                  src={methodButtonModel.midRightIcon || methodButtonModel.midIcon}
+                                  className="dropdown__btn-mid-right"
+                                  alt=""
+                                  style={{ height: "2.2vh", marginLeft: ".8vh", objectFit: "contain" }}
+                                />
+                              )}
+                            </div>
+
+                            {/* ПРАВАЯ иконка В КНОПКЕ — ВСЕГДА стрелка */}
+                            <img src={polygonGrayIMG} className="last-child" alt="" />
+                          </div>
+
+                          {/* Меню */}
+                          <ul className={`dropdown__menu ${openMethod ? "open" : ""}`} role="listbox">
+                            {methodMenu.map(o => {
+                              const leftH = o.iconHeight ? (typeof o.iconHeight === "number" ? `${o.iconHeight}px` : o.iconHeight) : "1.3vh";
+                              const midH  = o.midRightIconHeight ? (typeof o.midRightIconHeight === "number" ? `${o.midRightIconHeight}px` : o.midRightIconHeight) : "2.2vh";
+                              return (
+                                <li
+                                  key={o.value}
+                                  className="dropdown__item"
+                                  role="option"
+                                  aria-selected={false}
+                                  onClick={() => { setSelectedMethod(o); setOpenMethod(false); }}
+                                >
+                                  <div className="dropdown__item-row">
+                                    {/* слева */}
+                                    {o.icon && (
+                                      <img
+                                        src={o.icon}
+                                        className="dropdown__item-icon-left"
+                                        alt=""
+                                        style={{ height: leftH, objectFit: "contain" }}
+                                      />
+                                    )}
+                                    <span className="dropdown__item-label">{o.label}</span>
+
+                                    {/* средняя иконка справа от текста */}
+                                    {o.midRightIcon && (
+                                      <img
+                                        src={o.midRightIcon}
+                                        className="dropdown__item-icon-mid-right"
+                                        alt=""
+                                        style={{ height: midH, marginLeft: ".8vh", objectFit: "contain" }}
+                                      />
+                                    )}
+                                  </div>
+
+                                  {/* ПРАВАЯ иконка В МЕНЮ — ВСЕГДА квадрат */}
+                                  <img
+                                    src={selectDropDown}
+                                    className="dropdown__item-icon-right"
+                                    alt=""
+                                    style={{ height: "2.1vh", objectFit: "contain" }}
+                                  />
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </div>
                         {/* <div class="payMethodContainer">
                             <img src={cardGrayIMG} className="first-child"/>
                                 <h2>Способ оплаты</h2>
