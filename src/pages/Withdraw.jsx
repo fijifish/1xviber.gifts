@@ -334,7 +334,7 @@ export default function Withdraw() {
                         src={rightIcon}
                         className="last-child"
                         alt=""
-                        style={{ height: "1.5vh", objectFit: "contain" }}
+                        style={{ height: "1vh", objectFit: "contain" }}
                         />
                     )}
                 </div>
