@@ -772,6 +772,11 @@ export default function Withdraw() {
                             GgLGWHEzK1S2VndNm49Eyajc
                             <span className="accent">dogat</span>
                         </h2>
+                        <div class="infoOrderWalletContainer">
+                            <img src={sberLeftIMG}/>
+                                <h2>Сбербанк</h2>
+                            <img src={sberLogoIMG}/>
+                        </div>
                     </div>
                     <div class="infoTimeAndDataContainer">
                         <h2>Дата: 08.10.2025г.</h2>
