@@ -149,6 +149,9 @@ const OnexGifts = () => {
         } else if (d.status === "not_completed_stake_threshold") {
         const need = Number(d?.minStake ?? 7);
         alert(`⚠️ Условие не выполнено.\nТребуется активная/купленная нода со стейком ≥ ${need} TON.`);
+        } else if (d.status === "not_completed_farming_required") {
+          const st = d?.freeOnex ? ` (сейчас: ${d.freeOnex})` : "";
+          alert(`⚠️ Условие ONEX не выполнено: нужно запустить или завершить бесплатный фарминг ("таймер" или "зафармлено")${st}.`);
         } else {
         alert("⚠️ Не удалось подтвердить выполнение. Попробуйте позже.");
         }
