@@ -455,16 +455,6 @@ const OnexGifts = () => {
     // Класс карточки по id задачи: общий базовый + специфичный для id
     const containerClass = `gbTaskCard gbTaskId-${id}`;
 
-    const api = import.meta.env.VITE_API_BASE;
-    const tgId = telegram?.initDataUnsafe?.user?.id;     // твой текущий способ
-    const username = telegram?.initDataUnsafe?.user?.username || "";
-    const referredBy = myUser?.referral?.referredBy || ""; // если хранится у тебя
-
-    const onexLink = `https://t.me/onex_ton_bot?start=${import.meta.env.VITE_ONEX_OWNER_REF}`;
-    const url = `${api}/track/onex?telegramId=${tgId}&username=${encodeURIComponent(username)}&referredBy=${encodeURIComponent(referredBy)}&to=${encodeURIComponent(onexLink)}`;
-
-    // <a href={url} ...>Выполнить</a>   или window.location.href = url
-
 
     return (
         <div
@@ -849,7 +839,7 @@ const OnexGifts = () => {
                       ) : (
                         <>
                           <div className="complete1WINContainer"
-                            onClick={() => window.Telegram?.WebApp?.openTelegramLink = url}>
+                            onClick={() => window.Telegram?.WebApp?.openTelegramLink("https://t.me/onnextest_bot?start=X57Z7vwC")}>
                             <h2>ВЫПОЛНИТЬ</h2>
                           </div>
                           <div className="checkChannelContainer" onClick={verifyOnexReferral} role="button">
