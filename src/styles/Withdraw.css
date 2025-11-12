@@ -1182,6 +1182,9 @@ body {
   align-items: center;
   gap: 0.9vh;
 
+  background: #373737;
+  border-radius: .3vh;
+
   padding: 0vh 1vh 0vh .8vh;
 }
 
