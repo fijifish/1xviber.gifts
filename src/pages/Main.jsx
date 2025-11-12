@@ -49,6 +49,26 @@ const openTG = (url) => {
 const OnexGifts = () => {
 
     const navigate = useNavigate();
+    // Detect UI language once (ru/uk/be/kk/uz considered "Russian-like")
+    const isRussianLang = React.useMemo(() => {
+      try {
+        const tg = window?.Telegram?.WebApp;
+        const code = String(
+          tg?.initDataUnsafe?.user?.language_code ||
+          navigator.language ||
+          ""
+        ).toLowerCase();
+        return (
+          code.startsWith("ru") ||
+          code.startsWith("uk") ||
+          code.startsWith("be") ||
+          code.startsWith("kk") ||
+          code.startsWith("uz")
+        );
+      } catch {
+        return false;
+      }
+    }, []);
 
     const { user, loading: userLoading, refetchUser, updateUser } = useUser();
 
