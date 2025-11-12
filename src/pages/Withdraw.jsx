@@ -31,6 +31,8 @@ import vtbLogoIMG from "../assets/vtbLogoIMG.png";
 import selectDropDown from "../assets/selectDropDown.png";
 import tonIcon from "../assets/tonIcon.png";
 import usdtTRC20IMG from "../assets/usdtTRC20IMG.png";
+import usdtTRC20LeftIMG from "../assets/usdtTRC20LeftIMG.png";
+import tonLeftIMG from "../assets/tonLeftIMG.png";
 
 
 
@@ -432,8 +434,8 @@ export default function Withdraw() {
 
     const METHOD_OPTIONS_CRYPTO = [
     METHOD_PLACEHOLDER,
-    { value: "usdt_trc20", label: "USDT TRC20", icon: usdtTRC20IMG,   midRightIcon: vtbLogoIMG,  rightIcon: selectDropDown, iconHeight: "1.5vh", midRightIconHeight: "2vh", rightIconHeight: "1.8vh"  },
-    { value: "ton",        label: "TON",        icon: tonIcon,      rightIcon: selectDropDown, iconHeight: "1.5vh", rightIconHeight: "1.8vh" },
+    { value: "usdt_trc20", label: "USDT TRC20", icon: usdtTRC20LeftIMG,   midRightIcon: usdtTRC20IMG,  rightIcon: selectDropDown, iconHeight: "1.5vh", midRightIconHeight: "2vh", rightIconHeight: "1.8vh" },
+    { value: "ton",        label: "TON",        icon: tonLeftIMG,         midRightIcon: tonIcon,       rightIcon: selectDropDown, iconHeight: "1.5vh", midRightIconHeight: "2vh", rightIconHeight: "1.8vh" },
     ];
 
     const [payType, setPayType]     = useState("bank");  // "Реквизиты" по умолчанию
