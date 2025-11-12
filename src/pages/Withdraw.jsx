@@ -64,13 +64,6 @@ export default function Withdraw() {
 
 
 
-    useEffect(() => {
-        const el = addrRef.current;
-            if (!el) return;
-            if (isAddressNeutral) {
-                el.textContent = addrPlaceholder;
-            }
-    }, [isAddressNeutral, payType]);
 
 
     const moveCursorToEnd = (el) => {
@@ -455,6 +448,14 @@ export default function Withdraw() {
         setPayMethod("paymethod");
     }, [payType]);
 
+    useEffect(() => {
+        const el = addrRef.current;
+            if (!el) return;
+            if (isAddressNeutral) {
+                el.textContent = addrPlaceholder;
+            }
+    }, [isAddressNeutral, payType]);
+
   return (
     <div className="App">
         <div className="Main_Window">   
@@ -679,7 +680,7 @@ export default function Withdraw() {
                         onBlur={(e) => {
                             if (!sanitizeAddress(e.currentTarget.textContent || "")) {
                             e.currentTarget.textContent = addrPlaceholder;
-                            setWalletAddress(addrPlaceholder);
+                            setWalletAddress("");
                             setIsAddressNeutral(true);
                             }
                         }}
