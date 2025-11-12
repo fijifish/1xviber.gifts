@@ -432,7 +432,7 @@ export default function Withdraw() {
 
     const METHOD_OPTIONS_CRYPTO = [
     METHOD_PLACEHOLDER,
-    { value: "usdt_trc20", label: "USDT TRC20", icon: vtbLeftIMG,   midRightIcon: vtbLogoIMG,  rightIcon: selectDropDown, iconHeight: "1.5vh", midRightIconHeight: "2vh", rightIconHeight: "1.8vh"  },
+    { value: "usdt_trc20", label: "USDT TRC20", icon: usdtTRC20IMG,   midRightIcon: vtbLogoIMG,  rightIcon: selectDropDown, iconHeight: "1.5vh", midRightIconHeight: "2vh", rightIconHeight: "1.8vh"  },
     { value: "ton",        label: "TON",        icon: tonIcon,      rightIcon: selectDropDown, iconHeight: "1.5vh", rightIconHeight: "1.8vh" },
     ];
 
