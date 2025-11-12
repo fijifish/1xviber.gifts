@@ -552,7 +552,11 @@ export default function Withdraw() {
                     </div>
                     <div class="descriptionBankInfoContainer">
                         <img src={InfoIMG}/>
-                        <h2>Реквизиты - способ оплаты на банковский счёт.</h2>
+                        <h2>
+                          {payType === "crypto"
+                            ? "Крипто - способ вывода на крипто адрес кошелька."
+                            : "Реквизиты - способ оплаты на банковский счёт."}
+                        </h2>
                     </div>
                     <div class="AmountAndWithdrawContainer">
                         <div class="AmountContainer">
