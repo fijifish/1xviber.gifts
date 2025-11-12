@@ -1173,12 +1173,12 @@ body {
 }
 
 .infoOrderMethodContainer { 
-  width: auto;
+  width: 28.5%;
   height: 150%;
 
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   gap: 0.9vh;
 
