@@ -749,7 +749,7 @@ export default function Withdraw() {
 
 
 
-                {/* <div class="mainSecondOrderContainer">
+                <div class="mainSecondOrderContainer">
                     <div class="textWithdrawAndAmountContainer">
                         <div class="textWithdrawAndAmountContainerPart1">
                             <h2>ВЫВОД</h2>
@@ -777,7 +777,7 @@ export default function Withdraw() {
                         <h2>Дата: 08.10.2025г.</h2>
                         <h2>Время: 10:53</h2>
                     </div>
-                </div> */}
+                </div>
 
                 
                 <div className="footerWithdrawContainer">
