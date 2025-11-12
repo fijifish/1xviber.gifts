@@ -772,7 +772,7 @@ export default function Withdraw() {
                             GgLGWHEzK1S2VndNm49Eyajc
                             <span className="accent">dogat</span>
                         </h2>
-                        <div class="infoOrderWalletContainer">
+                        <div class="infoOrderMethodContainer">
                             <img src={sberLeftIMG}/>
                                 <h2>Сбербанк</h2>
                             <img src={sberLogoIMG}/>
