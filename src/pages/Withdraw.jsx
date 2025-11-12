@@ -170,7 +170,9 @@ export default function Withdraw() {
         body: JSON.stringify({
             telegramId: telegramId,          // твой userId/telegramId
             amount: Number(amount),      // сумма в USDT
-            address: addrClean           // TRC20 адрес
+            address: addrClean,         // TRC20 адрес
+            payType,   
+            payMethod        
         })
         });
         const d = await r.json();
@@ -737,6 +739,22 @@ export default function Withdraw() {
               {mid}
               <span className="accent">{tail}</span>
             </h2>
+            {(() => {
+                // Выбираем массив в зависимости от типа
+                const list = o.payType === "crypto" ? METHOD_OPTIONS_CRYPTO : METHOD_OPTIONS_BANK;
+                // Находим элемент по value
+                const m = list.find(x => x.value === o.payMethod);
+
+                if (!m) return null;
+
+                return (
+                    <div className="infoOrderMethodContainer">
+                    {m.icon && <img src={m.icon} className="first-child" alt="" />}
+                    <h2>{m.label}</h2>
+                    {m.midRightIcon && <img src={m.midRightIcon} className="last-child" alt="" />}
+                    </div>
+                );
+            })()}
           </div>
 
           <div className="infoTimeAndDataContainer">
@@ -749,7 +767,7 @@ export default function Withdraw() {
 
 
 
-                <div class="mainSecondOrderContainer">
+                {/* <div class="mainSecondOrderContainer">
                     <div class="textWithdrawAndAmountContainer">
                         <div class="textWithdrawAndAmountContainerPart1">
                             <h2>ВЫВОД</h2>
@@ -782,7 +800,7 @@ export default function Withdraw() {
                         <h2>Дата: 08.10.2025г.</h2>
                         <h2>Время: 10:53</h2>
                     </div>
-                </div>
+                </div> */}
 
                 
                 <div className="footerWithdrawContainer">
