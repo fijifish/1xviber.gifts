@@ -1186,6 +1186,7 @@ body {
   border-radius: .8vh;
 
   padding: 0vh .8vh 0vh .7vh;
+  margin-left: 1vh;
 }
 
 .infoOrderMethodContainer h2 { 
