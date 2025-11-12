@@ -781,14 +781,14 @@ body {
   color: #D5D5D5;
   font-family: 'Inter', sans-serif;
   font-weight: 600;  
-  font-size: 1vh;
+  font-size: 1.15vh;
 }
 
 .infoOrderWalletContainer h2 .accent {
   color: #CA6C00;
   font-family: 'Inter', sans-serif;
   font-weight: 600;  
-  font-size: 1.3vh;
+  font-size: 1.45vh;
 }
 
 .infoOrderWalletContainer img { 
