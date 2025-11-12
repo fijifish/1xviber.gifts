@@ -769,13 +769,13 @@ export default function Withdraw() {
                         <img src={walletIMG}/>
                         <h2>
                             <span className="accent">TFeB3</span>
-                            GgLGWHEzK1S2VndNm49Eyajc
+                                GgLGWHEzK1S2VndNm49Eyajc
                             <span className="accent">dogat</span>
                         </h2>
                         <div class="infoOrderMethodContainer">
-                            <img src={sberLeftIMG}/>
+                            <img src={sberLeftIMG} className="first-child"/>
                                 <h2>Сбербанк</h2>
-                            <img src={sberLogoIMG}/>
+                            <img src={sberLogoIMG} className="last-child"/>
                         </div>
                     </div>
                     <div class="infoTimeAndDataContainer">
