@@ -1216,9 +1216,9 @@ body {
 }
 
 .order-status.completed {
-  color: #00EB62; /* зелёный */
+  color: #039700; /* зелёный */
 }
 
 .order-status.rejected {
-  color: #FB0000; /* красный */
+  color: #C82100; /* красный */
 }
