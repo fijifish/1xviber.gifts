@@ -1174,7 +1174,7 @@ body {
 
 .infoOrderMethodContainer { 
   width: auto;
-  height: 140%;
+  height: 150%;
 
   display: flex;
   flex-direction: row;
@@ -1183,9 +1183,9 @@ body {
   gap: 0.9vh;
 
   background: #373737;
-  border-radius: .3vh;
+  border-radius: .8vh;
 
-  padding: 0vh 1vh 0vh .8vh;
+  padding: 0vh .8vh 0vh .7vh;
 }
 
 .infoOrderMethodContainer h2 { 
