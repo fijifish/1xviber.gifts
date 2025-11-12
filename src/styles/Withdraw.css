@@ -1207,3 +1207,18 @@ body {
   height: 60%;
 }
 
+.order-status {
+  font-weight: 600;
+}
+
+.order-status.processing {
+  color: #ffffff; /* в обработке */
+}
+
+.order-status.completed {
+  color: #00EB62; /* зелёный */
+}
+
+.order-status.rejected {
+  color: #FB0000; /* красный */
+}

@@ -727,7 +727,17 @@ export default function Withdraw() {
               </div>
             </div>
             <div className="textWithdrawAndAmountContainerPart2">
-              <h2>{o.status || "в обработке"}</h2>
+                <h2
+                    className={`order-status ${
+                        o.status === "выполнен"
+                        ? "completed"
+                        : o.status === "отклонён"
+                        ? "rejected"
+                        : "processing"
+                    }`}
+                    >
+                    {o.status || "в обработке"}
+                </h2>
               <div className="lineOrder-right" />
             </div>
           </div>
