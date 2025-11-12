@@ -66,11 +66,11 @@ export default function Withdraw() {
 
     useEffect(() => {
         const el = addrRef.current;
-        if (!el) return;
-        if (isAddressNeutral) {
-            el.textContent = "Кошелёк TON или реквизиты";
-        }
-    }, [isAddressNeutral]);
+            if (!el) return;
+            if (isAddressNeutral) {
+                el.textContent = addrPlaceholder;
+            }
+    }, [isAddressNeutral, payType]);
 
 
     const moveCursorToEnd = (el) => {
@@ -190,7 +190,7 @@ export default function Withdraw() {
         setAmount(AMOUNT_LABEL);         // твой плейсхолдер суммы
       
         const el = addrRef.current;
-        if (el) el.textContent = "Кошелёк TON или реквизиты";
+            if (el) el.textContent = addrPlaceholder;
         setWalletAddress("");
         setIsAddressNeutral(true);
     } catch (e) {
@@ -444,6 +444,12 @@ export default function Withdraw() {
     // ——— Динамический список методов в зависимости от выбранного типа
     const methodOptions = payType === "crypto" ? METHOD_OPTIONS_CRYPTO : METHOD_OPTIONS_BANK;
 
+    // ——— Динамический плейсхолдер для поля адреса
+    const addrPlaceholder =
+    payType === "crypto"
+        ? "Введите адрес кошелька"
+        : "Введите банк. реквизиты";
+
     // При смене типа сбрасываем выбранный метод до плейсхолдера
     useEffect(() => {
         setPayMethod("paymethod");
@@ -672,8 +678,8 @@ export default function Withdraw() {
                         }}
                         onBlur={(e) => {
                             if (!sanitizeAddress(e.currentTarget.textContent || "")) {
-                            e.currentTarget.textContent = "Кошелёк TON или реквизиты";
-                            setWalletAddress("Кошелёк TON или реквизиты");
+                            e.currentTarget.textContent = addrPlaceholder;
+                            setWalletAddress(addrPlaceholder);
                             setIsAddressNeutral(true);
                             }
                         }}
