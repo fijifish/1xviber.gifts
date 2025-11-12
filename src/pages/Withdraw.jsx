@@ -342,7 +342,7 @@ export default function Withdraw() {
 
                 <ul className="dropdown__menu" role="listbox">
                 {options
-                    .filter(o => o.value !== value)
+                    .filter(o => o.value !== value && o.value !== "paymethod")
                     .map(o => {
                     const leftSrc = o.icon || leftIcon;
                     const rightSrc = menuRightIcon; // единая правая иконка для меню
@@ -410,18 +410,40 @@ export default function Withdraw() {
         { value: "bank", label: "Реквизиты", icon: cardIMG, rightIcon: selectDropDown, iconHeight: "1.5vh", rightIconHeight: "1.8vh" },
     ];
 
-    const METHOD_OPTIONS = [
-        { value: "paymethod",  label: "Способ оплаты",  icon: paymethodIMG, rightIcon: polygonGrayIMG, iconHeight: "1.5vh", rightIconHeight: "1vh" },
-        { value: "sber",       label: "Сбербанк",       icon: sberLeftIMG, midRightIcon: sberLogoIMG, rightIcon: selectDropDown, iconHeight: "1.5vh", midRightIconHeight: "2vh", rightIconHeight: "1.8vh" },
-        { value: "tinkoff",    label: "Тинькофф",       icon: tinkoffLeftIMG, midRightIcon: tinkoffLogoIMG, rightIcon: selectDropDown, iconHeight: "1.5vh", midRightIconHeight: "2vh", rightIconHeight: "1.8vh" },
-        { value: "alfa",       label: "А-Банк",         icon: alfaLeftIMG, midRightIcon: alfaLogoIMG, rightIcon: selectDropDown, iconHeight: "1.5vh", midRightIconHeight: "2vh", rightIconHeight: "1.8vh" },
-        { value: "vtb",        label: "ВТБ Банк",       icon: vtbLeftIMG, midRightIcon: vtbLogoIMG, rightIcon: selectDropDown, iconHeight: "1.5vh", midRightIconHeight: "2vh", rightIconHeight: "1.8vh" },
-        // { value: "usdt",       label: "USDT TRC20",     icon: usdtIMG, iconHeight: "1.5vh" },
-        // { value: "ton",        label: "TON",            icon: tonusdtIMG, iconHeight: "1.5vh" },
+    // ——— Разделяем методы по типу: Банк/Крипто
+    const METHOD_PLACEHOLDER = {
+    value: "paymethod",
+    label: "Способ оплаты",
+    icon: paymethodIMG,
+    rightIcon: polygonGrayIMG,
+    iconHeight: "1.5vh",
+    rightIconHeight: "1vh"
+    };
+
+    const METHOD_OPTIONS_BANK = [
+    METHOD_PLACEHOLDER,
+    { value: "sber",    label: "Сбербанк",   icon: sberLeftIMG,    midRightIcon: sberLogoIMG,    rightIcon: selectDropDown, iconHeight: "1.5vh", midRightIconHeight: "2vh", rightIconHeight: "1.8vh" },
+    { value: "tinkoff", label: "Тинькофф",   icon: tinkoffLeftIMG, midRightIcon: tinkoffLogoIMG, rightIcon: selectDropDown, iconHeight: "1.5vh", midRightIconHeight: "2vh", rightIconHeight: "1.8vh" },
+    { value: "alfa",    label: "А-Банк",     icon: alfaLeftIMG,    midRightIcon: alfaLogoIMG,    rightIcon: selectDropDown, iconHeight: "1.5vh", midRightIconHeight: "2vh", rightIconHeight: "1.8vh" },
+    { value: "vtb",     label: "ВТБ Банк",   icon: vtbLeftIMG,     midRightIcon: vtbLogoIMG,     rightIcon: selectDropDown, iconHeight: "1.5vh", midRightIconHeight: "2vh", rightIconHeight: "1.8vh" },
+    ];
+
+    const METHOD_OPTIONS_CRYPTO = [
+    METHOD_PLACEHOLDER,
+    { value: "usdt_trc20", label: "USDT TRC20", icon: usdtIMG,    rightIcon: selectDropDown, iconHeight: "1.5vh", rightIconHeight: "1.8vh" },
+    { value: "ton",        label: "TON",        icon: tonusdtIMG, rightIcon: selectDropDown, iconHeight: "1.5vh", rightIconHeight: "1.8vh" },
     ];
 
     const [payType, setPayType]     = useState("bank");  // "Реквизиты" по умолчанию
     const [payMethod, setPayMethod] = useState("paymethod");
+
+    // ——— Динамический список методов в зависимости от выбранного типа
+    const methodOptions = payType === "crypto" ? METHOD_OPTIONS_CRYPTO : METHOD_OPTIONS_BANK;
+
+    // При смене типа сбрасываем выбранный метод до плейсхолдера
+    useEffect(() => {
+        setPayMethod("paymethod");
+    }, [payType]);
 
   return (
     <div className="App">
@@ -515,7 +537,7 @@ export default function Withdraw() {
                         rightIcon={polygonGrayIMG}    // ✅ стрелка для кнопки
                         menuRightIcon={selectDropDown} // ✅ квадрат для меню
                         value={payMethod}
-                        options={METHOD_OPTIONS}
+                        options={methodOptions}
                         onChange={setPayMethod}
                         />
                         {/* <div class="payMethodContainer">
