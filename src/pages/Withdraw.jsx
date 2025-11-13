@@ -53,6 +53,7 @@ export default function Withdraw() {
 
     const { user, loading, refetchUser, updateUser } = useUser();
 
+    const AMOUNT_LABEL = "СУММА";
     const [amount, setAmount] = useState(AMOUNT_LABEL);
 
     const addrRef = useRef(null);
@@ -120,6 +121,13 @@ export default function Withdraw() {
 
     const usdtBalance = Number(user?.balanceTon ?? 0); // ⚠️ сейчас тут хранится именно USDT
     const tonBalance  = usdToTon(usdtBalance);
+
+    // ✅ сумма введена
+    const amountValid = amount && amount !== AMOUNT_LABEL && Number(amount) > 0;
+    // ✅ метод оплаты выбран (НЕ плейсхолдер)
+    const methodValid = payMethod && payMethod !== "paymethod";
+    // ✅ адрес введён (у тебя это уже считается в addressValid)
+    const readyToWithdraw = amountValid && addressValid && methodValid;
 
     const telegramId  = user?.telegramId;
     const displayName = user?.firstName || user?.username || (telegramId ? `id${telegramId}` : "User");
@@ -445,14 +453,6 @@ export default function Withdraw() {
     useEffect(() => {
         setPayMethod("paymethod");
     }, [payType]);
-
-    const AMOUNT_LABEL = "СУММА";
-    
-    const amountValid = amount && amount !== AMOUNT_LABEL && Number(amount) > 0;
-    // ✅ метод оплаты выбран (НЕ плейсхолдер)
-    const methodValid = payMethod && payMethod !== "paymethod";
-    // ✅ адрес введён (у тебя это уже считается в addressValid)
-    const readyToWithdraw = amountValid && addressValid && methodValid;
 
     useEffect(() => {
         const el = addrRef.current;
