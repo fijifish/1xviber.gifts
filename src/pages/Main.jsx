@@ -856,12 +856,14 @@ const OnexGifts = () => {
                     </div>
                 </div> 
                 
-                {/* Задание Тедди (показываем, только если ещё не выполнено) */}
-
-                  <TaddyInterstitialCard
-                    amountTon={usdToTon(TADDY_REWARD_USD)} // либо какое значение используется внутри
-                    onDone={handleTaddyDone}
-                  />
+                {!taddyDone && (
+                  <div className="mainTaddyTaskContainer">
+                    <TaddyInterstitialCard
+                      amountTon={usdToTon(TADDY_REWARD_USD)} // можно просто число, если внутри в USDT
+                      onDone={handleTaddyDone}
+                    />
+                  </div>
+                )}
          
                 </>
                 )}
