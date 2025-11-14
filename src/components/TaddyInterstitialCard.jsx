@@ -5,6 +5,7 @@ import useTaddyProgress from "../hooks/useTaddyProgress";
 import taddyLogo from "../assets/taddy-logo.png";
 import tonusdtIMG from "../assets/tonusdtIcon.png";
 import usersIMG from "../assets/usersIcon.png";
+import "../styles/Main.css";
 
 
 export default function TaddyInterstitialCard({
