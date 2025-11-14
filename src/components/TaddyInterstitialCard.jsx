@@ -1,6 +1,6 @@
 // TaddyInterstitialCard.jsx
 import React, { useCallback } from "react";
-import { useTaddy } from "../hooks/useTaddy";
+import useTaddy from "../hooks/useTaddy";
 import useTaddyProgress from "../hooks/useTaddyProgress";
 import taddyLogo from "../assets/taddy-logo.png";
 
