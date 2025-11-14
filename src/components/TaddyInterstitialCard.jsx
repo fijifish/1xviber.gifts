@@ -6,6 +6,8 @@ import taddyLogo from "../assets/taddy-logo.png";
 import tonusdtIMG from "../assets/tonusdtIcon.png";
 import usersIMG from "../assets/usersIcon.png";
 
+const TADDY_REWARD_USD = 5;
+
 export default function TaddyInterstitialCard({
   pubId = import.meta.env.VITE_TADDY_PUB_ID,
   amountTon = 0.3,
@@ -29,8 +31,6 @@ export default function TaddyInterstitialCard({
       console.warn("[Taddy] ads.interstitial failed", e);
     }
   }, [taddy, markCompleted, amountTon, onDone]);
-
-
 
 
     const handleTaddyDone = async () => {
