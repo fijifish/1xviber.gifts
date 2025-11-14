@@ -42,7 +42,7 @@ export default function TaddyInterstitialCard({
           TADDY
         </div>
           <div class="text1WINNameContainerPart2">
-            Рекламная платформа
+            Реклама [ADS]
           </div>
         </div>
       </div>
