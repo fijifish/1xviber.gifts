@@ -34,7 +34,7 @@ export default function TaddyInterstitialCard({
   if (interstitialDone) return null;
 
   return (
-    <div class="mainJettonTaskContainer">
+    <div class="mainTaddyTaskContainer">
       <div class="mainChannelNameContainer">
         <img src={taddyLogo}/>
       <div class="textChannelNameContainer">
