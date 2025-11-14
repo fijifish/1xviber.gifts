@@ -31,7 +31,7 @@ export default function TaddyInterstitialCard({
   }, [taddy, markCompleted, amountTon, onDone]);
 
 
-    const TADDY_REWARD_USD = 5; // например 5$ за Тедди — можешь вынести в env
+
 
     const handleTaddyDone = async () => {
       try {
