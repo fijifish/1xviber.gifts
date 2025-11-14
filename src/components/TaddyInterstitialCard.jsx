@@ -30,6 +30,46 @@ export default function TaddyInterstitialCard({
     }
   }, [taddy, markCompleted, amountTon, onDone]);
 
+
+    const TADDY_REWARD_USD = 5; // например 5$ за Тедди — можешь вынести в env
+
+    const handleTaddyDone = async () => {
+      try {
+        if (!user?.telegramId) {
+          alert("Открой через Telegram");
+          return;
+        }
+
+        const resp = await fetch(`${API_BASE}/tasks/taddy/complete`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            telegramId: String(user.telegramId),
+            amountUsd: TADDY_REWARD_USD,   // можно не передавать, если фикс на беке
+          }),
+        });
+
+        const data = await resp.json();
+        if (!resp.ok || !data?.ok) throw new Error(data?.error || "Server error");
+
+        if (data.user) {
+          updateUser(data.user);
+        }
+        setTaddyDone(true);
+        await refetchUser();
+        await fetchBalances(user.telegramId);
+
+        if (data.status === "rewarded") {
+          alert(`✅ Тедди выполнено! Награда +${data.rewardUsd || TADDY_REWARD_USD}$`);
+        } else {
+          alert("✅ Задание Тедди уже было выполнено ранее.");
+        }
+      } catch (e) {
+        console.error("Taddy complete error:", e);
+        alert("Ошибка обработки задания Тедди");
+      }
+    };
+
   if (sdkLoading || progLoading || error) return null;
   if (interstitialDone) return null;
 
@@ -70,7 +110,7 @@ export default function TaddyInterstitialCard({
       <div className="complete1WINContainer" onClick={handleOpen}>
         <h2>ВЫПОЛНИТЬ</h2>
       </div>
-        <div className="checkChannelContainer" onClick={() => checkDeposit(5)} role="button">
+        <div className="checkChannelContainer" onClick={handleTaddyDone} role="button">
           <h2>ПРОВЕРИТЬ</h2>
         </div>
       </div>
