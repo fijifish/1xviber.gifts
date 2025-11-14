@@ -12,6 +12,7 @@ export default function TaddyInterstitialCard({
   pubId = import.meta.env.VITE_TADDY_PUB_ID,
   amountTon = 0.3,
   onDone,
+  user
 }) {
   const { taddy, loading: sdkLoading, error } = useTaddy(pubId);
   const { loading: progLoading, interstitialDone, markCompleted } = useTaddyProgress();
