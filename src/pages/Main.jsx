@@ -818,7 +818,7 @@ const OnexGifts = () => {
                 
                 {!taddyDone && (
                   <TaddyInterstitialCard
-                    amountTon={usdToTon(TADDY_REWARD_USDf)}
+                    amountTon={usdToTon()}
                     onDone={handleTaddyDone}
                   />
                 )}
